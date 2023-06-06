@@ -88,7 +88,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="flex-row container">
       <div class="flex-col hide-for-medium flex-left">
           <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-          </ul>
+              <li class="header-search-form search-form html relative has-icon">
+	<div class="header-search-form-wrapper">
+		<div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form role="search" method="get" class="searchform" action="#">
+	<div class="flex-row relative">
+						<div class="flex-col flex-grow">
+			<label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
+			<input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Bạn muốn tìm gì?" value="" name="s" autocomplete="off">
+			<input type="hidden" name="post_type" value="product">
+					</div>
+		<div class="flex-col">
+			<button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
+				<i class='bx bx-search-alt-2' ></i>				</button>
+		</div>
+	</div>
+	<div class="live-search-results text-left z-top"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
+</form>
+</div>	</div>
+</li>          </ul>
       </div>
 
       <div class="flex-col hide-for-medium flex-center">
@@ -403,9 +420,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="shop-page-title category-page-title page-title ">
 	<div class="page-title-inner flex-row  medium-flex-wrap container">
 	  <div class="flex-col flex-grow medium-text-center">
-	  			<h1 class="shop-page-title is-xlarge">Quần áo, váy, mũ, trang sức cho chó</h1>
+	  			<h1 class="shop-page-title is-xlarge">Thức ăn cho chó Pedigree</h1>
 		<div class="is-medium">
-	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="https://dogilypetshop.vn">Trang chủ</a> <span class="divider">/</span> <a href="https://dogilypetshop.vn/shop-cho-cho/">Shop cho chó</a> <span class="divider">/</span> Quần áo, váy, mũ, trang sức cho chó</nav></div>
+	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="https://dogilypetshop.vn">Trang chủ</a> <span class="divider">/</span> <a href="https://dogilypetshop.vn/shop-cho-cho/">Shop cho chó</a> <span class="divider">/</span> <a href="https://dogilypetshop.vn/thuc-an-cho-cho/">Thức ăn cho chó</a> <span class="divider">/</span> Thức ăn cho chó Pedigree</nav></div>
 <div class="category-filtering category-filter-row show-for-medium">
 	<a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left" class="filter-button uppercase plain">
 		<i class="icon-equalizer"></i>
@@ -417,7 +434,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	  </div>
 	  <div class="flex-col medium-text-center">
 	  	<p class="woocommerce-result-count hide-for-medium">
-	Hiển thị tất cả 9 kết quả</p>
+	Hiển thị kết quả duy nhất</p>
 <form class="woocommerce-ordering" method="get">
 	<select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">
 					<option value="popularity">Thứ tự theo mức độ phổ biến</option>
@@ -437,10 +454,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="col large-3 hide-for-medium ">
 						<div id="shop-sidebar" class="sidebar-inner col-inner">
-				<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories"><span class="widget-title shop-sidebar">Danh mục sản phẩm</span><div class="is-divider small"></div><ul class="product-categories"><li class="cat-item cat-item-152"><a href="https://dogilypetshop.vn/mu-non-cho-cho/">Mũ, nón cho chó</a> <span class="count">(0)</span></li>
-<li class="cat-item cat-item-149"><a href="https://dogilypetshop.vn/quan-ao-cho-cho/">Quần áo cho chó</a> <span class="count">(9)</span></li>
-<li class="cat-item cat-item-151"><a href="https://dogilypetshop.vn/vay-cho-cho/">Váy cho chó</a> <span class="count">(1)</span></li>
-</ul></aside><aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
+				<aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
             
 
             
@@ -474,18 +488,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="woof_container_inner">
         <ul class="woof_authors ">
                                                     <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc7db64585" value="0-100000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc7db64585"><span class="woocommerce-Price-amount amount"><bdi>0&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (9)  </label>
+                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64760f8909b0d" value="0-100000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64760f8909b0d" class=""><span class="woocommerce-Price-amount amount"><bdi>0&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (1)  </label>
                         <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_0-100000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
                     </li>
                                                             <li class="woof_list">
-                        <div class="iradio_minimal-aero disabled" style="position: relative;"><input type="radio" disabled="" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc7db64595" value="100000-250000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc7db64595"><span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (0)  </label>
+                        <div class="iradio_minimal-aero disabled" style="position: relative;"><input type="radio" disabled="" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64760f8909b1d" value="100000-250000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64760f8909b1d"><span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (0)  </label>
                         <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_100000-250000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
                     </li>
                                                             <li class="woof_list">
-                        <div class="iradio_minimal-aero disabled" style="position: relative;"><input type="radio" disabled="" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc7db6459d" value="250000-500000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc7db6459d"><span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>500,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (0)  </label>
+                        <div class="iradio_minimal-aero disabled" style="position: relative;"><input type="radio" disabled="" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64760f8909b22" value="250000-500000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64760f8909b22"><span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>500,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (0)  </label>
                         <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_250000-500000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
                     </li>
                             </ul>
@@ -522,17 +536,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="col large-9">
 		<div class="shop-container">
-		<div class="term-description"><p>Các loại quần áo, váy, mũ và trang sức cho chó</p>
+		<div class="term-description"><p>Các sản phẩm thức ăn cho chó của thương hiệu Pedigree</p>
 </div>
 		
 
 
-        <div class="woocommerce woocommerce-page woof_shortcode_output"><div id="woof_results_by_ajax" data-shortcode="woof_products taxonomies=product_cat:150 is_ajax=1 predict_ids_and_continue=1">
+        <div class="woocommerce woocommerce-page woof_shortcode_output"><div id="woof_results_by_ajax" data-shortcode="woof_products taxonomies=product_cat:128 is_ajax=1 predict_ids_and_continue=1">
 <div class="woof_products_top_panel_content">
     </div>
 <div class="woof_products_top_panel" style="display: none;"></div><div class="woocommerce-notices-wrapper"></div><div class="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights equalize-box">
 
-<div class="product-small col has-hover product type-product post-49290 status-publish first instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
+<div class="product-small col has-hover out-of-stock product type-product post-48855 status-publish first outofstock product_cat-pate-cho-cho-pedigree product_cat-shop-cho-cho product_cat-thuc-an-cho-cho product_cat-thuc-an-cho-cho-pedigree has-post-thumbnail shipping-taxable purchasable product-type-simple">
 	<div class="col-inner">
 	
 <div class="badge-container absolute left top z-1">
@@ -540,246 +554,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="product-small box ">
 		<div class="box-image">
 			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-da-banh-nhieu-size-nhieu-mau-cho-cho-meo/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-21.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-da-banh-nhieu-size-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
+				<a href="https://dogilypetshop.vn/pate-pedigree-bich-80g-cho-cho-con-vi-ga-gan-trung-va-rau/">
+					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-7.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/pedigree-vi-ga-gan-trung-va-rau-cho-cho-con-80g-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
 			</div>
 			<div class="image-tools is-small top right show-on-hover">
 							</div>
 			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
 							</div>
 			
-					</div>
+			<div class="out-of-stock-label">Hết hàng</div>		</div>
 
 		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-da-banh-nhieu-size-nhieu-mau-cho-cho-meo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo đá banh nhiều size nhiều màu cho chó mèo</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/pate-pedigree-bich-80g-cho-cho-con-vi-ga-gan-trung-va-rau/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Pate Pedigree bịch 80g cho chó con vị gà gan trứng và rau</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>12,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49290" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49314 status-publish instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-ba-lo-ran-ri-du-size/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-ba-lo-ran-ri-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-ba-lo-ran-ri-du-size/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo ba lỗ rằn ri đủ size</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49314" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49319 status-publish instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-so-mi-in-hinh-la-nhieu-mau/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-so-mi-in-hinh-la-nhieu-mau-6.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-so-mi-in-hinh-la-nhieu-mau/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo sơ mi in hình lá nhiều màu</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49319" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49327 status-publish last instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/so-mi-hoa-van-tam-giac/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/so-mi-hoa-van-tam-giac-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/so-mi-hoa-van-tam-giac/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Sơ mi hoa văn tam giác</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49327" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49262 status-publish first instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vay-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/dam-den-dinh-da/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/dam-den-dinh-da-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/dam-den-dinh-da/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đầm đen đính đá</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49262" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49266 status-publish instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-thun-cotton-loai-moi-cac-mau-cac-size/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-6.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-thun-cotton-nhieu-mau-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-thun-cotton-loai-moi-cac-mau-cac-size/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo thun Cotton loại mới các màu, các size</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49266" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49258 status-publish instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/yem-lien-mau-xanh-in-hinh-meo/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-in-hinh-meo-1-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/yem-lien-mau-xanh-in-hinh-meo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Yếm liền màu xanh in hình mèo</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49258" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49279 status-publish last instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-lien-hinh-gau/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-3.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-lien-hinh-gau-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-lien-hinh-gau/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo liền hình gấu</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49279" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49285 status-publish first instock product_cat-quan-ao-cho-cho product_cat-quan-ao-cho-meo product_cat-quan-ao-mu-vay-trang-suc-cho-cho product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/ao-pijama-cho-cho-meo/">
-					<img width="400" height="400" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20400%20400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-400x400.jpg" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20400%20400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-400x400.jpg" class="lazy-load show-on-hover absolute fill hide-for-small back-image" alt="" loading="lazy" srcset="" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/ao-pijama-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/ao-pijama-cho-cho-meo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Áo pijama cho chó mèo</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>79,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49285" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="48855" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>
@@ -788,7 +578,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 </main>
-
 <footer id="footer" class="footer-wrapper">
 
 		<section class="section dark" id="section_2073401488">

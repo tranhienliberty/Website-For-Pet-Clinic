@@ -88,24 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="flex-row container">
       <div class="flex-col hide-for-medium flex-left">
           <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-              <li class="header-search-form search-form html relative has-icon">
-	<div class="header-search-form-wrapper">
-		<div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form role="search" method="get" class="searchform" action="#">
-	<div class="flex-row relative">
-						<div class="flex-col flex-grow">
-			<label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
-			<input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Bạn muốn tìm gì?" value="" name="s" autocomplete="off">
-			<input type="hidden" name="post_type" value="product">
-					</div>
-		<div class="flex-col">
-			<button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
-				<i class='bx bx-search-alt-2' ></i>				</button>
-		</div>
-	</div>
-	<div class="live-search-results text-left z-top"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
-</form>
-</div>	</div>
-</li>          </ul>
+          </ul>
       </div>
 
       <div class="flex-col hide-for-medium flex-center">
@@ -178,18 +161,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49468" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Smartheart</a></li>
 		<li id="menu-item-49472" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Royal Canin</a></li>
 		<li id="menu-item-49471" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Pedigree</a></li>
-		<li id="menu-item-49469" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49469"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Ganador</a></li>
 		<li id="menu-item-49599" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt mềm Zenith cho chó</a></li>
 		<li id="menu-item-49470" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49470"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó ANF</a></li>
 		<li id="menu-item-49571" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49571"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Mania</a></li>
 		<li id="menu-item-49598" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49598"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Classic</a></li>
-		<li id="menu-item-49608" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49608"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Equilibrio</a></li>
-		<li id="menu-item-49596" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49596"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Ideal Recipe</a></li>
-		<li id="menu-item-49610" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49610"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt cho chó Instinct</a></li>
 		<li id="menu-item-49478" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49478"><a href="#" class="L-Affiliate-Tagged">Bánh thưởng cho chó</a></li>
 		<li id="menu-item-49479" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Snack cho chó</a></li>
 		<li id="menu-item-49480" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">Xương thưởng cho chó</a></li>
-		<li id="menu-item-49481" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49481"><a href="#" class="L-Affiliate-Tagged">Sữa, bình sữa cho chó con</a></li>
 		<li id="menu-item-49592" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49592"><a href="#" class="L-Affiliate-Tagged">Thực phẩm chức năng dưỡng lông cho chó</a></li>
 	</ul>
 </li>
@@ -202,10 +180,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li id="menu-item-49482" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
-	<ul class="sub-menu nav-column nav-dropdown-default">
-		<li id="menu-item-49483" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49483"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho chó</a></li>
-		<li id="menu-item-49484" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49484"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho chó</a></li>
-	</ul>
 </li>
 	<li id="menu-item-49485" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
@@ -319,10 +293,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li id="menu-item-49451" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
-	<ul class="sub-menu nav-column nav-dropdown-default">
-		<li id="menu-item-49453" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49453"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho mèo</a></li>
-		<li id="menu-item-49452" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49452"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho mèo</a></li>
-	</ul>
 </li>
 	<li id="menu-item-49454" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
@@ -1026,18 +996,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Smartheart</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Royal Canin</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Pedigree</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49469"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Ganador</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt mềm Zenith cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49470"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó ANF</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49571"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Mania</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49598"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Classic</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49608"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Equilibrio</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49596"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Ideal Recipe</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49610"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt cho chó Instinct</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49478"><a href="#" class="L-Affiliate-Tagged">Bánh thưởng cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Snack cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">Xương thưởng cho chó</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49481"><a href="#" class="L-Affiliate-Tagged">Sữa, bình sữa cho chó con</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49592"><a href="#" class="L-Affiliate-Tagged">Thực phẩm chức năng dưỡng lông cho chó</a></li>
 	</ul>
 </li>
@@ -1050,10 +1015,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
-	<ul class="sub-menu nav-sidebar-ul">
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49483"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho chó</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49484"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho chó</a></li>
-	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485"><a href="#" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
 	<ul class="sub-menu nav-sidebar-ul">
@@ -1167,10 +1128,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
-	<ul class="sub-menu nav-sidebar-ul">
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49453"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho mèo</a></li>
-		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49452"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho mèo</a></li>
-	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454"><a href="#" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
 	<ul class="sub-menu nav-sidebar-ul">
