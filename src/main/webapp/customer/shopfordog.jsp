@@ -457,84 +457,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li class="cat-item cat-item-169"><a href="#">Vệ sinh &amp; chăm sóc chó</a></span></li>
 <li class="cat-item cat-item-142"><a href="#">Vòng cổ, dây dắt, rọ mõm</a></span></li>
 <li class="cat-item cat-item-181"><a href="#">Y tế &amp; thuốc cho chó</a></span></li>
-</ul></aside><aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
+</ul></aside>
+
+<aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
             
-
-            
-            
-
-
-				
-
-				<div class="woof woof_sid woof_sid_widget " data-sid="widget" data-shortcode="woof sid='widget' mobile_mode='0' autosubmit='1' start_filtering_btn='0' price_filter='5' redirect='' ajax_redraw='1' btn_position='b' dynamic_recount='-1' " data-redirect="" data-autosubmit="1" data-ajax-redraw="1">
+<div class="woof woof_sid woof_sid_widget " data-sid="widget" data-shortcode="woof sid='widget' mobile_mode='0' autosubmit='1' start_filtering_btn='0' price_filter='5' redirect='' ajax_redraw='1' btn_position='b' dynamic_recount='-1' " data-redirect="" data-autosubmit="1" data-ajax-redraw="1">
 		                
                 <!--- here is possible to drop html code which is never redraws by AJAX ---->
                 
                 <div class="woof_redraw_zone" data-woof-ver="1.2.5.6">
-                                        
-                                            
-                
-                
-
-                
-
-                                                    <div data-css-class="woof_price5_search_container" class="woof_price5_search_container woof_container woof_price_filter">
+                                    <div data-css-class="woof_price5_search_container" class="woof_price5_search_container woof_container woof_price_filter">
                         <div class="woof_container_overlay_item"></div>
                         <div class="woof_container_inner">
                                                                                         <h4>
                                 Nhập khoảng giá                                                                </h4>
-                                                        <div class="woof_block_html_items">
-                                
+												<form class="filter-form" action="<%=request.getContextPath()%>/filterProduct" method="GET" style = "display: flex; align-items: center;justify-content: center;margin-bottom: 20px; flex-direction: column;">
+													<div class="form-row" style = "display: flex; align-items: center; margin-bottom: 10px;">
+														<label for="minPrice" style = "margin-right: 10px;">Giá bắt đầu:</label> 
+														<input type="number" style = "padding: 5px; border: 1px solid #ccc; border-radius: 3px; width: 100px;" id="minPrice" name="minPrice" required>
+ 													</div>
+ 													
+													<div class="form-row" style = "display: flex; align-items: center; margin-bottom: 10px;">
+														<label for="maxPrice" style = "margin-right: 10px;">Giá kết thúc:</label> 
+														<input type="number" style = "padding: 5px; border: 1px solid #ccc; border-radius: 3px; width: 100px;" id="maxPrice" name="maxPrice" required>
+													</div>
+													
+													<div class="form-row" style = "display: flex; align-items: center; margin-bottom: 10px;">
+														<button type="submit" style = "padding: 5px 10px; background-color: #FF99CC;color: white; border: none; border-radius: 3px; cursor: pointer;">Lọc sản phẩm</button>
+													</div>
+												</form>
 
-<div data-css-class="woof_price_filter_radio_container" class="woof_checkbox_authors_container ">
-    <div class="woof_container_overlay_item"></div>
-    <div class="woof_container_inner">
-        <ul class="woof_authors ">
-                                                    <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64688a147a6eb" value="0-100000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64688a147a6eb"><span class="woocommerce-Price-amount amount"><bdi>0&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (92)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_0-100000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                                                            <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64688a147a700" value="100000-250000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64688a147a700"><span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (73)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_100000-250000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                                                            <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_64688a147a706" value="250000-500000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_64688a147a706"><span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>500,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (38)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_250000-500000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                            </ul>
-    </div>
-</div>
-
-
-                            </div>
-
-                        </div>
+											</div>
                     </div>
-                
-                
-
-                                <div class="woof_submit_search_form_container">
-
-            
-                                            <button class="button woof_submit_search_form">Filter</button>
-            
-        </div>
-        
-                    
-
-
                 </div>
 
             </div>
-
-
-
                     </div>
-        </aside>			</div>
+        </aside>			
+   </div>
 					</div>
 
 		<div class="col large-9">
@@ -557,8 +517,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="product-small box ">
 		<div class="box-image">
 			<div class="image-fade_in_back">
-				<a href="#">
-					<img width="400" height="400" src="${item.image}" data-src="${item.image}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
 			</div>
 			<div class="image-tools is-small top right show-on-hover">
 							</div>
@@ -569,7 +529,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-text box-text-products text-center grid-style-2">
 			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
                    <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
@@ -588,7 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="box-image">
 			<div class="image-fade_in_back">
 				<a href="#">
-					<img width="400" height="400" src="${item.image}" data-src="${item.image}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
 			</div>
 			<div class="image-tools is-small top right show-on-hover">
 							</div>
@@ -607,7 +567,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 </div>
 </c:forEach>
+<c:forEach items="${filteredProduct}" var="item">			
+<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
+	<div class="col-inner">
+	
+<div class="badge-container absolute left top z-1">
+</div>
+	<div class="product-small box ">
+		<div class="box-image">
+			<div class="image-fade_in_back">
+				<a href="#">
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+			</div>
+			<div class="image-tools is-small top right show-on-hover">
+							</div>
+			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
+							</div>
+			
+					</div>
 
+		<div class="box-text box-text-products text-center grid-style-2">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+</div>		</div>
+        <div class="custom-quick-view">
+                   <a class="quick-view quick-view-added" data-prod="51033" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+	</div>
+		</div>
+</div>
+</c:forEach>
 </div>
 </div></div>
 		</div><!-- shop container -->		</div>

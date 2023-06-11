@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,14 +43,35 @@ public class ProductController implements ApplicationContextAware {
         model.addAttribute("dogProductList", dogProducts);
         return "customer/shopfordog";
     }
+    @RequestMapping(value = "/showCatProduct")
+    public String showCatProduct(Model model) {
+        List<Product> catProducts = productService.showCatProduct();
+        model.addAttribute("catProductList", catProducts);
+        return "customer/shopforcat";
+    }
     @RequestMapping(value = "/searchProduct")
     public String searchProduct(@RequestParam("keyword")String keyword, Model model) {
     	List<Product> products = productService.searchProduct(keyword);
     	model.addAttribute("productListSearch", products);
     	return "customer/shopfordog";
     }
-//    @RequestMapping(value = "/showProductInfo")
-//    public String showProductInfo 
+    @RequestMapping(value = "/filterProduct")
+    public String filterProduct(@RequestParam("minPrice") long minPrice, @RequestParam("maxPrice") long maxPrice, Model model) {
+    	List<Product> products = productService.filterProduct(minPrice, maxPrice);
+    	model.addAttribute("filteredProduct", products);
+    	return "customer/shopfordog";
+    }
+    @RequestMapping(value = "/showProductDetail{id_product}")
+    public String showProductDetail (@PathVariable("id_product") long id, Model model) {
+    	Product product = productService.getProductByID(id);
+    	// Lấy id_product_type của sản phẩm hiện tại
+        long id_product_type = product.getId_product_type();
+    	List<Product> relatedProducts = productService.getRelatedProduct(id, id_product_type);
+    	model.addAttribute("productByID", product);
+    	model.addAttribute("relatedProduct", relatedProducts);
+    	return "customer/product-detail";
+    }
+    //Viết lại các hàm chung của chó mèo như search, filter thêm id_animal_type để chia shop chó mèo
 }
 
 
