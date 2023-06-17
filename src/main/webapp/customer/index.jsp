@@ -114,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li class="header-divider"></li><li class="account-item has-icon
     ">
 
-<a href="login.jsp" class="nav-top-link nav-top-not-logged-in ">
+<a href="<%=request.getContextPath()%>/login" class="nav-top-link nav-top-not-logged-in ">
     <span>
     Đăng nhập      </span>
   
@@ -135,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Logo -->
           <div id="logo" class="flex-col logo">
             <!-- Header logo -->
-<a href="index.jsp" title="Pettiny - Phòng khám thú cưng" rel="home">
+<a href="/login" title="Pettiny - Phòng khám thú cưng" rel="home">
 
     <img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header_logo header-logo" alt="Pettiny"><img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header-logo-dark" alt="Pettiny"></a>          </div>
 
@@ -154,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="flex-col hide-for-medium flex-left flex-grow">
             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
               <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="index.jsp" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
-<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath() %>/showDogProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath()%>/showDogProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
 	<li id="menu-item-446" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
@@ -252,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 </li>
-<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="shopforcat.jsp" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath() %>/showCatProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default" style="">
 	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1128 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">

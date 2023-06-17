@@ -25,6 +25,8 @@ public class ProductRepository {
 			product.setProducer(rs.getString("producer"));
 			product.setPrice(rs.getDouble("price"));
 			product.setImage(rs.getString("image"));
+			product.setDeleted(rs.getBoolean("isDeleted"));
+			product.setId_animal_type(rs.getInt("id_animal_type"));
 			product.setId_product_type(rs.getInt("id_product_type"));
 			return product;
 		}
@@ -111,11 +113,12 @@ public class ProductRepository {
 		String sql = "select * from product where id_product_type = 18";
 		return jdbcTemplate.query(sql, new productRowmapper());
 	}
-	public List<Product> searchProduct(String keyword) {
-	    String sql = "SELECT * FROM product WHERE name_product LIKE ?";
+
+	public List<Product> searchProduct(String keyword, int id_animal_type) {
+	    String sql = "SELECT * FROM product WHERE name_product LIKE ? AND id_animal_type = ?";
 	    String searchKeyword = "%" + keyword + "%";
 	    
-	    return jdbcTemplate.query(sql, new productRowmapper(), searchKeyword);
+	    return jdbcTemplate.query(sql, new productRowmapper(), searchKeyword, id_animal_type);
 	}
 	public Product getProductByID(long id) {
 		String sql = "select * from product where id_product = ?";
@@ -126,10 +129,10 @@ public class ProductRepository {
 					+ "WHERE p.id_product_type = ? AND id_product <> ?";
 		return jdbcTemplate.query(sql, new productRowmapper(), id_product_type, id);
 	}
-	public List<Product> filterProduct(long minPrice, long maxPrice){
+	public List<Product> filterProduct(long minPrice, long maxPrice, int id_animal_type){
 		String sql = "SELECT *\r\n"
 				+ "FROM product\r\n"
-				+ "WHERE price >= ? AND price <= ?;";
-		return jdbcTemplate.query(sql, new productRowmapper(), minPrice, maxPrice);
+				+ "WHERE price >= ? AND price <= ? AND id_animal_type = ?;";
+		return jdbcTemplate.query(sql, new productRowmapper(), minPrice, maxPrice, id_animal_type);
 	}
 }

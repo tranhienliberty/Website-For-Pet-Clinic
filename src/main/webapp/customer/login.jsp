@@ -45,10 +45,17 @@ body {
 </style>
 <!-- Body -->
 <body>
-
+	<!-- Hiển thị thông báo lỗi -->
+    <div th:if="${error}">
+        <p style="color: red" th:text="${error}"></p>
+    </div>
+    <!-- Hiển thị thông báo thành công -->
+	<div th:if="${success}">
+		<p style="color: green" th:text="${success}"></p>
+	</div>
 	<div class="w3layoutscontaineragileits">
 	<h2>Đăng nhập</h2>
-		<form action="#" method="post">
+		<form action="<%=request.getContextPath()%>/login" method="post">
 			<input type="text" Name="Username" placeholder="USERNAME" required="" autofocus>
 			<input type="password" Name="Password" placeholder="PASSWORD" required="">
 			<ul class="agileinfotickwthree">

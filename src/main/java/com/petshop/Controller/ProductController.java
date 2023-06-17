@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petshop.Entity.Product;
@@ -40,27 +41,35 @@ public class ProductController implements ApplicationContextAware {
     @RequestMapping(value = "/showDogProduct")
     public String showDogProduct(Model model) {
         List<Product> dogProducts = productService.showDogProduct();
+        int id_animal_type = dogProducts.get(0).getId_animal_type();
+        model.addAttribute("id_animal_type", id_animal_type);
         model.addAttribute("dogProductList", dogProducts);
         return "customer/shopfordog";
     }
     @RequestMapping(value = "/showCatProduct")
     public String showCatProduct(Model model) {
         List<Product> catProducts = productService.showCatProduct();
+        int id_animal_type = catProducts.get(0).getId_animal_type();
+        model.addAttribute("id_animal_type", id_animal_type);
         model.addAttribute("catProductList", catProducts);
         return "customer/shopforcat";
     }
-    @RequestMapping(value = "/searchProduct")
-    public String searchProduct(@RequestParam("keyword")String keyword, Model model) {
-    	List<Product> products = productService.searchProduct(keyword);
-    	model.addAttribute("productListSearch", products);
-    	return "customer/shopfordog";
-    }
+
     @RequestMapping(value = "/filterProduct")
-    public String filterProduct(@RequestParam("minPrice") long minPrice, @RequestParam("maxPrice") long maxPrice, Model model) {
-    	List<Product> products = productService.filterProduct(minPrice, maxPrice);
+    public String filterProduct(@RequestParam("minPrice") long minPrice, @RequestParam("maxPrice") long maxPrice, @RequestParam("id_animal_type") int id_animal_type, Model model) {
+    	List<Product> products = productService.filterProduct(minPrice, maxPrice, id_animal_type);
+    	model.addAttribute("id_animal_type", id_animal_type);
     	model.addAttribute("filteredProduct", products);
     	return "customer/shopfordog";
     }
+    @RequestMapping(value = "searchProduct")
+	public String searchProduct(@RequestParam("keyword") String keyword, @RequestParam("id_animal_type") int id_animal_type, Model model) {
+		List<Product> products = productService.searchProduct(keyword, id_animal_type);
+		model.addAttribute("id_animal_type", id_animal_type);
+		model.addAttribute("dogProductList", products);
+		return "customer/shopfordog";
+	}
+    
     @RequestMapping(value = "/showProductDetail{id_product}")
     public String showProductDetail (@PathVariable("id_product") long id, Model model) {
     	Product product = productService.getProductByID(id);
@@ -71,8 +80,7 @@ public class ProductController implements ApplicationContextAware {
     	model.addAttribute("relatedProduct", relatedProducts);
     	return "customer/product-detail";
     }
-    //Viết lại các hàm chung của chó mèo như search, filter thêm id_animal_type để chia shop chó mèo
+    //Viết lại các hàm chung của chó mèo như search, filter thêm id_animal_type để chia shop chó mèo, nếu là return shopfordog, là 2 return shopforcat
 }
-
 
 
