@@ -30,4 +30,8 @@ public class AccountService {
 		 throw new UsernameNotFoundException("Invalid username");
 	}
 	}
+
+	public String getRole(String username) {
+		return accountRepository.getRole(username);
+	}
 }

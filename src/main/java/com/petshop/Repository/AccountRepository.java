@@ -28,5 +28,11 @@ public class AccountRepository {
 		String sql = "SELECT * FROM account WHERE username = ?";
 		return jdbcTemplate.queryForObject(sql, new accountRowmapper(),username);
 	}
+	public String getRole(String username) {
+		String sql = "SELECT role FROM account WHERE username = ?";
+		String role = jdbcTemplate.queryForObject(sql, String.class ,username);
+		System.out.println("");
+		return role;
+	}
 	
 }

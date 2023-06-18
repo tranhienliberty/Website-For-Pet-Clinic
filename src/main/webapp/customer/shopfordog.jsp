@@ -128,49 +128,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
 	<header id="header" class="header has-sticky sticky-jump" style="">
 		<div class="header-wrapper">
-			<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
+		<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
     <div class="flex-row container">
-      <div class="flex-col hide-for-medium flex-left">
-          <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-          </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-left">
+            <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-center">
-          <ul class="nav nav-center nav-small  nav-divided">
-                        </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-center">
+            <ul class="nav nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-right">
-         <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
-              <li class="cart-item has-icon">
+        <div class="flex-col hide-for-medium flex-right">
+            <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
+                <li class="cart-item has-icon">
+                    <a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+                        <span class="header-cart-title">
+                            Giỏ hàng
+                        </span>
+                        <i class="bx bxs-cart" data-icon-label="0"></i>
+                    </a>
+                </li>
+                <li class="header-divider"></li>
+								<c:set var="isLoggedIn" value="false" />
+								<c:set var="username" value="" />
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+								<c:if test="${not empty cookie.isLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.isLoggedIn.value}" />
+								</c:if>
 
-
-<span class="header-cart-title">
-   Giỏ hàng     </span>
-
-    	<i class='bx bxs-cart'  data-icon-label="0"></i>
-  </a>
-
-
-</li>
-<li class="header-divider"></li><li class="account-item has-icon
-    ">
-
-<a href="login.jsp" class="nav-top-link nav-top-not-logged-in ">
-    <span>
-    Đăng nhập      </span>
-  
-</a>
-
-
-
-</li>
-          </ul>
-      </div>
-
-      
+								<c:if test="${not empty cookie.username}">
+									<c:set var="username" value="${cookie.username.value}" />
+								</c:if>
+								<li class="account-item has-icon"><c:choose>
+										<c:when test="${isLoggedIn}">
+											<a href="#" style = "margin-right: 10px; font-size: 13.5px" 
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													${username} </span>
+											</a>
+											<a href="<%=request.getContextPath()%>/logout"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng xuất </span>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a href="<%=request.getContextPath()%>/login"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng nhập </span>
+											</a>
+										</c:otherwise>
+									</c:choose></li>
+							</ul>
+        </div>
     </div>
 </div>
 <div id="masthead" class="header-main ">

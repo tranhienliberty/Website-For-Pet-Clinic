@@ -55,7 +55,7 @@ body {
 	</div>
 	<div class="w3layoutscontaineragileits">
 	<h2>Đăng nhập</h2>
-		<form action="<%=request.getContextPath()%>/login" method="post">
+		<form action="<%=request.getContextPath()%>/login?previousUrl=${previousUrl}" method="post">
 			<input type="text" Name="Username" placeholder="USERNAME" required="" autofocus>
 			<input type="password" Name="Password" placeholder="PASSWORD" required="">
 			<ul class="agileinfotickwthree">
