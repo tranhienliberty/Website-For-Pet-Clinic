@@ -77,10 +77,10 @@ input#search-bar{
 .search-icon{
   position: relative;
   float: right;
-  width: 75px;
-  height: 75px;
-  top: -62px;
-  right: -7px;
+  width: 30px;
+  height: 30px;
+  top: -40px;
+  right: 8px;
 }
 </style>
 
@@ -128,49 +128,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
 	<header id="header" class="header has-sticky sticky-jump" style="">
 		<div class="header-wrapper">
-			<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
+		<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
     <div class="flex-row container">
-      <div class="flex-col hide-for-medium flex-left">
-          <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-          </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-left">
+            <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-center">
-          <ul class="nav nav-center nav-small  nav-divided">
-                        </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-center">
+            <ul class="nav nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-right">
-         <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
-              <li class="cart-item has-icon">
+        <div class="flex-col hide-for-medium flex-right">
+            <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
+                <li class="cart-item has-icon">
+                    <a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+                        <span class="header-cart-title">
+                            Giỏ hàng
+                        </span>
+                        <i class="bx bxs-cart" data-icon-label="0"></i>
+                    </a>
+                </li>
+                <li class="header-divider"></li>
+								<c:set var="isLoggedIn" value="false" />
+								<c:set var="username" value="" />
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
 
-
-<span class="header-cart-title">
-   Giỏ hàng     </span>
-
-    	<i class='bx bxs-cart'  data-icon-label="0"></i>
-  </a>
-
-
-</li>
-<li class="header-divider"></li><li class="account-item has-icon
-    ">
-
-<a href="login.jsp" class="nav-top-link nav-top-not-logged-in ">
-    <span>
-    Đăng nhập      </span>
-  
-</a>
-
-
-
-</li>
-          </ul>
-      </div>
-
-      
+								<c:if test="${not empty cookie.userUsername}">
+									<c:set var="username" value="${cookie.userUsername.value}" />
+								</c:if>
+								<li class="account-item has-icon"><c:choose>
+										<c:when test="${isLoggedIn}">
+											<a href="#" style = "margin-right: 10px; font-size: 13.5px" 
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													${username} </span>
+											</a>
+											<a href="<%=request.getContextPath()%>/logout"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng xuất </span>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a href="<%=request.getContextPath()%>/login"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng nhập ${username}</span>
+											</a>
+										</c:otherwise>
+									</c:choose></li>
+							</ul>
+        </div>
     </div>
 </div>
 <div id="masthead" class="header-main ">
@@ -194,28 +204,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</li>            </ul>
           </div>
 
-          <!-- Left Elements -->
+<!-- Left Elements -->
           <div class="flex-col hide-for-medium flex-left flex-grow">
             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
-              <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="index.jsp" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
-<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="shopfordog.jsp" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
+              <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="<%=request.getContextPath()%>/" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
+<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath()%>/showDogProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-446" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
+	<li id="menu-item-446" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=1" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49468" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Smartheart</a></li>
 		<li id="menu-item-49472" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Royal Canin</a></li>
 		<li id="menu-item-49471" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Pedigree</a></li>
 		<li id="menu-item-49599" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt mềm Zenith cho chó</a></li>
-		<li id="menu-item-49470" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49470"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó ANF</a></li>
-		<li id="menu-item-49571" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49571"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Mania</a></li>
-		<li id="menu-item-49598" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49598"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Classic</a></li>
-		<li id="menu-item-49478" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49478"><a href="#" class="L-Affiliate-Tagged">Bánh thưởng cho chó</a></li>
 		<li id="menu-item-49479" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Snack cho chó</a></li>
 		<li id="menu-item-49480" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">Xương thưởng cho chó</a></li>
+		<li id="menu-item-49481" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49481"><a href="#" class="L-Affiliate-Tagged">Sữa cho chó con</a></li>
 		<li id="menu-item-49592" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49592"><a href="#" class="L-Affiliate-Tagged">Thực phẩm chức năng dưỡng lông cho chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49473" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Pate cho chó</a>
+	<li id="menu-item-49473" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49473 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=2" class="L-Affiliate-Tagged">Pate cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49475" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49475"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Pedigree</a></li>
 		<li id="menu-item-49476" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49476"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Royal Canin</a></li>
@@ -223,9 +230,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49474" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49474"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Monge</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49482" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
+	<li id="menu-item-49482" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=3" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
+	<ul class="sub-menu nav-column nav-dropdown-default">
+		<li id="menu-item-49483" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49483"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho chó</a></li>
+		<li id="menu-item-49484" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49484"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho chó</a></li>
+	</ul>
 </li>
-	<li id="menu-item-49485" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
+	<li id="menu-item-49485" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=4" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49487" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49487"><a href="#" class="L-Affiliate-Tagged">Vòng cổ cho chó</a></li>
 		<li id="menu-item-49489" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49489"><a href="#" class="L-Affiliate-Tagged">Dây xích chó</a></li>
@@ -233,49 +244,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49486" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49486"><a href="#" class="L-Affiliate-Tagged">Rọ mõm chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49496" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49496 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Chuồng, nhà, nệm, túi cho chó</a>
+	<li id="menu-item-49496" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49496 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=5" class="L-Affiliate-Tagged">Chuồng, nhà, nệm, túi cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49498" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49498"><a href="#" class="L-Affiliate-Tagged">Chuồng chó</a></li>
 		<li id="menu-item-49501" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49501"><a href="#" class="L-Affiliate-Tagged">Nhà cho chó</a></li>
 		<li id="menu-item-49500" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49500"><a href="#" class="L-Affiliate-Tagged">Ổ đệm &amp; nệm cho chó</a></li>
-		<li id="menu-item-49497" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49497"><a href="#" class="L-Affiliate-Tagged">Balo cho chó</a></li>
-		<li id="menu-item-49511" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49511"><a href="#" class="L-Affiliate-Tagged">Địu chó</a></li>
 		<li id="menu-item-49502" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49502"><a href="#" class="L-Affiliate-Tagged">Túi vận chuyển chó</a></li>
-		<li id="menu-item-49512" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49512"><a href="#" class="L-Affiliate-Tagged">Lồng vận chuyển chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49513" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49513 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Vệ sinh &amp; chăm sóc chó</a>
+	<li id="menu-item-49513" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49513 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=6" class="L-Affiliate-Tagged">Vệ sinh &amp; chăm sóc chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49517" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49517"><a href="#" class="L-Affiliate-Tagged">Sữa tắm chó</a></li>
-		<li id="menu-item-49515" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49515"><a href="#" class="L-Affiliate-Tagged">Máy sấy lông chó</a></li>
 		<li id="menu-item-49525" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49525"><a href="#" class="L-Affiliate-Tagged">Tông đơ cạo lông chó</a></li>
 		<li id="menu-item-49524" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49524"><a href="#" class="L-Affiliate-Tagged">Máy mài móng cho chó</a></li>
 		<li id="menu-item-49520" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49520"><a href="#" class="L-Affiliate-Tagged">Lược chải lông chó</a></li>
 		<li id="menu-item-49514" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49514"><a href="#" class="L-Affiliate-Tagged">Kìm, kềm cắt móng cho chó</a></li>
 		<li id="menu-item-49516" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49516"><a href="#" class="L-Affiliate-Tagged">Nước hoa cho chó</a></li>
 		<li id="menu-item-49519" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49519"><a href="#" class="L-Affiliate-Tagged">Khay vệ sinh cho chó</a></li>
-		<li id="menu-item-49518" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49518"><a href="#" class="L-Affiliate-Tagged">Bỉm cho chó</a></li>
-		<li id="menu-item-49522" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49522"><a href="#" class="L-Affiliate-Tagged">Tã cho chó</a></li>
-		<li id="menu-item-49523" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49523"><a href="#" class="L-Affiliate-Tagged">Tấm, miếng lót vệ sinh cho chó</a></li>
-		<li id="menu-item-49591" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49591"><a href="#" class="L-Affiliate-Tagged">Kem đánh răng cho chó</a></li>
-		<li id="menu-item-49572" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49572"><a href="#" class="L-Affiliate-Tagged">Bột nhổ lông tai cho chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49491" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49491 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Quần áo, váy, mũ, trang sức cho chó</a>
+	<li id="menu-item-49491" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49491 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=7" class="L-Affiliate-Tagged">Quần áo, váy, mũ, trang sức cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49494" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49494"><a href="#" class="L-Affiliate-Tagged">Quần áo cho chó</a></li>
 		<li id="menu-item-49495" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49495"><a href="#" class="L-Affiliate-Tagged">Váy cho chó</a></li>
 		<li id="menu-item-49493" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49493"><a href="#" class="L-Affiliate-Tagged">Mũ, nón cho chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49507" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49507 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện chó</a>
+	<li id="menu-item-49507" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49507 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=8" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49509" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49509"><a href="#" class="L-Affiliate-Tagged">Đồ chơi cho chó</a></li>
 		<li id="menu-item-49510" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49510"><a href="#" class="L-Affiliate-Tagged">Xương đồ chơi cho chó</a></li>
 		<li id="menu-item-49508" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49508"><a href="#" class="L-Affiliate-Tagged">Còi huấn luyện chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49526" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49526 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho chó</a>
+	<li id="menu-item-49526" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49526 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=9" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49529" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49529"><a href="#" class="L-Affiliate-Tagged">Vitamin cho chó</a></li>
 		<li id="menu-item-49530" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49530"><a href="#" class="L-Affiliate-Tagged">Xương, viên canxi cho chó</a></li>
@@ -290,9 +292,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 </li>
-<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="shopforcat.jsp" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath() %>/showCatProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default" style="">
-	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1128 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo</a>
+	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1128 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=10" class="L-Affiliate-Tagged">Thức ăn cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49435" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49435"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt khô cho mèo</a></li>
 		<li id="menu-item-49384" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49384"><a href="#" class="L-Affiliate-Tagged">Thức ăn ướt cho mèo</a></li>
@@ -310,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49434" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49434"><a href="#" class="L-Affiliate-Tagged">Sữa, bình sữa cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49383" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49383 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo</a>
+	<li id="menu-item-49383" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49383 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=11" class="L-Affiliate-Tagged">Pate cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49385" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49385"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Whiskas</a></li>
 		<li id="menu-item-49416" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49416"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Ciao</a></li>
@@ -323,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49632" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49632"><a href="#" class="L-Affiliate-Tagged">Pate mèo Aatas</a></li>
 	</ul>
 </li>
-	<li id="menu-item-1122" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1122 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo</a>
+	<li id="menu-item-1122" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1122 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=12" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49422" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49422"><a href="#" class="L-Affiliate-Tagged">Cát Nhật đen cho mèo Moon Cat</a></li>
 		<li id="menu-item-49424" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49424"><a href="#" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo Catlike</a></li>
@@ -336,9 +338,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49429" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49429"><a href="#" class="L-Affiliate-Tagged">Cát thủy tinh cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49451" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
+	<li id="menu-item-49451" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=13" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
+	<ul class="sub-menu nav-column nav-dropdown-default">
+		<li id="menu-item-49453" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49453"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho mèo</a></li>
+		<li id="menu-item-49452" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49452"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho mèo</a></li>
+	</ul>
 </li>
-	<li id="menu-item-49454" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
+	<li id="menu-item-49454" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=14" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49457" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49457"><a href="#" class="L-Affiliate-Tagged">Nhà vệ sinh cho mèo</a></li>
 		<li id="menu-item-49456" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49456"><a href="#" class="L-Affiliate-Tagged">Chậu, khay vệ sinh cho mèo</a></li>
@@ -350,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49638" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49638"><a href="#" class="L-Affiliate-Tagged">Máy tông đơ cạo lông mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49431" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49431 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Chuồng, nệm, túi, cattree</a>
+	<li id="menu-item-49431" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49431 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=15" class="L-Affiliate-Tagged">Chuồng, nệm, túi, cattree</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49443" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49443"><a href="#" class="L-Affiliate-Tagged">Balo cho mèo</a></li>
 		<li id="menu-item-49444" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49444"><a href="#" class="L-Affiliate-Tagged">Túi vận chuyển mèo</a></li>
@@ -361,21 +367,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49445" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49445"><a href="#" class="L-Affiliate-Tagged">Chuồng mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49436" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49436 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Quần áo, vòng cổ, dây dắt</a>
+	<li id="menu-item-49436" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49436 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=16" class="L-Affiliate-Tagged">Quần áo, vòng cổ, dây dắt</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49449" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49449"><a href="#" class="L-Affiliate-Tagged">Quần áo cho mèo</a></li>
 		<li id="menu-item-49450" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49450"><a href="#" class="L-Affiliate-Tagged">Vòng cổ cho mèo</a></li>
 		<li id="menu-item-49448" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49448"><a href="#" class="L-Affiliate-Tagged">Dây dắt, xích cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49503" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49503 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện mèo</a>
+	<li id="menu-item-49503" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49503 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=17" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49506" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49506"><a href="#" class="L-Affiliate-Tagged">Đồ chơi cho mèo</a></li>
 		<li id="menu-item-49504" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49504"><a href="#" class="L-Affiliate-Tagged">Cần câu mèo</a></li>
 		<li id="menu-item-49505" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49505"><a href="#" class="L-Affiliate-Tagged">Đèn laser cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49433" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49433 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho mèo</a>
+	<li id="menu-item-49433" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49433 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=18" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49462" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49462"><a href="#" class="L-Affiliate-Tagged">Vitamin cho mèo</a></li>
 		<li id="menu-item-49463" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49463"><a href="#" class="L-Affiliate-Tagged">Canxi cho mèo</a></li>
@@ -390,8 +396,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 </li>
-<li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="chocanh.jsp" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
-<li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="meocanh.jsp" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
+<li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=1" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
+<li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=2" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
 <li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Về Pettiny</a></li>
 <li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
 <li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
@@ -400,7 +406,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<li id="menu-item-49801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống mèo</a></li>
 </ul>
 </li>
-
             </ul>
           </div>
 
@@ -430,14 +435,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	  			<h1 class="shop-page-title is-xlarge">Shop cho mèo</h1>
 		<div class="is-medium">
 	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="index.jsp">Trang chủ</a> <span class="divider">/</span> Shop cho mèo</nav></div>
-
 	  </div>
-	  <div class="flex-col medium-text-center">
-	  	
-  <form class="search-container" action = "<%=request.getContextPath() %>/searchProduct" method="GET">
-    <input type="text" id="search-bar" name = "keyword" placeholder="Nhập từ khóa để tìm kiếm..." >
-    <a href="#" id="search-link"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-  </form>
+	  <div class="flex-col medium-text-center">	
+<form class="search-container" action="<%=request.getContextPath()%>/searchProduct" method="GET">
+    <input type="hidden" name="id_animal_type" value="${id_animal_type}">
+    <input type="text" id="search-bar" name="keyword" placeholder="Nhập từ khóa để tìm kiếm...">
+    <a href="#" id="search-link" onclick="submitForm(event)"><img class="search-icon" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png"></a>
+</form>
 	  </div>
 	</div>
 </div>
@@ -448,16 +452,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="col large-3 hide-for-medium ">
 						<div id="shop-sidebar" class="sidebar-inner col-inner">
 				<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories"><span class="widget-title shop-sidebar">Danh mục sản phẩm</span><div class="is-divider small"></div><ul class="product-categories">
-<li class="cat-item cat-item-139"><a href="#">Bát ăn &amp; bình uống nước cho chó</a> </span></li>
-<li class="cat-item cat-item-153"><a href="#">Chuồng, nhà, nệm, túi cho chó</a></span></li>
-<li class="cat-item cat-item-163"><a href="#">Đồ chơi &amp; Huấn luyện chó</a> </span></li>
-<li class="cat-item cat-item-67"><a href="#">Pate cho chó</a> </span></li>
-<li class="cat-item cat-item-150"><a href="#">Quần áo, váy, mũ, trang sức cho chó</a> </span></li>
-<li class="cat-item cat-item-38"><a href="#">Thức ăn cho chó</a> </span></li>
-<li class="cat-item cat-item-169"><a href="#">Vệ sinh &amp; chăm sóc chó</a></span></li>
-<li class="cat-item cat-item-142"><a href="#">Vòng cổ, dây dắt, rọ mõm</a></span></li>
-<li class="cat-item cat-item-181"><a href="#">Y tế &amp; thuốc cho chó</a></span></li>
-</ul></aside>
+<li class="cat-item cat-item-139"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=13">Bát ăn &amp; bình uống nước cho mèo</a> </span></li>
+<li class="cat-item cat-item-153"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=14">Đồ dùng vệ sinh, tắm, sấy</a></span></li>
+<li class="cat-item cat-item-163"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=17">Đồ chơi &amp; Huấn luyện mèo</a> </span></li>
+<li class="cat-item cat-item-67"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=11">Pate cho mèo</a> </span></li>
+<li class="cat-item cat-item-150"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=15">Chuồng, nệm, túi, cattree</a> </span></li>
+<li class="cat-item cat-item-38"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=10">Thức ăn cho mèo</a> </span></li>
+<li class="cat-item cat-item-169"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=12">Cát vệ sinh cho mèo</a></span></li>
+<li class="cat-item cat-item-142"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=16">Quần áo, vòng cổ, dây dắt</a></span></li>
+<li class="cat-item cat-item-181"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=${id_animal_type}&id_product_type=18">Y tế &amp; thuốc cho mèo</a></span></li>
+</ul>
+</aside>
 
 <aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
             
@@ -471,7 +476,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="woof_container_inner">
                                                                                         <h4>
                                 Nhập khoảng giá                                                                </h4>
-												<form class="filter-form" action="<%=request.getContextPath()%>/filterProduct" method="GET" style = "display: flex; align-items: center;justify-content: center;margin-bottom: 20px; flex-direction: column;">
+												<form class="filter-form" action="<%=request.getContextPath()%>/filterProduct${id_animal_type}" method="GET" style = "display: flex; align-items: center;justify-content: center;margin-bottom: 20px; flex-direction: column;">
+													<input type = hidden name = "id_animal_type" value = "${id_animal_type}">
 													<div class="form-row" style = "display: flex; align-items: center; margin-bottom: 10px;">
 														<label for="minPrice" style = "margin-right: 10px;">Giá bắt đầu:</label> 
 														<input type="number" style = "padding: 5px; border: 1px solid #ccc; border-radius: 3px; width: 100px;" id="minPrice" name="minPrice" required>
@@ -528,7 +534,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 
 		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
@@ -558,7 +564,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 
 		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
@@ -587,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 
 		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
@@ -918,27 +924,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 	</div>
 </div>
-	<script>
-    // Lấy tham chiếu đến các phần tử DOM cần thiết
-    var searchLink = document.getElementById('search-link');
-    var searchBar = document.getElementById('search-bar');
-
-    // Gắn sự kiện click vào thẻ <a>
-    searchLink.addEventListener('click', function(e) {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của form hoặc thẻ "a"
         
-        var keyword = searchBar.value; // Lấy giá trị từ khóa từ trường tìm kiếm
+        var keyword = document.getElementById('search-bar').value; // Lấy giá trị từ khóa từ trường tìm kiếm
+        var idAnimalType = document.querySelector('input[name="id_animal_type"]').value; // Lấy giá trị id_animal_type
 
-        // Tạo URL chứa tham số keyword
-        var url = "<%=request.getContextPath() %>/searchProduct?keyword=" + encodeURIComponent(keyword);
+        // Tạo URL chứa tham số keyword và id_animal_type
+        var url = "<%=request.getContextPath() %>/searchProduct?keyword=" + encodeURIComponent(keyword) + "&id_animal_type=" + idAnimalType;
 
         // Chuyển hướng trình duyệt đến URL đã tạo
         window.location.href = url;
+    }
+
+    var searchBar = document.getElementById('search-bar');
+    searchBar.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) { // Kiểm tra nếu phím Enter được nhấn
+            submitForm(event); // Gọi hàm submitForm để tìm kiếm
+        }
     });
 </script>
 
-            
-    <script src="https://dogilypetshop.vn/wp-content/plugins/ar-contactus/res/js/jquery.maskedinput.min.js?version=2.0.4"></script>
+
+	<script src="https://dogilypetshop.vn/wp-content/plugins/ar-contactus/res/js/jquery.maskedinput.min.js?version=2.0.4"></script>
   <script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"name":"Trang ch\u1ee7","@id":"https:\/\/dogilypetshop.vn"}},{"@type":"ListItem","position":2,"item":{"name":"Shop cho ch\u00f3","@id":"https:\/\/dogilypetshop.vn\/shop-cho-cho\/"}}]}</script>	<script type="text/javascript">
 		(function () {
 			var c = document.body.className;

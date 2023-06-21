@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petshop.Entity.Product;
+import com.petshop.Entity.ProductType;
 import com.petshop.Repository.ProductRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class ProductService {
 	}
 	public List<Product> showCatProduct(){
 		return productRepository.showCatProduct();
+	}
+	public List<Product> showCategoryProduct(int id_product_type, int id_animal_type){
+		return productRepository.showCategoryProduct(id_product_type, id_animal_type);
 	}
 	public List<Product> searchProduct (String keyword, int id_animal_type){
 		return productRepository.searchProduct(keyword, id_animal_type);
@@ -32,5 +36,8 @@ public class ProductService {
 	}
 	public List<Product> filterProduct(long minPrice, long maxPrice, int id_animal_type){
 		return productRepository.filterProduct(minPrice, maxPrice, id_animal_type);
+	}
+	public List<Product> showProductListByName(String name_product, int id_animal_type) {
+		return productRepository.showProductListByName(name_product, id_animal_type);
 	}
 }

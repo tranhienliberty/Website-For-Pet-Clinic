@@ -11,20 +11,7 @@ public class Product {
 	protected boolean isDeleted;
 	protected int id_animal_type;
 	protected int id_product_type;
-	public Product(int id_product, String name_product, String benefit, String note, String producer, double price,
-			String image, boolean isDeleted, int id_animal_type, int id_product_type) {
-		super();
-		this.id_product = id_product;
-		this.name_product = name_product;
-		this.benefit = benefit;
-		this.note = note;
-		this.producer = producer;
-		this.price = price;
-		this.image = image;
-		this.isDeleted = isDeleted;
-		this.id_animal_type = id_animal_type;
-		this.id_product_type = id_product_type;
-	}
+	protected ProductType productType;
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,6 +74,12 @@ public class Product {
 	}
 	public void setId_product_type(int id_product_type) {
 		this.id_product_type = id_product_type;
+	}
+	public ProductType getProductType() {
+		return productType;
+	}
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
 	}
 	@Override
 	public String toString() {

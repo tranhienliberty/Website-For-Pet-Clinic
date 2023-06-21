@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -14,7 +15,7 @@
 <meta name="description" content="Pettiny - Phòng khám thú cưng uy tín">
 <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
 <link rel="canonical" href="index.jsp">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!-- /Rank Math WordPress SEO plugin -->
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -24,6 +25,111 @@
 <link rel="stylesheet" id="contact-form-7-css" href="<c:url value="/resources/plugins/contact-form-7/includes/css/styles.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="toc-screen-css" href="<c:url value="/resources/plugins/table-of-contents-plus/screen.min.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/plugins/woocommerce-products-filter/css/front.css"/>" type="text/css" media="all">
+<%-- <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/css/appointment-style.css"/>" type="text/css" media="all"> --%>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .schedule-container {
+        padding: 50px;
+        background-color: #f2f2f2;
+    }
+
+    .schedule-form {
+        margin-bottom: 20px;
+    }
+
+    .schedule-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .col-md-6 {
+        width: 50%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    .form-input-icon {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .form-input-icon i {
+        margin-right: 10px;
+        color: #888;
+    }
+
+    .mdl-textfield {
+        width: 100%;
+    }
+
+    .mdl-textfield__input {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        height: auto;
+    }
+
+    .mdl-textfield__label {
+        font-size: 14px;
+    }
+
+    .mdl-textfield__error {
+        font-size: 12px;
+        color: red;
+        display: none;
+    }
+
+    .mdl-selectfield {
+        position: relative;
+    }
+
+    .mdl-selectfield i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: #888;
+    }
+
+    .mdl-selectfield__select {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    .button-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        
+    }
+    .mdl-textfield__input textarea {
+    	height: 2000px;
+        width: 300px; 
+        resize: vertical; /* Cho phép chỉnh kích thước theo chiều dọc */
+    }
+</style>
+
+
+
 <style id="woof-inline-css" type="text/css">
 
 .woof_products_top_panel li span, .woof_products_top_panel2 li span{background: url(https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png);background-size: 14px 14px;background-repeat: no-repeat;background-position: right;}
@@ -84,58 +190,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
 	<header id="header" class="header has-sticky sticky-jump" style="">
 		<div class="header-wrapper">
-			<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
+		<div id="top-bar" class="header-top hide-for-sticky nav-dark hide-for-medium">
     <div class="flex-row container">
-      <div class="flex-col hide-for-medium flex-left">
-          <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-          </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-left">
+            <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-center">
-          <ul class="nav nav-center nav-small  nav-divided">
-                        </ul>
-      </div>
+        <div class="flex-col hide-for-medium flex-center">
+            <ul class="nav nav-center nav-small  nav-divided">
+            </ul>
+        </div>
 
-      <div class="flex-col hide-for-medium flex-right">
-         <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
-              <li class="cart-item has-icon">
+        <div class="flex-col hide-for-medium flex-right">
+            <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
+                <li class="cart-item has-icon">
+                    <a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+                        <span class="header-cart-title">
+                            Giỏ hàng
+                        </span>
+                        <i class="bx bxs-cart" data-icon-label="0"></i>
+                    </a>
+                </li>
+                <li class="header-divider"></li>
+								<c:set var="isLoggedIn" value="false" />
+								<c:set var="username" value="" />
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+								<c:if test="${not empty cookie.userIsLoggedIn}">
+									<c:set var="isLoggedIn" value="${cookie.userIsLoggedIn.value}" />
+								</c:if>
 
-
-<span class="header-cart-title">
-   Giỏ hàng     </span>
-
-    	<i class='bx bxs-cart'  data-icon-label="0"></i>
-  </a>
-
-
-</li>
-<li class="header-divider"></li><li class="account-item has-icon
-    ">
-
-<a href="login.jsp" class="nav-top-link nav-top-not-logged-in ">
-    <span>
-    Đăng nhập      </span>
-  
-</a>
-
-
-
-</li>
-          </ul>
-      </div>
-
-      
+								<c:if test="${not empty cookie.userUsername}">
+									<c:set var="username" value="${cookie.userUsername.value}" />
+								</c:if>
+								<li class="account-item has-icon"><c:choose>
+										<c:when test="${isLoggedIn}">
+											<a href="#" style = "margin-right: 10px; font-size: 13.5px" 
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													${username} </span>
+											</a>
+											<a href="<%=request.getContextPath()%>/logout"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng xuất </span>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a href="<%=request.getContextPath()%>/login"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng nhập ${username}</span>
+											</a>
+										</c:otherwise>
+									</c:choose></li>
+							</ul>
+        </div>
     </div>
 </div>
+
 <div id="masthead" class="header-main ">
       <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
 
           <!-- Logo -->
           <div id="logo" class="flex-col logo">
             <!-- Header logo -->
-<a href="index.jsp" title="Pettiny - Phòng khám thú cưng" rel="home">
+<a href="/login" title="Pettiny - Phòng khám thú cưng" rel="home">
 
     <img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header_logo header-logo" alt="Pettiny"><img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header-logo-dark" alt="Pettiny"></a>          </div>
 
@@ -153,35 +270,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Left Elements -->
           <div class="flex-col hide-for-medium flex-left flex-grow">
             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
-              <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="index.jsp" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
-<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="shopfordog.jsp" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
+              <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="<%=request.getContextPath()%>/" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
+<li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath()%>/showDogProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-446" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
+	<li id="menu-item-446" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=1" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
-		<li id="menu-item-49468" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Smartheart</a></li>
-		<li id="menu-item-49472" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Royal Canin</a></li>
-		<li id="menu-item-49471" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Pedigree</a></li>
-		<li id="menu-item-49599" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt mềm Zenith cho chó</a></li>
-		<li id="menu-item-49470" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49470"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó ANF</a></li>
-		<li id="menu-item-49571" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49571"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Mania</a></li>
-		<li id="menu-item-49598" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49598"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Classic</a></li>
-		<li id="menu-item-49478" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49478"><a href="#" class="L-Affiliate-Tagged">Bánh thưởng cho chó</a></li>
-		<li id="menu-item-49479" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Snack cho chó</a></li>
-		<li id="menu-item-49480" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">Xương thưởng cho chó</a></li>
-		<li id="menu-item-49592" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49592"><a href="#" class="L-Affiliate-Tagged">Thực phẩm chức năng dưỡng lông cho chó</a></li>
+		<li id="menu-item-49468" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Smartheart</a></li>
+		<li id="menu-item-49472" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Royal Canin</a></li>
+		<li id="menu-item-49471" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Pedigree</a></li>
+		<li id="menu-item-49599" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Zenith</a></li>
+		<li id="menu-item-49479" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Vitamin</a></li>
+		<li id="menu-item-49480" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">VitaminGo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49473" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Pate cho chó</a>
+	<li id="menu-item-49473" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49473 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=2" class="L-Affiliate-Tagged">Pate cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
-		<li id="menu-item-49475" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49475"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Pedigree</a></li>
-		<li id="menu-item-49476" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49476"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Royal Canin</a></li>
-		<li id="menu-item-49600" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49600"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Smartheart</a></li>
-		<li id="menu-item-49474" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49474"><a href="#" class="L-Affiliate-Tagged">Pate cho chó Monge</a></li>
+		<li id="menu-item-49475" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49475"><a href="#" class="L-Affiliate-Tagged">Pedigree</a></li>
+		<li id="menu-item-49476" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49476"><a href="#" class="L-Affiliate-Tagged">Royal Canin</a></li>
+		<li id="menu-item-49600" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49600"><a href="#" class="L-Affiliate-Tagged">Smartheart</a></li>
+		<li id="menu-item-49474" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49474"><a href="#" class="L-Affiliate-Tagged">Monge</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49482" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
+	<li id="menu-item-49482" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=3" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
+	<ul class="sub-menu nav-column nav-dropdown-default">
+		<li id="menu-item-49483" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49483"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho chó</a></li>
+		<li id="menu-item-49484" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49484"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho chó</a></li>
+	</ul>
 </li>
-	<li id="menu-item-49485" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
+	<li id="menu-item-49485" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=4" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49487" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49487"><a href="#" class="L-Affiliate-Tagged">Vòng cổ cho chó</a></li>
 		<li id="menu-item-49489" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49489"><a href="#" class="L-Affiliate-Tagged">Dây xích chó</a></li>
@@ -189,53 +305,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49486" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49486"><a href="#" class="L-Affiliate-Tagged">Rọ mõm chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49496" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49496 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Chuồng, nhà, nệm, túi cho chó</a>
+	<li id="menu-item-49496" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49496 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=5" class="L-Affiliate-Tagged">Chuồng, nhà, nệm, túi cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49498" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49498"><a href="#" class="L-Affiliate-Tagged">Chuồng chó</a></li>
 		<li id="menu-item-49501" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49501"><a href="#" class="L-Affiliate-Tagged">Nhà cho chó</a></li>
 		<li id="menu-item-49500" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49500"><a href="#" class="L-Affiliate-Tagged">Ổ đệm &amp; nệm cho chó</a></li>
-		<li id="menu-item-49497" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49497"><a href="#" class="L-Affiliate-Tagged">Balo cho chó</a></li>
-		<li id="menu-item-49511" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49511"><a href="#" class="L-Affiliate-Tagged">Địu chó</a></li>
 		<li id="menu-item-49502" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49502"><a href="#" class="L-Affiliate-Tagged">Túi vận chuyển chó</a></li>
-		<li id="menu-item-49512" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49512"><a href="#" class="L-Affiliate-Tagged">Lồng vận chuyển chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49513" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49513 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Vệ sinh &amp; chăm sóc chó</a>
+	<li id="menu-item-49513" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49513 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=6" class="L-Affiliate-Tagged">Vệ sinh &amp; chăm sóc chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49517" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49517"><a href="#" class="L-Affiliate-Tagged">Sữa tắm chó</a></li>
-		<li id="menu-item-49515" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49515"><a href="#" class="L-Affiliate-Tagged">Máy sấy lông chó</a></li>
 		<li id="menu-item-49525" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49525"><a href="#" class="L-Affiliate-Tagged">Tông đơ cạo lông chó</a></li>
 		<li id="menu-item-49524" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49524"><a href="#" class="L-Affiliate-Tagged">Máy mài móng cho chó</a></li>
 		<li id="menu-item-49520" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49520"><a href="#" class="L-Affiliate-Tagged">Lược chải lông chó</a></li>
-		<li id="menu-item-49514" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49514"><a href="#" class="L-Affiliate-Tagged">Kìm, kềm cắt móng cho chó</a></li>
+		<li id="menu-item-49514" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49514"><a href="#" class="L-Affiliate-Tagged">Kìm cắt móng cho chó</a></li>
 		<li id="menu-item-49516" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49516"><a href="#" class="L-Affiliate-Tagged">Nước hoa cho chó</a></li>
 		<li id="menu-item-49519" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49519"><a href="#" class="L-Affiliate-Tagged">Khay vệ sinh cho chó</a></li>
-		<li id="menu-item-49518" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49518"><a href="#" class="L-Affiliate-Tagged">Bỉm cho chó</a></li>
-		<li id="menu-item-49522" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49522"><a href="#" class="L-Affiliate-Tagged">Tã cho chó</a></li>
-		<li id="menu-item-49523" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49523"><a href="#" class="L-Affiliate-Tagged">Tấm, miếng lót vệ sinh cho chó</a></li>
-		<li id="menu-item-49591" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49591"><a href="#" class="L-Affiliate-Tagged">Kem đánh răng cho chó</a></li>
-		<li id="menu-item-49572" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49572"><a href="#" class="L-Affiliate-Tagged">Bột nhổ lông tai cho chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49491" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49491 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Quần áo, váy, mũ, trang sức cho chó</a>
+	<li id="menu-item-49491" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49491 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=7" class="L-Affiliate-Tagged">Quần áo, váy, mũ, trang sức cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49494" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49494"><a href="#" class="L-Affiliate-Tagged">Quần áo cho chó</a></li>
 		<li id="menu-item-49495" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49495"><a href="#" class="L-Affiliate-Tagged">Váy cho chó</a></li>
-		<li id="menu-item-49493" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49493"><a href="#" class="L-Affiliate-Tagged">Mũ, nón cho chó</a></li>
+		<li id="menu-item-49493" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49493"><a href="#" class="L-Affiliate-Tagged">Mũ cho chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49507" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49507 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện chó</a>
+	<li id="menu-item-49507" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49507 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=8" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49509" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49509"><a href="#" class="L-Affiliate-Tagged">Đồ chơi cho chó</a></li>
 		<li id="menu-item-49510" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49510"><a href="#" class="L-Affiliate-Tagged">Xương đồ chơi cho chó</a></li>
 		<li id="menu-item-49508" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49508"><a href="#" class="L-Affiliate-Tagged">Còi huấn luyện chó</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49526" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49526 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho chó</a>
+	<li id="menu-item-49526" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49526 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=1&id_product_type=9" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho chó</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49529" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49529"><a href="#" class="L-Affiliate-Tagged">Vitamin cho chó</a></li>
-		<li id="menu-item-49530" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49530"><a href="#" class="L-Affiliate-Tagged">Xương, viên canxi cho chó</a></li>
-		<li id="menu-item-49527" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49527"><a href="#" class="L-Affiliate-Tagged">Thuốc tẩy, sổ giun cho chó</a></li>
+		<li id="menu-item-49530" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49530"><a href="#" class="L-Affiliate-Tagged">Viên canxi cho chó</a></li>
+		<li id="menu-item-49527" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49527"><a href="#" class="L-Affiliate-Tagged">Thuốc sổ giun cho chó</a></li>
 		<li id="menu-item-49528" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49528"><a href="#" class="L-Affiliate-Tagged">Thuốc trị ve rận cho chó</a></li>
 		<li id="menu-item-49535" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49535"><a href="#" class="L-Affiliate-Tagged">Thuốc nhỏ tai cho chó</a></li>
 		<li id="menu-item-49533" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49533"><a href="#" class="L-Affiliate-Tagged">Thuốc nhỏ mắt cho chó</a></li>
@@ -246,40 +353,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 </li>
-<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="shopforcat.jsp" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-45545" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-45545 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath() %>/showCatProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho mèo<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default" style="">
-	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1128 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo</a>
+	<li id="menu-item-1128" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1128 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=10" class="L-Affiliate-Tagged">Thức ăn cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
-		<li id="menu-item-49435" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49435"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt khô cho mèo</a></li>
-		<li id="menu-item-49384" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49384"><a href="#" class="L-Affiliate-Tagged">Thức ăn ướt cho mèo</a></li>
 		<li id="menu-item-49405" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49405"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Me-O</a></li>
 		<li id="menu-item-49406" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49406"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Whiskas</a></li>
 		<li id="menu-item-49413" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49413"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Royal Canin</a></li>
-		<li id="menu-item-49411" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49411"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Minino</a></li>
 		<li id="menu-item-49409" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49409"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Catsrang</a></li>
 		<li id="menu-item-49408" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49408"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Cateye</a></li>
-		<li id="menu-item-49412" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49412"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Nutrience</a></li>
-		<li id="menu-item-49407" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49407"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo ANF</a></li>
-		<li id="menu-item-49634" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49634"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Instinct</a></li>
-		<li id="menu-item-49663" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49663"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo Meowcat</a></li>
 		<li id="menu-item-49432" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49432"><a href="#" class="L-Affiliate-Tagged">Snack, súp &amp; bánh thưởng</a></li>
 		<li id="menu-item-49434" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49434"><a href="#" class="L-Affiliate-Tagged">Sữa, bình sữa cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49383" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49383 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo</a>
+	<li id="menu-item-49383" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49383 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=11" class="L-Affiliate-Tagged">Pate cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49385" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49385"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Whiskas</a></li>
 		<li id="menu-item-49416" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49416"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Ciao</a></li>
 		<li id="menu-item-49417" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49417"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Nekko</a></li>
-		<li id="menu-item-49421" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49421"><a href="#" class="L-Affiliate-Tagged">Pate mèo Snappy Tom</a></li>
 		<li id="menu-item-49420" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49420"><a href="#" class="L-Affiliate-Tagged">Pate mèo Royal Canin</a></li>
-		<li id="menu-item-49419" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49419"><a href="#" class="L-Affiliate-Tagged">Pate mèo Morando</a></li>
 		<li id="menu-item-49418" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49418"><a href="#" class="L-Affiliate-Tagged">Pate mèo Me-O</a></li>
 		<li id="menu-item-49662" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49662"><a href="#" class="L-Affiliate-Tagged">Pate cho mèo Meowcat</a></li>
-		<li id="menu-item-49632" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49632"><a href="#" class="L-Affiliate-Tagged">Pate mèo Aatas</a></li>
 	</ul>
 </li>
-	<li id="menu-item-1122" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1122 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo</a>
+	<li id="menu-item-1122" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1122 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=12" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49422" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49422"><a href="#" class="L-Affiliate-Tagged">Cát Nhật đen cho mèo Moon Cat</a></li>
 		<li id="menu-item-49424" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49424"><a href="#" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo Catlike</a></li>
@@ -292,9 +389,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49429" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49429"><a href="#" class="L-Affiliate-Tagged">Cát thủy tinh cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49451" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
+	<li id="menu-item-49451" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=13" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
+	<ul class="sub-menu nav-column nav-dropdown-default">
+		<li id="menu-item-49453" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49453"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho mèo</a></li>
+		<li id="menu-item-49452" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49452"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho mèo</a></li>
+	</ul>
 </li>
-	<li id="menu-item-49454" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
+	<li id="menu-item-49454" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=14" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49457" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49457"><a href="#" class="L-Affiliate-Tagged">Nhà vệ sinh cho mèo</a></li>
 		<li id="menu-item-49456" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49456"><a href="#" class="L-Affiliate-Tagged">Chậu, khay vệ sinh cho mèo</a></li>
@@ -306,7 +407,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49638" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49638"><a href="#" class="L-Affiliate-Tagged">Máy tông đơ cạo lông mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49431" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49431 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Chuồng, nệm, túi, cattree</a>
+	<li id="menu-item-49431" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49431 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=15" class="L-Affiliate-Tagged">Chuồng, nệm, túi, cattree</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49443" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49443"><a href="#" class="L-Affiliate-Tagged">Balo cho mèo</a></li>
 		<li id="menu-item-49444" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49444"><a href="#" class="L-Affiliate-Tagged">Túi vận chuyển mèo</a></li>
@@ -317,21 +418,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li id="menu-item-49445" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49445"><a href="#" class="L-Affiliate-Tagged">Chuồng mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49436" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49436 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Quần áo, vòng cổ, dây dắt</a>
+	<li id="menu-item-49436" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49436 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=16" class="L-Affiliate-Tagged">Quần áo, vòng cổ, dây dắt</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49449" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49449"><a href="#" class="L-Affiliate-Tagged">Quần áo cho mèo</a></li>
 		<li id="menu-item-49450" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49450"><a href="#" class="L-Affiliate-Tagged">Vòng cổ cho mèo</a></li>
 		<li id="menu-item-49448" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49448"><a href="#" class="L-Affiliate-Tagged">Dây dắt, xích cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49503" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49503 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện mèo</a>
+	<li id="menu-item-49503" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49503 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=17" class="L-Affiliate-Tagged">Đồ chơi &amp; Huấn luyện mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49506" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49506"><a href="#" class="L-Affiliate-Tagged">Đồ chơi cho mèo</a></li>
 		<li id="menu-item-49504" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49504"><a href="#" class="L-Affiliate-Tagged">Cần câu mèo</a></li>
 		<li id="menu-item-49505" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49505"><a href="#" class="L-Affiliate-Tagged">Đèn laser cho mèo</a></li>
 	</ul>
 </li>
-	<li id="menu-item-49433" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49433 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho mèo</a>
+	<li id="menu-item-49433" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49433 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showCategoryProduct?id_animal_type=2&id_product_type=18" class="L-Affiliate-Tagged">Y tế &amp; thuốc cho mèo</a>
 	<ul class="sub-menu nav-column nav-dropdown-default">
 		<li id="menu-item-49462" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49462"><a href="#" class="L-Affiliate-Tagged">Vitamin cho mèo</a></li>
 		<li id="menu-item-49463" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49463"><a href="#" class="L-Affiliate-Tagged">Canxi cho mèo</a></li>
@@ -346,8 +447,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 </li>
-<li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="chocanh.jsp" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
-<li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="meocanh.jsp" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
+<li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=1" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
+<li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=2" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
 <li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Về Pettiny</a></li>
 <li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
 <li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
@@ -400,425 +501,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>		</div>
 	</header>
 	
-<div class="shop-page-title category-page-title page-title ">
-	<div class="page-title-inner flex-row  medium-flex-wrap container">
-	  <div class="flex-col flex-grow medium-text-center">
-	  			<h1 class="shop-page-title is-xlarge">Vòng cổ, dây dắt, rọ mõm</h1>
-		<div class="is-medium">
-	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="https://dogilypetshop.vn">Trang chủ</a> <span class="divider">/</span> <a href="https://dogilypetshop.vn/shop-cho-cho/">Shop cho chó</a> <span class="divider">/</span> Vòng cổ, dây dắt, rọ mõm</nav></div>
-<div class="category-filtering category-filter-row show-for-medium">
-	<a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left" class="filter-button uppercase plain">
-		<i class="icon-equalizer"></i>
-		<strong>Lọc</strong>
-	</a>
-	<div class="inline-block">
-			</div>
-</div>
-	  </div>
-	  <div class="flex-col medium-text-center">
-	  	<p class="woocommerce-result-count hide-for-medium">
-	Hiển thị tất cả 10 kết quả</p>
-<form class="woocommerce-ordering" method="get">
-	<select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">
-					<option value="popularity">Thứ tự theo mức độ phổ biến</option>
-					<option value="rating">Thứ tự theo điểm đánh giá</option>
-					<option value="date" selected="selected">Mới nhất</option>
-					<option value="price">Thứ tự theo giá: thấp đến cao</option>
-					<option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>
-			</select>
-	<input type="hidden" name="paged" value="1">
-	</form>
-	  </div>
-	</div>
-</div>
-
-<main id="main" class="">
-<div class="row category-page-row">
-
-		<div class="col large-3 hide-for-medium ">
-						<div id="shop-sidebar" class="sidebar-inner col-inner">
-				<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories"><span class="widget-title shop-sidebar">Danh mục sản phẩm</span><div class="is-divider small"></div><ul class="product-categories"><li class="cat-item cat-item-144"><a href="https://dogilypetshop.vn/day-dat-cho/">Dây dắt chó</a> <span class="count">(7)</span></li>
-<li class="cat-item cat-item-146"><a href="https://dogilypetshop.vn/day-xich-cho/">Dây xích chó</a> <span class="count">(0)</span></li>
-<li class="cat-item cat-item-147"><a href="https://dogilypetshop.vn/ro-mom-cho/">Rọ mõm chó</a> <span class="count">(0)</span></li>
-<li class="cat-item cat-item-143"><a href="https://dogilypetshop.vn/vong-co-cho-cho/">Vòng cổ cho chó</a> <span class="count">(3)</span></li>
-</ul></aside><aside id="woof_widget-6" class="widget WOOF_Widget">        <div class="widget widget-woof">
-            
-
-            
-            
-
-
-				
-
-				<div class="woof woof_sid woof_sid_widget " data-sid="widget" data-shortcode="woof sid='widget' mobile_mode='0' autosubmit='1' start_filtering_btn='0' price_filter='5' redirect='' ajax_redraw='1' btn_position='b' dynamic_recount='-1' " data-redirect="" data-autosubmit="1" data-ajax-redraw="1">
-		                
-                <!--- here is possible to drop html code which is never redraws by AJAX ---->
-                
-                <div class="woof_redraw_zone" data-woof-ver="1.2.5.6">
-                                        
-                                            
-                
-                
-
-                
-
-                                                    <div data-css-class="woof_price5_search_container" class="woof_price5_search_container woof_container woof_price_filter">
-                        <div class="woof_container_overlay_item"></div>
-                        <div class="woof_container_inner">
-                                                                                        <h4>
-                                Nhập khoảng giá                                                                </h4>
-                                                        <div class="woof_block_html_items">
-                                
-
-<div data-css-class="woof_price_filter_radio_container" class="woof_checkbox_authors_container ">
-    <div class="woof_container_overlay_item"></div>
-    <div class="woof_container_inner">
-        <ul class="woof_authors ">
-                                                    <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc3ee08769" value="0-100000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc3ee08769"><span class="woocommerce-Price-amount amount"><bdi>0&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (8)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_0-100000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                                                            <li class="woof_list">
-                        <div class="iradio_minimal-aero" style="position: relative;"><input type="radio" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc3ee0877a" value="100000-250000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc3ee0877a"><span class="woocommerce-Price-amount amount"><bdi>100,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (2)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_100000-250000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                                                            <li class="woof_list">
-                        <div class="iradio_minimal-aero disabled" style="position: relative;"><input type="radio" disabled="" class="woof_price_filter_radio" name="woof_price_radio" id="woof_price_radio_wr_646dc3ee08780" value="250000-500000" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                        <span>&nbsp;&nbsp;</span><label for="woof_price_radio_wr_646dc3ee08780"><span class="woocommerce-Price-amount amount"><bdi>250,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> - <span class="woocommerce-Price-amount amount"><bdi>500,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span> (0)  </label>
-                        <a href="" data-tax="price" style="display: none;" class="woof_radio_price_reset  woof_radio_term_reset_250000-500000"><img src="https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png" height="12" width="12" alt="Delete"></a>
-                    </li>
-                            </ul>
-    </div>
-</div>
-
-
+	 <form action="<%=request.getContextPath()%>/setAppointment" class="form-horizontal"method = "post">
+        <div class="container">
+            <div class="schedule-container">
+                <div class="schedule-form">
+                <div class="p-2 text-center">
+                    <h1 style=" text-align: center;text-transform: uppercase;">Đặt lịch khám</h1>
+                     <div class="paragraph-medium paragraph-black" style = "padding-bottom: 30px;">Quý khách vui lòng điền đầy đủ thông tin. Chúng tôi sẽ liên hệ lại sớm nhất</div>
+                        <div class="schedule-row row">
+                         <div class="col-md-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                            	<label class="mdl-textfield__label" for="appointment-name">Tên *</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name" required>
+                                <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
+                            </div>
+                        </div>  
+                        <div class="col-md-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                                <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" required>
+                                <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="schedule-row row">
+                            <div class="col-md-6">
+							    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							        <label class="mdl-textfield__label" for="appointment-mobile">Ngày giờ *</label>
+							        <input class="mdl-textfield__input" type="datetime-local" id="appointment-date" name = "date" min="" max="" value="" required>
+							        <span class="mdl-textfield__error">Làm ơn nhập ngày và giờ từ 8h SA đến 4 CH</span>
+							    </div>
+							</div>
+                            <div class="col-md-6">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                                <label class="mdl-textfield__label" for="appointment-email">Email</label>
+                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
+                                <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
+                            </div>
+                        	</div>
+                        </div>
+                        <div class="schedule-row row">
+                            <div class="col-md-6">
+                                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "animal_type" required>
+                                    	<option disabled selected>--Chọn loài động vật--</option>
+                                        <c:forEach items="${animal_type}" var="item">
+                                        <option value="<c:out value="${item.id_animal_type}"/>">${item.name_animal_type}</option>
+                                        </c:forEach>
+                                        <option value="Khác">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label form-input-icon">
+                                    <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "service">
+                                        <option disabled selected>--Chọn dịch vụ--</option>
+                                        <c:forEach items="${service}" var="item">
+                                        <option value="<c:out value="${item.id_service}"/>">${item.name_service}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="schedule-row row">
+                            <div class="col-md-12">
+                            		<label class="mdl-textfield__label" for="sample-message-1">Lí do hẹn khám *</label>
+							        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+							        
+							            <textarea class="mdl-textfield__input" rows="5" id="sample-message-1" name = "note" required></textarea>
+							            
+							            <span class="mdl-textfield__error">Làm ơn miêu tả nhu cầu của bạn để chúng tôi có thể sắp xếp tốt hơn</span>
+							        </div>
+							</div>
+							</div>
                             </div>
 
+                            <div class="schedule-col col-xl-12">
+                                <div style="display: flex; justify-content: center; padding-top: 30px;" class="form-submit">
+                    				<button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đặt lịch khám</button>
+                				</div>
+                            </div>
                         </div>
                     </div>
-                
-                
-
-                                <div class="woof_submit_search_form_container">
-
-            
-                                            <button class="button woof_submit_search_form">Filter</button>
-            
-        </div>
-        
-                    
-
-
-                </div>
 
             </div>
-
-
-
-                    </div>
-        </aside>			</div>
-					</div>
-
-		<div class="col large-9">
-		<div class="shop-container">
-		<div class="term-description"><p>Các sản phẩm vòng cổ, dây dắt và rọ mõm cho chó</p>
-</div>
-		
-
-
-        <div class="woocommerce woocommerce-page woof_shortcode_output"><div id="woof_results_by_ajax" data-shortcode="woof_products taxonomies=product_cat:142 is_ajax=1 predict_ids_and_continue=1">
-<div class="woof_products_top_panel_content">
-    </div>
-<div class="woof_products_top_panel" style="display: none;"></div><div class="woocommerce-notices-wrapper"></div><div class="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights equalize-box">
-
-<div class="product-small col has-hover product type-product post-49179 status-publish first instock product_cat-quan-ao-vong-co-day-dat product_cat-day-dat-cho product_cat-day-dat-xich-cho-meo product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
+    </form>
 	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/hop-day-dat/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/hop-day-dat-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/hop-day-dat/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Hộp dây dắt tự động chó mèo Dele</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>99,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49179" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-49184 status-publish instock product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-cho-cho product_cat-vong-co-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/vong-deo-co-phong-thuy-cho-thu-cung/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-phong-thuy-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/vong-deo-co-phong-thuy-cho-thu-cung/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Vòng đeo cổ phong thủy cho thú cưng</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>24,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="49184" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48014 status-publish instock product_cat-quan-ao-vong-co-day-dat product_cat-day-dat-cho product_cat-day-dat-xich-cho-meo product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-dat-don-sac-co-tay-cam-cao-su-0-6/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-3.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-don-sat-co-tay-cam-cao-su-6.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-dat-don-sac-co-tay-cam-cao-su-0-6/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây dắt đơn sắc có tay cầm cao su – 0.6</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>59,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48014" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48174 status-publish last instock product_cat-quan-ao-vong-co-day-dat product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-cho-cho product_cat-vong-co-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/vong-co-no/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-no-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/vong-co-no/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Vòng cổ nơ</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>49,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48174" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48240 status-publish first instock product_cat-do-choi-va-huan-luyen-cho product_cat-shop-cho-cho product_cat-vong-co-cho-cho product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/vong-co-ki-luat-cho-cho/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/vong-co-ki-luat-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/vong-co-ki-luat-cho-cho/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Vòng cổ kỉ luật cho chó</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>190,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48240" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48268 status-publish instock product_cat-day-dat-cho product_cat-shop-cho-cho product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-dat-co-yem-olicedo-cho-cho-m/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-yem-olicedo-cho-cho-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-dat-co-yem-olicedo-cho-cho-m/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây dắt có yếm olicedo cho chó M</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>69,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48268" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48280 status-publish instock product_cat-day-dat-cho product_cat-shop-cho-cho product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-dat-da-ngan/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-ngan-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-dat-da-ngan/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây Dắt Da (Ngắn)</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>69,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48280" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48275 status-publish last instock product_cat-day-dat-cho product_cat-shop-cho-cho product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-dat-da-dai/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-da-dai-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-dat-da-dai/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây dắt da cho chó (dài)</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>199,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48275" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48285 status-publish first instock product_cat-quan-ao-vong-co-day-dat product_cat-day-dat-cho product_cat-day-dat-xich-cho-meo product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-dat-co-thun-nhun-s/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-thun-nhun-S-5.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-dat-co-thun-nhun-s/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây Dắt Có Thun Nhún S</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>59,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48285" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-
-<div class="product-small col has-hover product type-product post-48291 status-publish instock product_cat-quan-ao-vong-co-day-dat product_cat-day-dat-cho product_cat-day-dat-xich-cho-meo product_cat-shop-cho-cho product_cat-shop-cho-meo product_cat-vong-co-day-dat-ro-mom has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="https://dogilypetshop.vn/day-thung-dat-co-yem-size-xs/">
-					<img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-400x400.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-1.jpg 800w" sizes="(max-width: 400px) 100vw, 400px"><img width="400" height="400" src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-400x400.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-400x400.jpg" class="show-on-hover absolute fill hide-for-small back-image lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2.jpg 800w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-400x400.jpg 400w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-150x150.jpg 150w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-768x768.jpg 768w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2021/12/day-dat-co-nhun-size-xs-2.jpg 800w" sizes="(max-width: 400px) 100vw, 400px">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="https://dogilypetshop.vn/day-thung-dat-co-yem-size-xs/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Dây thừng dắt có yếm size XS</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi>69,000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="48291" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-</div><!-- row --></div></div>
-		</div><!-- shop container -->		</div>
-</div>
-
-</main>
-
-<footer id="footer" class="footer-wrapper">
+	<footer id="footer" class="footer-wrapper">
 
 		<section class="section dark" id="section_2073401488">
 		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
@@ -901,7 +671,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 </style>
 	</section>
-	
 
 </footer>
 
@@ -927,7 +696,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="live-search-results text-left z-top"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
 </form>
 </div>	</div>
-</li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462"><a href="index.jsp" aria-current="page" class="L-Affiliate-Tagged">Trang chủ</a></li>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462"><a href="index.jsp" aria-current="page" class="L-Affiliate-Tagged">Trang chủ</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 has-child" aria-expanded="false"><a href="shopfordog.jsp" class="L-Affiliate-Tagged">Shop cho chó</a>
 <button class="toggle"><i class='bx bx-chevron-down'></i></button><ul class="sub-menu nav-sidebar-ul children">
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-446"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó</a>
@@ -935,6 +705,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49468"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Smartheart</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49472"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Royal Canin</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49471"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Pedigree</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49469"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Ganador</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49599"><a href="#" class="L-Affiliate-Tagged">Thức ăn hạt mềm Zenith cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49470"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó ANF</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49571"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó Dog Mania</a></li>
@@ -942,6 +713,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49478"><a href="#" class="L-Affiliate-Tagged">Bánh thưởng cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49479"><a href="#" class="L-Affiliate-Tagged">Snack cho chó</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49480"><a href="#" class="L-Affiliate-Tagged">Xương thưởng cho chó</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49481"><a href="#" class="L-Affiliate-Tagged">Sữa, bình sữa cho chó con</a></li>
 		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49592"><a href="#" class="L-Affiliate-Tagged">Thực phẩm chức năng dưỡng lông cho chó</a></li>
 	</ul>
 </li>
@@ -954,6 +726,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49482"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; bình uống nước cho chó</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49483"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho chó</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49484"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho chó</a></li>
+	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49485"><a href="#" class="L-Affiliate-Tagged">Vòng cổ, dây dắt, rọ mõm</a>
 	<ul class="sub-menu nav-sidebar-ul">
@@ -1067,6 +843,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49451"><a href="#" class="L-Affiliate-Tagged">Bát ăn &amp; Bình uống nước</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49453"><a href="#" class="L-Affiliate-Tagged">Bát ăn cho mèo</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-49452"><a href="#" class="L-Affiliate-Tagged">Bình uống nước cho mèo</a></li>
+	</ul>
 </li>
 	<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49454"><a href="#" class="L-Affiliate-Tagged">Đồ dùng vệ sinh, tắm, sấy</a>
 	<ul class="sub-menu nav-sidebar-ul">
@@ -1133,7 +913,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 	</div>
 </div>
+	     <script>
+ // Lấy ngày hiện tại và giờ hiện tại
+    var today = new Date();
+    var currentHour = today.getHours();
+    var currentMinute = today.getMinutes();
 
+    // Lấy ngày tối thiểu
+    var minDate;
+
+    if ((currentHour >= 0 && currentHour < 12) || (currentHour === 12 && currentMinute === 0)) {
+        // Nếu giờ hiện tại từ 12:00 SA đến 11:59 SA, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    } else if (currentHour >= 12) {
+        // Nếu giờ hiện tại từ 12:00 CH trở đi, ngày tối thiểu là hôm nay
+        var currentDay = today.getDate();
+        var currentMonth = today.getMonth() + 1; // Tháng tính từ 0 đến 11
+        var currentYear = today.getFullYear();
+        minDate = currentYear + "-" + formatNumber(currentMonth) + "-" + formatNumber(currentDay);
+    }
+
+    // Cập nhật giá trị tối thiểu (min) của trường ngày
+    document.getElementById("appointment-date").setAttribute("min", minDate + "T08:00");
+
+    // Hàm để định dạng số thành chuỗi có 2 chữ số (vd: 01, 02, ..., 09)
+    function formatNumber(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
+    </script>
 
   	<script type="text/javascript">
 		(function () {

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ <a href = "<%=request.getContextPath()%>/showAppointmentForm">Đặt lịch</a>
 </body>
 </html>

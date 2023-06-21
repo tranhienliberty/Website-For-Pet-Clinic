@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petshop.Entity.Product;
+import com.petshop.Entity.ProductType;
 import com.petshop.Service.ProductService;
 
 import jakarta.annotation.PostConstruct;
@@ -37,13 +38,15 @@ public class ProductController implements ApplicationContextAware {
         Model model = new ExtendedModelMap();
         showDogProduct(model);
     }
-
+    
     @RequestMapping(value = "/showDogProduct")
     public String showDogProduct(Model model) {
         List<Product> dogProducts = productService.showDogProduct();
         int id_animal_type = dogProducts.get(0).getId_animal_type();
+//        List<ProductType> pt = productService.showProductType(id_animal_type);
         model.addAttribute("id_animal_type", id_animal_type);
         model.addAttribute("dogProductList", dogProducts);
+//        model.addAttribute("productTypeList", pt);
         return "customer/shopfordog";
     }
     @RequestMapping(value = "/showCatProduct")
@@ -54,20 +57,30 @@ public class ProductController implements ApplicationContextAware {
         model.addAttribute("catProductList", catProducts);
         return "customer/shopforcat";
     }
-
-    @RequestMapping(value = "/filterProduct")
-    public String filterProduct(@RequestParam("minPrice") long minPrice, @RequestParam("maxPrice") long maxPrice, @RequestParam("id_animal_type") int id_animal_type, Model model) {
+    
+    @RequestMapping(value = "/showCategoryProduct")
+    public String showCategoryProduct(@RequestParam("id_animal_type") int id_animal_type, @RequestParam("id_product_type") int id_product_type,Model model) {
+    	List<Product> categoryProduct = productService.showCategoryProduct(id_product_type,id_animal_type);
+    	model.addAttribute("id_animal_type", id_animal_type);
+    	model.addAttribute("categoryProduct", categoryProduct);
+    	if(id_animal_type == 1) return "customer/shopfordog";
+    	else return "customer/shopforcat";
+    }
+    @RequestMapping(value = "/filterProduct{id_animal_type}")
+    public String filterProduct(@RequestParam("minPrice") long minPrice, @RequestParam("maxPrice") long maxPrice, @PathVariable("id_animal_type") int id_animal_type, Model model) {
     	List<Product> products = productService.filterProduct(minPrice, maxPrice, id_animal_type);
     	model.addAttribute("id_animal_type", id_animal_type);
     	model.addAttribute("filteredProduct", products);
-    	return "customer/shopfordog";
+    	if(id_animal_type == 1) return "customer/shopfordog";
+    	else return "customer/shopforcat";
     }
     @RequestMapping(value = "searchProduct")
 	public String searchProduct(@RequestParam("keyword") String keyword, @RequestParam("id_animal_type") int id_animal_type, Model model) {
 		List<Product> products = productService.searchProduct(keyword, id_animal_type);
 		model.addAttribute("id_animal_type", id_animal_type);
 		model.addAttribute("dogProductList", products);
-		return "customer/shopfordog";
+		if(id_animal_type == 1) return "customer/shopfordog";
+    	else return "customer/shopforcat";
 	}
     
     @RequestMapping(value = "/showProductDetail{id_product}")
@@ -79,6 +92,14 @@ public class ProductController implements ApplicationContextAware {
     	model.addAttribute("productByID", product);
     	model.addAttribute("relatedProduct", relatedProducts);
     	return "customer/product-detail";
+    }
+    @RequestMapping(value = "/showProductListByName")
+    public String showProductListByName(@RequestParam("name_product") String name_product, @RequestParam("id_animal_type") int id_animal_type, Model model){
+    	List<Product> products = productService.showProductListByName(name_product, id_animal_type);
+    	model.addAttribute("id_animal_type", id_animal_type);
+    	model.addAttribute("ProductListByName", products);
+    	if(id_animal_type == 1) return "customer/shopfordog";
+    	else return "customer/shopforcat";
     }
     //Viết lại các hàm chung của chó mèo như search, filter thêm id_animal_type để chia shop chó mèo, nếu là return shopfordog, là 2 return shopforcat
 }

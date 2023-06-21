@@ -1,6 +1,6 @@
 package com.petshop.Entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer {
 	private int id_customer;
