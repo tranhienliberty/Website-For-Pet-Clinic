@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -473,7 +474,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </article>
 </c:forEach>
 
-<ul class="page-numbers nav-pagination links text-center"><li><span aria-current="page" class="page-number current">1</span></li><li><a class="page-number" href="https://dogilypetshop.vn/cho/page/2/">2</a></li><li><a class="page-number" href="https://dogilypetshop.vn/cho/page/3/">3</a></li><li><a class="page-number" href="https://dogilypetshop.vn/cho/page/4/">4</a></li><li><span class="page-number dots">…</span></li><li><a class="page-number" href="https://dogilypetshop.vn/cho/page/58/">58</a></li><li><a class="next page-number" href="https://dogilypetshop.vn/cho/page/2/"><i class="bx bx-chevron-right"></i></a></li></ul>
 </div>
 
 	</div>

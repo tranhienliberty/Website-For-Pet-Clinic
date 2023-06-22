@@ -24,12 +24,6 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
     
-    @RequestMapping("/")
-    public String home() {
-        // Xử lý logic và trả về tên của view để hiển thị
-        return "customer/index";
-    }
-    
     @RequestMapping("/admin_home")
     public String admin_home() {
         // Xử lý logic và trả về tên của view để hiển thị

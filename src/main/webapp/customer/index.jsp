@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -509,10 +509,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="col-inner text-center">
 			
 			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO CHÓ</span><b></b><a href="shopfordog.jsp" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
+<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO CHÓ</span><b></b><a href="<%=request.getContextPath()%>/showDogProduct" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
 
   
     <div class="row  equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small">
+    
+<c:forEach items="${productDogLimit}" var="item">			
+<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
+	<div class="col-inner">
+	
+<div class="badge-container absolute left top z-1">
+</div>
+	<div class="product-small box ">
+		<div class="box-image">
+			<div class="image-fade_in_back">
+				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+			</div>
+			<div class="image-tools is-small top right show-on-hover">
+							</div>
+			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
+							</div>
+			
+					</div>
+
+		<div class="box-text box-text-products text-center grid-style-2">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+</div>		</div>
+        <div class="custom-quick-view">
+                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+	</div>
+		</div>
+</div>
+</c:forEach>
 	            	        </div>
 		</div>
 			</div>
@@ -572,11 +602,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="col-inner text-center">
 			
 			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO MÈO</span><b></b><a href="shopforcat.jsp" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
+<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO MÈO</span><b></b><a href="<%=request.getContextPath()%>/showCatProduct" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
 
   
     <div class="row  equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small">
+		<c:forEach items="${productCatLimit}" var="item">			
+<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
+	<div class="col-inner">
+	
+<div class="badge-container absolute left top z-1">
+</div>
+	<div class="product-small box ">
+		<div class="box-image">
+			<div class="image-fade_in_back">
+				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+			</div>
+			<div class="image-tools is-small top right show-on-hover">
+							</div>
+			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
+							</div>
+			
+					</div>
 
+		<div class="box-text box-text-products text-center grid-style-2">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+</div>		</div>
+        <div class="custom-quick-view">
+                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+	</div>
+		</div>
+</div>
+</c:forEach>
 	            	        </div>
 		</div>
 			</div>
@@ -637,106 +695,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="col-inner">
 			
 			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">Tin tức</span><b></b><a href="#" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
+<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">Tin tức - Blog</span><b></b><a href="#" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
 
   
     <div class="row home-row__post large-columns-4 medium-columns-1 small-columns-1 row-small has-shadow row-box-shadow-1">
-  		<div class="col post-item">
-			<div class="col-inner">
-			<a href="https://dogilypetshop.vn/cho/benh-viem-da-o-cho/" class="plain L-Affiliate-Tagged">
-				<div class="box box-default box-text-bottom box-blog-post has-hover">
-          					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);">
-					<div class="box-text-inner blog-post-inner">
+<!--   		<div class="col post-item"> -->
+<!-- 			<div class="col-inner"> -->
+<!-- 			<a href="https://dogilypetshop.vn/cho/benh-viem-da-o-cho/" class="plain L-Affiliate-Tagged"> -->
+<!-- 				<div class="box box-default box-text-bottom box-blog-post has-hover"> -->
+<!--           					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);"> -->
+<!-- 					<div class="box-text-inner blog-post-inner"> -->
 
 					
-											<p class="cat-label  is-xxsmall op-7 uppercase">
-					Chó cảnh 					</p>
-										<h5 class="post-title is-large ">Bệnh viêm da ở chó và cách điều trị chó bị viêm da hiệu quả?</h5>
-										<div class="is-divider"></div>
-										<p class="from_the_blog_excerpt ">Không chỉ xuất hiện ở mèo mà căn bệnh viêm da cũng thường gặp ở các loài chó. Mặc dù đây là căn bệnh thường...					</p>
+<!-- 											<p class="cat-label  is-xxsmall op-7 uppercase"> -->
+<!-- 					Chó cảnh 					</p> -->
+<!-- 										<h5 class="post-title is-large ">Bệnh viêm da ở chó và cách điều trị chó bị viêm da hiệu quả?</h5> -->
+<!-- 										<div class="is-divider"></div> -->
+<!-- 										<p class="from_the_blog_excerpt ">Không chỉ xuất hiện ở mèo mà căn bệnh viêm da cũng thường gặp ở các loài chó. Mặc dù đây là căn bệnh thường...					</p> -->
 					                    
-											<button href="https://dogilypetshop.vn/cho/benh-viem-da-o-cho/" class="button  is-link is-small mb-0">
-							Xem tiếp »						</button>
+<!-- 											<button href="https://dogilypetshop.vn/cho/benh-viem-da-o-cho/" class="button  is-link is-small mb-0"> -->
+<!-- 							Xem tiếp »						</button> -->
 					
 					
-					</div>
-					</div>
-									</div>
-				</a>
-			</div>
-		</div>
-		<div class="col post-item">
-			<div class="col-inner">
-			<a href="https://dogilypetshop.vn/meo/bi-giam-bach-cau-co-chua-duoc-khong/" class="plain L-Affiliate-Tagged">
-				<div class="box box-default box-text-bottom box-blog-post has-hover">
-          					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);">
-					<div class="box-text-inner blog-post-inner">
-
-					
-											<p class="cat-label  is-xxsmall op-7 uppercase">
-					Mèo cảnh 					</p>
-										<h5 class="post-title is-large ">Mèo bị giảm bạch cầu có chữa được không?</h5>
-										<div class="is-divider"></div>
-										<p class="from_the_blog_excerpt ">Dạo gần đây, Dogily nhận được rất nhiều sự thắc mắc từ các bạn chủ nuôi thú cưng về câu hỏi “ Mèo bị giảm...					</p>
-					                    
-											<button href="https://dogilypetshop.vn/meo/bi-giam-bach-cau-co-chua-duoc-khong/" class="button  is-link is-small mb-0">
-							Xem tiếp »						</button>
-					
-					
-					</div>
-					</div>
-									</div>
-				</a>
-			</div>
-		</div>
-		<div class="col post-item">
-			<div class="col-inner">
-			<a href="https://dogilypetshop.vn/meo/dau-hieu-benh-giam-bach-cau-o-meo/" class="plain L-Affiliate-Tagged">
-				<div class="box box-default box-text-bottom box-blog-post has-hover">
-          					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);">
-					<div class="box-text-inner blog-post-inner">
-
-					
-											<p class="cat-label  is-xxsmall op-7 uppercase">
-					Mèo cảnh 					</p>
-										<h5 class="post-title is-large ">Cách nhận biết dấu hiệu bệnh giảm bạch cầu ở mèo như thế nào?</h5>
-										<div class="is-divider"></div>
-										<p class="from_the_blog_excerpt ">Tình trạng bệnh suy giảm bạch cầu ở mèo luôn là nỗi nhức nhối đối với các bạn Sen đang chăm sóc Boss. Đây là...					</p>
-					                    
-											<button href="https://dogilypetshop.vn/meo/dau-hieu-benh-giam-bach-cau-o-meo/" class="button  is-link is-small mb-0">
-							Xem tiếp »						</button>
-					
-					
-					</div>
-					</div>
-									</div>
-				</a>
-			</div>
-		</div>
-		<div class="col post-item">
-			<div class="col-inner">
-			<a href="https://dogilypetshop.vn/meo/bi-benh-giam-bach-cau/" class="plain L-Affiliate-Tagged">
-				<div class="box box-default box-text-bottom box-blog-post has-hover">
-          					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);">
-					<div class="box-text-inner blog-post-inner">
-
-					
-											<p class="cat-label  is-xxsmall op-7 uppercase">
-					Mèo cảnh 					</p>
-										<h5 class="post-title is-large ">Mèo bị bệnh giảm bạch cầu có chữa được không?</h5>
-										<div class="is-divider"></div>
-										<p class="from_the_blog_excerpt ">Mèo bị bệnh giảm bạch cầu là một trong những tình trạng bệnh lý nguy hiểm và rất phổ biến ở loài này. Ngoài có...					</p>
-					                    
-											<button href="https://dogilypetshop.vn/meo/bi-benh-giam-bach-cau/" class="button  is-link is-small mb-0">
-							Xem tiếp »						</button>
-					
-					
-					</div>
-					</div>
-									</div>
-				</a>
-			</div>
-		</div>
+<!-- 					</div> -->
+<!-- 					</div> -->
+<!-- 									</div> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
 </div>
 		</div>
 			</div>
@@ -784,13 +771,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-				<img width="350" height="350" src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang.jpg" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-150x150.jpg 150w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Dang-150x150.jpg 150w" sizes="(max-width: 350px) 100vw, 350px">											</div>
+				<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
 			<div class="box-text-inner">
 				
-<h4>BÁC SỸ HẢI ĐĂNG</h4>
+<h4>Bác sĩ 1</h4>
 <p>Chỗ ở không sạch sẽ là mối nguy hiểm ẩn chứa các vi trùng, vi khuẩn gây bệnh ảnh hưởng đến sức khỏe của thú cưng.Hãy vệ sinh tốt chỗ ở cho thú cưng hàng ngày cũng như tắm rửa cho chúng thường xuyên là việc cơ bản để chúng có một cuộc sống chất lượng bạn nhé.</p>
 			</div>
 		</div>
@@ -809,13 +796,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-				<img width="350" height="350" src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh.jpg" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-150x150.jpg 150w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hanh-150x150.jpg 150w" sizes="(max-width: 350px) 100vw, 350px">											</div>
+<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
 			<div class="box-text-inner">
 				
-<h4>Bác sĩ Thái Hồng Hạnh</h4>
+<h4>Bác sĩ 2</h4>
 <p>Một chế độ dinh dưỡng cho thú cưng chất lượng và ngăn ngừa béo phì hay còi cọc. Việc béo phì có thể ảnh hưởng xấu đến sức khỏe chúng. Hãy đáp ứng nhucầu về dinh dưỡng của thú cưng cưng nhà bạn dựa trên kích thước, độ tuổi, mức độ hoạt động và giống loài.</p>
 			</div>
 		</div>
@@ -834,13 +821,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-				<img width="350" height="350" src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu.jpg" data-src="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu.jpg" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-150x150.jpg 150w" data-srcset="https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu.jpg 350w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-100x100.jpg 100w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-247x247.jpg 247w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-300x300.jpg 300w, https://dogilypetshop.vn/wp-content/uploads/2020/09/bsi-Hieu-150x150.jpg 150w" sizes="(max-width: 350px) 100vw, 350px">											</div>
+				<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
 			<div class="box-text-inner">
 				
-<h4>Bác sĩ Trương Minh Hiền</h4>
+<h4>Bác sĩ 3</h4>
 <p>Nếu yêu thú cưng, bạn nhớ dắt chúng đi dạo xung quanh hoặc đi công viên hay tham gia các hoạt động chạy nhảy, vui đùa thường xuyên nhé vì việc vận động nhiều sẽ giúp xương khớp và cơ bắp của thú cưng trở nên khỏe mạnhcũng như rắn chắc hơn</p>
 			</div>
 		</div>

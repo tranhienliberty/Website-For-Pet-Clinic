@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -542,7 +542,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>
@@ -572,7 +572,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>
@@ -601,7 +601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="#quick-view"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>
@@ -630,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>

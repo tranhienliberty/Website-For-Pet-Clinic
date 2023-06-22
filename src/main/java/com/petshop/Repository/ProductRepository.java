@@ -44,6 +44,14 @@ public class ProductRepository {
 				+ "";
 		return jdbcTemplate.query(sql, new productRowmapper());
 	}
+	public List<Product> showLimitProduct(int id_animal_type){
+		String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+				+ "FROM product p\r\n"
+				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
+				+ "WHERE p.id_animal_type = ? ORDER BY RAND() LIMIT 8;\r\n"
+				+ "";
+		return jdbcTemplate.query(sql, new productRowmapper(), id_animal_type);
+	}
 		public List<Product> showCategoryProduct(int id_product_type, int id_animal_type){
 			String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
 					+ "FROM product p\r\n"

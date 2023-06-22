@@ -16,6 +16,9 @@ public class ProductService {
 	public List<Product> showDogProduct() {
 		return productRepository.showDogProduct();
 	}
+	public List<Product> showLimitProduct(int id_animal_type){
+		return productRepository.showLimitProduct(id_animal_type);
+	}
 	public List<Product> showCatProduct(){
 		return productRepository.showCatProduct();
 	}
