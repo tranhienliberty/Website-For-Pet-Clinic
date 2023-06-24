@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -31,14 +32,14 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm(Model model, @RequestParam(value = "previousUrl", defaultValue = "/") String previousUrl) {
+    public String showLoginForm(Model model, @RequestHeader(value = "Referer", required = false) String previousUrl) {
         model.addAttribute("previousUrl", previousUrl);
         return "customer/login";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam("Username") String username, @RequestParam("Password") String password,
-                        Model model, HttpServletResponse response) {
+                        Model model, HttpServletResponse response, @RequestParam(value = "previousUrl", defaultValue = "/") String previousUrl) {
         try {
             boolean isAuthenticated = accountService.authenticate(username, password);
             String role = accountService.getRole(username);
@@ -53,7 +54,7 @@ public class AccountController {
                 } else {
                     addLoggedInCookie(response, "userIsLoggedIn");
                     addUsernameCookie(response, "userUsername", username);
-                    return "redirect:/";
+                    return "redirect:" + previousUrl;
                 }
             } else {
                 model.addAttribute("error", "Invalid username or password");

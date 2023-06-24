@@ -102,7 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
               <li class="cart-item has-icon">
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+<a href="<%=request.getContextPath()%>/showCart" title="Giỏ hàng" class="header-cart-link is-small">
 
 
 <span class="header-cart-title">
@@ -154,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Logo -->
           <div id="logo" class="flex-col logo">
             <!-- Header logo -->
-<a href="index.jsp" title="Pettiny - Phòng khám thú cưng" rel="home">
+<a href="<%=request.getContextPath()%>/" title="Pettiny - Phòng khám thú cưng" rel="home">
 
     <img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header_logo header-logo" alt="Pettiny"><img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header-logo-dark" alt="Pettiny"></a>          </div>
 
@@ -463,28 +463,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="product-price-container is-larger"><div class="price-wrapper">
 	<p class="price product-page-price ">
-  <span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${productByID.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></p>
+  <span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${productByID.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫ (SL còn: ${productByID.quantity})</span></bdi></span></p>
 </div>
 </div>
-
-
-
 <div class="add-to-cart-container form-normal is-normal">
-	
-	<form class="cart" action="#" method="post" enctype="multipart/form-data">
-		
-			<div class="quantity buttons_added form-normal">
-		<input type="button" value="-" class="minus button is-form">		
-		<input type="number" id="quantity_647f1e73de9c7" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="SL" size="4" placeholder="" inputmode="numeric">
-				<input type="button" value="+" class="plus button is-form">	</div>
-	
-		<button type="submit" name="add-to-cart" value="51033" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
-
-			</form>
-
-	
+    <form class="cart" id="myForm" action="<%=request.getContextPath()%>/addToCart"  enctype="multipart/form-data">
+        <div class="quantity buttons_added form-normal">
+        	<input type = "hidden" name ="username" value = "${cookie.userUsername.value}">
+        	<input type = "hidden" name ="id_product" value = "${productByID.id_product}">
+            <input type="button" value="-" class="minus button is-form">
+            <input type="number" id="quantity_647f1e73de9c7" class="input-text qty text" step="1" min="1" max="${productByID.quantity}" name="count" value="1" title="SL" size="4" placeholder="" inputmode="numeric">
+            <input type="button" value="+" class="plus button is-form">
+        </div>
+        <button type="submit" name="add-to-cart" value="51033" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
+    </form>
 </div>
-
 
 		</div>
 			</div>
@@ -561,7 +554,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item2.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="45750" href="#"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+                   <a class="quick-view quick-view-added" data-prod="45750" href="<%=request.getContextPath() %>/showProductDetail${item2.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
 	</div>
 		</div>
 </div>
@@ -918,42 +911,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </div>
 <script>
-  // Lắng nghe sự kiện khi bấm vào ảnh
-  document.querySelectorAll('.image-link').forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      var imageUrl = this.querySelector('img').src;
+    // Lấy phần tử số lượng sản phẩm và nút tăng/giảm
+    var quantityInput = document.getElementById('quantity_647f1e73de9c7');
+    var plusButton = document.querySelector('.plus.button.is-form');
+    var minusButton = document.querySelector('.minus.button.is-form');
+    var quantityWarning = document.getElementById('quantity-warning');
+    
+    // Lắng nghe sự kiện khi nút tăng/giảm được nhấn
+    plusButton.addEventListener('click', function() {
+        var currentValue = parseInt(quantityInput.value);
+        var maxQuantity = parseInt(quantityInput.getAttribute('max'));
 
-      // Hiển thị overlay
-      var overlay = document.querySelector('.overlay');
-      overlay.style.display = 'flex';
+        // Kiểm tra nếu giá trị hiện tại lớn hơn hoặc bằng giới hạn số lượng, không cho phép tăng
+        if (currentValue >= maxQuantity) {
+        	quantityWarning.style.display = 'block';
+            return;
+        }
 
-      // Hiển thị ảnh preview trong overlay
-      var imagePreview = overlay.querySelector('.image-preview img');
-      imagePreview.src = imageUrl;
-
-      // Vô hiệu hóa cuộn trang khi overlay hiển thị
-      document.body.style.overflow = 'hidden';
+        quantityInput.value = currentValue + 1;
+        quantityWarning.style.display = 'none';
     });
-  });
 
-  // Lắng nghe sự kiện khi bấm vào nút đóng
-  document.querySelectorAll('.close-button').forEach(function(button) {
-  button.addEventListener('click', function(event) {
-	  if (this.classList.contains('close-button')) {
-      event.preventDefault();
-      // Ẩn overlay và image preview
-      var overlay = document.querySelector('.overlay');
-      overlay.style.display = 'none';
-      var imagePreview = overlay.querySelector('.image-preview img');
-      imagePreview.src = '';
+    minusButton.addEventListener('click', function() {
+        var currentValue = parseInt(quantityInput.value);
 
-      // Kích hoạt cuộn trang lại khi overlay đóng
-      document.body.style.overflow = 'auto';
-    }
-  });
-  });
+        // Kiểm tra nếu giá trị hiện tại nhỏ hơn hoặc bằng 1, không cho phép giảm
+        if (currentValue <= 1) {
+            return;
+        }
+
+        quantityInput.value = currentValue - 1;
+        quantityWarning.style.display = 'none';
+    });
 </script>
+
 	 <script src="<c:url value="/resources/js/product-detail.js"/>"></script>
   	<script type="text/javascript">
 		(function () {

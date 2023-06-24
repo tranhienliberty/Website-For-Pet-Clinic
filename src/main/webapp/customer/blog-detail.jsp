@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
               <li class="cart-item has-icon">
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+<a href="<%=request.getContextPath()%>/showCart" title="Giỏ hàng" class="header-cart-link is-small">
 
 
 <span class="header-cart-title">

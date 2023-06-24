@@ -25,6 +25,7 @@ public class ProductRepository {
 			product.setProducer(rs.getString("producer"));
 			product.setPrice(rs.getDouble("price"));
 			product.setImage(rs.getString("image"));
+			product.setQuantity(rs.getInt("quantity"));
 			product.setDeleted(rs.getBoolean("isDeleted"));
 			product.setId_animal_type(rs.getInt("id_animal_type"));
 			product.setId_product_type(rs.getInt("id_product_type"));
@@ -37,7 +38,7 @@ public class ProductRepository {
 	}
 	//Show Dog Product
 	public List<Product> showDogProduct(){
-		String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
 				+ "WHERE p.id_animal_type = 1;\r\n"
@@ -45,7 +46,7 @@ public class ProductRepository {
 		return jdbcTemplate.query(sql, new productRowmapper());
 	}
 	public List<Product> showLimitProduct(int id_animal_type){
-		String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
 				+ "WHERE p.id_animal_type = ? ORDER BY RAND() LIMIT 8;\r\n"
@@ -53,7 +54,7 @@ public class ProductRepository {
 		return jdbcTemplate.query(sql, new productRowmapper(), id_animal_type);
 	}
 		public List<Product> showCategoryProduct(int id_product_type, int id_animal_type){
-			String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+			String sql = "SELECT p.*, pt.name_product_type\r\n"
 					+ "FROM product p\r\n"
 					+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
 					+ "WHERE p.id_animal_type = ? AND pt.id_product_type = ?;";
@@ -62,7 +63,7 @@ public class ProductRepository {
 
 	//Show Cat Product
 	public List<Product> showCatProduct(){
-		String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
 				+ "WHERE p.id_animal_type = 2;\r\n"
@@ -81,7 +82,7 @@ public class ProductRepository {
 	    return jdbcTemplate.query(sql, new productRowmapper(), searchKeyword, id_animal_type);
 	}
 	public Product getProductByID(long id) {
-		String sql = "SELECT p.id_product, p.name_product, p.benefit, p.note, p.producer, p.price, p.image, p.isDeleted, p.id_animal_type, p.id_product_type, pt.name_product_type\r\n"
+		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
 				+ "WHERE p.id_product = ?;\r\n"

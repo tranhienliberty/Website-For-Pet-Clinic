@@ -1,5 +1,7 @@
 package com.petshop.Entity;
 
+import java.util.List;
+
 public class Product {
 	private int id_product;
 	protected String name_product;
@@ -8,10 +10,12 @@ public class Product {
 	protected String producer;
 	protected double price;
 	protected String image;
+	protected int quantity;
 	protected boolean isDeleted;
 	protected int id_animal_type;
 	protected int id_product_type;
 	protected ProductType productType;
+	protected List<CartItems> cartItems;
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
@@ -57,6 +61,12 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public boolean isDeleted() {
 		return isDeleted;
 	}
@@ -81,10 +91,18 @@ public class Product {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-	@Override
-	public String toString() {
-		return "product [id_product=" + id_product + ", name_product=" + name_product + ", benefit=" + benefit
-				+ ", note=" + note + ", producer=" + producer + ", price=" + price + ", image=" + image + ", isDeleted="
-				+ isDeleted + ", id_animal_type=" + id_animal_type + ", id_product_type=" + id_product_type + "]";
+	public List<CartItems> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(List<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+	public Product(int id_product, String name_product, double price, String image, int quantity) {
+		super();
+		this.id_product = id_product;
+		this.name_product = name_product;
+		this.price = price;
+		this.image = image;
+		this.quantity = quantity;
 	}
 }

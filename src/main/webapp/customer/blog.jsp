@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
               <li class="cart-item has-icon">
 
-<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+<a href="<%=request.getContextPath()%>/showCart" title="Giỏ hàng" class="header-cart-link is-small">
 
 
 <span class="header-cart-title">
@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Logo -->
           <div id="logo" class="flex-col logo">
             <!-- Header logo -->
-<a href="index.jsp" title="Pettiny - Phòng khám thú cưng" rel="home">
+<a href="<%=request.getContextPath()%>/" title="Pettiny - Phòng khám thú cưng" rel="home">
 
     <img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header_logo header-logo" alt="Pettiny"><img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header-logo-dark" alt="Pettiny"></a>          </div>
 

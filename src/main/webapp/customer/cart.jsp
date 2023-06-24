@@ -2,12 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import = "java.lang.Math" %>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-pL2Nlk+sAs6tbGhW9jcj87D7jH/2OZSgB7wliJUTAaK6qTVdo5lRE0IInwJZwl0+V7+0yYkIS6TrzB7QFVXeDg==" crossorigin="anonymous" />
 	<link rel="icon" type="image/x-icon" href="<c:url value ="/resources/images/logo-removebg-preview.png"/>">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!-- Search Engine Optimization by Rank Math - https://s.rankmath.com/home -->
@@ -34,6 +37,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- font awesome js -->
     <script src="<c:url value="https://kit.fontawesome.com/bce767efab.js"/>" crossorigin="anonymous"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AfSJsuk6oXO_Bu4JMGfdfEIrD7ZY6_iy3E-LLvzAtJ2Rm1FJFjQaniXhZ5b8juHE4vWy8HlJxiP9PQzb"></script>
 
 <style id="woof-inline-css" type="text/css">
 
@@ -91,7 +95,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
 
 <div id="wrapper">
-
+	<fmt:setLocale value = "en_US"/>
 	
 	<header id="header" class="header has-sticky sticky-jump" style="">
 		<div class="header-wrapper">
@@ -157,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- Logo -->
           <div id="logo" class="flex-col logo">
             <!-- Header logo -->
-<a href="/login" title="Pettiny - Phòng khám thú cưng" rel="home">
+<a href="<%=request.getContextPath()%>/" title="Pettiny - Phòng khám thú cưng" rel="home">
 
     <img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header_logo header-logo" alt="Pettiny"><img width="400" height="400" src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" class="header-logo-dark" alt="Pettiny"></a>          </div>
 
@@ -413,92 +417,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 	</header>
 	
-	    <main>
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="cart rounded shadow">
-                        <div class="first">
-                            <div class="row">
-                                <div class="d-flex flex-wrap justify-content-center rounded p-3 bg-white">
-                                    <div class="col-md-7">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <img class="img-small" src="images/product-1.png" alt="iphone">
-                                            <h5 class="ps-2">iphone 11 128GB Black</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="d-flex align-items-center mt-2 pt-4">
-                                            <div class="col-md-6 col-6 d-flex justify-content-center align-items-center">
-                                                <button class="border-0 bg-transparent" id="iphone-decrease"><i class="fas fa-minus me-3"></i></button>
-                                                <input type="number" style="width: 4rem;" class="from-control fw-bold text-center rounded border-0 bg-light p-2" min="0" value="1" id="iphone-quantity">
-                                                <button class=" border-0 bg-transparent" id="iphone-increase"><i class="fas fa-plus ms-3"></i></button>
-                                            </div>
-                                            <div class="col-md-3 col-3 mx-3 mt-2">
-                                                <h5 class="fw-bold">$<span id="iphone-price">1219</span></h5>
-                                            </div>
-                                            <div class="col-md-3 col-3 mt-2">
-                                                <img class="cancel-img mb-2" src="images/remove.png" alt="cencel">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 2nd -->
-                        <div class="second">
-                            <div class="row">
-                                <div class="d-flex flex-wrap justify-content-center  rounded p-3 bg-white mt-4">
-                                    <div class="col-md-7">
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <img class="img-small" src="images/product-2.png" alt="iphone">
-                                            <h5 class="ps-2">iPhone 11 Case - Black</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="d-flex align-items-center mt-2 pt-4">
-                                            <div class="col-md-6 col-6 d-flex justify-content-center align-items-center me-3 pe-2">
-                                                <button class="border-0 bg-transparent" id="case-decrease"><i class="fas fa-minus me-3"></i></button>
-                                                <input type="number" style="width: 4rem;" class="from-control fw-bold text-center rounded border-0 bg-light p-2" min="0" value="1" id="case-quantity">
-                                                <button class=" border-0 bg-transparent" id="case-increase"><i class="fas fa-plus ms-3"></i></button>
-                                            </div>
-                                            <div class="col-md-3 col-3 me-3 mt-2">
-                                                <h5 class="fw-bold">$<span id="case-price">59</span></h5>
-                                            </div>
-                                            <div class="col-md-3 col-3 mt-2">
-                                                <img class=" mb-2 cancel-img" src="images/remove.png" alt="cencel">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- cal -->
-                        <div class="calculation">
-                            <div class="row">
-                                <div class="d-flex justify-content-center align-items-center  p-5 rounded bg-white mt-4">
-                                    <div class="col-md-6 text-start ms-5">
-                                        <h5 class="me-5">Subtotal: </h5>
-                                        <h5>Tax:</h5>
-                                        <h5>Total:</h5>
-                                    </div>
-                                    <div class="col-md-6 text-end me-5 pe-4">
-                                        <h5>$<span id="subtotal">1278</span></h5>
-                                        <h5>$<span id="tax">0</span></h5>
-                                        <h5>$<span id="total">1278</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- button -->
-                        <div class="text-end">
-                            <button class="btn btn-success fw-bold px-5 shadow-lg rounded-pill mt-5" id="check-out">Check out</button>
-                        </div>
+<main>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="cart rounded shadow">
+          <c:forEach items="${cartItems}" var="item">
+            <div class="first">
+              <div class="item-row">
+                <div class="d-flex flex-wrap justify-content-center rounded p-3 bg-white">
+                  <div class="col-md-7">
+                    <div class="d-flex justify-content-start align-items-center">
+                      <img class="img-small" src="<c:url value="${item.getProduct().getImage()}" />" alt="iphone">
+                      <h5 class="ps-2">${item.getProduct().getName_product()}</h5>
                     </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="d-flex align-items-center mt-2 pt-4">
+                      <div class="col-md-6 col-6 d-flex justify-content-center align-items-center">
+                        <button class="border-0 bg-transparent" id="${item.getProduct().getId_product()}-decrease"><i class="fas fa-minus me-3"></i></button>
+                        <input type="number" style="width: 4rem;" min="0" max="${item.getProduct().getQuantity()}" value="${item.count}" id="${item.getProduct().getId_product()}-quantity">
+                        <button class="border-0 bg-transparent" id="${item.getProduct().getId_product()}-increase"><i class="fas fa-plus ms-3"></i></button>
+                      </div>
+                      <p>Đơn giá</p>
+                      <div class="col-md-3 col-3 mx-3 mt-2">
+                        <h5 class="fw-bold"><span class="iphone-price">${item.getProduct().getPrice()}</span></h5>
+                      </div>
+                      <div class="col-md-3 col-3 mx-3 mt-2">
+                        <a href="#" class="item-delete"><i class='bx bxs-trash'></i></a>
+                      </div>
+                      <c:set var="quantity" value="${item.count}" />
+					  <c:set var="price" value="${item.getProduct().getPrice()}" />
+					  <c:set var="totalPrice" value="${quantity * price}" />
+                      <c:set var = "sum" value ="${sum + totalPrice }"/>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
-    </main>
+          </c:forEach>
+          <!-- cal -->
+          <div class="calculation">
+            <div class="row">
+              <div class="d-flex justify-content-center align-items-center p-5 rounded bg-white mt-4">
+                <div class="col-md-6 text-start ms-5">
+                  <h5>Total:</h5>
+                </div>
+                <div class="col-md-6 text-end me-5 pe-4">
+                  <h5><span id="total" class = "total">${sum}</span></h5>
+                  <c:set var = "usd" value = "23000"/>
+                  <c:set var = "sumusd" value = "${sum/usd}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- button -->
+          <div class="text-end">
+			 <div class="accordion" id="accordionExample">
+			  <div class="accordion-item">
+			    <h2 class="accordion-header" id="headingOne">
+			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			        Thanh toán bằng tiền mặt
+			      </button>
+			    </h2>
+			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			      <a href = "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method='Thanh toán bằng tiền mặt'"><button class="btn btn-success fw-bold px-5 shadow-lg rounded-pill mt-5" id="check-out">Thanh toán bằng tiền mặt</button></a>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="accordion-item">
+			    <h2 class="accordion-header" id="headingTwo">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			        Thanh toán bằng Paypal
+			      </button>
+			    </h2>
+			    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			      <div id = "paypal"></div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
     <footer id="footer" class="footer-wrapper">
 
 		<section class="section dark" id="section_2073401488">
@@ -565,10 +571,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		</div>
 			</div>
-
-	
-
-
 </div>
 
 		</div>
@@ -823,8 +825,104 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 	</div>
 </div>
+	<script defer>
+	paypal.Buttons({
+		style: {
+		    layout: 'vertical',
+		    color:  'blue',
+		    shape:  'rect',
+		    label:  'paypal'
+		  },
+		createOrder: function(data, actions) {
+	      return actions.order.create({
+	    	  purchase_units: [{
+                  amount: {
+                      value: "${ Double.valueOf(Math.round(sumusd * 100)) / 100 }",
+                      currency_code: "USD"
+                  }
+              }]
+	      });
+	    },
+	    onApprove: function(data, actions) {
+	      return actions.order.capture().then(function(details) {
+	        // Xử lý thanh toán thành công
+		        console.log(data);
+		        console.log(details);
+	      });
+	    },
+	    onError: function(err) {
+	      // Xử lý lỗi thanh toán
+	      console.log(err);
+	    }
+		}).render('#paypal');
+	</script>
+	
 	<!-- main js -->
     <script src="<c:url value="/resources/js/cart.js"/>"></script>
+	<script>
+  // Calculate total
+  function calculateTotal() {
+    let subTotal = 0;
+
+    // Loop through each item
+    <c:forEach items="${cartItems}" var="item">
+      const quantity = getInputQuantity("${item.getProduct().getId_product()}");
+      const price = getInputPrice("${item.getProduct().getId_product()}");
+      const itemTotal = quantity * price;
+      subTotal += itemTotal;
+    </c:forEach>
+
+    document.getElementById('total').textContent = subTotal;
+  }
+
+  // Update quantity and price
+  function updateNumber(product, isIncreasing) {
+    const quantityInput = document.getElementById(product + '-quantity');
+    let quantity = parseInt(quantityInput.value);
+
+    if (isIncreasing) {
+      quantity++;
+    } else if (quantity > 0) {
+      quantity--;
+    }
+
+    quantityInput.value = quantity;
+
+    // Price update
+    const priceElement = document.getElementById(product + '-price');
+    const price = getInputPrice(product);
+    const itemTotal = quantity * price;
+    priceElement.innerText = itemTotal;
+
+    // Calculate total
+    calculateTotal();
+  }
+
+  // Get input quantity
+  function getInputQuantity(product) {
+    const input = document.getElementById(product + '-quantity');
+    const inputValue = parseInt(input.value);
+    return inputValue;
+  }
+
+  // Get input price
+  function getInputPrice(product) {
+    const input = document.getElementById(product + '-price');
+    const inputValue = parseInt(input.innerText.replace(/[^0-9]/g, ''));
+    return inputValue;
+  }
+
+  // Add event listeners to increase and decrease buttons
+  <c:forEach items="${cartItems}" var="item">
+    document.getElementById("${item.getProduct().getId_product()}-increase").addEventListener('click', function () {
+      updateNumber("${item.getProduct().getId_product()}", true);
+    });
+
+    document.getElementById("${item.getProduct().getId_product()}-decrease").addEventListener('click', function () {
+      updateNumber("${item.getProduct().getId_product()}", false);
+    });
+  </c:forEach>
+</script>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
