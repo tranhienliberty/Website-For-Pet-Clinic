@@ -55,10 +55,10 @@ public class ProductController implements ApplicationContextAware {
     public String showDogProduct(Model model) {
         List<Product> dogProducts = productService.showDogProduct();
         int id_animal_type = dogProducts.get(0).getId_animal_type();
-//        List<ProductType> pt = productService.showProductType(id_animal_type);
+        List<ProductType> pt = productService.showProductType(id_animal_type);
         model.addAttribute("id_animal_type", id_animal_type);
         model.addAttribute("dogProductList", dogProducts);
-//        model.addAttribute("productTypeList", pt);
+        model.addAttribute("productTypeList", pt);
         return "customer/shopfordog";
     }
     @RequestMapping(value = "/showCatProduct")
