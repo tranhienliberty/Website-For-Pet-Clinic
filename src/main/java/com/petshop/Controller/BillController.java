@@ -1,0 +1,36 @@
+package com.petshop.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.petshop.Entity.Bill;
+import com.petshop.Entity.Cart;
+import com.petshop.Service.BillDetailService;
+import com.petshop.Service.BillService;
+import com.petshop.Service.CartService;
+
+@Controller
+public class BillController {
+	@Autowired
+	private BillService billService;
+	@Autowired
+	private BillDetailService billDetailService;
+	@Autowired
+	private CartService cartService;
+	
+	@RequestMapping(value = "/showListBillByUser")
+	public String showListBillByUser(@RequestParam("username") String username, @RequestParam("delivered") String delivered,Model model) {
+		Cart cart = cartService.getCartByUsername(username);
+		List<Bill> bills =  billService.ListBillDelivered(cart.getId_cart(), delivered);
+		model.addAttribute("bills", bills);
+		if("Chưa giao hàng".equals(delivered)) {
+			return "customer/bill-delivering";
+		}
+		else return "customer/bill-delivered";
+	}
+}

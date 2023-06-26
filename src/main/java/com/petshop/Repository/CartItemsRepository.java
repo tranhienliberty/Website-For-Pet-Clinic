@@ -18,7 +18,7 @@ public class CartItemsRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private class cartItemsRowmapper implements RowMapper<CartItems>{
+	private class cartItemsRowMapper implements RowMapper<CartItems>{
 		public CartItems mapRow(ResultSet rs, int rowNum) throws SQLException {
 			CartItems cartItems = new CartItems();
 			cartItems.setId_cart_item(rs.getInt("id_cart_item"));
@@ -35,7 +35,7 @@ public class CartItemsRepository {
 			return cartItems;
 		}
 	}
-	private class itemRowmapper implements RowMapper<CartItems>{
+	private class itemRowMapper implements RowMapper<CartItems>{
 		public CartItems mapRow(ResultSet rs, int rowNum) throws SQLException {
 			CartItems cartItems = new CartItems();
 			cartItems.setId_cart_item(rs.getInt("id_cart_item"));
@@ -60,12 +60,12 @@ public class CartItemsRepository {
 				+ "JOIN product p ON ci.id_product = p.id_product\r\n"
 				+ "WHERE ci.id_cart = ?;\r\n"
 				+ "";
-		return jdbcTemplate.query(sql, new cartItemsRowmapper(), id_cart);
+		return jdbcTemplate.query(sql, new cartItemsRowMapper(), id_cart);
 	}
 	public CartItems isProductExistInCart(int id_cart, int id_product) {
 		String sql = "SELECT cart_items.* FROM cart_items WHERE id_cart = ? AND id_product = ?";
 		try {
-	        return jdbcTemplate.queryForObject(sql, new itemRowmapper(), id_cart, id_product);
+	        return jdbcTemplate.queryForObject(sql, new itemRowMapper(), id_cart, id_product);
 	    } catch (EmptyResultDataAccessException e) {
 	        return null; 
 	    }
@@ -76,13 +76,22 @@ public class CartItemsRepository {
 				+ "WHERE id_cart = ? AND id_product = ?;";
 		Object[] params = new Object[] {count, id_cart, id_product};
 		int rs =jdbcTemplate.update(sql, params);
-		if(rs!= 1) {
-			throw new Exception(); 
-		}
 	}
 	public void deleteAllCartItems(int id_cart) throws Exception {
 		String sql = "DELETE FROM cart_items WHERE id_cart = ?";
 		Object[] params = new Object[] {id_cart};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void deleteCartItem(int id_cart, int id_product) {
+		String sql = "DELETE FROM cart_items WHERE id_cart = ? AND id_product = ?";
+		Object[] params = new Object[] {id_cart, id_product};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void updateQuantityCartItem(int id_cart, int id_product, int count) {
+		String sql = "UPDATE cart_items\r\n"
+				+ "SET count = ?\r\n"
+				+ "WHERE id_cart = ? AND id_product = ?;";
+		Object[] params = new Object[] {count, id_cart, id_product};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	

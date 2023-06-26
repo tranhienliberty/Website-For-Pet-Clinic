@@ -430,6 +430,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="d-flex justify-content-start align-items-center">
                       <img class="img-small" src="<c:url value="${item.getProduct().getImage()}" />" alt="iphone">
                       <h5 class="ps-2">${item.getProduct().getName_product()}</h5>
+                      <input type = "hidden" id= "${item.getProduct().getId_product()}-id" value = "${item.getProduct().getId_product()}"/>
                     </div>
                   </div>
                   <div class="col-md-5">
@@ -441,10 +442,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       </div>
                       <p>Đơn giá</p>
                       <div class="col-md-3 col-3 mx-3 mt-2">
-                        <h5 class="fw-bold"><span class="iphone-price">${item.getProduct().getPrice()}</span></h5>
+                        <h5 class="fw-bold"><span class="iphone-price"><fmt:formatNumber value="${item.getProduct().getPrice()}" pattern="#,###" /></span></h5>
                       </div>
                       <div class="col-md-3 col-3 mx-3 mt-2">
-                        <a href="#" class="item-delete"><i class='bx bxs-trash'></i></a>
+                        <a href="<%=request.getContextPath()%>/deleteCartItem?username=${cookie.userUsername.value}&id_product=${item.getProduct().getId_product()}" class="item-delete"><i class='bx bxs-trash'></i></a>
                       </div>
                       <c:set var="quantity" value="${item.count}" />
 					  <c:set var="price" value="${item.getProduct().getPrice()}" />
@@ -461,12 +462,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="row">
               <div class="d-flex justify-content-center align-items-center p-5 rounded bg-white mt-4">
                 <div class="col-md-6 text-start ms-5">
-                  <h5>Total:</h5>
+                  <h5>Tổng tiền phải thanh toán:</h5>
+                  <h5>Tương ứng với:</h5>
                 </div>
                 <div class="col-md-6 text-end me-5 pe-4">
-                  <h5><span id="total" class = "total">${sum}</span></h5>
+                  <h5><span id="total" class = "total"><fmt:formatNumber value="${sum}" pattern="#,###" /></span></h5>
                   <c:set var = "usd" value = "23000"/>
-                  <c:set var = "sumusd" value = "${sum/usd}"/>
+                  <c:set var = "sumusd" value = "${sum/usd}"/>$<fmt:formatNumber value="${sumusd}" pattern="#,##0.00" type="currency"/>
                 </div>
               </div>
             </div>
@@ -482,7 +484,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			    </h2>
 			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			      <div class="accordion-body">
-			      <a href = "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method='Thanh toán bằng tiền mặt'"><button class="btn btn-success fw-bold px-5 shadow-lg rounded-pill mt-5" id="check-out">Thanh toán bằng tiền mặt</button></a>
+			      <a href = "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method=Thanh toán bằng tiền mặt"><button class="btn btn-success fw-bold px-5 shadow-lg rounded-pill mt-5" id="check-out">Thanh toán bằng tiền mặt</button></a>
 			      </div>
 			    </div>
 			  </div>
@@ -837,7 +839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	      return actions.order.create({
 	    	  purchase_units: [{
                   amount: {
-                      value: "${ Double.valueOf(Math.round(sumusd * 100)) / 100 }",
+                      value: "${Double.valueOf(Math.round(sumusd * 100)) / 100 }",
                       currency_code: "USD"
                   }
               }]
@@ -848,6 +850,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	        // Xử lý thanh toán thành công
 		        console.log(data);
 		        console.log(details);
+		        var xhr = new XMLHttpRequest();
+		        xhr.open("POST", "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method=Paypal", true);
+		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		        xhr.onreadystatechange = function() {
+		            if (xhr.readyState === 4 && xhr.status === 200) {
+		              console.log(xhr.responseText);
+		              location.reload();
+		            }
+		          };
+		        xhr.send();
 	      });
 	    },
 	    onError: function(err) {
@@ -856,73 +868,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	    }
 		}).render('#paypal');
 	</script>
-	
-	<!-- main js -->
-    <script src="<c:url value="/resources/js/cart.js"/>"></script>
 	<script>
-  // Calculate total
-  function calculateTotal() {
-    let subTotal = 0;
+	const totalElement = document.getElementById("total");
+	if (totalElement.innerText.trim() === "") {
+	  totalElement.innerText = "0";
+	}
+	document.querySelectorAll('[id$="-increase"]').forEach(function(element) {
+	  element.addEventListener('click', function() {
+	    var productId = element.id.replace('-increase', '');
+	    updateNumber(productId, true);
+	  });
+	});
+	
+	document.querySelectorAll('[id$="-decrease"]').forEach(function(element) {
+	  element.addEventListener('click', function() {
+	    var productId = element.id.replace('-decrease', '');
+	    updateNumber(productId, false);
+	  });
+	});
+	  function updateNumber(product, isIncreasing) {
+	    const quantityInput = document.getElementById(product + '-quantity');
+	    let quantity = parseInt(quantityInput.value);
+	    
+	    const idInput = document.getElementById(product + '-id');
+	    let id_product = parseInt(idInput.value);
+	    
+	    if (isIncreasing) {
+	      quantity++;
+	    } else if (quantity > 0) {
+	      quantity--;
+	    }
 
-    // Loop through each item
-    <c:forEach items="${cartItems}" var="item">
-      const quantity = getInputQuantity("${item.getProduct().getId_product()}");
-      const price = getInputPrice("${item.getProduct().getId_product()}");
-      const itemTotal = quantity * price;
-      subTotal += itemTotal;
-    </c:forEach>
-
-    document.getElementById('total').textContent = subTotal;
-  }
-
-  // Update quantity and price
-  function updateNumber(product, isIncreasing) {
-    const quantityInput = document.getElementById(product + '-quantity');
-    let quantity = parseInt(quantityInput.value);
-
-    if (isIncreasing) {
-      quantity++;
-    } else if (quantity > 0) {
-      quantity--;
-    }
-
-    quantityInput.value = quantity;
-
-    // Price update
-    const priceElement = document.getElementById(product + '-price');
-    const price = getInputPrice(product);
-    const itemTotal = quantity * price;
-    priceElement.innerText = itemTotal;
-
-    // Calculate total
-    calculateTotal();
-  }
-
-  // Get input quantity
-  function getInputQuantity(product) {
-    const input = document.getElementById(product + '-quantity');
-    const inputValue = parseInt(input.value);
-    return inputValue;
-  }
-
-  // Get input price
-  function getInputPrice(product) {
-    const input = document.getElementById(product + '-price');
-    const inputValue = parseInt(input.innerText.replace(/[^0-9]/g, ''));
-    return inputValue;
-  }
-
-  // Add event listeners to increase and decrease buttons
-  <c:forEach items="${cartItems}" var="item">
-    document.getElementById("${item.getProduct().getId_product()}-increase").addEventListener('click', function () {
-      updateNumber("${item.getProduct().getId_product()}", true);
-    });
-
-    document.getElementById("${item.getProduct().getId_product()}-decrease").addEventListener('click', function () {
-      updateNumber("${item.getProduct().getId_product()}", false);
-    });
-  </c:forEach>
-</script>
+	    quantityInput.value = quantity;
+	    
+	    var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "<%=request.getContextPath()%>/updateQuantityCartItem?username=${cookie.userUsername.value}&id_product=" + id_product + "&count=" + quantity, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              console.log(xhr.responseText);
+              location.reload();
+            }
+          };
+        xhr.send();
+	  }
+	</script>
+<%--     <script src="<c:url value="/resources/js/cart.js"/>"></script> --%>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

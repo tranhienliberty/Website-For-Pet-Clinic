@@ -398,20 +398,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</header>
 	<main>
 		<div class="container">
-		  <h2> Danh sách lịch hẹn của bạn </h2>
+		  <h2> Đơn hàng đang giao (Bạn có thể hủy đơn dưới 24h)</h2>
+		  <c:set var = "stt" value = "0"/>
 		  <ul class="responsive-table">
 		    <li class="table-header" style="height: 70px;">
-		      <div class="col-md-1 text-center" style = "margin-right:-30px;">ID</div>
-		      <div class="col-md-4 text-tencer ">Dịch vụ sử dụng</div>
-		      <div class="col-md-4 text-center">Thời gian hẹn</div>
+		      <div class="col-md-1 text-center" style = "margin-right:-35px;">ID</div>
+		      <div class="col-md-2 text-center">Tổng tiền</div>
+		      <div class="col-md-3 text-tencer">Thời gian</div>
+		      <div class="col-md-3 text-tencer">Phương thức thanh toán</div>
 		      <div class="col-md-3 text-center">Trạng thái</div>
 		    </li>
-		    <c:forEach items="${appointments}" var="item">
+		    <c:forEach items="${bills}" var="item">
 		    <li class="table-row" style="height: 70px;">
-		      <div class="col-md-1 text-center" data-label="ID">${item.id_appointment}</div>
-		      <div class="col-md-4 text-tencer" data-label="Dịch vụ">${item.getService().getName_service()}</div>
-		      <div class="col-md-4 text-left" data-label="Thời gian">${item.appointment_date}</div>
-		      <div class="col-md-3 text-left" data-label="Trạng thái">${item.appointment_status}</div>
+		      <c:set var = "stt" value = "${stt+1}"/>
+		      <div class="col-md-1 text-center" data-label="ID">${stt}</div>
+		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
+		      <div class="col-md-3 text-tencer" data-label="Thời gian">${item.time}</div>
+		      <div class="col-md-3 text-tencer" data-label="Phương thức thanh toán">${item.payment_method}</div>
+		      <div class="col-md-2 text-center" data-label="Trạng thái">${item.payment_status}</div>
 		    </li>
 		    </c:forEach>
 		  </ul>

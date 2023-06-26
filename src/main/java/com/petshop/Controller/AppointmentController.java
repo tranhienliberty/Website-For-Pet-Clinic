@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petshop.Entity.AnimalType;
+import com.petshop.Entity.Appointment;
 import com.petshop.Entity.Service;
 import com.petshop.Service.AnimalTypeService;
 import com.petshop.Service.AppointmentService;
 import com.petshop.Service.ServiceService;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class AppointmentController {
@@ -37,8 +41,27 @@ public class AppointmentController {
 
         return token.toString();
     }
-	@RequestMapping(value = "/showMyAppointment")
-	public String showMyAppointment(Model model) throws Exception {
+	@RequestMapping(value = "/showMyAllAppointment")
+	public String showMyAllAppointment(HttpServletRequest request, Model model) throws Exception {
+		boolean isLoggedIn = false;
+	    String username = null;
+	    Cookie[] cookies = request.getCookies();
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if (cookie.getName().equals("userIsLoggedIn")) {
+	                isLoggedIn = Boolean.parseBoolean(cookie.getValue());
+	            }
+	            else if (cookie.getName().equals("userUsername")) {
+	                username = cookie.getValue();
+	            }
+	        }
+	    }
+	    if (!isLoggedIn) {
+	        // Cookie không tồn tại hoặc giá trị là false, chuyển hướng đến trang login
+	        return "redirect:/login";
+	    }
+		List<Appointment> appointments = appointmentService.showMyAllAppointment(username);
+		model.addAttribute("appointments", appointments);
 		return "customer/my-appointment";
 	}
 	@RequestMapping(value = "/showAppointmentForm")

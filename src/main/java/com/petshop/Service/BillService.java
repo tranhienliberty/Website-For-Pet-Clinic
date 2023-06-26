@@ -1,5 +1,7 @@
 package com.petshop.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,9 @@ public class BillService {
 
 	public int getNewID() {
 		return billRepository.getNewID();
+	}
+
+	public List<Bill> ListBillDelivered(int id_cart, String delivered) {
+		return billRepository.ListBillDelivered(id_cart, delivered);
 	}
 }

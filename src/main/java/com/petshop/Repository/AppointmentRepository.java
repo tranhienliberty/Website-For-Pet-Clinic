@@ -2,6 +2,7 @@ package com.petshop.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -50,6 +51,14 @@ public class AppointmentRepository {
 		if(rs!= 1) {
 			throw new Exception(); 
 		}
+	}
+
+	public List<Appointment> showMyAllAppointment(String username) {
+		String sql = "SELECT *\r\n"
+				+ "FROM appointment AS a\r\n"
+				+ "JOIN service AS s ON a.id_service = s.id_service\r\n"
+				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type WHERE username= ?;";
+		return jdbcTemplate.query(sql, new appointmentRowMapper(), username);
 	}
 	
 }

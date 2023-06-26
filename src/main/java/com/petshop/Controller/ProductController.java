@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.petshop.Entity.AnimalType;
 import com.petshop.Entity.Product;
 import com.petshop.Entity.ProductType;
+import com.petshop.Service.AnimalTypeService;
 import com.petshop.Service.ProductService;
 
 import jakarta.annotation.PostConstruct;
@@ -26,8 +28,11 @@ public class ProductController implements ApplicationContextAware {
 	@Autowired
 	private ProductService productService;
 	@Autowired
+	private AnimalTypeService animalTypeService;
+	@Autowired
     private ApplicationContext applicationContext;
-
+	
+	
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
@@ -37,6 +42,13 @@ public class ProductController implements ApplicationContextAware {
     public void init() {
         Model model = new ExtendedModelMap();
         showDogProduct(model);
+    }
+    
+    @RequestMapping(value = "/showAllAnimalType")
+    public String showAllTypeAnimal(Model model) {
+    	List<AnimalType> pt = animalTypeService.showAllAnimalType();
+    	model.addAttribute("animalTypes", pt);
+    	return "admin/admin-product";
     }
     
     @RequestMapping(value = "/showDogProduct")

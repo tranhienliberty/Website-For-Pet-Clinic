@@ -34,5 +34,13 @@ public class CartItemsService {
 	public void deleteAllCartItems(int id_cart) throws Exception {
 		cartItemsRepository.deleteAllCartItems(id_cart);
 	}
+
+	public void deleteCartItem(int id_cart, int id_product) {
+		cartItemsRepository.deleteCartItem(id_cart, id_product);
+	}
+
+	public void updateQuantityCartItem(int id_cart, int id_product, int count) {
+		cartItemsRepository.updateQuantityCartItem(id_cart, id_product, count);
+	}
 	
 }

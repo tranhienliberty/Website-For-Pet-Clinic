@@ -28,7 +28,7 @@ public class AccountController {
     @RequestMapping("/admin_home")
     public String admin_home() {
         // Xử lý logic và trả về tên của view để hiển thị
-        return "admin/home";
+        return "admin/admin-home";
     }
 
     @GetMapping("/login")

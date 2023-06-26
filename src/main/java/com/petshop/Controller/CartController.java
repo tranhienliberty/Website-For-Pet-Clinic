@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.petshop.Entity.Bill;
 import com.petshop.Entity.BillDetail;
@@ -41,8 +42,6 @@ public class CartController {
 	}
 	@GetMapping (value = "/showCart")
     public String showCart(HttpServletRequest request, Model model) {
-        // Hiển thị thông tin giỏ hàng
-		// Kiểm tra sự tồn tại của cookie userIsLoggedIn
 	    boolean isLoggedIn = false;
 	    String username = null;
 	    Cookie[] cookies = request.getCookies();
@@ -127,5 +126,20 @@ public class CartController {
         }
 		return "redirect:showCart";
 	}
-
+	@RequestMapping(value = "/deleteCartItem")
+	public String deleteCartItem (HttpServletRequest request,@RequestParam("username") String username, @RequestParam("id_product") int id_product, Model model) {
+		Cart cart = cartService.getCartByUsername(username);
+		cartItemsService.deleteCartItem(cart.getId_cart(), id_product);
+		return "redirect:showCart";
+	}
+	@RequestMapping(value = "/updateQuantityCartItem")
+	public String updateQuantityCartItem(HttpServletRequest request,@RequestParam("username") String username, @RequestParam("id_product") int id_product, @RequestParam("count") int count) {
+		if(count == 0) {
+			return "redirect:deleteCartItem?username=" +username +"&id_product=" +id_product;
+		}
+		Cart cart = cartService.getCartByUsername(username);
+		cartItemsService.updateQuantityCartItem(cart.getId_cart(), id_product, count);
+		return "redirect:showCart";
+	}
+	
 }

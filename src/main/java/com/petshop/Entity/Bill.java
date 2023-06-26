@@ -11,6 +11,7 @@ public class Bill {
 	protected Cart cart;
 	protected Timestamp time;
 	protected String payment_method;
+	protected String delivered;
 	List<BillDetail> billDetail;
 	
 	
@@ -61,6 +62,12 @@ public class Bill {
 	}
 	public void setPayment_method(String payment_method) {
 		this.payment_method = payment_method;
+	}
+	public String getDelivered() {
+		return delivered;
+	}
+	public void setDelivered(String delivered) {
+		this.delivered = delivered;
 	}
 	
 }
