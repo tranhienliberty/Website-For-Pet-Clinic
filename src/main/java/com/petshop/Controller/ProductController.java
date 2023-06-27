@@ -20,6 +20,7 @@ import com.petshop.Entity.Product;
 import com.petshop.Entity.ProductType;
 import com.petshop.Service.AnimalTypeService;
 import com.petshop.Service.ProductService;
+import com.petshop.Service.ProductTypeService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -29,6 +30,8 @@ public class ProductController implements ApplicationContextAware {
 	private ProductService productService;
 	@Autowired
 	private AnimalTypeService animalTypeService;
+	@Autowired
+	private ProductTypeService productTypeService;
 	@Autowired
     private ApplicationContext applicationContext;
 	
@@ -44,21 +47,12 @@ public class ProductController implements ApplicationContextAware {
         showDogProduct(model);
     }
     
-    @RequestMapping(value = "/showAllAnimalType")
-    public String showAllTypeAnimal(Model model) {
-    	List<AnimalType> pt = animalTypeService.showAllAnimalType();
-    	model.addAttribute("animalTypes", pt);
-    	return "admin/admin-product";
-    }
-    
     @RequestMapping(value = "/showDogProduct")
     public String showDogProduct(Model model) {
         List<Product> dogProducts = productService.showDogProduct();
         int id_animal_type = dogProducts.get(0).getId_animal_type();
-        List<ProductType> pt = productService.showProductType(id_animal_type);
         model.addAttribute("id_animal_type", id_animal_type);
         model.addAttribute("dogProductList", dogProducts);
-        model.addAttribute("productTypeList", pt);
         return "customer/shopfordog";
     }
     @RequestMapping(value = "/showCatProduct")
@@ -113,7 +107,51 @@ public class ProductController implements ApplicationContextAware {
     	if(id_animal_type == 1) return "customer/shopfordog";
     	else return "customer/shopforcat";
     }
-    //Viết lại các hàm chung của chó mèo như search, filter thêm id_animal_type để chia shop chó mèo, nếu là return shopfordog, là 2 return shopforcat
+    
+    //ADMIN
+    @RequestMapping(value = "/adminShowAllProduct")
+    public String showAllProduct(Model model) {
+    	List<Product> products = productService.showAllProduct();
+    	model.addAttribute("products", products);
+    	return "admin/admin-product";
+    }
+    
+    @RequestMapping(value = "/adminShowAllAnimalType")
+    public String showAllTypeAnimal(Model model) {
+    	List<AnimalType> at = animalTypeService.showAllAnimalType();
+    	model.addAttribute("animalTypes", at);
+    	return "admin/admin-product";
+    }
+    
+    @RequestMapping(value = "/adminShowAllProductType")
+    public String showAllTypeProduct(Model model, @RequestParam("ia_animal_type") int id_animal_type) {
+    	List<ProductType> pt = productTypeService.showAllProductType(id_animal_type);
+    	model.addAttribute("productTypes", pt);
+    	return "admin/admin-product";
+    }
+    
+    @RequestMapping(value ="/adminAddProduct")
+    public String addProduct(Model model, @RequestParam("name") String name_product, @RequestParam("benefit") String benefit, 
+    		@RequestParam("note") String note, @RequestParam("producer") String producer, @RequestParam("price") float price, 
+    		@RequestParam("quantity") int quantity,@RequestParam("image") String image, @RequestParam("id_animal_type") int id_animal_type, 
+    		@RequestParam("id_product_type") int id_product_type) {
+    	productService.addProduct(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+    	return "redirect:adminShowAllProduct";
+    }
+    
+    @RequestMapping(value = "/adminEditProduct")
+    public String editProduct(@RequestParam("id") int id_product, @RequestParam("name") String name_product, @RequestParam("benefit") String benefit, 
+    		@RequestParam("note") String note, @RequestParam("producer") String producer, @RequestParam("price") float price, 
+    		@RequestParam("quantity") int quantity,@RequestParam("image") String image, @RequestParam("id_animal_type") int id_animal_type, 
+    		@RequestParam("id_product_type") int id_product_type) {
+    	productService.editProduct(id_product, name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+    	return "redirect:adminShowAllProduct";
+    }
+    @RequestMapping(value = "/adminDeleteProduct")
+    public String deleteProduct(@RequestParam("id") int id_product) {
+    	productService.deleteProduct(id_product);
+    	return "redirect:adminShowAllProduct";
+    }
 }
 
 

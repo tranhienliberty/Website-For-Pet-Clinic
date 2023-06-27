@@ -69,4 +69,9 @@ public class StaffRepository {
 		String sql = "select * from staff";
 		return jdbcTemplate.query(sql, new staffRowMapper());
 	}
+	public Staff getStaffByID(int id_staff) {
+		String sql = "SELECT * FROM staff WHERE id_staff = ?";
+		return jdbcTemplate.queryForObject(sql, new staffRowMapper(), id_staff);
+	}
+	
 }

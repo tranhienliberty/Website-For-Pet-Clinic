@@ -1,5 +1,7 @@
 package com.petshop.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,10 @@ public class BillDetailService {
 
 	public void addBillDetail(BillDetail billDetail) throws Exception {
 		billDetailRepository.addBillDetail(billDetail);
+	}
+
+	public List <BillDetail> showBillInfo(int id_bill) {
+		return billDetailRepository.showBillInfo(id_bill);
 	}
 	
 }

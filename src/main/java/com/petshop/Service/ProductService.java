@@ -28,9 +28,6 @@ public class ProductService {
 	public List<Product> searchProduct (String keyword, int id_animal_type){
 		return productRepository.searchProduct(keyword, id_animal_type);
 	}
-//	public List<Product> searchProduct (String keyword){
-//		return productRepository.searchProduct(keyword);
-//	}
 	public Product getProductByID (long id){
 		return productRepository.getProductByID(id);
 	}
@@ -43,4 +40,22 @@ public class ProductService {
 	public List<Product> showProductListByName(String name_product, int id_animal_type) {
 		return productRepository.showProductListByName(name_product, id_animal_type);
 	}
+	public void updateQuantityProduct(int id_product, int count) {
+		productRepository.updateQuantityProduct(id_product, count);
+	}
+	public List<Product> showAllProduct() {
+		return productRepository.showAllProduct();
+	}
+	public void addProduct(String name_product, String benefit, String note, String producer, float price, int quantity,
+			String image, int id_animal_type, int id_product_type) {
+		productRepository.addProduct(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+	}
+	public void editProduct(int id_product, String name_product, String benefit, String note, String producer,
+			float price, int quantity, String image, int id_animal_type, int id_product_type) {
+		productRepository.editProduct(id_product, name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+	}
+	public void deleteProduct(int id_product) {
+		productRepository.deleteProduct(id_product);
+	}
+
 }

@@ -48,8 +48,12 @@ public class BillRepository {
 		}
 		return id;
 	}
-	public List<Bill> ListBillDelivered(int id_cart, String delivered) {
+	public List<Bill> ListBill(int id_cart, String delivered) {
 		String sql = "SELECT * FROM bill WHERE id_cart = ? AND delivered = ?";
 		return jdbcTemplate.query(sql, new billRowmapper(), id_cart, delivered);
+	}
+	public List<Bill> showAllBill() {
+		String sql = "SELECT * FROM bill";
+		return jdbcTemplate.query(sql, new billRowmapper());
 	}
 }

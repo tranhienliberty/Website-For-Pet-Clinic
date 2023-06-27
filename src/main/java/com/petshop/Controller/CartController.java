@@ -21,6 +21,7 @@ import com.petshop.Service.BillDetailService;
 import com.petshop.Service.BillService;
 import com.petshop.Service.CartItemsService;
 import com.petshop.Service.CartService;
+import com.petshop.Service.ProductService;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,6 +37,8 @@ public class CartController {
 	private BillService billService;
 	@Autowired 
 	private BillDetailService billDetailService;
+	@Autowired
+	private ProductService productService;
 	
 	public int getNewID() {
 		return billService.getNewID() + 1;
@@ -121,8 +124,10 @@ public class CartController {
                billDetail.setQuantity(cartItem.getCount());
                billDetail.setTotal_price(cartItem.getCount()*cartItem.getProduct().getPrice());
                billDetailService.addBillDetail(billDetail);
+               productService.updateQuantityProduct(cartItem.getId_product(), cartItem.getCount());
             }
             cartItemsService.deleteAllCartItems(cart.getId_cart());
+            
         }
 		return "redirect:showCart";
 	}

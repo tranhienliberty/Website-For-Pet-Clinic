@@ -25,8 +25,8 @@ public class ProductTypeRepository {
             return productType;
         }
     }
-	public List<ProductType> showAllProductType(){
-		String sql = "select * from product_type";
-		return jdbcTemplate.query(sql, new productTypeRowMapper());
+	public List<ProductType> showAllProductType(int id_animal_type){
+		String sql = "select * from product_type where id_animal_type = ?";
+		return jdbcTemplate.query(sql, new productTypeRowMapper(), id_animal_type);
 	}
 }

@@ -48,9 +48,6 @@ public class AppointmentRepository {
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] params = new Object[] {name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo"};
 		int rs =jdbcTemplate.update(sql, params);
-		if(rs!= 1) {
-			throw new Exception(); 
-		}
 	}
 
 	public List<Appointment> showMyAllAppointment(String username) {

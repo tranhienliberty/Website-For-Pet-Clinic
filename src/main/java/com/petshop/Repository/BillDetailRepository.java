@@ -2,6 +2,7 @@ package com.petshop.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -37,5 +38,10 @@ public class BillDetailRepository {
 			if(rs!= 1) {
 				throw new Exception(); 
 			}
+	}
+
+	public List <BillDetail> showBillInfo(int id_bill) {
+		String sql = "SELECT * FROM bill_detail WHERE id_bill = ?";
+		return jdbcTemplate.query(sql, new billDetailRowmapper(), id_bill);
 	}
 }

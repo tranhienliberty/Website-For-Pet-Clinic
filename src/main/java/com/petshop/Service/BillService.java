@@ -21,7 +21,11 @@ public class BillService {
 		return billRepository.getNewID();
 	}
 
-	public List<Bill> ListBillDelivered(int id_cart, String delivered) {
-		return billRepository.ListBillDelivered(id_cart, delivered);
+	public List<Bill> ListBill(int id_cart, String delivered) {
+		return billRepository.ListBill(id_cart, delivered);
+	}
+
+	public List<Bill> showAllBill() {
+		return billRepository.showAllBill();
 	}
 }
