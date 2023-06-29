@@ -20,6 +20,7 @@
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//s.w.org">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" id="wc-blocks-vendors-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="wc-blocks-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="contact-form-7-css" href="<c:url value="/resources/plugins/contact-form-7/includes/css/styles.css"/>" type="text/css" media="all">
@@ -374,173 +375,133 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
           </div>
 
-          <!-- Right Elements -->
-          <div class="flex-col hide-for-medium flex-right">
-            <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                          </ul>
-          </div>
-
-          <!-- Mobile Right Elements -->
-          <div class="flex-col show-for-medium flex-right">
-            <ul class="mobile-nav nav nav-right ">
-              <li class="header-search header-search-dropdown has-icon has-dropdown menu-item-has-children">
-		<a href="#" aria-label="Tìm kiếm" class="is-small L-Affiliate-Tagged"><i class='bx bx-search-alt-2' ></i></a>
-		<ul class="nav-dropdown nav-dropdown-default">
-	 	<li class="header-search-form search-form html relative has-icon">
-	<div class="header-search-form-wrapper">
-		<div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form role="search" method="get" class="searchform" action="#">
-	<div class="flex-row relative">
-						<div class="flex-col flex-grow">
-			<label class="screen-reader-text" for="woocommerce-product-search-field-1">Tìm kiếm:</label>
-			<input type="search" id="woocommerce-product-search-field-1" class="search-field mb-0" placeholder="Bạn muốn tìm gì?" value="" name="s" autocomplete="off">
-			<input type="hidden" name="post_type" value="product">
-					</div>
-		<div class="flex-col">
-			<button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
-				<i class='bx bx-search-alt-2' ></i>			</button>
-		</div>
-	</div>
-	<div class="live-search-results text-left z-top"><div class="autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div></div>
-</form>
-</div>	</div>
-</li>	</ul>
-</li>
-            </ul>
-          </div>
-
       </div>
      
             <div class="container"><div class="top-divider full-width"></div></div>
       </div>
-<div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>		</div>
-	<!-- Logo, Title and Description Codes Start -->
-      <div class="header_img flex_column_center">
-        <img src="<c:url value ="/resources/images/logo-removebg-preview.png"/>" alt="Logo" />
-      </div>
-      <div class="header_text flex_column_center">
-        <h1>${username} ahihi</h1>
-        <h2>Đây là trang cá nhân và thông tin của tôi</h2>
-      </div>
-    <!-- Logo, Title and Description Codes End -->  
-
-    <!-- Menu Codes Start -->
-      <nav>
-        <ul class="header_nav_menu_list flex_no_wrap_row_center">
-          <li data-target="#main_section_container_1" id="header_nav_menu_item_1" class="header_nav_menu_item" href="">Menu 1</li>
-          <li data-target="#main_section_container_2" id="header_nav_menu_item_2" class="header_nav_menu_item" href="">Menu 2</li>
-          <li data-target="#main_section_container_3" id="header_nav_menu_item_3" class="header_nav_menu_item" href="">Menu 3</li>
-        </ul>
-      </nav>
-    <!-- Menu Codes End -->
 	</header>
 	
-	<main>
-      <!-- Menu Container 1 Codes Start -->
-      <section id="main_section_container_1" class="flex_column_center">
-        <!-- Menu Text Item -->
-        <div class="main_text_item">
-          <p>Menu 1 text Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi molestiae nesciunt, exercitationem quaerat maxime non!</p>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 1 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 1 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 1 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 1 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 1 Item</button>
-        </a>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 1 Item</button>
-        </a>
-      </section>
-      <!-- Menu Container 1 Codes End -->
+<div class="container">
+    <div class="main-body">
+    <p class="text-success">${message}</p>
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>${cookie.userUsername.value}</h4>
+                      <p class="text-secondary mb-1">Thông tin khách hàng</p>
+                      <p class="text-muted font-size-sm">${customer.name_customer}</p>
+                      <button class="btn btn-primary" style = "background-color: #FF6699;  border-color: #FF6699;">Đổi ảnh</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Họ và tên</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      ${customer.name_customer}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Ngày sinh</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <fmt:formatDate type = "date" 
+         					dateStyle = "long" value = "${customer.date_of_birth}" />
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Số điện thoại</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      ${customer.phone}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      ${customer.email}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Địa chỉ</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      ${customer.address}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                       <button id="edit-button" class="btn btn-primary" style = "background-color: #FF6699;  border-color: #FF6699;">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-      <!-- Menu Container 2 Codes Start -->
-      <section id="main_section_container_2" class="flex_column_center">
-        <!-- Menu Text Item -->
-        <div class="main_text_item">
-          <p>Menu 2 text Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi molestiae nesciunt, exercitationem quaerat maxime non!</p>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 2 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 2 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 2 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 2 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 2 Item</button>
-        </a>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 2 Item</button>
-        </a>
-      </section>
-      <!-- Menu Container 2 Codes End -->
+            </div>
+			<!-- Modal -->
+			<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="edit-modal-label">Chỉnh sửa thông tin</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form action="<%=request.getContextPath()%>/EditCustomer?username=${username}" method = "post">
+			          <div class="form-group">
+			            <label for="full-name">Họ và tên</label>
+			            <input type="text" id="full-name" name = "name_customer" class="form-control" value="${customer.name_customer}">
+			          </div>
+			          <div class="form-group">
+			            <label for="birthdate">Ngày sinh</label>
+			            <input type="date" id="birthdate" name = "date_of_birth" class="form-control" value="${customer.date_of_birth}">
+			          </div>
+			          <div class="form-group">
+			            <label for="phone">Số điện thoại</label>
+			            <input type="text" id="phone" name = "phone" class="form-control" value="${customer.phone}">
+			          </div>
+			          <div class="form-group">
+			            <label for="email">Email</label>
+			            <input type="email" id="email" name = "email" class="form-control" value="${customer.email}">
+			          </div>
+			          <div class="form-group">
+			            <label for="address">Địa chỉ</label>
+			            <textarea id="address" name = "address" class="form-control">${customer.address}</textarea>
+			          </div>
+			          <button type="submit" class="btn btn-primary">Lưu</button>
+			          <button id="cancel-button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+    </div>           
+    </div>
 
-      <!-- Menu Container 3 Codes Start -->
-      <section id="main_section_container_3" class="flex_column_center">
-        <!-- Menu Text Item -->
-        <div class="main_text_item">
-          <p>Menu 3 text Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi molestiae nesciunt, exercitationem quaerat maxime non!</p>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 3 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 3 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Small Item -->
-        <div class="main_small_button_list">
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 3 Small Item</button>
-          </a>
-          <a class="main_small_a_item" href="#link" target="_blank" rel="nofollow">
-            <button class="main_small_button_item">Menu 3 Small Item</button>
-          </a>
-        </div>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 3 Item</button>
-        </a>
-        <!-- Menu Item -->
-        <a class="main_a_item" href="#link" target="_blank" rel="nofollow">
-          <button class="main_button_item">Menu 3 Item</button>
-        </a>
-      </section>
-      <!-- Menu Container 3 Codes End -->
-    </main>
-	
+  </div>
 	
 	<footer id="footer" class="footer-wrapper">
 
@@ -604,15 +565,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		</div>
 			</div>
-
-	
-
-
 </div>
-
 		</div>
-
-		
 <style>
 #section_2073401488 {
   padding-top: 30px;
@@ -625,7 +579,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 </div>
-
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+	<script>
+    $(document).ready(function() {
+      $("#edit-button").click(function() {
+        $("#edit-modal").modal("show");
+      });
+    });
+  </script>
 	<script src="<c:url value="/resources//js/profile.js"/>"></script>
   	<script type="text/javascript">
 		(function () {

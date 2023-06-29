@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Appointment {
 	private int id_appointment;
 	protected String name;
-	protected int phone;
+	protected String phone;
 	protected Timestamp appointment_date;
 	protected String email;
 	protected String note;
@@ -27,10 +27,10 @@ public class Appointment {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public Timestamp getAppointment_date() {

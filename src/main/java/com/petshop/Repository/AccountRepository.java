@@ -34,5 +34,18 @@ public class AccountRepository {
 		System.out.println("");
 		return role;
 	}
-	
+	public int checkExistUsername(String username) {
+		String sql = "SELECT COUNT(*) FROM account where username = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, username);
+	}
+	public void register(String username, String email, String encodePass) {
+		String sql1 = "INSERT INTO account(username, email, password)\r\n"
+				+ "VALUES (?, ?, ?);";
+		Object[] params1 = new Object[] {username, email, encodePass};
+		jdbcTemplate.update(sql1, params1);
+		String sql2 = "INSERT INTO customer (username, email)\r\n"
+				+ "VALUES (?, ?);";
+		Object[] params2 = new Object[] {username, email};
+		jdbcTemplate.update(sql2, params2);
+	}
 }

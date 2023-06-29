@@ -80,19 +80,19 @@ body {
 				<h3>Đăng ký</h3>
 				<form action="#" method="post">
 						<div class="form-sub-w3ls">
-							<input placeholder="User Name"  type="text" required="" autofocus>
+							<input placeholder="User Name" name = "username" type="text" required="" autofocus>
 <!-- 							<div class="icon-agile"> -->
 <!-- 								<i class="fa fa-user" aria-hidden="true"></i> -->
 <!-- 							</div> -->
 						</div>
 						<div class="form-sub-w3ls">
-							<input placeholder="Email" class="mail" type="email" required="">
+							<input placeholder="Email" class="mail" name = "email" type="email" required="">
 <!-- 							<div class="icon-agile"> -->
 <!-- 								<i class="fa fa-envelope-o" aria-hidden="true"></i> -->
 <!-- 							</div> -->
 						</div>
 						<div class="form-sub-w3ls">
-							<input placeholder="Password"  type="password" required="">
+							<input placeholder="Password" name = "password" type="password" required="">
 <!-- 							<div class="icon-agile"> -->
 <!-- 								<i class="fa fa-unlock-alt" aria-hidden="true"></i> -->
 <!-- 							</div> -->

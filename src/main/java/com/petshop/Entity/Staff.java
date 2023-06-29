@@ -7,7 +7,7 @@ public class Staff {
 	protected String name_staff;
 	protected long identity_card;
 	protected Date date_of_birth;
-	protected int phone;
+	protected String phone;
 	protected String email;
 	protected String address;
 	protected String certificate;
@@ -43,10 +43,10 @@ public class Staff {
 	public void setDate_of_birth(Date date_of_birth) {
 		this.date_of_birth = date_of_birth;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getEmail() {

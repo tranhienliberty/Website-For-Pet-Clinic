@@ -23,7 +23,7 @@ public class CustomerRepository {
         	customer.setId_customer(rs.getInt("id_customer"));
         	customer.setName_customer(rs.getString("name_customer"));
         	customer.setDate_of_birth(rs.getDate("date_of_birth"));
-        	customer.setPhone(rs.getInt("phone"));
+        	customer.setPhone(rs.getString("phone"));
         	customer.setEmail(rs.getString("email"));
         	customer.setAddress(rs.getString("address"));
         	customer.setUsername(rs.getString("username"));
@@ -34,4 +34,28 @@ public class CustomerRepository {
 		String sql = "select * from customer";
 		return jdbcTemplate.query(sql, new customerRowMapper());
 	}
+	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
+			String sql = "INSERT INTO customer(name_customer, date_of_birth, phone, email, address)"
+			+ " VALUES(?, ?, ?, ?, ?)";
+			Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address};
+			int rs =jdbcTemplate.update(sql, params);
+	}
+	public void editCustomer(String username, String name_customer, String date_of_birth, String phone, String email,
+			String address) {
+		String sql = "UPDATE customer SET name_customer = ?, date_of_birth = ?, phone = ?, email = ?, address = ? "
+				+ "WHERE username = ?;";
+		Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address, username};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void deleteCustomer(int id_customer) {
+		String sql = "DELETE FROM customer WHERE id_customer = ?";
+		Object[] params = new Object[] {id_customer};
+		int rs =jdbcTemplate.update(sql, params);
+		
+	}
+	public Customer showCustomerInfo(String username) {
+		String sql = "SELECT * FROM customer WHERE username = ?";
+		return jdbcTemplate.queryForObject(sql, new customerRowMapper(), username);
+	}
+	
 }

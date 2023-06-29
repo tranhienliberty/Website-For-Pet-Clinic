@@ -12,7 +12,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
-    <title>Lightning Interface</title>
+    <title>Pettiny Admin</title>
 </head>
 
 <body class="bg-gray-200 custom-scrollbar">
@@ -40,28 +40,9 @@
 								<c:if test="${not empty cookie.adminIsLoggedIn}">
 									<c:set var="isLoggedIn" value="${cookie.adminIsLoggedIn.value}" />
 								</c:if>
-
 								<c:if test="${not empty cookie.adminUsername}">
 									<c:set var="username" value="${cookie.adminUsername.value}" />
 								</c:if>
-                       		<c:choose>
-								<c:when test="${isLoggedIn}">
-								<div class="flex flex-1 justify-end items-center">
-                  					<div class="relative">
-                        					<a href="#" style = "margin-right: 10px; font-size: 13.5px" 
-												class="nav-top-link nav-top-not-logged-in"> 
-												<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-4 far mr-3">
-												<span>	${username} </span></i>
-											</a>
-                    				</div>
-				                    <div class="relative">
-				                    	<a href="<%=request.getContextPath()%>/logout" class="nav-top-link nav-top-not-logged-in">
-				                    		<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-10 far mr-3">
-				                    			<span style="display: inline-block; vertical-align: middle;"> Đăng xuất </span></i> </a>
-				                    </div>
-				                </div>
-								</c:when>
-							</c:choose>
             </div>
         </div>
     </header>
@@ -149,6 +130,19 @@
                 <a>
                     <i class="w-6 fas fa-fingerprint"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Fingerprint</span>
+                </a>
+            </li>
+            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
+                <a href="<%=request.getContextPath()%>/logout">
+                    <i class="w-6 fas fa-fingerprint"></i>
+                    <c:choose>
+								<c:when test="${isLoggedIn}">
+								<div class="flex flex-1 justify-end items-center">
+				                    		<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-10 far mr-3">
+				                    			<span style="display: inline-block; vertical-align: middle;"> Đăng xuất </span></i> 
+				                </div>
+								</c:when>
+					</c:choose>
                 </a>
             </li>
         </ul>

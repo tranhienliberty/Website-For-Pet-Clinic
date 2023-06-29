@@ -6,13 +6,13 @@ public class Customer {
 	private int id_customer;
 	protected String name_customer;
 	protected Date date_of_birth;
-	protected int phone;
+	protected String phone;
 	protected String email;
 	protected String address;
 	protected String username;
 	protected int id_appointment;
 	protected boolean isDeleted;
-	public Customer(int id_customer, String name_customer, Date date_of_birth, int phone, String email, String address, String username,
+	public Customer(int id_customer, String name_customer, Date date_of_birth, String phone, String email, String address, String username,
 			int id_appointment, boolean isDeleted) {
 		super();
 		this.id_customer = id_customer;
@@ -46,10 +46,10 @@ public class Customer {
 	public void setDate_of_birth(Date date_of_birth) {
 		this.date_of_birth = date_of_birth;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getEmail() {

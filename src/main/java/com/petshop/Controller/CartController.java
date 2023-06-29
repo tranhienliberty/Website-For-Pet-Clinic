@@ -1,5 +1,6 @@
 package com.petshop.Controller;
 
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,10 +18,12 @@ import com.petshop.Entity.Bill;
 import com.petshop.Entity.BillDetail;
 import com.petshop.Entity.Cart;
 import com.petshop.Entity.CartItems;
+import com.petshop.Entity.Customer;
 import com.petshop.Service.BillDetailService;
 import com.petshop.Service.BillService;
 import com.petshop.Service.CartItemsService;
 import com.petshop.Service.CartService;
+import com.petshop.Service.CustomerService;
 import com.petshop.Service.ProductService;
 
 import jakarta.servlet.http.Cookie;
@@ -39,7 +42,8 @@ public class CartController {
 	private BillDetailService billDetailService;
 	@Autowired
 	private ProductService productService;
-	
+	@Autowired  
+	private CustomerService customerService;
 	public int getNewID() {
 		return billService.getNewID() + 1;
 	}
@@ -101,8 +105,15 @@ public class CartController {
         return "redirect:/showCart";
     }
 	@RequestMapping(value = "/checkOut")
-	public String checkOut(@RequestParam("username") String username, @RequestParam("total_amount") double total_amount, @RequestParam("payment_method") String payment_method, Model model) throws Exception {
+	public String checkOut(@RequestParam("username") String username, @RequestParam("total_amount") double total_amount, @RequestParam("payment_method") String payment_method, RedirectAttributes redirectAttributes,Model model) throws Exception {
         Cart cart = cartService.getCartByUsername(username);
+        Customer customer = customerService.showCustomerInfo(username);
+        if(customer.getAddress() == null) {
+        	String message = "Bạn hãy cập nhật lại thông tin trước khi tiến hành thanh toán. Phải có số điện thoại và địa chỉ chúng tôi mới gửi hàng cho bạn được!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+        	model.addAttribute("message", encodedMessage);
+        	return "redirect:showCustomerProfile?username=" + username + "&message=" + encodedMessage;
+        }
         int id = getNewID();
 		if (cart != null) {
             Bill bill = new Bill();

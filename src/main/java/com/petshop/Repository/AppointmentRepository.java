@@ -23,7 +23,7 @@ public class AppointmentRepository {
         	Appointment appointment = new Appointment();
         	appointment.setId_appointment(rs.getInt("id_appointment"));
         	appointment.setName(rs.getString("name"));
-        	appointment.setPhone(rs.getInt("phone"));
+        	appointment.setPhone(rs.getString("phone"));
         	appointment.setAppointment_date(rs.getTimestamp("appointment_date"));
         	appointment.setEmail(rs.getString("email"));
         	appointment.setNote(rs.getString("note"));

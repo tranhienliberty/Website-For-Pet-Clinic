@@ -34,4 +34,16 @@ public class AccountService {
 	public String getRole(String username) {
 		return accountRepository.getRole(username);
 	}
+
+	public boolean checkExistUsername(String username) {
+		int i = accountRepository.checkExistUsername(username);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
+
+	public void register(String username, String email, String encodePass) {
+		accountRepository.register(username, email, encodePass);
+	}
 }

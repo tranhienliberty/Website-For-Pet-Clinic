@@ -44,6 +44,6 @@ public class BillController {
 	public String showAllBill(Model model) {
 		List<Bill> bills = billService.showAllBill();
 		model.addAttribute("bills", bills);
-		return "admin/admin-bill";
+		return null;
 	}
 }

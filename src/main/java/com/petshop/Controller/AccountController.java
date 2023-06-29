@@ -1,6 +1,9 @@
 package com.petshop.Controller;
 
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -65,21 +68,6 @@ public class AccountController {
             return "customer/login";
         }
     }
-
-    private void addLoggedInCookie(HttpServletResponse response, String cookieName) {
-        Cookie isLoggedInCookie = new Cookie(cookieName, "true");
-        isLoggedInCookie.setMaxAge(30 * 24 * 60 * 60); // Số giây trong 30 ngày
-        isLoggedInCookie.setPath("/");
-        response.addCookie(isLoggedInCookie);
-    }
-
-    private void addUsernameCookie(HttpServletResponse response, String cookieName, String username) {
-        Cookie usernameCookie = new Cookie(cookieName, username);
-        usernameCookie.setMaxAge(30 * 24 * 60 * 60); // Số giây trong 30 ngày
-        usernameCookie.setPath("/");
-        response.addCookie(usernameCookie);
-    }
-
     
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
@@ -91,7 +79,42 @@ public class AccountController {
 
         return "redirect:/";
     }
-
+    
+    public static String hashPassword(String pass) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = digest.digest(pass.getBytes());
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            return stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+ 
+	private boolean checkExistUsername(String username) {
+		return accountService.checkExistUsername(username);
+	}
+    
+    @RequestMapping(value = "/register")
+    public String register(@RequestParam("username") String username, @RequestParam("email") String email,
+			@RequestParam("password") String password, Model model) {
+    	String encodePass = hashPassword(password);
+		if (checkExistUsername(username)) {
+			accountService.register(username, email, encodePass);
+			
+			return "redirect:login";
+		}
+		else {
+			model.addAttribute("failed", "failed");
+			return "customer/register";
+		}
+		
+	}
+    
     private void deleteCookie(HttpServletRequest request, HttpServletResponse response, String cookieName) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -106,4 +129,17 @@ public class AccountController {
         }
     }
 
+    private void addLoggedInCookie(HttpServletResponse response, String cookieName) {
+        Cookie isLoggedInCookie = new Cookie(cookieName, "true");
+        isLoggedInCookie.setMaxAge(30 * 24 * 60 * 60); // Số giây trong 30 ngày
+        isLoggedInCookie.setPath("/");
+        response.addCookie(isLoggedInCookie);
+    }
+
+    private void addUsernameCookie(HttpServletResponse response, String cookieName, String username) {
+        Cookie usernameCookie = new Cookie(cookieName, username);
+        usernameCookie.setMaxAge(30 * 24 * 60 * 60); // Số giây trong 30 ngày
+        usernameCookie.setPath("/");
+        response.addCookie(usernameCookie);
+    }
 }
