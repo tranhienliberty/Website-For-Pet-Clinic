@@ -9,10 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" href="assets/lightning.png"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/admin-product-form.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -104,15 +106,15 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllAccount">
+                <a>
                     <i class="w-6 fas fa-share-alt"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý tài khoản</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a>
                     <i class="w-6 far fa-user-circle"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">User</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
@@ -154,46 +156,62 @@
         </nav>
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
-
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-        						
-		<div class="table-wrapper">
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>Mã chuồng</th>
-						<th>Tên chuồng</th>
-						<th>Giới hạn</th>
-						<th>Người chăm sóc</th>
-						<th>Action</th>
-						<th>ahihi</th>
-						<th>éc</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${cage}" var="item">
-						<tr>
-							<td><c:out value="${item.idCage}" /></td>
-							<td><c:out value="${item.nameCage}" /> <a
-								class="bx bxs-message-edit bx-xs"
-								style="text-decoration: none; color: blue" href="<%=request.getContextPath()%>/getAnimalbyIDCage?idCage=${item.idCage}"> </a> &nbsp
-								&nbsp</td>
-							<td><c:out value="${item.limit}" /></td>
-							<td><c:out value="${item.staffs.staffName}" /></td>
-							<td><a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showCageInfo?idCage=${item.idCage}">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.idCage})"> </a></td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
-		</div>        </main>
+			<form action="<%=request.getContextPath()%>/adminEditProduct" method = "post">
+			          <h2>Thông tin sản phẩm</h2>
+			  <input type="hidden" id="id_product" name="id_product" value="${product.id_product}">
+			
+			  <label for="name_product">Tên sản phẩm:</label>
+			  <input type="text" id="name" name="name_product" value = "${product.name_product}" required>
+			
+			  <label for="benefit">Công dụng:</label>
+			  <textarea id="benefit" name="benefit" required> ${product.benefit}</textarea>
+			
+			  <label for="note">Ghi chú:</label>
+			  <textarea id="note" name="note" >${product.note}</textarea>
+			
+			  <label for="producer">Nhà sản xuất:</label>
+			  <input type="text" id="producer" name="producer" value = "${product.producer}" required>
+			
+			  <label for="price">Giá:</label>
+			  <input type="number" id="price" name="price" value = "${product.price}" required>
+			
+			  <label for="image">Hình ảnh:</label>
+			  <input type="file" id="image" value = "${product.image}" name="image">
+			 
+			  <label for="id_animal_type">Loại động vật:</label>
+			  <select id="id_animal_type" name="id_animal_type" required>
+			  	<option disabled selected>--Chọn loài vật--</option>
+			    <c:forEach items="${animal_type}" var="item">
+                    <option value="<c:out value="${item.id_animal_type}"/>">${item.name_animal_type}</option>
+                </c:forEach>
+			  </select>
+			
+			  <label for="id_product_type">Loại sản phẩm:</label>
+			  <select id="id_product_type" name="id_product_type" required>
+			  	<option disabled selected>--Chọn loại sản phẩm--</option>
+			    <c:forEach items="${product_type}" var="item">
+                    <option value="<c:out value="${item.id_product_type}"/>">${item.name_product_type}</option>
+                </c:forEach>
+			  </select>
+			
+			  <label for="quantity">Số lượng:</label>
+			  <input type="number" id="quantity" name="quantity" value="${product.quantity}" required>
+			
+			  <button type="submit">Lưu</button>
+			        </form>
+	</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	
+	<script>
+	  	function redirectToFilteredProducts() {
+	    var selectBox = document.getElementById("sample-selectlist-1");
+	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    
+	    var url = '<%=request.getContextPath()%>/adminShowProductByProducType?id_product_type=' + encodeURIComponent(selectedValue);
+	    window.location.href = url;
+	  	}
+	</script>
 </body>
 </html>

@@ -12,7 +12,7 @@ public class Staff {
 	protected String address;
 	protected String certificate;
 	protected String experience;
-	protected long bank_number;
+	protected String bank_number;
 	protected String bank_name;
 	protected int id_position;
 	protected Position position;
@@ -73,10 +73,10 @@ public class Staff {
 	public void setExperience(String experience) {
 		this.experience = experience;
 	}
-	public long getBank_number() {
+	public String getBank_number() {
 		return bank_number;
 	}
-	public void setBank_number(long bank_number) {
+	public void setBank_number(String bank_number) {
 		this.bank_number = bank_number;
 	}
 	public String getBank_name() {
@@ -102,6 +102,18 @@ public class Staff {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+	public Contract getContract() {
+		return contract;
+	}
+	public void setContract(Contract contract) {
+		this.contract = contract;
 	}
 	public Staff() {
 		super();

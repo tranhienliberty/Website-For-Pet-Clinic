@@ -135,19 +135,21 @@ public class ProductRepository {
 		int rs = jdbcTemplate.update(sql, params);
 	}
 	public List<Product> showAllProduct() {
-		String sql = "SELECT * FROM product";
-		return jdbcTemplate.query(sql, new productRowMapper());
+		String sql = "SELECT p.*, pt.name_product_type "
+	            + "FROM product p "
+	            + "JOIN product_type pt ON p.id_product_type = pt.id_product_type;";
+		return jdbcTemplate.query(sql, new productExtraRowMapper());
 	}
 	public void addProduct(String name_product, String benefit, String note, String producer, float price,
 			int quantity, String image, int id_animal_type, int id_product_type) {
-		String sql = "INSERT INTO appointment(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type)"
+		String sql = "INSERT INTO product(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type)"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] params = new Object[] {name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void editProduct(int id_product, String name_product, String benefit, String note, String producer,
 			float price, int quantity, String image, int id_animal_type, int id_product_type) {
-		String sql = "UPDATE product SET name_product = ?, benefit = ?, note = ?, producer = ?, price = ?, quantity = ?, image = ?, id_animal_type = ?, id_product_type = ?"
+		String sql = "UPDATE product SET name_product = ?, benefit = ?, note = ?, producer = ?, price = ?, quantity = ?, image = ?, id_animal_type = ?, id_product_type = ?\r\n"
 				+ "WHERE id_product = ?;";
 		Object[] params = new Object[] {name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type, id_product};
 		int rs =jdbcTemplate.update(sql, params);
@@ -156,6 +158,19 @@ public class ProductRepository {
 		String sql = "DELETE FROM product WHERE id_product = ?";
 		Object[] params = new Object[] {id_product};
 		int rs =jdbcTemplate.update(sql, params);
+	}
+	public List<Product> showProductByProductType(int id_product_type) {
+		String sql = "SELECT p.*, pt.name_product_type\r\n"
+	    		+ "FROM product p\r\n"
+	    		+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
+	    		+ "WHERE p.id_product_type = ?;\r\n"
+	    		+ "";
+	    
+	    return jdbcTemplate.query(sql, new productExtraRowMapper(), id_product_type);
+	}
+	public int checkExistProduct(int id_product) {
+		String sql = "SELECT COUNT(*) FROM product where id_product = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, id_product);
 	}
 
 }

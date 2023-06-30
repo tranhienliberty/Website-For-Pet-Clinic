@@ -57,5 +57,15 @@ public class ProductService {
 	public void deleteProduct(int id_product) {
 		productRepository.deleteProduct(id_product);
 	}
+	public List<Product> showProductByProductType(int id_product_type) {
+		return productRepository.showProductByProductType(id_product_type);
+	}
+	public boolean checkExistProduct(int id_product) {
+		int i = productRepository.checkExistProduct(id_product);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
 
 }

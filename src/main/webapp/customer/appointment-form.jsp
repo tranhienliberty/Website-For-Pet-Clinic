@@ -548,7 +548,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <c:forEach items="${animal_type}" var="item">
                                         <option value="<c:out value="${item.id_animal_type}"/>">${item.name_animal_type}</option>
                                         </c:forEach>
-                                        <option value="Khác">Khác</option>
                                     </select>
                                 </div>
                             </div>

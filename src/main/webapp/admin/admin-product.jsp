@@ -9,11 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" href="assets/lightning.png"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
-    <title>Lightning Interface</title>
+    <title>Pettiny Admin</title>
 </head>
 
 <body class="bg-gray-200 custom-scrollbar">
@@ -41,28 +42,9 @@
 								<c:if test="${not empty cookie.adminIsLoggedIn}">
 									<c:set var="isLoggedIn" value="${cookie.adminIsLoggedIn.value}" />
 								</c:if>
-
 								<c:if test="${not empty cookie.adminUsername}">
 									<c:set var="username" value="${cookie.adminUsername.value}" />
 								</c:if>
-                       		<c:choose>
-								<c:when test="${isLoggedIn}">
-								<div class="flex flex-1 justify-end items-center">
-                  					<div class="relative">
-                        					<a href="#" style = "margin-right: 10px; font-size: 13.5px" 
-												class="nav-top-link nav-top-not-logged-in"> 
-												<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-4 far mr-3">
-												<span>	${username} </span></i>
-											</a>
-                    				</div>
-				                    <div class="relative">
-				                    	<a href="<%=request.getContextPath()%>/logout" class="nav-top-link nav-top-not-logged-in">
-				                    		<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-10 far mr-3">
-				                    			<span style="display: inline-block; vertical-align: middle;"> Đăng xuất </span></i> </a>
-				                    </div>
-				                </div>
-								</c:when>
-							</c:choose>
             </div>
         </div>
     </header>
@@ -87,13 +69,13 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
+                <a href = "<%=request.getContextPath()%>/adminShowAllCustomer">
                     <i class="w-6 fas fa-plus"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin khách hàng</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
+                <a href = "<%=request.getContextPath()%>/adminShowAllStaff">
                     <i class="w-6 far fa-bell"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin bác sĩ/nhân viên</span>
                 </a>
@@ -105,7 +87,7 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/showAllAnimalType">
+                <a href = "<%=request.getContextPath()%>/adminShowAllProduct">
                     <i class="w-6 fas fa-star"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý sản phẩm</span>
                 </a>
@@ -123,15 +105,15 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
+                <a href = "<%=request.getContextPath()%>/adminShowAllAccount">
                     <i class="w-6 fas fa-share-alt"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý tài khoản</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a>
                     <i class="w-6 far fa-user-circle"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">User</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
@@ -152,6 +134,19 @@
                     <span class="ml-1 font-semibold text-sm tracking-wide">Fingerprint</span>
                 </a>
             </li>
+            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
+                <a href="<%=request.getContextPath()%>/logout">
+                    <i class="w-6 fas fa-fingerprint"></i>
+                    <c:choose>
+								<c:when test="${isLoggedIn}">
+								<div class="flex flex-1 justify-end items-center">
+				                    		<i class="cursor-pointer header-icon-text header-icon-bg rounded py-3 px-10 far mr-3">
+				                    			<span style="display: inline-block; vertical-align: middle;"> Đăng xuất </span></i> 
+				                </div>
+								</c:when>
+					</c:choose>
+                </a>
+            </li>
         </ul>
     </nav>
     <!-- /SIDEBAR -->
@@ -163,260 +158,88 @@
 
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-		  <!--for demo wrap-->
-		  <h1>Fixed Table header</h1>
-		  <div class="tbl-header">
-		    <table cellpadding="0" cellspacing="0" border="0">
-		      <thead>
-		        <tr>
-		          <th>Code</th>
-		          <th>Company</th>
-		          <th>Price</th>
-		          <th>Change</th>
-		          <th>Change %</th>
-		        </tr>
-		      </thead>
-		    </table>
-		  </div>
-		  <div class="tbl-content">
-		    <table cellpadding="0" cellspacing="0" border="0">
-		      <tbody>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAC</td>
-		          <td>AUSTRALIAN COMPANY </td>
-		          <td>$1.38</td>
-		          <td>+2.01</td>
-		          <td>-0.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAD</td>
-		          <td>AUSENCO</td>
-		          <td>$2.38</td>
-		          <td>-0.01</td>
-		          <td>-1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>AAX</td>
-		          <td>ADELAIDE</td>
-		          <td>$3.22</td>
-		          <td>+0.01</td>
-		          <td>+1.36%</td>
-		        </tr>
-		        <tr>
-		          <td>XXD</td>
-		          <td>ADITYA BIRLA</td>
-		          <td>$1.02</td>
-		          <td>-1.01</td>
-		          <td>+2.36%</td>
-		        </tr>
-		      </tbody>
-		    </table>
-		  </div>
-        </main>
+		<div class="table-wrapper">
+			<a href = "<%=request.getContextPath()%>/showFormProductInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm sản phẩm</button></a>	
+			&nbsp Tìm theo: &nbsp 
+            <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "product_type" required>
+            <option disabled selected>--Chọn loại sản phẩm--</option>
+                	<c:forEach items="${product_type}" var="item">
+                         <option value="<c:out value="${item.id_product_type}"/>">${item.name_product_type}</option>
+                    </c:forEach>
+            </select>
+            <a href="#" onclick="redirectToFilteredProducts();" style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px; text-decoration: none;">Lọc</a>
+			<table class="fl-table" style="overflow-y: auto;">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tên sản phẩm</th>
+						<th>Công dụng</th>
+						<th>Công ty sản xuất</th>
+						<th>Giá sản phẩm</th>
+						<th>Số lượng</th>
+						<th>Loại sản phẩm</th>
+						<th>Thao tác</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${products}" var="item">
+						<tr>
+							<td><c:out value="${item.id_product}" /></td>
+							<td><c:out value="${item.name_product}" /> </td>
+							<td><c:out value="${item.benefit}" /></td>
+							<td><c:out value="${item.producer}" /></td>
+							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
+							<td><c:out value="${item.quantity}" /></td>
+							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
+							<td>
+							<a class="bx bxs-edit bx-xs"
+								style="text-decoration: none; color: green"
+								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
+							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
+								style="text-decoration: none; color: red" href="#"
+								onclick="confirmDelete(${item.id_product})"> </a></td>
+						</tr>
+					</c:forEach>
+					<c:forEach items="${listByProductType}" var="item">
+						<tr>
+							<td><c:out value="${item.id_product}" /></td>
+							<td><c:out value="${item.name_product}" /> </td>
+							<td><c:out value="${item.benefit}" /></td>
+							<td><c:out value="${item.producer}" /></td>
+							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
+							<td><c:out value="${item.quantity}" /></td>
+							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
+							<td>
+							<a class="bx bxs-edit bx-xs"
+								style="text-decoration: none; color: green"
+								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
+							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
+								style="text-decoration: none; color: red" href="#"
+								onclick="confirmDelete(${item.id_product})"> </a></td>
+						</tr>
+					</c:forEach>
+				<tbody>
+			</table>
+		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	<script type="text/javascript">
-	// '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
-	$(window).on("load resize ", function() {
-	  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-	  $('.tbl-header').css({'padding-right':scrollWidth});
-	}).resize();
+	<script>
+	  	function redirectToFilteredProducts() {
+	    var selectBox = document.getElementById("sample-selectlist-1");
+	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    
+	    var url = '<%=request.getContextPath()%>/adminShowProductByProducType?id_product_type=' + encodeURIComponent(selectedValue);
+	    window.location.href = url;
+	  	}
 	</script>
+	<script>
+	function confirmDelete(id_product) {
+	  if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
+	    window.location.href = 'adminDeleteProduct?id_product=' + id_product;
+	  } else {
+	  }
+	}
+	</script>	
 </body>
 </html>

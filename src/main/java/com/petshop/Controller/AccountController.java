@@ -3,6 +3,7 @@ package com.petshop.Controller;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.petshop.Entity.Account;
+import com.petshop.Entity.Customer;
 import com.petshop.Service.AccountService;
 
 import jakarta.servlet.http.Cookie;
@@ -43,6 +46,7 @@ public class AccountController {
     @PostMapping("/login")
     public String login(@RequestParam("Username") String username, @RequestParam("Password") String password,
                         Model model, HttpServletResponse response, @RequestParam(value = "previousUrl", defaultValue = "/") String previousUrl) {
+    	//String encodePass = hashPassword(password);
         try {
             boolean isAuthenticated = accountService.authenticate(username, password);
             String role = accountService.getRole(username);
@@ -110,7 +114,7 @@ public class AccountController {
 		}
 		else {
 			model.addAttribute("failed", "failed");
-			return "customer/register";
+			return "customer/login";
 		}
 		
 	}
@@ -142,4 +146,11 @@ public class AccountController {
         usernameCookie.setPath("/");
         response.addCookie(usernameCookie);
     }
+    
+    @RequestMapping(value = "/adminShowAllAccount")
+	public String showAllAccount(Model model) {
+		List<Account> accounts = accountService.getAllAccount();
+		model.addAttribute("accounts", accounts);
+		return "admin/admin-account";
+	}
 }

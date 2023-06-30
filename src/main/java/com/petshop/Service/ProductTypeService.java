@@ -13,7 +13,7 @@ public class ProductTypeService {
 	@Autowired
 	private ProductTypeRepository productTypeRepository;
 
-	public List<ProductType> showAllProductType(int id_animal_type) {
-		return productTypeRepository.showAllProductType(id_animal_type);
+	public List<ProductType> showAllProductType() {
+		return productTypeRepository.showAllProductType();
 	}
 }

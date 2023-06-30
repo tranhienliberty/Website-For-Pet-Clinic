@@ -34,10 +34,10 @@ public class CustomerRepository {
 		String sql = "select * from customer";
 		return jdbcTemplate.query(sql, new customerRowMapper());
 	}
-	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
-			String sql = "INSERT INTO customer(name_customer, date_of_birth, phone, email, address)"
-			+ " VALUES(?, ?, ?, ?, ?)";
-			Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address};
+	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address, String username) {
+			String sql = "INSERT INTO customer(name_customer, date_of_birth, phone, email, address, username)"
+			+ " VALUES(?, ?, ?, ?, ?, ?)";
+			Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address, username};
 			int rs =jdbcTemplate.update(sql, params);
 	}
 	public void editCustomer(String username, String name_customer, String date_of_birth, String phone, String email,
@@ -56,6 +56,37 @@ public class CustomerRepository {
 	public Customer showCustomerInfo(String username) {
 		String sql = "SELECT * FROM customer WHERE username = ?";
 		return jdbcTemplate.queryForObject(sql, new customerRowMapper(), username);
+	}
+	public Customer getCustomerByID(int id_customer) {
+		String sql = "SELECT * FROM customer WHERE id_customer = ?";
+		return jdbcTemplate.queryForObject(sql, new customerRowMapper(), id_customer);
+	}
+	public int checkExistCustomer(int id_customer) {
+		String sql = "SELECT COUNT(*) FROM customer where id_customer = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, id_customer);
+	}
+	public void adminEditCustomer(int customerID, String name_customer, String date_of_birth, String phone,
+			String email, String address, String username) {
+		String sql = "UPDATE customer SET name_customer = ?, date_of_birth = ?, phone = ?, email = ?, address = ?,  username = ? "
+				+ "WHERE id_customer = ?;";
+		Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address, username, customerID};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void adminEditCustomer(int customerID, String name_customer, String date_of_birth, String phone,
+			String email, String address) {
+		String sql = "UPDATE customer SET name_customer = ?, date_of_birth = ?, phone = ?, email = ?, address = ?  "
+				+ "WHERE id_customer = ?;";
+		Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address, customerID};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
+		String sql = "INSERT INTO customer(name_customer, date_of_birth, phone, email, address)"
+				+ " VALUES(?, ?, ?, ?, ?)";
+				Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address};
+	}
+	public int checkExistCustomerAccount(String username) {
+		String sql = "SELECT COUNT(*) FROM customer where username = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, username);
 	}
 	
 }

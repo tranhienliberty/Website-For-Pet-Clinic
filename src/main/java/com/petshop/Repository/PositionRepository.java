@@ -26,7 +26,7 @@ public class PositionRepository {
         }
     }
 	public List<Position> showAllPosition(){
-		String sql = "select * from animal_type";
+		String sql = "select * from position WHERE is_deleted = 0";
 		return jdbcTemplate.query(sql, new positionTypeRowMapper());
 	}
 }

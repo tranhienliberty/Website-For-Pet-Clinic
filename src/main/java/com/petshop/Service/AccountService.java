@@ -1,5 +1,7 @@
 package com.petshop.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -45,5 +47,13 @@ public class AccountService {
 
 	public void register(String username, String email, String encodePass) {
 		accountRepository.register(username, email, encodePass);
+	}
+
+	public List<Account> getAllAccount() {
+		return accountRepository.getAllAccount();
+	}
+
+	public List<Account> getAccountFree() {
+		return accountRepository.getAccountFree();
 	}
 }

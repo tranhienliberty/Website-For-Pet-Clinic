@@ -112,43 +112,60 @@ public class ProductController implements ApplicationContextAware {
     @RequestMapping(value = "/adminShowAllProduct")
     public String showAllProduct(Model model) {
     	List<Product> products = productService.showAllProduct();
+    	List<ProductType> pt = productTypeService.showAllProductType();
+    	model.addAttribute("productTypes", pt);
     	model.addAttribute("products", products);
     	return "admin/admin-product";
     }
     
-    @RequestMapping(value = "/adminShowAllAnimalType")
-    public String showAllTypeAnimal(Model model) {
-    	List<AnimalType> at = animalTypeService.showAllAnimalType();
-    	model.addAttribute("animalTypes", at);
-    	return "admin/admin-product";
-    }
-    
-    @RequestMapping(value = "/adminShowAllProductType")
-    public String showAllTypeProduct(Model model, @RequestParam("ia_animal_type") int id_animal_type) {
-    	List<ProductType> pt = productTypeService.showAllProductType(id_animal_type);
+    @RequestMapping(value = "/adminShowProductByProducType")
+    public String showProductByProductType(@RequestParam("id_product_type") int id_product_type, Model model) {
+		List<Product> products = productService.showProductByProductType(id_product_type);
+		List<ProductType> pt = productTypeService.showAllProductType();
     	model.addAttribute("productTypes", pt);
-    	return "admin/admin-product";
+		model.addAttribute("listByProductType", products);
+		return "admin/admin-product";
+	}
+    
+    @RequestMapping(value = "/showFormProductInfo")
+    public String showFormProductInfo(@RequestParam(value = "id_product", required = false) Integer id_product, Model model) {
+    	if (id_product != null) {
+    		int productID = id_product.intValue();
+    		Product product = productService.getProductByID(productID);
+    		List<ProductType> pt = productTypeService.showAllProductType();
+    		List<AnimalType> at = animalTypeService.showAllAnimalType();
+    		model.addAttribute("animal_type", at);
+        	model.addAttribute("product_type", pt);
+    		model.addAttribute("product", product);
+    		return "admin/admin-product-edit";
+    		}
+    	List<ProductType> pt = productTypeService.showAllProductType();
+		List<AnimalType> at = animalTypeService.showAllAnimalType();
+		model.addAttribute("animal_type", at);
+    	model.addAttribute("product_type", pt);
+    	return "admin/admin-product-edit";
     }
     
-    @RequestMapping(value ="/adminAddProduct")
-    public String addProduct(Model model, @RequestParam("name") String name_product, @RequestParam("benefit") String benefit, 
+	private boolean checkExistProduct(int id_product) {
+		return productService.checkExistProduct(id_product);
+	}
+    @RequestMapping(value = "adminEditProduct")
+    public String editProduct(@RequestParam(value = "id_product", required = false) Integer id_product, @RequestParam("name_product") String name_product, @RequestParam("benefit") String benefit, 
     		@RequestParam("note") String note, @RequestParam("producer") String producer, @RequestParam("price") float price, 
     		@RequestParam("quantity") int quantity,@RequestParam("image") String image, @RequestParam("id_animal_type") int id_animal_type, 
     		@RequestParam("id_product_type") int id_product_type) {
-    	productService.addProduct(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
-    	return "redirect:adminShowAllProduct";
-    }
-    
-    @RequestMapping(value = "/adminEditProduct")
-    public String editProduct(@RequestParam("id") int id_product, @RequestParam("name") String name_product, @RequestParam("benefit") String benefit, 
-    		@RequestParam("note") String note, @RequestParam("producer") String producer, @RequestParam("price") float price, 
-    		@RequestParam("quantity") int quantity,@RequestParam("image") String image, @RequestParam("id_animal_type") int id_animal_type, 
-    		@RequestParam("id_product_type") int id_product_type) {
-    	productService.editProduct(id_product, name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
-    	return "redirect:adminShowAllProduct";
+    	if(id_product!=null&&!checkExistProduct(id_product)) {
+    		int productID = id_product.intValue();
+    		productService.editProduct(productID, name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+        	return "redirect:adminShowAllProduct";
+    	}
+    	else {
+        	productService.addProduct(name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
+        	return "redirect:adminShowAllProduct";
+    	}
     }
     @RequestMapping(value = "/adminDeleteProduct")
-    public String deleteProduct(@RequestParam("id") int id_product) {
+    public String deleteProduct(@RequestParam("id_product") int id_product) {
     	productService.deleteProduct(id_product);
     	return "redirect:adminShowAllProduct";
     }

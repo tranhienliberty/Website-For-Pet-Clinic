@@ -17,8 +17,8 @@ public class CustomerService {
 		return customerRepository.showAllCustomer();
 	}
 	
-	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
-		customerRepository.addCustomer(name_customer, date_of_birth, phone, email, address);
+	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address, String username) {
+		customerRepository.addCustomer(name_customer, date_of_birth, phone, email, address, username);
 	}
 
 	public void editCustomer(String username, String name_customer, String date_of_birth, String phone, String email,
@@ -34,6 +34,37 @@ public class CustomerService {
 		return customerRepository.showCustomerInfo(username);
 	}
 
-	
-	
+	public Customer getCustomerByID(int id_customer) {
+		return customerRepository.getCustomerByID(id_customer);
+	}
+
+	public boolean checkExistCustomer(int id_customer) {
+		int i = customerRepository.checkExistCustomer(id_customer);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
+
+	public void adminEditCustomer(int customerID, String name_customer, String date_of_birth, String phone,
+			String email, String address, String username) {
+		customerRepository.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address, username);
+	}
+
+	public void adminEditCustomer(int customerID, String name_customer, String date_of_birth, String phone,
+			String email, String address) {
+		customerRepository.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address);
+	}
+
+	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
+		customerRepository.addCustomer(name_customer, date_of_birth, phone, email, address);
+	}
+
+	public boolean checkExistCustomerAccount(String username) {
+		int i = customerRepository.checkExistCustomerAccount(username);
+		if(i != 0) {
+			return false;
+		}
+		else return true;
+	}
 }

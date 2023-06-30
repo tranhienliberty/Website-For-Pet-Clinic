@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/png" href="assets/lightning.png"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
@@ -157,36 +158,46 @@
 
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-        						
 		<div class="table-wrapper">
+			<a href = "<%=request.getContextPath()%>/showFormStaffInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm nhân viên</button></a>	
 			<table class="fl-table" style="overflow-y: auto;">
 				<thead>
 					<tr>
-						<th>Mã chuồng</th>
-						<th>Tên chuồng</th>
-						<th>Giới hạn</th>
-						<th>Người chăm sóc</th>
-						<th>Action</th>
-						<th>ahihi</th>
-						<th>éc</th>
+						<th>Tên nhân viên</th>
+						<th>CMND</th>
+						<th>Ngày sinh</th>
+						<th>Số điện thoại</th>
+						<th>Email</th>
+						<th>Địa chỉ</th>
+						<th>Bằng cấp</th>
+						<th>Kinh nghiệm làm việc</th>
+						<th>Vị trí làm việc</th>
+						<th>Hợp đồng<th>
+						<th>Tên tài khoản</th>
+						<th>Thao tác</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${cage}" var="item">
+					<c:forEach items="${staffs}" var="item">
 						<tr>
-							<td><c:out value="${item.idCage}" /></td>
-							<td><c:out value="${item.nameCage}" /> <a
-								class="bx bxs-message-edit bx-xs"
-								style="text-decoration: none; color: blue" href="<%=request.getContextPath()%>/getAnimalbyIDCage?idCage=${item.idCage}"> </a> &nbsp
-								&nbsp</td>
-							<td><c:out value="${item.limit}" /></td>
-							<td><c:out value="${item.staffs.staffName}" /></td>
-							<td><a class="bx bxs-edit bx-xs"
+							<td><c:out value="${item.name_staff}" /> </td>
+							<td><c:out value="${item.identity_card}" /></td>
+							<td><c:out value="${item.date_of_birth}" /></td>
+							<td><c:out value="${item.phone}" /></td>
+							<td><c:out value="${item.email}" /></td>
+							<td><c:out value="${item.address}" /></td>
+							<td><c:out value="${item.certificate}" /></td>
+							<td><c:out value="${item.experience}" /></td>
+							<td><c:out value="${item.getPosition().getName_position()}" /></td>
+							<td><a>Xem hợp đồng</a></td>
+							<td><c:out value="${item.username}" /></td>
+							<td>
+							<a class="bx bxs-edit bx-xs"
 								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showCageInfo?idCage=${item.idCage}">
+								href="<%=request.getContextPath()%>/showFormStaffInfo?id_staff=${item.id_staff}">
 							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
 								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.idCage})"> </a></td>
+								onclick="confirmDelete(${item.id_staff})"> </a></td>
 						</tr>
 					</c:forEach>
 				<tbody>
@@ -194,6 +205,14 @@
 		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	
+	<script>
+	function confirmDelete(id_staff) {
+	  if (confirm('Bạn có chắc chắn muốn xóa nhân viên này?')) {
+	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
+	    window.location.href = 'adminDeleteStaff?id_staff=' + id_staff;
+	  } else {
+	  }
+	}
+	</script>	
 </body>
 </html>
