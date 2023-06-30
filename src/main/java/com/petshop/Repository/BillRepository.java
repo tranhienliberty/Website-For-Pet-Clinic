@@ -10,7 +10,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.petshop.Entity.Bill;
+import com.petshop.Entity.Cart;
 import com.petshop.Entity.CartItems;
+import com.petshop.Entity.Customer;
 import com.petshop.Entity.Product;
 
 @Repository
@@ -27,6 +29,29 @@ public class BillRepository {
 			bill.setTime(rs.getTimestamp("time"));
 			bill.setPayment_method(rs.getString("payment_method"));
 			bill.setDelivered(rs.getString("delivered"));
+			return bill;
+		}
+	}
+	private class billExtraRowmapper implements RowMapper<Bill>{
+		public Bill mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Bill bill = new Bill();
+			bill.setId_bill(rs.getInt("id_bill"));
+			bill.setTotal_amount(rs.getDouble("total_amount"));
+			bill.setPayment_status(rs.getString("payment_status"));
+			bill.setId_cart(rs.getInt("id_cart"));
+			bill.setTime(rs.getTimestamp("time"));
+			bill.setPayment_method(rs.getString("payment_method"));
+			bill.setDelivered(rs.getString("delivered"));
+			Cart cart = new Cart();
+			cart.setId_cart(rs.getInt("id_cart"));
+			cart.setUsername(rs.getString("username"));
+			Customer customer = new Customer();
+			customer.setUsername(rs.getString("username"));
+			customer.setName_customer(rs.getString("name_customer"));
+			customer.setPhone(rs.getString("phone"));
+			customer.setAddress(rs.getString("address"));
+			cart.setCustomer(customer);
+			bill.setCart(cart);
 			return bill;
 		}
 	}
@@ -53,7 +78,10 @@ public class BillRepository {
 		return jdbcTemplate.query(sql, new billRowmapper(), id_cart, delivered);
 	}
 	public List<Bill> showAllBill() {
-		String sql = "SELECT * FROM bill";
-		return jdbcTemplate.query(sql, new billRowmapper());
+		String sql = "SELECT bill.*, customer.username, customer.name_customer, customer.phone, customer.address\r\n"
+				+ "FROM bill\r\n"
+				+ "JOIN cart ON bill.id_cart = cart.id_cart\r\n"
+				+ "JOIN customer ON cart.username = customer.username;";
+		return jdbcTemplate.query(sql, new billExtraRowmapper());
 	}
 }

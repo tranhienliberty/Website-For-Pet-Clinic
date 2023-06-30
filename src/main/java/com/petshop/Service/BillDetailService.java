@@ -20,5 +20,9 @@ public class BillDetailService {
 	public List <BillDetail> showBillInfo(int id_bill) {
 		return billDetailRepository.showBillInfo(id_bill);
 	}
+
+	public List<BillDetail> adminShowBillInfo(int id_bill) {
+		return billDetailRepository.adminShowBillInfo(id_bill);
+	}
 	
 }

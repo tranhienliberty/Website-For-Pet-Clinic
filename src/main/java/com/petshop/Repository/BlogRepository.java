@@ -24,8 +24,12 @@ public class BlogRepository {
 			blog.setId_blog(rs.getInt("id_blog"));
 			blog.setCreated_date(rs.getDate("created_date"));
 			blog.setTitle(rs.getString("title"));
-			blog.setImage(rs.getString("image"));
-			blog.setContent(rs.getString("content"));
+			blog.setImage1(rs.getString("image1"));
+			blog.setImage2(rs.getString("image2"));
+			blog.setImage3(rs.getString("image3"));
+			blog.setContent1(rs.getString("content1"));
+			blog.setContent2(rs.getString("content2"));
+			blog.setContent3(rs.getString("content3"));
 			blog.setId_animal_type(rs.getInt("id_animal_type"));
 			blog.setDeleted(rs.getBoolean("isDeleted"));
 			AnimalType at = new AnimalType();
@@ -59,25 +63,5 @@ public class BlogRepository {
 					+ "FROM blog b\r\n"
 					+ "JOIN animal_type a ON b.id_animal_type = a.id_animal_type;";
 			return jdbcTemplate.query(sql, new blogRowmapper());
-		}
-
-		public void addBlog(String title, Timestamp timestamp, String image, String content, int id_animal_type) {
-			String sql = "INSERT INTO blog(title, created_date, image, content, id_animal_type)"
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			Object[] params = new Object[] {title, timestamp, image, content, id_animal_type};
-			int rs =jdbcTemplate.update(sql, params);
-		}
-
-		public void editBlog(int id_blog, String title, String image, String content, int id_animal_type) {
-			String sql = "UPDATE blog SET title = ?, image = ?, content = ?, content = ?, id_animal_type = ?"
-					+ "WHERE id_blog = ?;";
-			Object[] params = new Object[] {title, image, content, id_animal_type, id_blog};
-			int rs =jdbcTemplate.update(sql, params);
-		}
-
-		public void deleteBlog(String id_blog) {
-			String sql = "DELETE FROM blog WHERE id_blog = ?";
-			Object[] params = new Object[] {id_blog};
-			int rs =jdbcTemplate.update(sql, params);
 		}
 }

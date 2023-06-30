@@ -138,23 +138,19 @@ public class ProductController implements ApplicationContextAware {
         	model.addAttribute("product_type", pt);
     		model.addAttribute("product", product);
     		return "admin/admin-product-edit";
-    		}
+    	}
     	List<ProductType> pt = productTypeService.showAllProductType();
 		List<AnimalType> at = animalTypeService.showAllAnimalType();
 		model.addAttribute("animal_type", at);
     	model.addAttribute("product_type", pt);
     	return "admin/admin-product-edit";
     }
-    
-	private boolean checkExistProduct(int id_product) {
-		return productService.checkExistProduct(id_product);
-	}
     @RequestMapping(value = "adminEditProduct")
     public String editProduct(@RequestParam(value = "id_product", required = false) Integer id_product, @RequestParam("name_product") String name_product, @RequestParam("benefit") String benefit, 
     		@RequestParam("note") String note, @RequestParam("producer") String producer, @RequestParam("price") float price, 
     		@RequestParam("quantity") int quantity,@RequestParam("image") String image, @RequestParam("id_animal_type") int id_animal_type, 
     		@RequestParam("id_product_type") int id_product_type) {
-    	if(id_product!=null&&!checkExistProduct(id_product)) {
+    	if(id_product!=null) {
     		int productID = id_product.intValue();
     		productService.editProduct(productID, name_product, benefit, note, producer, price, quantity, image, id_animal_type, id_product_type);
         	return "redirect:adminShowAllProduct";

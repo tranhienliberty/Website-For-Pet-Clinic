@@ -454,10 +454,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		</header>
 				<div class="entry-content">
-			<div class = "brief"><p class="text-limit" style = "white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 5000px;">${item.content}</p></div>
+			<div class = "brief"><p class="text-limit" style = "white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 5000px;">${item.content1}</p></div>
 		<div class="entry-summary">
 				<div class="text-left">
-			<a class="more-link button primary is-outline is-smaller" href="/showBlogDetail">Xem thêm <span class="meta-nav">→</span></a>
+			<a class="more-link button primary is-outline is-smaller" href="<%=request.getContextPath()%>/showBlogDetail?id_blog=${item.id_blog}&id_animal_type=${id_animal_type}">Xem thêm <span class="meta-nav">→</span></a>
 		</div>
 	</div>
 	

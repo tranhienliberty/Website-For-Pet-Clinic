@@ -25,7 +25,27 @@ public class ServiceRepository {
         }
     }
 	public List<Service> showAllService(){
-		String sql = "select * from service";
+		String sql = "select * from service where is_deleted = 0";
 		return jdbcTemplate.query(sql, new serviceRowMapper());
+	}
+	public Service getServiceByID(int serviceID) {
+		String sql = "select * from service where id_service = ?";
+		return jdbcTemplate.queryForObject(sql, new serviceRowMapper(), serviceID);
+	}
+	public void editService(int serviceID, String name_service) {
+		String sql = "UPDATE service SET name_service = ? WHERE id_service = ?";
+		Object[] params = new Object[] {name_service, serviceID};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void editService(String name_service) {
+		String sql = "INSERT INTO service(name_service)"
+				+ " VALUES(?)";
+		Object[] params = new Object[] {name_service};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+	public void deleteService(int id_service) {
+		String sql = "UPDATE service SET is_deleted = 1 WHERE id_service = ?";
+		Object[] params = new Object[] {id_service};
+		int rs =jdbcTemplate.update(sql, params);
 	}
 }

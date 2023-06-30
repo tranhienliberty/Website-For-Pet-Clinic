@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petshop.Entity.AnimalType;
 import com.petshop.Entity.Appointment;
+import com.petshop.Entity.Customer;
 import com.petshop.Entity.Service;
 import com.petshop.Service.AnimalTypeService;
 import com.petshop.Service.AppointmentService;
+import com.petshop.Service.CustomerService;
 import com.petshop.Service.ServiceService;
 
 import jakarta.servlet.http.Cookie;
@@ -27,6 +29,8 @@ public class AppointmentController {
 	private ServiceService serviceService;
 	@Autowired
 	private AnimalTypeService animalTypeService;
+	@Autowired
+	private CustomerService customerService;
 	
 	public static String generateToken(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -65,12 +69,14 @@ public class AppointmentController {
 		return "customer/my-appointment";
 	}
 	@RequestMapping(value = "/showAppointmentForm")
-	public String showAppointmentForm(Model model) throws Exception {
+	public String showAppointmentForm(@RequestParam("username") String username,Model model) throws Exception {
 		List<Service> service = serviceService.showAllService();
 		List<AnimalType> animal_type = animalTypeService.showAllAnimalType();
+		Customer customer = customerService.showCustomerInfo(username);
+		model.addAttribute("customer", customer);
 		model.addAttribute("service", service);
 		model.addAttribute("animal_type", animal_type);
-		return "customer/appointment-form";
+		return "customer/appointment-form";	
 	}
 	@RequestMapping(value = "/setAppointment")
 	public String setApointment(@RequestParam("name") String name, @RequestParam("phone") String phone,

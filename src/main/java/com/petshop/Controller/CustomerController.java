@@ -65,17 +65,17 @@ public class CustomerController {
 	public String editProduct(@RequestParam(value = "id_customer", required = false) Integer id_customer,@RequestParam("name_customer") String name_customer, 
 			@RequestParam("date_of_birth") String date_of_birth, @RequestParam("phone") String phone, @RequestParam("email") String email, 
 			@RequestParam("address") String address, @RequestParam(value = "username", required = false) String username, Model model) {
-    	if(username!=null&&id_customer!=null&&!checkExistCustomer(id_customer)) {
+    	if(username!=null&&id_customer!=null) {
     		int customerID = id_customer.intValue();
     		customerService.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address, username);
         	return "redirect:adminShowAllCustomer";
     	}
-    	else if (username==null&&id_customer!=null&&!checkExistCustomer(id_customer)){
+    	else if (username==null&&id_customer!=null){
     		int customerID = id_customer.intValue();
     		customerService.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address);
         	return "redirect:adminShowAllCustomer";
     	}
-    	else if (username!=null){
+    	else if (username!=null&&id_customer==null){
     		customerService.addCustomer(name_customer, date_of_birth, phone, email, address, username);
         	return "redirect:adminShowAllCustomer";
     	}

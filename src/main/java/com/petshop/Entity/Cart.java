@@ -5,6 +5,7 @@ import java.util.List;
 public class Cart {
 	private int id_cart;
 	protected String username;
+	protected Customer customer;
 	protected List<CartItems> cartItems;
 	
 	public int getId_cart() {
@@ -24,6 +25,12 @@ public class Cart {
 	}
 	public void setCartItems(List<CartItems> cartItems) {
 		this.cartItems = cartItems;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 }

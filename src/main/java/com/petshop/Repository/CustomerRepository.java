@@ -82,7 +82,8 @@ public class CustomerRepository {
 	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address) {
 		String sql = "INSERT INTO customer(name_customer, date_of_birth, phone, email, address)"
 				+ " VALUES(?, ?, ?, ?, ?)";
-				Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address};
+		Object[] params = new Object[] {name_customer, date_of_birth, phone, email, address};
+		int rs =jdbcTemplate.update(sql, params);
 	}
 	public int checkExistCustomerAccount(String username) {
 		String sql = "SELECT COUNT(*) FROM customer where username = ?";

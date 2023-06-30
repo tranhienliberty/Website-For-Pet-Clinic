@@ -114,7 +114,7 @@ public class StaffRepository {
 			String email, String address, String certificate, String experience, String bank_name, String bank_number,
 			int id_position, String username) {
 		String sql = "UPDATE staff SET name_staff = ?, identity_card = ?, date_of_birth = ?, phone = ?, email = ?, address = ?, "
-				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ?, username = ?"
+				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ?, username = ? "
 				+ "WHERE id_staff = ?;";
 		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, username,id_staff};
 		int rs =jdbcTemplate.update(sql, params);
@@ -132,7 +132,7 @@ public class StaffRepository {
 			String email, String address, String certificate, String experience, String bank_name, String bank_number,
 			int id_position) {
 		String sql = "UPDATE staff SET name_staff = ?, identity_card = ?, date_of_birth = ?, phone = ?, email = ?, address = ?, "
-				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ?"
+				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ? "
 				+ "WHERE id_staff = ?;";
 		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, staffID};
 		int rs =jdbcTemplate.update(sql, params);
@@ -140,7 +140,7 @@ public class StaffRepository {
 	public void addStaff(String name_staff, String identity_card, String date_of_birth, String phone, String email,
 			String address, String certificate, String experience, String bank_name, String bank_number,
 			int id_position) {
-		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position)"
+		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position)\r\n"
 				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position};
 		int rs =jdbcTemplate.update(sql, params);

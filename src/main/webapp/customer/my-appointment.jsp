@@ -399,6 +399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<main>
 		<div class="container">
 		  <h2> Danh sách lịch hẹn của bạn </h2>
+		 <a href = "<%=request.getContextPath()%>/showAppointmentForm?username=${username}"><button style="text-align: left; margin: 4px; background-color: rgb(255, 182, 193); color: white; padding: 2px 3px; border: 1px solid #CC99CC; border-radius: 5px;">Đặt lịch</button></a>	
 		  <ul class="responsive-table">
 		    <li class="table-header" style="height: 70px;">
 		      <div class="col-md-1 text-center" style = "margin-right:-30px;">ID</div>

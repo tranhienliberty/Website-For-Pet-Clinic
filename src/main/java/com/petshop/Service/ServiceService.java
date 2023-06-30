@@ -15,4 +15,20 @@ public class ServiceService {
 	public List<com.petshop.Entity.Service> showAllService(){
 		return serviceRepository.showAllService();
 	}
+
+	public com.petshop.Entity.Service getServiceByID(int serviceID) {
+		return serviceRepository.getServiceByID(serviceID);
+	}
+
+	public void editService(int serviceID, String name_service) {
+		serviceRepository.editService(serviceID, name_service);
+	}
+
+	public void addService(String name_service) {
+		serviceRepository.editService(name_service);
+	}
+
+	public void deleteService(int id_service) {
+		serviceRepository.deleteService(id_service);
+	}
 }

@@ -38,23 +38,23 @@ public class BlogController {
 		model.addAttribute("allBlog", blogs);
 		return "admin/admin-blog";
 	}
-	@RequestMapping(value = "/adminAddBlog")
-	public String addBlog(@RequestParam("title") String title, @RequestParam("image") String image, @RequestParam("content") String content, 
-			@RequestParam("id_animal_type") int id_animal_type) {
-		LocalDateTime currentDateTime = LocalDateTime.now();
-        Timestamp timestamp = Timestamp.valueOf(currentDateTime);
-		blogService.addBlog(title, timestamp, image, content, id_animal_type);
-		return "redirect:adminShowAllBlog";
-	}
-	@RequestMapping(value = "/adminEditBlog")
-	public String editBlog(@RequestParam("id_blog") int id_blog, @RequestParam("title") String title, @RequestParam("image") String image, 
-			@RequestParam("content") String content, @RequestParam("id_animal_type") int id_animal_type) {
-		blogService.editBlog(id_blog, title, image, content, id_animal_type);
-		return "redirect:adminShowAllBlog";
-	}
-	@RequestMapping(value = "/adminDeleteBlog")
-	public String deleteBlog(@RequestParam("id_blog") String id_blog) {
-		blogService.deleteBlog(id_blog);
-		return "redirect:adminShowAllBlog";
-	}
+//	@RequestMapping(value = "/adminAddBlog")
+//	public String addBlog(@RequestParam("title") String title, @RequestParam("image") String image, @RequestParam("content") String content, 
+//			@RequestParam("id_animal_type") int id_animal_type) {
+//		LocalDateTime currentDateTime = LocalDateTime.now();
+//        Timestamp timestamp = Timestamp.valueOf(currentDateTime);
+//		blogService.addBlog(title, timestamp, image, content, id_animal_type);
+//		return "redirect:adminShowAllBlog";
+//	}
+//	@RequestMapping(value = "/adminEditBlog")
+//	public String editBlog(@RequestParam("id_blog") int id_blog, @RequestParam("title") String title, @RequestParam("image") String image, 
+//			@RequestParam("content") String content, @RequestParam("id_animal_type") int id_animal_type) {
+//		blogService.editBlog(id_blog, title, image, content, id_animal_type);
+//		return "redirect:adminShowAllBlog";
+//	}
+//	@RequestMapping(value = "/adminDeleteBlog")
+//	public String deleteBlog(@RequestParam("id_blog") String id_blog) {
+//		blogService.deleteBlog(id_blog);
+//		return "redirect:adminShowAllBlog";
+//	}
 }

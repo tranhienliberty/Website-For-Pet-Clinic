@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html >
@@ -75,7 +76,7 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllStaff">
+                <a>
                     <i class="w-6 far fa-bell"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin bác sĩ/nhân viên</span>
                 </a>
@@ -93,13 +94,13 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllService">
+                <a>
                     <i class="w-6 fas fa-cog"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý dịch vụ</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllBill">
+                <a>
                     <i class="w-6 fas fa-rss"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý hóa đơn</span>
                 </a>
@@ -159,63 +160,38 @@
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
-			<a href = "<%=request.getContextPath()%>/showFormProductInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm sản phẩm</button></a>	
-			&nbsp Tìm theo: &nbsp 
-            <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "product_type" required>
-            <option disabled selected>--Chọn loại sản phẩm--</option>
-                	<c:forEach items="${product_type}" var="item">
-                         <option value="<c:out value="${item.id_product_type}"/>">${item.name_product_type}</option>
-                    </c:forEach>
-            </select>
-            <a href="#" onclick="redirectToFilteredProducts();" style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px; text-decoration: none;">Lọc</a>
+			<a href = "#"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Xem thống kê</button></a>	
 			<table class="fl-table" style="overflow-y: auto;">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Tên sản phẩm</th>
-						<th>Công dụng</th>
-						<th>Công ty sản xuất</th>
-						<th>Giá sản phẩm</th>
-						<th>Số lượng</th>
-						<th>Loại sản phẩm</th>
+						<th>ID Bill</th>
+						<th>Tên khách hàng</th>
+						<th>Số điện thoại</th>
+						<th>Địa chỉ</th>
+						<th>Tổng tiền</th>
+						<th>Phương thức thanh toán</th>
+						<th>Trạng thái thanh toán</th>
+						<th>Thời gian đặt hàng</th>
+						<th>Trạng thái giao hàng</th>
 						<th>Thao tác</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${products}" var="item">
+					<c:forEach items="${bills}" var="item">
 						<tr>
-							<td><c:out value="${item.id_product}" /></td>
-							<td><c:out value="${item.name_product}" /> </td>
-							<td><c:out value="${item.benefit}" /></td>
-							<td><c:out value="${item.producer}" /></td>
-							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
-							<td><c:out value="${item.quantity}" /></td>
-							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
+							<td><c:out value="${item.id_bill}" /> </td>
+							<td><c:out value="${item.getCart().getCustomer().getName_customer()}" /> </td>
+							<td><c:out value="${item.getCart().getCustomer().getPhone()}" /> </td>
+							<td><c:out value="${item.getCart().getCustomer().getAddress()}" /> </td>
+							<td><c:out value="${item.total_amount}" /></td>
+							<td><c:out value="${item.payment_method}" /></td>
+							<td><c:out value="${item.payment_status}" /></td>
+							<td><c:out value="${item.time}" /></td>
+							<td><c:out value="${item.delivered}" /></td>
 							<td>
-							<a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.id_product})"> </a></td>
-						</tr>
-					</c:forEach>
-					<c:forEach items="${listByProductType}" var="item">
-						<tr>
-							<td><c:out value="${item.id_product}" /></td>
-							<td><c:out value="${item.name_product}" /> </td>
-							<td><c:out value="${item.benefit}" /></td>
-							<td><c:out value="${item.producer}" /></td>
-							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
-							<td><c:out value="${item.quantity}" /></td>
-							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
-							<td>
-							<a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.id_product})"> </a></td>
+							<a style="text-decoration: none; color: green"
+								href="<%=request.getContextPath()%>/showBillDetail?id_bill=${item.id_bill}">
+							Xem chi tiết</a></td>
 						</tr>
 					</c:forEach>
 				<tbody>
@@ -223,23 +199,5 @@
 		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	<script>
-	  	function redirectToFilteredProducts() {
-	    var selectBox = document.getElementById("sample-selectlist-1");
-	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-	    
-	    var url = '<%=request.getContextPath()%>/adminShowProductByProducType?id_product_type=' + encodeURIComponent(selectedValue);
-	    window.location.href = url;
-	  	}
-	</script>
-	<script>
-	function confirmDelete(id_product) {
-	  if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
-	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
-	    window.location.href = 'adminDeleteProduct?id_product=' + id_product;
-	  } else {
-	  }
-	}
-	</script>	
 </body>
 </html>

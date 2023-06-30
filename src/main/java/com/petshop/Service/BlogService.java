@@ -25,17 +25,5 @@ public class BlogService {
 	public List<Blog> showAllBlog() {
 		return blogRepository.showAllBlog();
 	}
-
-	public void addBlog(String title, Timestamp timestamp, String image, String content, int id_animal_type) {
-		blogRepository.addBlog(title, timestamp, image, content, id_animal_type);
-	}
-
-	public void editBlog(int id_blog, String title, String image, String content, int id_animal_type) {
-		blogRepository.editBlog(id_blog, title, image, content, id_animal_type);
-	}
-
-	public void deleteBlog(String id_blog) {
-		blogRepository.deleteBlog(id_blog);
-	}
 	
 }

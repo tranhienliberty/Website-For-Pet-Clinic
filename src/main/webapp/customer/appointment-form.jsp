@@ -512,14 +512,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                          <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                             	<label class="mdl-textfield__label" for="appointment-name">Tên *</label>
-                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[\\p{L}\\p{M}\\s]*" id="appointment-name" name = "name"  value = "${customer.name_customer}" required>
                                 <span class="mdl-textfield__error">Làm ơn nhập tên hợp lệ!</span>
                             </div>
                         </div>  
                         <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <label class="mdl-textfield__label" for="appointment-mobile">Số điện thoại *</label>
-                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[0-9]{10,11}" id="appointment-mobile" name = "phone" value = "${customer.phone}" required>
                                 <span class="mdl-textfield__error">Làm ơn nhập số điện thoại hợp lệ!</span>
                             </div>
                         </div>
@@ -535,7 +535,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="col-md-6">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                                 <label class="mdl-textfield__label" for="appointment-email">Email</label>
-                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" required>
+                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="appointment-email" name = "email" value = "${customer.email}" required>
                                 <span class="mdl-textfield__error">Làm ơn nhập email hợp lệ!</span>
                             </div>
                         	</div>

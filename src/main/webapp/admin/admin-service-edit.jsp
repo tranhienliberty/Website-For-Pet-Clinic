@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/admin-product-form.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -75,7 +76,7 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllStaff">
+                <a>
                     <i class="w-6 far fa-bell"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin bác sĩ/nhân viên</span>
                 </a>
@@ -93,27 +94,27 @@
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllService">
+                <a>
                     <i class="w-6 fas fa-cog"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý dịch vụ</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllBill">
+                <a>
                     <i class="w-6 fas fa-rss"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý hóa đơn</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a href = "<%=request.getContextPath()%>/adminShowAllAccount">
+                <a>
                     <i class="w-6 fas fa-share-alt"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý tài khoản</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a>
                     <i class="w-6 far fa-user-circle"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">User</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
@@ -155,91 +156,20 @@
         </nav>
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
-
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-		<div class="table-wrapper">
-			<a href = "<%=request.getContextPath()%>/showFormProductInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm sản phẩm</button></a>	
-			&nbsp Tìm theo: &nbsp 
-            <select class="mdl-selectfield__select" id="sample-selectlist-1" name = "product_type" required>
-            <option disabled selected>--Chọn loại sản phẩm--</option>
-                	<c:forEach items="${product_type}" var="item">
-                         <option value="<c:out value="${item.id_product_type}"/>">${item.name_product_type}</option>
-                    </c:forEach>
-            </select>
-            <a href="#" onclick="redirectToFilteredProducts();" style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px; text-decoration: none;">Lọc</a>
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Tên sản phẩm</th>
-						<th>Công dụng</th>
-						<th>Công ty sản xuất</th>
-						<th>Giá sản phẩm</th>
-						<th>Số lượng</th>
-						<th>Loại sản phẩm</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${products}" var="item">
-						<tr>
-							<td><c:out value="${item.id_product}" /></td>
-							<td><c:out value="${item.name_product}" /> </td>
-							<td><c:out value="${item.benefit}" /></td>
-							<td><c:out value="${item.producer}" /></td>
-							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
-							<td><c:out value="${item.quantity}" /></td>
-							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
-							<td>
-							<a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.id_product})"> </a></td>
-						</tr>
-					</c:forEach>
-					<c:forEach items="${listByProductType}" var="item">
-						<tr>
-							<td><c:out value="${item.id_product}" /></td>
-							<td><c:out value="${item.name_product}" /> </td>
-							<td><c:out value="${item.benefit}" /></td>
-							<td><c:out value="${item.producer}" /></td>
-							<td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
-							<td><c:out value="${item.quantity}" /></td>
-							<td><c:out value="${item.getProductType().getName_product_type()}" /></td>
-							<td>
-							<a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showFormProductInfo?id_product=${item.id_product}">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick="confirmDelete(${item.id_product})"> </a></td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
-		</div>        </main>
+			<form action="<%=request.getContextPath()%>/adminEditService" method = "post">
+			          <h2>Thông tin dịch vụ</h2>
+			  <input type="hidden" id="id_service" name="id_service" value="${service.id_service}">
+			
+			  <label for="name_service">Tên dịch vụ:</label>
+			  <input type="text" id="name_service" name="name_service" value = "${service.name_service}" required>
+			  
+
+			  <button type="submit">Lưu</button>
+			        </form>
+	</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	<script>
-	  	function redirectToFilteredProducts() {
-	    var selectBox = document.getElementById("sample-selectlist-1");
-	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-	    
-	    var url = '<%=request.getContextPath()%>/adminShowProductByProducType?id_product_type=' + encodeURIComponent(selectedValue);
-	    window.location.href = url;
-	  	}
-	</script>
-	<script>
-	function confirmDelete(id_product) {
-	  if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
-	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
-	    window.location.href = 'adminDeleteProduct?id_product=' + id_product;
-	  } else {
-	  }
-	}
-	</script>	
 </body>
-</html>
+</html>s
