@@ -64,80 +64,68 @@
 
         <ul class="flex flex-wrap w-full">
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text hover-icon-and-text">
-                <a>
+                <a href = "<%=request.getContextPath()%>/adminHome"> 
                     <i class="w-6 fas fa-home"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Home</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a href = "<%=request.getContextPath()%>/adminShowAllCustomer">
-                    <i class="w-6 fas fa-plus"></i>
+                    <i class="w-6 fas fa-user"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin khách hàng</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 far fa-bell"></i>
+                <a href = "<%=request.getContextPath()%>/adminShowAllStaff">
+                    <i class="w-6 fas fa-hospital-alt"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý thông tin bác sĩ/nhân viên</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 fas fa-database"></i>
+                <a href = "<%=request.getContextPath()%>/adminShowAllAppointment">
+                    <i class="w-6 fas fa-calendar"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý lịch hẹn</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a href = "<%=request.getContextPath()%>/adminShowAllProduct">
-                    <i class="w-6 fas fa-star"></i>
+                    <i class="w-6 fas fa-warehouse"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý sản phẩm</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 fas fa-cog"></i>
+                <a href = "<%=request.getContextPath()%>/adminShowAllService">
+                    <i class="w-6 fas fa-plus"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý dịch vụ</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 fas fa-rss"></i>
+                <a href = "<%=request.getContextPath()%>/adminShowAllBill">
+                    <i class="w-6 fas fa-money-bill"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý hóa đơn</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
+                <a href = "<%=request.getContextPath()%>/adminShowAllAccount">
+                    <i class="w-6 fas fa-key"></i>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý tài khoản</span>
+                </a>
+            </li>
+            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a>
-                    <i class="w-6 fas fa-share-alt"></i>
+                    <i class="w-6 far fa-chart-bar"></i>
                     <span class="ml-1 font-semibold text-sm tracking-wide">Thống kê và báo cáo</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 far fa-user-circle"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">User</span>
-                </a>
-            </li>
-            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 fas fa-download"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Download</span>
-                </a>
-            </li>
-            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 far fa-edit"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Edit</span>
-                </a>
-            </li>
-            <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
-                <a>
-                    <i class="w-6 fas fa-fingerprint"></i>
-                    <span class="ml-1 font-semibold text-sm tracking-wide">Fingerprint</span>
+                <a href = "<%=request.getContextPath()%>/adminShowAllBlog">
+                    <i class="w-6 fas fa-paper-plane"></i>
+                    <span class="ml-1 font-semibold text-sm tracking-wide">Quản lý blog</span>
                 </a>
             </li>
             <li class="w-full py-3 px-5 mb-1 cursor-pointer bg-transparent hover:bg-gray-200 hover-icon-and-text">
                 <a href="<%=request.getContextPath()%>/logout">
-                    <i class="w-6 fas fa-fingerprint"></i>
+                    <i class="w-6 fas"></i>
                     <c:choose>
 								<c:when test="${isLoggedIn}">
 								<div class="flex flex-1 justify-end items-center">
@@ -158,6 +146,7 @@
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
+			
 			<form action="<%=request.getContextPath()%>/adminEditProduct" method = "post">
 			          <h2>Thông tin sản phẩm</h2>
 			  <input type="hidden" id="id_product" name="id_product" value="${product.id_product}">
@@ -170,14 +159,15 @@
 			
 			  <label for="note">Ghi chú:</label>
 			  <textarea id="note" name="note" >${product.note}</textarea>
-			
+				
 			  <label for="producer">Nhà sản xuất:</label>
 			  <input type="text" id="producer" name="producer" value = "${product.producer}" required>
 			
 			  <label for="price">Giá:</label>
 			  <input type="number" id="price" name="price" value = "${product.price}" required>
-			
-			  <label for="image">Hình ảnh:</label>
+			  
+			  <label for="image">Hình ảnh:</label> 
+			  <img class="image" src="${product.image}" alt="Image" style="max-width: 300px; height: auto;">
 			  <input type="file" id="image" value = "${product.image}" name="image">
 			 
 			  <label for="id_animal_type">Loại động vật:</label>

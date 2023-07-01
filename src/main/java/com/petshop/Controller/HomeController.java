@@ -25,4 +25,8 @@ public class HomeController {
     	model.addAttribute("productCatLimit", productCatLimit);
         return "customer/index";
     }
+    @RequestMapping(value = "/adminHome")
+    public String adminHome( Model model) {
+    	return "admin/admin-home";
+    }
 }

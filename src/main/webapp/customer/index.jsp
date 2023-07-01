@@ -131,9 +131,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 										</c:when>
 										<c:otherwise>
 											<a href="<%=request.getContextPath()%>/login"
-												class="nav-top-link nav-top-not-logged-in"> <span>
+												class="nav-top-link nav-top-not-logged-in">${username} <span>
 													Đăng nhập </span>
 											</a>
+											<li class="account-item has-icon">
+											<a href="<%=request.getContextPath()%>/register"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng ký </span>
+											</a>
+											</li>
 										</c:otherwise>
 									</c:choose></li>
 							</ul>
@@ -351,12 +357,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 </li>
 <li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAllAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
-<li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
-<ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-49800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống chó</a></li>
-	<li id="menu-item-49801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống mèo</a></li>
-</ul>
-</li>
             </ul>
           </div>
 
@@ -529,7 +529,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="box-image">
 			<div class="image-fade_in_back">
 				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
-					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" style="max-width: 200px; height: auto;">				</a>
 			</div>
 			<div class="image-tools is-small top right show-on-hover">
 							</div>
@@ -776,7 +776,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-				<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+				<img width="350" height="350" src="https://thuythithi.com/wp-content/uploads/2020/03/nhung-luu-y-khi-chon-bac-si-thu-y-gioi-cho-thu-cung-cua-ban.jpg" data-src="https://thuythithi.com/wp-content/uploads/2020/03/nhung-luu-y-khi-chon-bac-si-thu-y-gioi-cho-thu-cung-cua-ban.jpg" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
@@ -801,7 +801,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+<img width="350" height="350" src="https://jobsgo.vn/blog/wp-content/uploads/2020/02/tieu-chuan-tot-nghiep-cao-dang-thu-y.jpg" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
@@ -826,14 +826,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 		<div class="box-image" style="border-radius:100%;width:60%;">
 						<div class="">
-				<img width="350" height="350" src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+				<img width="350" height="350" src="https://img.cand.com.vn/resize/800x800/NewFiles/Images/2023/06/01/313437324_530297825770289_851393-1685621442627.jpg" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
 					</div>
 
 		<div class="box-text text-center">
 			<div class="box-text-inner">
 				
 <h4>Bác sĩ 3</h4>
-<p>Nếu yêu thú cưng, bạn nhớ dắt chúng đi dạo xung quanh hoặc đi công viên hay tham gia các hoạt động chạy nhảy, vui đùa thường xuyên nhé vì việc vận động nhiều sẽ giúp xương khớp và cơ bắp của thú cưng trở nên khỏe mạnhcũng như rắn chắc hơn</p>
+<p>Nếu yêu thú cưng, bạn nhớ dắt chúng đi dạo xung quanh hoặc đi công viên hay tham gia các hoạt động chạy nhảy, vui đùa thường xuyên nhé. Chúng sẽ khỏe mạnh hơn và ngăn ngừa loãng xương.</p>
 			</div>
 		</div>
 	</div>

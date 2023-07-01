@@ -17,7 +17,7 @@
 <link rel="canonical" href="index.jsp">
 
 <!-- /Rank Math WordPress SEO plugin -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//s.w.org">
 <link rel="stylesheet" id="wc-blocks-vendors-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css"/>" type="text/css" media="all">
@@ -135,6 +135,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 												class="nav-top-link nav-top-not-logged-in"> <span>
 													Đăng nhập </span>
 											</a>
+											<li class="account-item has-icon">
+											<a href="<%=request.getContextPath()%>/register"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng ký </span>
+											</a>
+											</li>
 										</c:otherwise>
 									</c:choose></li>
 							</ul>
@@ -345,14 +351,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 <li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=1" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
 <li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=2" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
-<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default"><a href="<%=request.getContextPath()%>/showAllBillByUser?username=${cookie.userUsername.value}" class="nav-top-link L-Affiliate-Tagged">Đơn hàng</a></li>
-<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
-<li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đơn hàng<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-49800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống chó</a></li>
-	<li id="menu-item-49801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống mèo</a></li>
+	<li id="menu-item-49000" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Chưa giao hàng" class="L-Affiliate-Tagged">Đơn hàng đang giao</a></li>
+	<li id="menu-item-49001" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Đã giao hàng" class="L-Affiliate-Tagged">Lịch sử mua hàng</a></li>
 </ul>
 </li>
+<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAllAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
             </ul>
           </div>
 
@@ -398,20 +403,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</header>
 	<main>
 		<div class="container">
-		  <h2> Đơn hàng đang giao (Bạn có thể hủy đơn dưới 24h)</h2>
+		  <h2> Đơn hàng đang giao </h2>
 		  <c:set var = "stt" value = "0"/>
 		  <ul class="responsive-table">
 		    <li class="table-header" style="height: 70px;">
-		      <div class="col-md-1 text-center" style = "margin-right:-35px;">ID</div>
-		      <div class="col-md-2 text-center">Tổng tiền</div>
-		      <div class="col-md-3 text-tencer">Thời gian</div>
-		      <div class="col-md-3 text-tencer">Phương thức thanh toán</div>
+		      <div class="col-md-1 text-center" style = "margin-right:-35px">ID</div>
+		      <div class="col-md-2 text-center" style = "margin-right:-30px">Tổng tiền</div>
+		      <div class="col-md-3 text-tencer" style = "margin-right:-35px">Thời gian</div>
+		      <div class="col-md-3 text-tencer" style = "margin-right:-30px">Phương thức thanh toán</div>
 		      <div class="col-md-3 text-center">Trạng thái</div>
 		    </li>
 		    <c:forEach items="${bills}" var="item">
 		    <li class="table-row" style="height: 70px;">
 		      <c:set var = "stt" value = "${stt+1}"/>
-		      <div class="col-md-1 text-center" data-label="ID">${stt}</div>
+		      <div class="col-md-1 text-center" data-label="ID">${stt}&nbsp &nbsp
+		      <a href = ""><i class="fas fa-check"></i></a>
+		      <a href = ""><i class="fas fa-times"></i></a>
+		      </div>
 		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
 		      <div class="col-md-3 text-tencer" data-label="Thời gian">${item.time}</div>
 		      <div class="col-md-3 text-tencer" data-label="Phương thức thanh toán">${item.payment_method}</div>

@@ -22,6 +22,15 @@ public class AppointmentService {
 	public List<Appointment> showMyAllAppointment(String username) {
 		return appointmentRepository.showMyAllAppointment(username);
 	}
+
+	public void setAppointmentUser(String username, String name, String phone, String date, String email,
+			int id_animal_type, int id_service, String note, String token) {
+		appointmentRepository.setAppointmentUser(username, name, phone, date, email, id_animal_type, id_service, note, token);
+	}
+
+	public List<Appointment> showAllAppointment() {
+		return appointmentRepository.showAllAppointment();
+	}
 	
 	
 }

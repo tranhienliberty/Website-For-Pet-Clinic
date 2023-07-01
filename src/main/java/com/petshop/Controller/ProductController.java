@@ -85,6 +85,7 @@ public class ProductController implements ApplicationContextAware {
 		List<Product> products = productService.searchProduct(keyword, id_animal_type);
 		model.addAttribute("id_animal_type", id_animal_type);
 		model.addAttribute("dogProductList", products);
+		System.out.print(products.get(0).getName_product());
 		if(id_animal_type == 1) return "customer/shopfordog";
     	else return "customer/shopforcat";
 	}

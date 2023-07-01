@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/x-icon" href="<c:url value ="/resources/images/logo-removebg-preview.png"/>">
 <link rel="stylesheet" href="<c:url value = "/resources/css/login-style.css"/>" type="text/css" media="all">
-<title>Đăng nhập</title>
+<title>Đăng ký</title>
 <!-- Style --> 
 <style>
 	.cont {
@@ -27,23 +26,33 @@
 	    <div class="login">
 	      <div class="login__check"></div>
 	      <div class="login__form">
-	      	<form action="<%=request.getContextPath()%>/login?previousUrl=${previousUrl}" method="post">
-	      	    <p class="text-success">${success}</p>
-	      	    <p class="text-error">${message}</p>
+	      	<form action="<%=request.getContextPath()%>/register" method="post">
 	        <div class="login__row">
 	          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
 	            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
 	          </svg>
-	          <input type="text" class="login__input name" name = "Username" placeholder="Username" style="color: white;"/>
+	          <input type="text" class="login__input name" name = "Username" placeholder="Username"/>
+	        </div>
+	        <div class="login__row">
+	          <svg class="login__icon email svg-icon" viewBox="0 0 20 20">
+				  <path d="M18 3H2C0.9 3 0 3.9 0 5v10c0 1.1 0.9 2 2 2h16c1.1 0 2-0.9 2-2V5C20 3.9 19.1 3 18 3zM18 15H2V7l8 5 8-5V15z"></path>
+			  </svg>
+	          <input type="email" class="login__input pass" name = "Email" placeholder="Email"/>
 	        </div>
 	        <div class="login__row">
 	          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
 	            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
 	          </svg>
-	          <input type="password" class="login__input pass" name = "Password" placeholder="Password" style="color: white;"/>
+	          <input type="password" class="login__input pass" name = "Password" placeholder="Mật khẩu"/>
 	        </div>
-	        <button type="submit" class="login__submit">Đăng nhập</button>
-	        <p class="login__signup">Chưa có tài khoản? &nbsp;<a href = "<%=request.getContextPath()%>/register">Đăng ký</a></p>
+	        <div class="login__row">
+	          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+	            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+	          </svg>
+	          <input type="password" class="login__input pass" name = "Password2" placeholder="Nhập lại mật khẩu"/>
+	          <button type="submit" class="login__submit">Đăng ký</button>
+	        </div>
+	        
 	        </form>
 	      </div>
 	    </div>

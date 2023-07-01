@@ -58,9 +58,6 @@ public class CustomerController {
 		model.addAttribute("accounts", accounts);
     	return "admin/admin-customer-edit";
     }
-	private boolean checkExistCustomer(int id_customer) {
-		return customerService.checkExistCustomer(id_customer);
-	}
 	@RequestMapping(value = "/adminEditCustomer")
 	public String editProduct(@RequestParam(value = "id_customer", required = false) Integer id_customer,@RequestParam("name_customer") String name_customer, 
 			@RequestParam("date_of_birth") String date_of_birth, @RequestParam("phone") String phone, @RequestParam("email") String email, 

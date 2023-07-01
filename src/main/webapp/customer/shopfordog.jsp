@@ -177,6 +177,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 												class="nav-top-link nav-top-not-logged-in"> <span>
 													Đăng nhập ${username}</span>
 											</a>
+											<li class="account-item has-icon">
+											<a href="<%=request.getContextPath()%>/register"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng ký </span>
+											</a>
+											</li>
 										</c:otherwise>
 									</c:choose></li>
 							</ul>
@@ -205,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
 
  <!-- Left Elements -->
-          <div class="flex-col hide-for-medium flex-left flex-grow">
+        <div class="flex-col hide-for-medium flex-left flex-grow">
             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
               <li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-363 current_page_item menu-item-462 active menu-item-design-default"><a href="<%=request.getContextPath()%>/" aria-current="page" class="nav-top-link L-Affiliate-Tagged">Trang chủ</a></li>
 <li id="menu-item-463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-463 menu-item-design-default has-dropdown"><a href="<%=request.getContextPath()%>/showDogProduct" class="nav-top-link L-Affiliate-Tagged">Shop cho chó<i class='bx bx-chevron-down'></i></a>
@@ -398,14 +404,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 <li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=1" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
 <li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=2" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
-<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Về Pettiny</a></li>
-<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
-<li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đơn hàng<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-49800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống chó</a></li>
-	<li id="menu-item-49801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống mèo</a></li>
+	<li id="menu-item-49000" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Chưa giao hàng" class="L-Affiliate-Tagged">Đơn hàng đang giao</a></li>
+	<li id="menu-item-49001" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Đã giao hàng" class="L-Affiliate-Tagged">Lịch sử mua hàng</a></li>
 </ul>
 </li>
+<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAllAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
             </ul>
           </div>
 
@@ -434,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	  <div class="flex-col flex-grow medium-text-center">
 	  			<h1 class="shop-page-title is-xlarge">Shop cho chó</h1>
 		<div class="is-medium">
-	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="index.jsp">Trang chủ</a> <span class="divider">/</span> Shop cho chó</nav></div>
+	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="<%=request.getContextPath()%>/">Trang chủ</a> <span class="divider">/</span> Shop cho chó</nav></div>
 	  </div>
 	  <div class="flex-col medium-text-center">	
 <form class="search-container" action="<%=request.getContextPath()%>/searchProduct" method="GET">

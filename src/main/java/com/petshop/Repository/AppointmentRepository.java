@@ -38,6 +38,7 @@ public class AppointmentRepository {
         	animalType.setId_animal_type(rs.getInt("id_animal_type"));
         	animalType.setName_animal_type(rs.getString("name_animal_type"));
         	appointment.setAnimalType(animalType);
+        	appointment.setUsername(rs.getString("username"));
             return appointment;
         }
     }
@@ -56,6 +57,22 @@ public class AppointmentRepository {
 				+ "JOIN service AS s ON a.id_service = s.id_service\r\n"
 				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type WHERE username= ?;";
 		return jdbcTemplate.query(sql, new appointmentRowMapper(), username);
+	}
+
+	public void setAppointmentUser(String username, String name, String phone, String date, String email,
+			int id_animal_type, int id_service, String note, String token) {
+		String sql = "INSERT INTO appointment(name, phone, appointment_date, email, id_animal_type, id_service, note, token, information, username)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo", username};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+
+	public List<Appointment> showAllAppointment() {
+		String sql = "SELECT *\r\n"
+				+ "FROM appointment AS a\r\n"
+				+ "JOIN service AS s ON a.id_service = s.id_service\r\n"
+				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type;";
+		return jdbcTemplate.query(sql, new appointmentRowMapper());
 	}
 	
 }

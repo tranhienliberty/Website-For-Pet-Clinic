@@ -56,7 +56,7 @@ public class BillRepository {
 		}
 	}
 	public void addBill(Bill bill) throws Exception {
-		String sql = "INSERT INTO bill (id_bill, total_amount, payment_status, id_cart, time, payment_method,delivered)\r\n"
+		String sql = "INSERT INTO bill (id_bill, total_amount, payment_status, id_cart, time, payment_method, delivered)\r\n"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?);\r\n"
 				+ "";
 		Object[] params = new Object[] {bill.getId_bill(), bill.getTotal_amount(), bill.getPayment_status(), bill.getId_cart(), bill.getTime(), bill.getPayment_method(), bill.getDelivered()};

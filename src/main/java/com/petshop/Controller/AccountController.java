@@ -38,8 +38,11 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm(Model model, @RequestHeader(value = "Referer", required = false) String previousUrl) {
+    public String showLoginForm(Model model, @RequestHeader(value = "Referer", required = false) String previousUrl, 
+    		@RequestParam(value = "message", required = false) String message,  @RequestParam(value = "success", required = false) String success) {
         model.addAttribute("previousUrl", previousUrl);
+        model.addAttribute("message", message);
+        model.addAttribute("success", success);
         return "customer/login";
     }
 
@@ -103,18 +106,32 @@ public class AccountController {
 		return accountService.checkExistUsername(username);
 	}
     
+    @GetMapping("/register")
+    public String showRegisterForm() {
+        return "customer/register";
+    }
+	
     @RequestMapping(value = "/register")
-    public String register(@RequestParam("username") String username, @RequestParam("email") String email,
-			@RequestParam("password") String password, Model model) {
-    	String encodePass = hashPassword(password);
-		if (checkExistUsername(username)) {
-			accountService.register(username, email, encodePass);
-			
-			return "redirect:login";
+    public String register(@RequestParam("Username") String username, @RequestParam("Email") String email,
+			@RequestParam("Password") String password, @RequestParam("Password2") String password2, Model model) {
+    	//String encodePass = hashPassword(password);
+		if(password.equals(password2)) {
+			if (checkExistUsername(username)) {
+				accountService.register(username, email, password);
+				String success = "Đăng ký thành công! Hãy đăng nhập bằng tài khoản bạn vừa đăng ký nhé!";
+				model.addAttribute("success", success);
+				return "redirect:login?success=" + success;
+			}
+			else {
+				String message = "Tài khoản đã tồn tại! Hãy sử dụng tên đăng nhập khác!";
+				model.addAttribute("message", message);
+				return "redirect:login?message=" + message;
+			}
 		}
 		else {
-			model.addAttribute("failed", "failed");
-			return "customer/login";
+			String message = "Mật khẩu nhập không khớp nhau! Hãy nhập lại!";
+			model.addAttribute("message", message);
+			return "redirect:login?message=" + message;
 		}
 		
 	}

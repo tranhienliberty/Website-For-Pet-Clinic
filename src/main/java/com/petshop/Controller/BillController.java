@@ -15,6 +15,9 @@ import com.petshop.Service.BillDetailService;
 import com.petshop.Service.BillService;
 import com.petshop.Service.CartService;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class BillController {
 	@Autowired
@@ -25,7 +28,25 @@ public class BillController {
 	private CartService cartService;
 	
 	@RequestMapping(value = "/showListBillByUser")
-	public String showListBillByUser(@RequestParam("username") String username, @RequestParam("delivered") String delivered,Model model) {
+	public String showListBillByUser(@RequestParam("delivered") String delivered,
+			HttpServletRequest request, Model model) {
+		boolean isLoggedIn = false;
+	    String username = null;
+	    Cookie[] cookies = request.getCookies();
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if (cookie.getName().equals("userIsLoggedIn")) {
+	                isLoggedIn = Boolean.parseBoolean(cookie.getValue());
+	            }
+	            else if (cookie.getName().equals("userUsername")) {
+	                username = cookie.getValue();
+	            }
+	        }
+	    }
+	    if (!isLoggedIn) {
+	        // Cookie không tồn tại hoặc giá trị là false, chuyển hướng đến trang login
+	        return "redirect:/login";
+	    }
 		Cart cart = cartService.getCartByUsername(username);
 		List<Bill> bills =  billService.ListBill(cart.getId_cart(), delivered);
 		model.addAttribute("bills", bills);

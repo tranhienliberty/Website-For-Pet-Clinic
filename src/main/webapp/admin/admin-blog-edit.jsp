@@ -16,6 +16,40 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-product-form.css"/>">
     <title>Pettiny Admin</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .blog-container {
+      display: flex;
+      flex-direction: column;
+      align-items: right;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .image {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .content h2 {
+      margin-top: 0;
+    }
+
+    .content p {
+      margin-bottom: 0;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-200 custom-scrollbar">
@@ -146,16 +180,51 @@
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-			<form action="<%=request.getContextPath()%>/adminEditService" method = "post">
-			          <h2>Thông tin dịch vụ</h2>
-			  <input type="hidden" id="id_service" name="id_service" value="${service.id_service}">
+			<form action="<%=request.getContextPath()%>/adminEditBlog" method = "post">
+			          <h2>Bài viết chi tiết</h2>
+			  <input type="hidden" id="id_blog" name="id_blog" value="${blog.id_blog}">
 			
-			  <label for="name_service">Tên dịch vụ:</label>
-			  <input type="text" id="name_service" name="name_service" value = "${service.name_service}" required>
+			  <label for="title">Tiêu đề bài viết:</label>
+			  <input type="text" id="title" name="title" value = "${blog.title}" required>
 			  
-
+			  	<div class="blog-container">
+			    <div class="news-item text-center">
+			      <img class="image1" src="${blog.image1}" alt="Image 1">
+			      <label for="image1">Chọn hình ảnh:</label> 
+			      <input type="file" id="image1" value = "${blog.image1}" name="image1">
+			      <div class="content">
+			        <label for="content1">Đoạn văn 1:</label>
+			  		<textarea id="content1" name="content1" rows="10" cols="50" required>${blog.content1}</textarea>
+			      </div>
+			    </div>
+			    <div class="news-item text-center">
+			      <img class="image2" src="${blog.image2}" alt="Image 2">
+			      <label for="image2">Chọn hình ảnh:</label> 
+			      <input type="file" id="image2" value = "${blog.image2}" name="image2">
+			      <div class="content">
+			      	<label for="content2">Đoạn văn 2:</label>
+			  		<textarea id="content2" name="content2" rows="10" cols="50" required>${blog.content2}</textarea>
+			      </div>
+			    </div>
+			    <div class="news-item text-center">
+			      <img class="image3" src="${blog.image3}" alt="Image 3">
+			      <label for="image3">Chọn hình ảnh:</label> 
+			      <input type="file" id="image3" value = "${blog.image3}" name="image3">
+			      <div class="content">
+			        <label for="content3">Đoạn văn 3:</label>
+			  		<textarea id="content3" name="content3" rows="10" cols="50" required>${blog.content3}</textarea>
+			      </div>
+			    </div>
+			  </div>
+			  <label for="id_animal_type">Loại động vật:</label>
+			  <select id="id_animal_type" name="id_animal_type" required>
+			  	<option disabled selected>--Chọn loài vật--</option>
+			    <c:forEach items="${animal_type}" var="item">
+                    <option value="<c:out value="${item.id_animal_type}"/>">${item.name_animal_type}</option>
+                </c:forEach>
+			  </select>
 			  <button type="submit">Lưu</button>
-			        </form>
+			</form>
 	</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>

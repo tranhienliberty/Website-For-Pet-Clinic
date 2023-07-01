@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petshop.Entity.AnimalType;
 import com.petshop.Entity.Appointment;
+import com.petshop.Entity.Bill;
 import com.petshop.Entity.Customer;
 import com.petshop.Entity.Service;
 import com.petshop.Service.AnimalTypeService;
@@ -61,15 +62,15 @@ public class AppointmentController {
 	        }
 	    }
 	    if (!isLoggedIn) {
-	        // Cookie không tồn tại hoặc giá trị là false, chuyển hướng đến trang login
-	        return "redirect:/login";
+	        return "redirect:/showAppointmentForm";
 	    }
 		List<Appointment> appointments = appointmentService.showMyAllAppointment(username);
 		model.addAttribute("appointments", appointments);
 		return "customer/my-appointment";
 	}
 	@RequestMapping(value = "/showAppointmentForm")
-	public String showAppointmentForm(@RequestParam("username") String username,Model model) throws Exception {
+	public String showAppointmentForm(@RequestParam(value = "username", required = false) String username,Model model) throws Exception {
+		if(username!=null) {
 		List<Service> service = serviceService.showAllService();
 		List<AnimalType> animal_type = animalTypeService.showAllAnimalType();
 		Customer customer = customerService.showCustomerInfo(username);
@@ -77,15 +78,41 @@ public class AppointmentController {
 		model.addAttribute("service", service);
 		model.addAttribute("animal_type", animal_type);
 		return "customer/appointment-form";	
+		}
+		else
+		{
+			List<Service> service = serviceService.showAllService();
+			List<AnimalType> animal_type = animalTypeService.showAllAnimalType();
+			model.addAttribute("service", service);
+			model.addAttribute("animal_type", animal_type);
+			return "customer/appointment-form";	
+		}
 	}
 	@RequestMapping(value = "/setAppointment")
-	public String setApointment(@RequestParam("name") String name, @RequestParam("phone") String phone,
+	public String setApointment(@RequestParam(value = "username", required = false) String username, @RequestParam("name") String name, @RequestParam("phone") String phone,
 			@RequestParam("date") String date, @RequestParam("email") String email, 
 			@RequestParam("animal_type") int id_animal_type,@RequestParam("service") int id_service, 
 			@RequestParam("note") String note, Model model) throws Exception {
-		String token = generateToken(10);
-		appointmentService.setAppointment(name, phone, date, email, id_animal_type, id_service, note, token);
-		model.addAttribute("token", token);
-		return "customer/my-appointment";
+		if(username!=null) {
+			String token = generateToken(10);
+			System.out.print(username);
+			appointmentService.setAppointmentUser(username, name, phone, date, email, id_animal_type, id_service, note, token);
+			return "customer/my-appointment";
+		}
+		else 
+		{
+			String token = generateToken(10);
+			System.out.print("A");
+			System.out.print(username);
+			appointmentService.setAppointment(name, phone, date, email, id_animal_type, id_service, note, token);
+			model.addAttribute("token", token);
+			return "customer/appointment-success";
+		}
+	}
+	@RequestMapping(value = "/adminShowAllAppointment")
+	public String showAllBill(Model model) {
+		List<Appointment> appointments = appointmentService.showAllAppointment();
+		model.addAttribute("appointments", appointments);
+		return "admin/admin-appointment";
 	}
 }

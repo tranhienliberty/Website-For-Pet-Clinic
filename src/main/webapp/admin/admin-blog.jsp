@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html >
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/admin-product-form.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -144,20 +144,50 @@
         </nav>
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
+
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-			<form action="<%=request.getContextPath()%>/adminEditService" method = "post">
-			          <h2>Thông tin dịch vụ</h2>
-			  <input type="hidden" id="id_service" name="id_service" value="${service.id_service}">
-			
-			  <label for="name_service">Tên dịch vụ:</label>
-			  <input type="text" id="name_service" name="name_service" value = "${service.name_service}" required>
-			  
-
-			  <button type="submit">Lưu</button>
-			        </form>
-	</main>
+		<div class="table-wrapper">
+			<a href = "<%=request.getContextPath()%>/showFormBlogInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm bài viết</button></a>	
+			<table class="fl-table" style="overflow-y: auto;">
+				<thead>
+					<tr>
+						<th>ID Blog</th>
+						<th>Thời gian tạo</th>
+						<th>Tiêu đề</th>
+						<th>Phân loại</th>
+						<th>Thao tác</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${blogs}" var="item">
+						<tr>
+							<td><c:out value="${item.id_blog}" /> </td>
+							<td><c:out value="${item.created_date}" /> </td>
+							<td><c:out value="${item.title}" /> </td>
+							<td><c:out value="${item.getAnimalType().getName_animal_type()}" /> </td>
+							<td>
+							<a class="bx bxs-edit bx-xs"
+								style="text-decoration: none; color: green"
+								href="<%=request.getContextPath()%>/showFormBlogInfo?id_blog=${item.id_blog}">
+							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
+								style="text-decoration: none; color: red" href="#"
+								onclick="confirmDelete(${item.id_blog})"> </a></td>
+						</tr>
+					</c:forEach>
+				<tbody>
+			</table>
+		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
+    	<script>
+	function confirmDelete(id_blog) {
+	  if (confirm('Bạn có chắc chắn muốn xóa bài viết này?')) {
+	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
+	    window.location.href = 'adminDeleteBlog?id_blog=' + id_blog;
+	  } else {
+	  }
+	}
+	</script>
 </body>
-</html>s
+</html>

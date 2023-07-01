@@ -125,6 +125,7 @@ public class CartController {
             Timestamp timestamp = Timestamp.valueOf(currentDateTime);
             bill.setTime(timestamp);
             bill.setPayment_method(payment_method);
+            bill.setDelivered("Chưa giao hàng");
             billService.addBill(bill);
             
             List<CartItems> cartItems = cartItemsService.showAllCartItems(cart.getId_cart());

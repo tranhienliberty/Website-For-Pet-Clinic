@@ -23,7 +23,6 @@
 <link rel="stylesheet" id="wc-blocks-vendors-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="wc-blocks-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="contact-form-7-css" href="<c:url value="/resources/plugins/contact-form-7/includes/css/styles.css"/>" type="text/css" media="all">
-<link rel="stylesheet" id="toc-screen-css" href="<c:url value="/resources/plugins/table-of-contents-plus/screen.min.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/plugins/woocommerce-products-filter/css/front.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/css/bill-list.css"/>" type="text/css" media="all">
 <style id="woof-inline-css" type="text/css">
@@ -46,7 +45,6 @@
 <style id="woocommerce-inline-inline-css" type="text/css">
 .woocommerce form .form-row .required { visibility: visible; }
 </style>
-<link rel="stylesheet" id="tablepress-default-css" href="<c:url value="/resources/plugins/tablepress/css/default.min.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="flatsome-main-css" href="<c:url value="/resources/themes/flatsome/assets/css/flatsome.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="flatsome-shop-css" href="<c:url value="/resources/themes/flatsome/assets/css/flatsome-shop.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="flatsome-googlefonts-css" href="//fonts.googleapis.com/css?family=Montserrat%3Aregular%2C700%2Cregular%2C700%7CDancing+Script%3Aregular%2C400&amp;display=swap&amp;ver=3.9" type="text/css" media="all">
@@ -135,6 +133,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 												class="nav-top-link nav-top-not-logged-in"> <span>
 													Đăng nhập </span>
 											</a>
+											<li class="account-item has-icon">
+											<a href="<%=request.getContextPath()%>/register"
+												class="nav-top-link nav-top-not-logged-in"> <span>
+													Đăng ký </span>
+											</a>
+											</li>
 										</c:otherwise>
 									</c:choose></li>
 							</ul>
@@ -345,14 +349,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 <li id="menu-item-44878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44878 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=1" class="nav-top-link L-Affiliate-Tagged">Chó cảnh</a></li>
 <li id="menu-item-44879" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44879 menu-item-design-default"><a href="<%=request.getContextPath()%>/showBlogList?id_animal_type=2" class="nav-top-link L-Affiliate-Tagged">Mèo cảnh</a></li>
-<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default"><a href="<%=request.getContextPath()%>/showAllBillByUser?username=${cookie.userUsername.value}" class="nav-top-link L-Affiliate-Tagged">Đơn hàng</a></li>
-<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
-<li id="menu-item-49709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49709 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Pet-detect<i class='bx bx-chevron-down'></i></a>
+<li id="menu-item-460" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460 menu-item-design-default has-dropdown"><a href="#" class="nav-top-link L-Affiliate-Tagged">Đơn hàng<i class='bx bx-chevron-down'></i></a>
 <ul class="sub-menu nav-dropdown nav-dropdown-default">
-	<li id="menu-item-49800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống chó</a></li>
-	<li id="menu-item-49801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="#" class="L-Affiliate-Tagged">Phân biệt giống mèo</a></li>
+	<li id="menu-item-49000" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-49800 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Chưa giao hàng" class="L-Affiliate-Tagged">Đơn hàng đang giao</a></li>
+	<li id="menu-item-49001" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-4980149473 nav-dropdown-col"><a href="<%=request.getContextPath()%>/showListBillByUser?username=${cookie.userUsername.value}&delivered=Đã giao hàng" class="L-Affiliate-Tagged">Lịch sử mua hàng</a></li>
 </ul>
 </li>
+<li id="menu-item-584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-584 menu-item-design-default"><a href="<%=request.getContextPath()%>/showMyAllAppointment" class="nav-top-link L-Affiliate-Tagged">Đặt lịch</a></li>
             </ul>
           </div>
 
@@ -402,17 +405,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		 <a href = "<%=request.getContextPath()%>/showAppointmentForm?username=${username}"><button style="text-align: left; margin: 4px; background-color: rgb(255, 182, 193); color: white; padding: 2px 3px; border: 1px solid #CC99CC; border-radius: 5px;">Đặt lịch</button></a>	
 		  <ul class="responsive-table">
 		    <li class="table-header" style="height: 70px;">
-		      <div class="col-md-1 text-center" style = "margin-right:-30px;">ID</div>
-		      <div class="col-md-4 text-tencer ">Dịch vụ sử dụng</div>
+		      <div class="col-md-1 text-center">ID</div>
+		      <div class="col-md-2 text-center">Mã cuộc hẹn</div>
+		      <div class="col-md-3 text-center ">Dịch vụ sử dụng</div>
 		      <div class="col-md-4 text-center">Thời gian hẹn</div>
-		      <div class="col-md-3 text-center">Trạng thái</div>
+		      <div class="col-md-2 text-center">Trạng thái</div>
 		    </li>
 		    <c:forEach items="${appointments}" var="item">
 		    <li class="table-row" style="height: 70px;">
 		      <div class="col-md-1 text-center" data-label="ID">${item.id_appointment}</div>
-		      <div class="col-md-4 text-tencer" data-label="Dịch vụ">${item.getService().getName_service()}</div>
-		      <div class="col-md-4 text-left" data-label="Thời gian">${item.appointment_date}</div>
-		      <div class="col-md-3 text-left" data-label="Trạng thái">${item.appointment_status}</div>
+		      <div class="col-md-2 text-center" data-label="token">${item.token}</div>
+		      <div class="col-md-3 text-center" data-label="Dịch vụ">${item.getService().getName_service()}</div>
+		      <div class="col-md-4 text-center" data-label="Thời gian">${item.appointment_date}</div>
+		      <div class="col-md-2 text-center" data-label="Trạng thái" >${item.appointment_status}</div>
 		    </li>
 		    </c:forEach>
 		  </ul>
@@ -509,7 +514,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 var tocplus = {"visibility_show":"show","visibility_hide":"hide","width":"Auto"};
 /* ]]> */
 </script>
-<script type="text/javascript" src="<c:url value="/resources/plugins/table-of-contents-plus/front.min.js"/>" id="toc-front-js"></script>
 <script type="text/javascript" src="<c:url value="/resources/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"/>" id="jquery-blockui-js"></script>
 <script type="text/javascript" src="<c:url value="/resources/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"/>" id="js-cookie-js"></script>
 

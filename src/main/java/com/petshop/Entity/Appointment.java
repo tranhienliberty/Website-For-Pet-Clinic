@@ -14,6 +14,7 @@ public class Appointment {
 	protected String appointment_status;
 	protected Service service;
 	protected AnimalType animalType;
+	protected String username;
 	protected boolean isDeleted;
 	public int getId_appointment() {
 		return id_appointment;
@@ -80,6 +81,12 @@ public class Appointment {
 	}
 	public void setAnimalType(AnimalType animalType) {
 		this.animalType = animalType;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public boolean isDeleted() {
 		return isDeleted;

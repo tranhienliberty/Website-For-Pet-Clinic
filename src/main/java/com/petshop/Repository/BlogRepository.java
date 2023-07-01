@@ -64,4 +64,83 @@ public class BlogRepository {
 					+ "JOIN animal_type a ON b.id_animal_type = a.id_animal_type;";
 			return jdbcTemplate.query(sql, new blogRowmapper());
 		}
+
+		public void editBlog(int blogID, String title, String image1, String content1, String image2, String content2,
+				String image3, String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, image1 = ?, content1 = ?, image2 = ?, content2 =?, image3 = ?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, image1, content1, image2, content2, image3, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void addBlog(String title, Timestamp timestamp, String image1, String content1, String image2, String content2, String image3,
+				String content3, int id_animal_type) {
+			String sql = "INSERT INTO blog(title, created_date, image1, content1, image2, content2, image3, content3, id_animal_type)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			Object[] params = new Object[] {title, timestamp, image1, content1, image2, content2, image3, content3, id_animal_type};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void deleteBlog(int id_blog) {
+			String sql = "DELETE FROM blog WHERE id_blog = ?";
+			Object[] params = new Object[] {id_blog};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog1(int blogID, String title, String image1, String content1, String image2, String content2,
+				String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, image1 = ?, content1 = ?, image2 = ?, content2 =?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, image1, content1, image2, content2, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog2(int blogID, String title, String image1, String content1, String content2, String image3,
+				String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, image1 = ?, content1 = ?,  content2 =?, image3 = ?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, image1, content1, content2, image3, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog3(int blogID, String title, String content1, String image2, String content2, String image3,
+				String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, content1 = ?, image2 = ?, content2 =?, image3 = ?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, content1, image2, content2, image3, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog4(int blogID, String title, String content1, String content2, String image3,
+				String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?,  content1 = ?,  content2 =?, image3 = ?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, content1, content2, image3, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog5(int blogID, String title, String image1, String content1, String content2, String content3,
+				int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, image1 = ?, content1 = ?, content2 =?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, image1, content1, content2, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog6(int blogID, String title, String content1, String image2, String content2,
+				String content3, int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, content1 = ?, image2 = ?, content2 =?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, content1, image2, content2, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+
+		public void editBlog7(int blogID, String title, String content1, String content2, String content3,
+				int id_animal_type) {
+			String sql = "UPDATE blog SET title = ?, content1 = ?, content2 =?, content3 = ?, id_animal_type = ?\r\n"
+					+ "WHERE id_blog = ?;";
+			Object[] params = new Object[] {title, content1, content2, content3, id_animal_type, blogID};
+			int rs =jdbcTemplate.update(sql, params);
+		}
+		
 }
