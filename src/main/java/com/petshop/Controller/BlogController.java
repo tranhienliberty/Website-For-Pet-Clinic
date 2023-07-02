@@ -62,42 +62,42 @@ public class BlogController {
     public String editBlog(@RequestParam(value = "id_blog", required = false) Integer id_blog, @RequestParam("title") String title, @RequestParam(value = "image1", required = false) String image1, 
     		@RequestParam("content1") String content1, @RequestParam(value = "image2", required = false) String image2, @RequestParam("content2") String content2, 
     		@RequestParam(value = "image3", required = false) String image3,@RequestParam("content3") String content3, @RequestParam("id_animal_type") int id_animal_type) {
-    	if(id_blog!=null&&image1!=null&&image2!=null&&image3==null) {
+    	if(id_blog!=null&&image1!=""&&image2!=""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog1(blogID, title, image1, content1, image2, content2, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1!=null&&image2==null&&image3!=null) {
+    	else if(id_blog!=null&&image1!=""&&image2==""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog2(blogID, title, image1, content1, content2, image3, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1==null&&image2!=null&&image3!=null) {
+    	else if(id_blog!=null&&image1==""&&image2!=""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog3(blogID, title, content1, image2, content2, image3, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1==null&&image2==null&&image3!=null) {
+    	else if(id_blog!=null&&image1==""&&image2==""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog4(blogID, title, content1, content2, image3, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1!=null&&image2==null&&image3==null) {
+    	else if(id_blog!=null&&image1!=""&&image2==""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog5(blogID, title, image1, content1, content2, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1==null&&image2!=null&&image3==null) {
+    	else if(id_blog!=null&&image1==""&&image2!=""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog6(blogID, title, content1, image2, content2, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1==null&&image2==null&&image3==null) {
+    	else if(id_blog!=null&&image1==""&&image2==""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog7(blogID, title, content1, content2, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";
     	}
-    	else if(id_blog!=null&&image1!=null&&image2!=null&&image3!=null) {
+    	else if(id_blog!=null&&image1!=""&&image2!=""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog(blogID, title, image1, content1, image2, content2, image3, content3, id_animal_type);
         	return "redirect:adminShowAllBlog";

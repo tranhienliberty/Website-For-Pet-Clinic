@@ -423,7 +423,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
 		      <div class="col-md-3 text-tencer" data-label="Thời gian">${item.time}</div>
 		      <div class="col-md-3 text-tencer" data-label="Phương thức thanh toán">${item.payment_method}</div>
-		      <div class="col-md-2 text-center" data-label="Trạng thái">${item.payment_status}</div>
+		      <div class="col-md-2 text-center" data-label="Trạng thái">${item.payment_status}&nbsp<a href = "<%=request.getContextPath()%>/showBillDetail?id_bill=${item.id_bill}"><i class="fas fa-eye"></i></a></div>
 		    </li>
 		    </c:forEach>
 		  </ul>

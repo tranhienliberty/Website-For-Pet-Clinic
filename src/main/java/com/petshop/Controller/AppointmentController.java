@@ -88,23 +88,30 @@ public class AppointmentController {
 			return "customer/appointment-form";	
 		}
 	}
+	public int getNewID() {
+		return appointmentService.getNewID() + 1;
+	}
 	@RequestMapping(value = "/setAppointment")
 	public String setApointment(@RequestParam(value = "username", required = false) String username, @RequestParam("name") String name, @RequestParam("phone") String phone,
 			@RequestParam("date") String date, @RequestParam("email") String email, 
 			@RequestParam("animal_type") int id_animal_type,@RequestParam("service") int id_service, 
 			@RequestParam("note") String note, Model model) throws Exception {
-		if(username!=null) {
+		if(username!="") {
+			int id_appointment = getNewID();
 			String token = generateToken(10);
-			System.out.print(username);
-			appointmentService.setAppointmentUser(username, name, phone, date, email, id_animal_type, id_service, note, token);
-			return "customer/my-appointment";
+			appointmentService.setAppointmentUser(id_appointment,username, name, phone, date, email, id_animal_type, id_service, note, token);
+			Appointment appointment = appointmentService.showAppointmentByID(id_appointment);
+			model.addAttribute("appointment", appointment);
+			model.addAttribute("token", token);
+			return "customer/appointment-success";
 		}
 		else 
 		{
 			String token = generateToken(10);
-			System.out.print("A");
-			System.out.print(username);
-			appointmentService.setAppointment(name, phone, date, email, id_animal_type, id_service, note, token);
+			int id_appointment = getNewID();
+			appointmentService.setAppointment(id_appointment, name, phone, date, email, id_animal_type, id_service, note, token);
+			Appointment appointment = appointmentService.showAppointmentByID(id_appointment);
+			model.addAttribute("appointment", appointment);
 			model.addAttribute("token", token);
 			return "customer/appointment-success";
 		}

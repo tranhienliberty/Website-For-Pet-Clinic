@@ -13,9 +13,9 @@ public class AppointmentService {
 	@Autowired
 	private AppointmentRepository appointmentRepository;
 
-	public void setAppointment(String name, String phone, String date, String email, int id_animal_type, int id_service,
+	public void setAppointment(int id_appointment, String name, String phone, String date, String email, int id_animal_type, int id_service,
 			String note, String token)  throws Exception {
-		appointmentRepository.setAppointment(name, phone, date, email, id_animal_type, id_service, note, token);
+		appointmentRepository.setAppointment(id_appointment,name, phone, date, email, id_animal_type, id_service, note, token);
 		
 	}
 
@@ -23,13 +23,21 @@ public class AppointmentService {
 		return appointmentRepository.showMyAllAppointment(username);
 	}
 
-	public void setAppointmentUser(String username, String name, String phone, String date, String email,
+	public void setAppointmentUser(int id_appointment, String username, String name, String phone, String date, String email,
 			int id_animal_type, int id_service, String note, String token) {
-		appointmentRepository.setAppointmentUser(username, name, phone, date, email, id_animal_type, id_service, note, token);
+		appointmentRepository.setAppointmentUser(id_appointment, username, name, phone, date, email, id_animal_type, id_service, note, token);
 	}
 
 	public List<Appointment> showAllAppointment() {
 		return appointmentRepository.showAllAppointment();
+	}
+
+	public int getNewID() {
+		return appointmentRepository.getNewID();
+	}
+
+	public Appointment showAppointmentByID(int id_appointment) {
+		return appointmentRepository.showAppointmentByID(id_appointment);
 	}
 	
 	

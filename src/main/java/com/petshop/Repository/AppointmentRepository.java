@@ -43,11 +43,11 @@ public class AppointmentRepository {
         }
     }
 
-	public void setAppointment(String name, String phone, String date, String email, int id_animal_type, int id_service,
+	public void setAppointment(int id_appointment, String name, String phone, String date, String email, int id_animal_type, int id_service,
 		String note, String token) throws Exception {
-		String sql = "INSERT INTO appointment(name, phone, appointment_date, email, id_animal_type, id_service, note, token, information)"
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = new Object[] {name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo"};
+		String sql = "INSERT INTO appointment(id_appointment, name, phone, appointment_date, email, id_animal_type, id_service, note, token, information)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {id_appointment, name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo"};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 
@@ -59,11 +59,11 @@ public class AppointmentRepository {
 		return jdbcTemplate.query(sql, new appointmentRowMapper(), username);
 	}
 
-	public void setAppointmentUser(String username, String name, String phone, String date, String email,
+	public void setAppointmentUser(int id_appointment, String username, String name, String phone, String date, String email,
 			int id_animal_type, int id_service, String note, String token) {
-		String sql = "INSERT INTO appointment(name, phone, appointment_date, email, id_animal_type, id_service, note, token, information, username)"
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = new Object[] {name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo", username};
+		String sql = "INSERT INTO appointment(id_appointment, name, phone, appointment_date, email, id_animal_type, id_service, note, token, information, username)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {id_appointment, name, phone, date, email, id_animal_type, id_service, note, token, "Không có thông báo", username};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 
@@ -73,6 +73,23 @@ public class AppointmentRepository {
 				+ "JOIN service AS s ON a.id_service = s.id_service\r\n"
 				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type;";
 		return jdbcTemplate.query(sql, new appointmentRowMapper());
+	}
+
+	public int getNewID() {
+		String sql = "SELECT MAX(id_appointment) FROM appointment";
+		Integer id = jdbcTemplate.queryForObject(sql, Integer.class);
+		if(id == null) {
+			id = 0;
+		}
+		return id;
+	}
+
+	public Appointment showAppointmentByID(int id_appointment) {
+		String sql = "SELECT *\r\n"
+				+ "FROM appointment AS a\r\n"
+				+ "JOIN service AS s ON a.id_service = s.id_service\r\n"
+				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type WHERE id_appointment = ?;";
+		return jdbcTemplate.queryForObject(sql, new appointmentRowMapper(), id_appointment);
 	}
 	
 }

@@ -55,13 +55,19 @@ public class BillController {
 		}
 		else return "customer/bill-delivered";
 	}
+	@RequestMapping(value = "/showBillDetail")
+	public String ShowBillDetail(@RequestParam("id_bill") int id_bill, Model model) {
+		List<BillDetail> billDetails = billDetailService.adminShowBillInfo(id_bill);
+		model.addAttribute("billDetails", billDetails);
+		return "customer/bill-detail";
+	}
 	@RequestMapping(value = "/adminShowAllBill")
 	public String showAllBill(Model model) {
 		List<Bill> bills = billService.showAllBill();
 		model.addAttribute("bills", bills);
 		return "admin/admin-bill";
 	}
-	@RequestMapping(value = "/showBillDetail")
+	@RequestMapping(value = "/adminshowBillDetail")
 	public String adminShowBillDetail(@RequestParam("id_bill") int id_bill, Model model) {
 		List<BillDetail> billDetails = billDetailService.adminShowBillInfo(id_bill);
 		model.addAttribute("billDetails", billDetails);

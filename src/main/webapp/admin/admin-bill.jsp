@@ -178,7 +178,7 @@
 							<td><c:out value="${item.delivered}" /></td>
 							<td>
 							<a style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/showBillDetail?id_bill=${item.id_bill}">
+								href="<%=request.getContextPath()%>/adminshowBillDetail?id_bill=${item.id_bill}">
 							Xem chi tiết</a></td>
 						</tr>
 					</c:forEach>

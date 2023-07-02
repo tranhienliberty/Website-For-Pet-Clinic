@@ -505,7 +505,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 <div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>		</div>
 	</header>
-	
 	 <form action="<%=request.getContextPath()%>/setAppointment?username=${username}" class="form-horizontal"method = "post">
         <div class="container">
             <div class="schedule-container">
