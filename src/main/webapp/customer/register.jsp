@@ -27,6 +27,7 @@
 	      <div class="login__check"></div>
 	      <div class="login__form">
 	      	<form action="<%=request.getContextPath()%>/register" method="post">
+	      	<p style = "color:#00EE00; font-size:14px">${message}</p>
 	        <div class="login__row">
 	          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
 	            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
@@ -51,6 +52,7 @@
 	          </svg>
 	          <input type="password" class="login__input pass" name = "Password2" placeholder="Nhập lại mật khẩu"/>
 	          <button type="submit" class="login__submit">Đăng ký</button>
+	          <p class="login__signup">Đã có tài khoản? &nbsp;<a href = "<%=request.getContextPath()%>/login">Đăng nhập</a></p>
 	        </div>
 	        
 	        </form>

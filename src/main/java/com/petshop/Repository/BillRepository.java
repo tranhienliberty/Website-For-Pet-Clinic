@@ -85,7 +85,15 @@ public class BillRepository {
 		return jdbcTemplate.query(sql, new billExtraRowmapper());
 	}
 	public void changeDelivered(int id_bill) {
-		String sql = "UPDATE bill SET delivered = 'Đã giao hàng' WHERE id_bill = ?";
-		int rs =jdbcTemplate.update(sql, id_bill);
+		String sql = "UPDATE bill SET delivered = 'Đã giao hàng', payment_status = 'Đã thanh toán!' WHERE id_bill = ?";
+		jdbcTemplate.update(sql, id_bill);
+	}
+	public void deleteBill(int id_bill) {
+		String sql = "UPDATE bill SET delivered = 'Đã hủy' WHERE id_bill = ?;";
+		jdbcTemplate.update(sql, id_bill);
+	}
+	public List<Bill> HistoryBill(int id_cart, String delivered) {
+		String sql = "SELECT * FROM bill WHERE id_cart = ? AND delivered <> ?";
+		return jdbcTemplate.query(sql, new billRowmapper(), id_cart, delivered);
 	}
 }

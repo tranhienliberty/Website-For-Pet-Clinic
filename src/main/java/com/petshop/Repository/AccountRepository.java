@@ -41,14 +41,18 @@ public class AccountRepository {
 		return jdbcTemplate.queryForObject(sql, Integer.class, username);
 	}
 	public void register(String username, String email, String encodePass) {
-		String sql1 = "INSERT INTO account(username, email, password)\r\n"
-				+ "VALUES (?, ?, ?);";
-		Object[] params1 = new Object[] {username, email, encodePass};
+		String sql1 = "INSERT INTO account(username, password)\r\n"
+				+ "VALUES (?, ?);";
+		Object[] params1 = new Object[] {username, encodePass};
 		jdbcTemplate.update(sql1, params1);
 		String sql2 = "INSERT INTO customer (username, email)\r\n"
 				+ "VALUES (?, ?);";
 		Object[] params2 = new Object[] {username, email};
 		jdbcTemplate.update(sql2, params2);
+		String sql3 = "INSERT INTO cart (username)\r\n"
+				+ "VALUES (?);";
+		Object[] params3 = new Object[] {username};
+		jdbcTemplate.update(sql3, params3);
 	}
 	public List<Account> getAllAccount() {
 		String sql = "SELECT * FROM account";
@@ -61,5 +65,35 @@ public class AccountRepository {
 				+ "    SELECT username\r\n"
 				+ "    FROM customer)";
 		return jdbcTemplate.query(sql, new accountRowmapper());
+	}
+	public void changePassword(String username, String encodePass) {
+		String sql = "UPDATE account SET password = ? WHERE username = ?";
+		Object[] params = new Object[] {encodePass, username};
+		jdbcTemplate.update(sql, params);
+	}
+	public void editAccount(String username, String new_password) {
+		String sql = "UPDATE account SET password = ? WHERE username = ?";
+		Object[] params = new Object[] {new_password, username};
+		jdbcTemplate.update(sql, params);
+	}
+	public void addAccountUser(String username, String password) {
+		String sql1 = "INSERT INTO account(username, password)\r\n"
+				+ "VALUES (?, ?);";
+		Object[] params1 = new Object[] {username, password};
+		jdbcTemplate.update(sql1, params1);
+		String sql2 = "INSERT INTO customer (username)\r\n"
+				+ "VALUES (?);";
+		Object[] params2 = new Object[] {username};
+		jdbcTemplate.update(sql2, params2);
+		String sql3 = "INSERT INTO cart (username)\r\n"
+				+ "VALUES (?);";
+		Object[] params3 = new Object[] {username};
+		jdbcTemplate.update(sql3, params3);
+	}
+	public void addAccountAdmin(String username, String password, String role) {
+		String sql1 = "INSERT INTO account(username, password, role)\r\n"
+				+ "VALUES (?, ?, ?);";
+		Object[] params1 = new Object[] {username, password, role};
+		jdbcTemplate.update(sql1, params1);
 	}
 }

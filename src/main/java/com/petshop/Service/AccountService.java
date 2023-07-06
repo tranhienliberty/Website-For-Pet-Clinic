@@ -56,4 +56,24 @@ public class AccountService {
 	public List<Account> getAccountFree() {
 		return accountRepository.getAccountFree();
 	}
+
+	public void changePassword(String username, String encodePass) {
+		accountRepository.changePassword(username, encodePass);
+	}
+
+	public Account findByUsername(String username) {
+		return accountRepository.findByUsername(username);
+	}
+
+	public void editAccount(String username, String new_password) {
+		accountRepository.editAccount(username, new_password);
+	}
+
+	public void addAccount(String username, String password) {
+		accountRepository.addAccountUser(username, password);
+	}
+
+	public void addAccountAdmin(String username, String password, String role) {
+		accountRepository.addAccountAdmin(username, password, role);
+	}
 }

@@ -421,6 +421,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section>
     <div class="container">
       <div class="row">
+        <h5 style = "color:#00EE00; text-align: center;">${message}</h5>
         <div class="cart rounded shadow">
           <c:forEach items="${cartItems}" var="item">
             <div class="first">
@@ -615,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		        console.log(data);
 		        console.log(details);
 		        var xhr = new XMLHttpRequest();
-		        xhr.open("POST", "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method=Paypal", true);
+		        xhr.open("POST", "<%=request.getContextPath()%>/checkOut?username=${cookie.userUsername.value}&total_amount=${sum}&payment_method=Thanh toán bằng paypal", true);
 		        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		        xhr.onreadystatechange = function() {
 		            if (xhr.readyState === 4 && xhr.status === 200) {

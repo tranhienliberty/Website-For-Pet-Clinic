@@ -116,6 +116,7 @@ public class AppointmentController {
 			return "customer/appointment-success";
 		}
 	}
+	//ADMIN
 	@RequestMapping(value = "/adminShowAllAppointment")
 	public String showAllBill(Model model) {
 		List<Appointment> appointments = appointmentService.showAllAppointment();

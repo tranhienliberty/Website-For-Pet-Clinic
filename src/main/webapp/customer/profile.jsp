@@ -394,7 +394,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       <h4>${cookie.userUsername.value}</h4>
                       <p class="text-secondary mb-1">Thông tin khách hàng</p>
                       <p class="text-muted font-size-sm">${customer.name_customer}</p>
-                      <button class="btn btn-primary" style = "background-color: #FF6699;  border-color: #FF6699;">Đổi ảnh</button>
+                      <a><button class="btn btn-primary" style = "background-color: #FF6699;  border-color: #FF6699;">Đổi ảnh</button></a>
+                      <button id = "edit-account-button" class="btn btn-primary" style = "background-color: #FF6699;  border-color: #FF6699;">Đổi mật khẩu</button>
                     </div>
                   </div>
                 </div>
@@ -498,6 +499,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			    </div>
 			  </div>
 			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="edit-modal2" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true" >
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="edit-modal-label">Chỉnh sửa tài khoản</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form action="<%=request.getContextPath()%>/EditAccount?username=${username}" method = "post" onsubmit="return validatePasswords()">
+			          <div class="form-group">
+			            <label for="username">Tên đăng nhập</label>
+			            <input type="text" id="username" name = "username" class="form-control" value="${account.username}" readonly>
+			          </div>
+			          <div class="form-group">
+			            <label for="new_password">Mật khẩu mới</label>
+			            <input type="password" id="new_password" name = "new_password" class="form-control">
+			          </div>
+			          <div class="form-group">
+			            <label for="re_password">Nhập lại mật khẩu</label>
+			            <input type="password" id="re_password" name = "re_password" class="form-control">
+			            <small id="password-error" class="text-danger"></small>
+			          </div>
+			          <button type="submit" class="btn btn-primary">Lưu</button>
+			          <button id="cancel-button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
     </div>           
     </div>
 
@@ -588,6 +621,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   </script>
+  	<script>
+    $(document).ready(function() {
+      $("#edit-account-button").click(function() {
+        $("#edit-modal2").modal("show");
+      });
+    });
+  </script>
+  <script>
+	  function validatePasswords() {
+	    var newPassword = document.getElementById('new_password').value;
+	    var rePassword = document.getElementById('re_password').value;
+	
+	    if (newPassword !== rePassword) {
+	      document.getElementById('password-error').textContent = 'Mật khẩu không khớp.';
+	      return false; // Ngăn form submit
+	    } else {
+	      document.getElementById('password-error').textContent = '';
+	      return true; // Cho phép form submit
+	    }
+	  }
+	</script>
 	<script src="<c:url value="/resources//js/profile.js"/>"></script>
   	<script type="text/javascript">
 		(function () {

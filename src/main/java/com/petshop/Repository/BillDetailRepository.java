@@ -68,7 +68,7 @@ public class BillDetailRepository {
 		String sql = "SELECT * FROM bill_detail WHERE id_bill = ?";
 		return jdbcTemplate.query(sql, new billDetailRowmapper(), id_bill);
 	}
-
+	
 	public List<BillDetail> adminShowBillInfo(int id_bill) {
 		String sql = "SELECT bill_detail.*, product.id_product_type, product.name_product, product.price, product_type.name_product_type\r\n"
 				+ "FROM bill_detail\r\n"
@@ -76,4 +76,6 @@ public class BillDetailRepository {
 				+ "JOIN product_type ON product.id_product_type = product_type.id_product_type WHERE bill_detail.id_bill = ?;";
 		return jdbcTemplate.query(sql, new billDetailProductRowmapper(), id_bill);
 	}
+
+
 }

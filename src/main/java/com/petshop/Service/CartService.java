@@ -14,4 +14,9 @@ public class CartService {
 	public Cart getCartByUsername(String username) {
 		return cartRepository.getCartByUsername(username);
 	}
+
+	public Cart getCartByIDBill(int id_bill) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

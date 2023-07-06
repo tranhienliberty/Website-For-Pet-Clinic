@@ -1,6 +1,8 @@
 package com.petshop.Controller;
 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.petshop.Entity.Account;
 import com.petshop.Entity.Customer;
+import com.petshop.Entity.Service;
 import com.petshop.Service.AccountService;
 
 import jakarta.servlet.http.Cookie;
@@ -39,19 +42,18 @@ public class AccountController {
 
     @GetMapping("/login")
     public String showLoginForm(Model model, @RequestHeader(value = "Referer", required = false) String previousUrl, 
-    		@RequestParam(value = "message", required = false) String message,  @RequestParam(value = "success", required = false) String success) {
+    		@RequestParam(value = "message", required = false) String message) {
         model.addAttribute("previousUrl", previousUrl);
         model.addAttribute("message", message);
-        model.addAttribute("success", success);
         return "customer/login";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam("Username") String username, @RequestParam("Password") String password,
                         Model model, HttpServletResponse response, @RequestParam(value = "previousUrl", defaultValue = "/") String previousUrl) {
-    	//String encodePass = hashPassword(password);
+    	String encodePass = hashPassword(password);
         try {
-            boolean isAuthenticated = accountService.authenticate(username, password);
+            boolean isAuthenticated = accountService.authenticate(username, encodePass);
             String role = accountService.getRole(username);
 
             if (isAuthenticated) {
@@ -61,7 +63,8 @@ public class AccountController {
                     addLoggedInCookie(response, "adminIsLoggedIn");
                     addUsernameCookie(response, "adminUsername", username);
                     return "redirect:/admin_home";
-                } else {
+                } 
+                else {
                     addLoggedInCookie(response, "userIsLoggedIn");
                     addUsernameCookie(response, "userUsername", username);
                     return "redirect:" + previousUrl;
@@ -113,25 +116,25 @@ public class AccountController {
 	
     @RequestMapping(value = "/register")
     public String register(@RequestParam("Username") String username, @RequestParam("Email") String email,
-			@RequestParam("Password") String password, @RequestParam("Password2") String password2, Model model) {
-    	//String encodePass = hashPassword(password);
+			@RequestParam("Password") String password, @RequestParam("Password2") String password2, Model model) throws UnsupportedEncodingException {
+    	String encodePass = hashPassword(password);
 		if(password.equals(password2)) {
 			if (checkExistUsername(username)) {
-				accountService.register(username, email, password);
-				String success = "Đăng ký thành công! Hãy đăng nhập bằng tài khoản bạn vừa đăng ký nhé!";
-				model.addAttribute("success", success);
-				return "redirect:login?success=" + success;
+				accountService.register(username, email, encodePass);
+				String message = "Đăng ký thành công! Hãy đăng nhập bằng tài khoản bạn vừa đăng ký nhé!";
+				model.addAttribute("message", message);
+				return "customer/login";
 			}
 			else {
 				String message = "Tài khoản đã tồn tại! Hãy sử dụng tên đăng nhập khác!";
 				model.addAttribute("message", message);
-				return "redirect:login?message=" + message;
+				return "customer/register";
 			}
 		}
 		else {
 			String message = "Mật khẩu nhập không khớp nhau! Hãy nhập lại!";
 			model.addAttribute("message", message);
-			return "redirect:login?message=" + message;
+			return "customer/register";
 		}
 		
 	}
@@ -164,10 +167,49 @@ public class AccountController {
         response.addCookie(usernameCookie);
     }
     
+    @RequestMapping(value = "/EditAccount")
+    public String EditPassword(@RequestParam("username") String username, 
+			@RequestParam("new_password") String new_password, Model model) throws UnsupportedEncodingException {
+    		String encodePass = hashPassword(new_password);
+    		accountService.editAccount(username, encodePass);
+    		String message = "Đã đổi thông tin tài khoản của bạn thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+    		return "redirect:showCustomerProfile?username=" + username + "&message=" + encodedMessage;
+    }
+    
+    //ADMIN
     @RequestMapping(value = "/adminShowAllAccount")
-	public String showAllAccount(Model model) {
+	public String showAllAccount(Model model, @RequestParam(value = "message", required = false) String message) {
 		List<Account> accounts = accountService.getAllAccount();
+		model.addAttribute("message", message);
 		model.addAttribute("accounts", accounts);
 		return "admin/admin-account";
+	}
+    @RequestMapping(value = "/resetPassword")
+    public String resetPassword(@RequestParam("username") String username, Model model) throws UnsupportedEncodingException {
+    	String encodePass = hashPassword("1");
+    	accountService.changePassword(username, encodePass);
+    	String message = "Đã reset mật khẩu cho tài khoản " + username + " thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+    	return "redirect:adminShowAllAccount?message=" + encodedMessage;
+    }
+	@RequestMapping(value = "/showFormAccountInfo")
+	public String showFormAccountInfo( Model model) {
+    	return "admin/admin-account-edit";
+	}
+	@RequestMapping(value = "/adminAddAccount")
+	public String adminAddAccount(@RequestParam("username") String username, @RequestParam("password") String password, 
+			@RequestParam("role") String role, Model model) throws UnsupportedEncodingException {
+			String encodePass = hashPassword("password");
+        	if ("user".equals(role)) {
+        		accountService.addAccount(username, encodePass);
+        	}
+			accountService.addAccountAdmin(username, encodePass, role);
+        	String message = "Thêm tài khoản thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllAccount?message=" + encodedMessage;
 	}
 }

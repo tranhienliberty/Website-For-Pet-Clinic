@@ -28,8 +28,8 @@
 	      <div class="login__check"></div>
 	      <div class="login__form">
 	      	<form action="<%=request.getContextPath()%>/login?previousUrl=${previousUrl}" method="post">
-	      	    <p class="text-success">${success}</p>
-	      	    <p class="text-error">${message}</p>
+	      	<p style = "color:#00EE00; font-size:16px">${message}</p>
+	      	<p style = "color:red; font-size:16px">${error}</p>
 	        <div class="login__row">
 	          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
 	            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />

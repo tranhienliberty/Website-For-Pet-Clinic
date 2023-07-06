@@ -27,8 +27,10 @@ public class CustomerController {
 	@RequestMapping(value = "/showCustomerProfile")
 	public String showCustomerProfile(@RequestParam("username") String username, @RequestParam(value = "message", required = false) String message,  Model model) {
 		Customer customer = customerService.showCustomerInfo(username);
+		Account account = accountService.findByUsername(username);
 		model.addAttribute("message", message);
 		model.addAttribute("customer", customer);
+		model.addAttribute("account", account);
 		return "customer/profile";
 	}
 	@RequestMapping(value = "/EditCustomer")

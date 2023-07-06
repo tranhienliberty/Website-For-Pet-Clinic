@@ -48,7 +48,7 @@ public class CartController {
 		return billService.getNewID() + 1;
 	}
 	@GetMapping (value = "/showCart")
-    public String showCart(HttpServletRequest request, Model model) {
+    public String showCart(HttpServletRequest request, @RequestParam(value = "message", required = false) String message, Model model) {
 	    boolean isLoggedIn = false;
 	    String username = null;
 	    Cookie[] cookies = request.getCookies();
@@ -69,6 +69,7 @@ public class CartController {
             Cart cart = cartService.getCartByUsername(username);
     		List<CartItems> cartItems = cartItemsService.showAllCartItems(cart.getId_cart());
     		model.addAttribute("cartItems", cartItems);
+    		model.addAttribute("message", message);
     		return "customer/cart";
     }
 	
@@ -120,7 +121,12 @@ public class CartController {
             bill.setId_bill(id);
             bill.setId_cart(cart.getId_cart());
             bill.setTotal_amount(total_amount);
-            bill.setPayment_status("Đã thanh toán!");
+            if("Thanh toán bằng tiền mặt".equals(payment_method)) {
+            	bill.setPayment_status("Chưa thanh toán!");
+            }
+            else {
+            	bill.setPayment_status("Đã thanh toán!");
+            }
             LocalDateTime currentDateTime = LocalDateTime.now();
             Timestamp timestamp = Timestamp.valueOf(currentDateTime);
             bill.setTime(timestamp);
@@ -139,9 +145,11 @@ public class CartController {
                productService.updateQuantityProduct(cartItem.getId_product(), cartItem.getCount());
             }
             cartItemsService.deleteAllCartItems(cart.getId_cart());
-            
         }
-		return "redirect:showCart";
+		String message = "Thanh toán thành công! Hãy đi đến Đơn hàng đang giao để thấy đơn đã đặt!";
+        String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    	model.addAttribute("message", encodedMessage);
+		return "redirect:showCart?message=" + encodedMessage;
 	}
 	@RequestMapping(value = "/deleteCartItem")
 	public String deleteCartItem (HttpServletRequest request,@RequestParam("username") String username, @RequestParam("id_product") int id_product, Model model) {

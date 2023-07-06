@@ -25,7 +25,7 @@
 <link rel="stylesheet" id="contact-form-7-css" href="<c:url value="/resources/plugins/contact-form-7/includes/css/styles.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="toc-screen-css" href="<c:url value="/resources/plugins/table-of-contents-plus/screen.min.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/plugins/woocommerce-products-filter/css/front.css"/>" type="text/css" media="all">
-<link rel="stylesheet" id="woof-css" href="<c:url value="/resources/css/bill-list.css"/>" type="text/css" media="all">
+<link rel="stylesheet" id="woof-css" href="<c:url value="/resources/css/delivered-style.css"/>" type="text/css" media="all">
 <style id="woof-inline-css" type="text/css">
 
 .woof_products_top_panel li span, .woof_products_top_panel2 li span{background: url(https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png);background-size: 14px 14px;background-repeat: no-repeat;background-position: right;}
@@ -405,22 +405,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="container">
 		  <h2> Lịch sử mua hàng của bạn </h2>
 		  <c:set var = "stt" value = "0"/>
+		  <p style = "color:#00EE00">${message}</p>
 		  <ul class="responsive-table">
-		    <li class="table-header" style="height: 70px;">
-		      <div class="col-md-1 text-center" style = "margin-right:-35px;">ID</div>
-		      <div class="col-md-2 text-center">Tổng tiền</div>
-		      <div class="col-md-3 text-tencer">Thời gian</div>
-		      <div class="col-md-3 text-tencer">Phương thức thanh toán</div>
-		      <div class="col-md-3 text-center">Trạng thái</div>
+		    <li class="table-header" style="height: 100px;padding-top: 55px;">
+		      <div class="col col-md-1 text-center">ID</div>
+		      <div class="col col-md-2 text-center">Tổng tiền</div>
+		      <div class="col col-md-3 text-center">Thời gian</div>
+		      <div class="col col-md-3 text-center">Phương thức thanh toán</div>
+		      <div class="col col-md-2 text-center">Trạng thái thanh toán</div>
+		      <div class="col col-md-2 text-center">Trạng thái giao hàng</div>
 		    </li>
 		    <c:forEach items="${bills}" var="item">
-		    <li class="table-row" style="height: 70px;">
+		    <li class="table-row" style="height: 100px;padding-top: 55px;">
 		      <c:set var = "stt" value = "${stt+1}"/>
-		      <div class="col-md-1 text-center" data-label="ID">${stt}</div>
-		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
-		      <div class="col-md-3 text-tencer" data-label="Thời gian">${item.time}</div>
-		      <div class="col-md-3 text-tencer" data-label="Phương thức thanh toán">${item.payment_method}</div>
-		      <div class="col-md-2 text-center" data-label="Trạng thái">${item.payment_status}</div>
+		      <div class="col col-md-1 text-center" data-label="ID">${stt}</div>
+		      <div class="col col-md-2 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
+		      <div class="col col-md-3 text-center" data-label="Thời gian">${item.time}</div>
+		      <div class="col col-md-3 text-center" data-label="Phương thức thanh toán">${item.payment_method}</div>
+		      <div class="col col-md-2 text-center" data-label="Trạng thái">${item.payment_status}</div>
+		      <div class="col col-md-2 text-center" data-label="Trạng thái">${item.delivered}</div>
 		    </li>
 		    </c:forEach>
 		  </ul>

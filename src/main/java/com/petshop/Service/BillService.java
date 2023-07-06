@@ -32,4 +32,12 @@ public class BillService {
 	public void changeDelivered(int id_bill) {
 		billRepository.changeDelivered(id_bill);
 	}
+
+	public void deleteBill(int id_bill) {
+		billRepository.deleteBill(id_bill);
+	}
+
+	public List<Bill> HistoryBill(int id_cart, String delivered) {
+		return billRepository.HistoryBill(id_cart, delivered);
+	}
 }

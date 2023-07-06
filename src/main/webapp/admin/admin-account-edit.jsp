@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/admin-product-form.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -143,45 +144,46 @@
         </nav>
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
-
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-		<div class="table-wrapper">
-			<a href = "<%=request.getContextPath()%>/showFormAccountInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm tài khoản</button></a>	
-			<p style = "color:#00FF00">${message}</p>
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>Tên tài khoản</th>
-						<th>Quyền</th>
-						<th>Reset mật khẩu</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${accounts}" var="item">
-						<tr>
-							<td><c:out value="${item.username}" /></td>
-							<td><c:out value="${item.role}" /> </td>
-							<td>
-							<a class="bx bx-refresh bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/resetPassword?username=${item.username}"></a>
-							</td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
-		</div>        </main>
+			<form action="<%=request.getContextPath()%>/adminAddAccount" method = "post" onsubmit="return validatePasswords()">
+			          <h2>Thông tin tài khoản</h2>
+			
+			  <label for="username">Tên tài khoản:</label>
+			  <input type="text" id="username" name="username"  required>
+			  
+			  <label for="password">Nhập mật khẩu:</label>
+			  <input type="text" id="password" name="password"  required>
+			  
+			  <label for="re_password">Nhập lại mật khẩu:</label>
+			  <input type="text" id="re_password" name="re_password"  required>
+			  <small id="password-error" class="text-danger"></small>
+			  
+			  <label for="role">Quyền tài khoản:</label>
+			  <select id="role" name="role" required>
+			  	<option disabled selected>--Chọn quyền tài khoản--</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+			  </select>
+			  
+			  <button type="submit">Lưu</button>
+			        </form>
+	</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	<script>
-	function confirmDelete(username) {
-	  if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
-	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
-	    window.location.href = 'adminDeleteAccount?username=' + username;
-	  } else {
+      <script>
+	  function validatePasswords() {
+	    var newPassword = document.getElementById('new_password').value;
+	    var rePassword = document.getElementById('re_password').value;
+	
+	    if (newPassword !== rePassword) {
+	      document.getElementById('password-error').textContent = 'Mật khẩu không khớp.';
+	      return false; // Ngăn form submit
+	    } else {
+	      document.getElementById('password-error').textContent = '';
+	      return true; // Cho phép form submit
+	    }
 	  }
-	}
-	</script>	
+	</script>
 </body>
 </html>
