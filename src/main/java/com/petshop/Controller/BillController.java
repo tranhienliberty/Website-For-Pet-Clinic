@@ -61,6 +61,11 @@ public class BillController {
 		model.addAttribute("billDetails", billDetails);
 		return "customer/bill-detail";
 	}
+	@RequestMapping(value = "/deliveredCheck")
+	public String deliveredCheck(@RequestParam("id_bill") int id_bill) {
+		billService.changeDelivered(id_bill);
+		return "showListBillByUser?delivered=Đã giao hàng";
+	}
 	@RequestMapping(value = "/adminShowAllBill")
 	public String showAllBill(Model model) {
 		List<Bill> bills = billService.showAllBill();
@@ -72,5 +77,11 @@ public class BillController {
 		List<BillDetail> billDetails = billDetailService.adminShowBillInfo(id_bill);
 		model.addAttribute("billDetails", billDetails);
 		return "admin/admin-bill-detail";
+	}
+	@RequestMapping(value = "/adminStatisticByDate")
+	public String statisticByDate(@RequestParam("date_begin") String date_begin, @RequestParam("date_end") String date_end,
+			Model model) {
+		
+		return "admin/admin-statistic";
 	}
 }

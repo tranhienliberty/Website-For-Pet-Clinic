@@ -84,4 +84,8 @@ public class BillRepository {
 				+ "JOIN customer ON cart.username = customer.username;";
 		return jdbcTemplate.query(sql, new billExtraRowmapper());
 	}
+	public void changeDelivered(int id_bill) {
+		String sql = "UPDATE bill SET delivered = 'Đã giao hàng' WHERE id_bill = ?";
+		int rs =jdbcTemplate.update(sql, id_bill);
+	}
 }

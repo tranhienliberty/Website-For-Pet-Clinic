@@ -28,4 +28,8 @@ public class BillService {
 	public List<Bill> showAllBill() {
 		return billRepository.showAllBill();
 	}
+
+	public void changeDelivered(int id_bill) {
+		billRepository.changeDelivered(id_bill);
+	}
 }

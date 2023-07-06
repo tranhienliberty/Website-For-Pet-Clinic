@@ -157,44 +157,77 @@
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
-			<a href = "#"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Xem thống kê</button></a>	
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>ID Bill</th>
-						<th>Tên khách hàng</th>
-						<th>Số điện thoại</th>
-						<th>Địa chỉ</th>
-						<th>Tổng tiền</th>
-						<th>Phương thức thanh toán</th>
-						<th>Trạng thái thanh toán</th>
-						<th>Thời gian đặt hàng</th>
-						<th>Trạng thái giao hàng</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${bills}" var="item">
-						<tr>
-							<td><c:out value="${item.id_bill}" /> </td>
-							<td><c:out value="${item.getCart().getCustomer().getName_customer()}" /> </td>
-							<td><c:out value="${item.getCart().getCustomer().getPhone()}" /> </td>
-							<td><c:out value="${item.getCart().getCustomer().getAddress()}" /> </td>
-							<td><c:out value="${item.total_amount}" /></td>
-							<td><c:out value="${item.payment_method}" /></td>
-							<td><c:out value="${item.payment_status}" /></td>
-							<td><c:out value="${item.time}" /></td>
-							<td><c:out value="${item.delivered}" /></td>
-							<td>
-							<a style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/adminshowBillDetail?id_bill=${item.id_bill}">
-							Xem chi tiết</a></td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
-		</div>        </main>
+			<form action="<%=request.getContextPath()%>/statisticByDate" method="GET">
+			    &nbsp Thống kê theo ngày: &nbsp Từ &nbsp
+			    <input type = "date" name = "date_begin" >
+			    &nbsp đến &nbsp 
+			    <input type = "date" name = "date_end" >
+			    <button type="submit">Thống kê</button>
+			</form>
+		</div> 
+		<div id="chart-container"></div>
+		<div class="table-wrapper">
+			&nbsp Thống kê theo tháng: &nbsp 
+			    <input type = "month" name = "month" >
+		</div>  
+		<div class="table-wrapper">
+			 &nbsp Thống kê theo năm: &nbsp 
+			    <input type="text" id="year-input" name="year" placeholder="Chọn năm">
+		</div>   
+		<div class="table-wrapper">
+			<select class="mdl-selectfield__select" id="statistic-select" name="statistic_option" required>
+			        <option disabled selected>--Xem thống kê--</option>
+			        <option value="1">Thống kê theo ngày</option>
+			        <option value="2">Thống kê theo tháng</option>
+			        <option value="3">Thống kê theo năm</option>
+			    </select>
+		</div> 
+		</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        // Khi người dùng tập vào input
+        $('#year-input').focus(function() {
+            // Khởi tạo calendar với tùy chọn chỉ chọn năm
+            $(this).datepicker({
+                dateFormat: 'yy',
+                changeMonth: false,
+                changeYear: true,
+                showButtonPanel: true,
+                onClose: function(dateText, inst) {
+                    // Lấy năm được chọn và đặt giá trị cho input
+                    var year = $(this).datepicker('getDate').getFullYear();
+                    $(this).val(year);
+                }
+            }).datepicker('widget').addClass('year-datepicker');
+            
+            // Hiển thị nút Done để đóng calendar
+            $('.ui-datepicker-buttonpane').append('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all">Done</button>');
+        });
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+    <script>
+    // Hàm để vẽ biểu đồ
+    function drawChart(data) {
+        var options = {
+            series: [{
+                name: 'Doanh thu',
+                data: data
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            xaxis: {
+                categories: ['Ngày 1', 'Ngày 2', 'Ngày 3', '...'] // Thay thế bằng dữ liệu thực tế
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-container"), options);
+        chart.render();
+    }
+	</script>
 </body>
 </html>

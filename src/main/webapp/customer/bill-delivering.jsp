@@ -417,7 +417,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		    <li class="table-row" style="height: 70px;">
 		      <c:set var = "stt" value = "${stt+1}"/>
 		      <div class="col-md-1 text-center" data-label="ID">${stt}&nbsp &nbsp
-		      <a href = ""><i class="fas fa-check"></i></a>
+		      <a href = "<%=request.getContextPath()%>/deliveredCheck?id_bill=${item.id_bill}"><i class="fas fa-check"></i></a>
 		      <a href = ""><i class="fas fa-times"></i></a>
 		      </div>
 		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
