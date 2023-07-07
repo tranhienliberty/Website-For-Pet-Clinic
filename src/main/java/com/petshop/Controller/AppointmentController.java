@@ -1,5 +1,11 @@
 package com.petshop.Controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.petshop.Entity.AnimalType;
 import com.petshop.Entity.Appointment;
@@ -32,6 +39,14 @@ public class AppointmentController {
 	private AnimalTypeService animalTypeService;
 	@Autowired
 	private CustomerService customerService;
+	
+	public void getUrl(MultipartFile file, String relativePath) throws IOException {
+		 String destinationPath = "E:\\Capstone\\datn\\src\\main\\webapp" + relativePath;
+		 File destinationFile = new File(destinationPath);
+		 Path destination = destinationFile.toPath();
+		 InputStream inputStream = file.getInputStream();
+		 Files.copy(inputStream, destination, StandardCopyOption.REPLACE_EXISTING);
+	}
 	
 	public static String generateToken(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -121,6 +136,14 @@ public class AppointmentController {
 	public String showAllBill(Model model) {
 		List<Appointment> appointments = appointmentService.showAllAppointment();
 		model.addAttribute("appointments", appointments);
-		return "admin/admin-appointment";
+		return "admin/admin-test";
+	}
+	
+	@RequestMapping(value = "upload")
+	public String upload(@RequestParam("file") MultipartFile file, Model model) throws IOException {
+		 String relativePath = "/resources/images/test.png";
+		 getUrl(file, relativePath);
+	     model.addAttribute("url", System.getProperty("user.home"));
+		return "customer/success";
 	}
 }

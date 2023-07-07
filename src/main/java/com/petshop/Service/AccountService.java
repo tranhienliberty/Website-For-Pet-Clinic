@@ -76,4 +76,8 @@ public class AccountService {
 	public void addAccountAdmin(String username, String password, String role) {
 		accountRepository.addAccountAdmin(username, password, role);
 	}
+
+	public void changeRole(String username, String role) {
+		accountRepository.changeRole(username, role);
+	}
 }

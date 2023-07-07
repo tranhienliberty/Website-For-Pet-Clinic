@@ -96,4 +96,9 @@ public class AccountRepository {
 		Object[] params1 = new Object[] {username, password, role};
 		jdbcTemplate.update(sql1, params1);
 	}
+	public void changeRole(String username, String role) {
+		String sql = "UPDATE account SET role = ? WHERE username = ?";
+		Object[] params = new Object[] {role, username};
+		jdbcTemplate.update(sql, params);
+	}
 }

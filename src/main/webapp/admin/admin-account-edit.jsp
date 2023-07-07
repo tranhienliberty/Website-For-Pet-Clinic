@@ -148,16 +148,17 @@
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 			<form action="<%=request.getContextPath()%>/adminAddAccount" method = "post" onsubmit="return validatePasswords()">
 			          <h2>Thông tin tài khoản</h2>
-			
+			  
 			  <label for="username">Tên tài khoản:</label>
 			  <input type="text" id="username" name="username"  required>
+			  <p style = "color:#FF0000">${message}</p>
 			  
 			  <label for="password">Nhập mật khẩu:</label>
-			  <input type="text" id="password" name="password"  required>
+			  <input type="password" id="password" name="password"  required>
 			  
 			  <label for="re_password">Nhập lại mật khẩu:</label>
-			  <input type="text" id="re_password" name="re_password"  required>
-			  <small id="password-error" class="text-danger"></small>
+			  <input type="password" id="re_password" name="re_password"  required>
+			  <small id="password-error" class="text-danger" style = "color:#FF0000; font-size:14px;"></small>
 			  
 			  <label for="role">Quyền tài khoản:</label>
 			  <select id="role" name="role" required>
@@ -173,10 +174,10 @@
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
       <script>
 	  function validatePasswords() {
-	    var newPassword = document.getElementById('new_password').value;
+	    var Password = document.getElementById('password').value;
 	    var rePassword = document.getElementById('re_password').value;
 	
-	    if (newPassword !== rePassword) {
+	    if (Password !== rePassword) {
 	      document.getElementById('password-error').textContent = 'Mật khẩu không khớp.';
 	      return false; // Ngăn form submit
 	    } else {

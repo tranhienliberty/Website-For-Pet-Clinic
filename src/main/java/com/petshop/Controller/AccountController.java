@@ -203,13 +203,37 @@ public class AccountController {
 	public String adminAddAccount(@RequestParam("username") String username, @RequestParam("password") String password, 
 			@RequestParam("role") String role, Model model) throws UnsupportedEncodingException {
 			String encodePass = hashPassword("password");
+			if (!checkExistUsername(username)) {
+				String message = "Tài khoản đã tồn tại! Vui lòng nhập tên tài khoản khác!";
+	    		model.addAttribute("message", message);
+	        	return "admin/admin-account-edit";
+			}
         	if ("user".equals(role)) {
         		accountService.addAccount(username, encodePass);
+        		String message = "Thêm tài khoản thành công!";
+            	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+        		model.addAttribute("message", encodedMessage);
+            	return "redirect:adminShowAllAccount?message=" + encodedMessage;
         	}
 			accountService.addAccountAdmin(username, encodePass, role);
         	String message = "Thêm tài khoản thành công!";
         	String encodedMessage = URLEncoder.encode(message, "UTF-8");
     		model.addAttribute("message", encodedMessage);
         	return "redirect:adminShowAllAccount?message=" + encodedMessage;
+	}
+	@RequestMapping(value = "/changeRole")
+	public String changeRole(@RequestParam("username") String username, @RequestParam("role") String role, Model model) throws UnsupportedEncodingException {
+		if ("user".equals(role)) {
+			accountService.changeRole(username, "admin");
+			String message = "Thay đổi quyền tài khoản thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllAccount?message=" + encodedMessage;
+		}
+		accountService.changeRole(username, "user");
+		String message = "Thay đổi quyền tài khoản thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+    	return "redirect:adminShowAllAccount?message=" + encodedMessage;
 	}
 }

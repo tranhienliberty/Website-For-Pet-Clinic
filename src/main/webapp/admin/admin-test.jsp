@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html >
@@ -14,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/appointment.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -144,46 +148,124 @@
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
 
-    <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
+   <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
-			<a href = "<%=request.getContextPath()%>/showFormAccountInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm tài khoản</button></a>	
-			<p style = "color:#00FF00">${message}</p>
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>Tên tài khoản</th>
-						<th>Quyền</th>
-						<th>Reset mật khẩu</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${accounts}" var="item">
-						<tr>
-							<td><c:out value="${item.username}" /></td>
-							<td><c:out value="${item.role}" />&nbsp &nbsp<a class="bx bx-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/changeRole?username=${item.username}&role=${item.role}"></a> </td>
-							<td>
-							<a class="bx bx-refresh bx-xs"
-								style="text-decoration: none; color: green"
-								href="<%=request.getContextPath()%>/resetPassword?username=${item.username}"></a>
-							</td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
+			 <div class="layer-stretch">
+        <div style = "width: 95%;" class="layer-wrapper">
+            <div class="theme-material-card">
+                <div id="calendar" class="font-13"></div>
+            </div>
+        </div>
+    </div>
+    <form>
+<div id="event-popup" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title font-20"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                    <p class="paragraph-medium paragraph-black event-ttl">
+                        <span class="theme-dropcap primary-color"></span>
+                    </p>
+                    <p class="paragraph-medium paragraph-black event-phone">
+                    </p>
+                    <p class="paragraph-medium paragraph-black event-email">
+                    </p>
+                    <p class="paragraph-medium paragraph-black event-note">
+                    </p>
+                    <p class="paragraph-medium paragraph-black event-status">
+                    </p>
+                    <input style = "display: none;" class="paragraph-medium paragraph-black event-id" type="text" name = "id"></input>
+                    <p class="font-16 color-orange event-date text-right ">
+					    <fmt:formatDate value="" pattern="dd/MM/yyyy HH:mm" />
+					</p>
+
+            </div>
+            <div class="modal-footer">
+               	<button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Sửa</button>
+                <button type="button" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-danger m-1" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
-	<script>
-	function confirmDelete(username) {
-	  if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
-	    // Nếu người dùng chọn OK trong hộp thoại xác nhận
-	    window.location.href = 'adminDeleteAccount?username=' + username;
-	  } else {
-	  }
-	}
-	</script>	
+	<script src = '<c:url value="/resources/js/jquery-2.1.4.min.js" />' ></script>
+    <script src='<c:url value="/resources/js/popper.min.js" />'></script>
+	<script src = '<c:url value="/resources/js/bootstrap.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/vi.min.js" />' ></script>
+    <script src='<c:url value="/resources/js/jquery.magnific-popup.min.js" />'></script>
+	 <script>
+    var todayDate = moment().startOf('day'),
+        YM = todayDate.format('YYYY-MM'),
+        YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD'),
+        TODAY = todayDate.format('YYYY-MM-DD'),
+        TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD'),
+        colorOrange = '#ff6900',
+        colorBlue = '#a8b3ff',
+        colorPurple = '#a4547d',
+        colorGreen = '#41999c';
+
+    // Đoạn mã JSP để tạo danh sách sự kiện từ danh sách appointment
+  var events = [
+    <c:forEach items="${appointments}" var="item">
+        {
+            title: '${item.name}',
+            start: '${item.appointment_date}', 
+            note: 'Mô tả: ${item.note}',
+            phone: 'Số điện thoại: ${item.phone}',
+            email: 'E-mail: ${item.email}',
+            service: 'Dịch vụ: ${item.service.name_service}',
+            status: 'Trạng thái: ${item.appointment_status}',
+            id: '${item.id_appointment}',
+            backgroundColor:
+            	'${item.appointment_status}' == "Bị hủy" ? colorOrange :
+                moment('${item.appointment_date}').isSameOrBefore(YESTERDAY, 'day') ? colorPurple : 
+                moment('${item.appointment_date}').isSame(TODAY, 'day') ? colorGreen :
+                colorBlue,
+               	
+        },
+    </c:forEach>
+];
+    
+    
+
+
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        editable: true,
+        eventLimit: true,
+        navLinks: true,
+        events: events,
+        eventClick: function(event, jsEvent, view) {
+            if (event.url) {
+                window.open(event.url);
+                return false;
+            }
+            $('#event-popup .modal-title').text(event.service);
+            $('#event-popup .event-ttl').text(event.title);
+            $('#event-popup .event-note').text(event.note);
+            $('#event-popup .event-email').text(event.email);
+            $('#event-popup .event-phone').text(event.phone);
+            $('#event-popup .event-status').text(event.status);
+            $('#event-popup .event-date').text(event.start);
+            $('#event-popup .event-id').val(event.id);
+            $('#event-popup').modal('show');
+        }
+
+    });
+</script>
 </body>
 </html>
