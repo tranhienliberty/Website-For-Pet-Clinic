@@ -5,19 +5,19 @@ import java.sql.Date;
 public class Staff {
 	private int id_staff;
 	protected String name_staff;
+	protected String gender;
+	protected String country;
 	protected long identity_card;
 	protected Date date_of_birth;
 	protected String phone;
 	protected String email;
 	protected String address;
 	protected String certificate;
-	protected String experience;
 	protected String bank_number;
 	protected String bank_name;
 	protected int id_position;
 	protected Position position;
 	protected int id_contract;
-	protected Contract contract;
 	protected String username;
 	public int getId_staff() {
 		return id_staff;
@@ -30,6 +30,18 @@ public class Staff {
 	}
 	public void setName_staff(String name_staff) {
 		this.name_staff = name_staff;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	public long getIdentity_card() {
 		return identity_card;
@@ -67,12 +79,6 @@ public class Staff {
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
 	}
-	public String getExperience() {
-		return experience;
-	}
-	public void setExperience(String experience) {
-		this.experience = experience;
-	}
 	public String getBank_number() {
 		return bank_number;
 	}
@@ -108,12 +114,6 @@ public class Staff {
 	}
 	public void setPosition(Position position) {
 		this.position = position;
-	}
-	public Contract getContract() {
-		return contract;
-	}
-	public void setContract(Contract contract) {
-		this.contract = contract;
 	}
 	public Staff() {
 		super();

@@ -136,7 +136,23 @@ public class AppointmentController {
 	public String showAllBill(Model model) {
 		List<Appointment> appointments = appointmentService.showAllAppointment();
 		model.addAttribute("appointments", appointments);
-		return "admin/admin-test";
+		return "admin/admin-appointment";
+	}
+	
+	@RequestMapping(value = "/adminSetDoneAppointment")
+	public String adminSetDoneAppointment(@RequestParam("id") String id_appointment) {
+		System.out.print("hello");
+		System.out.print(id_appointment);
+		appointmentService.setDoneAppointment(id_appointment);
+		return "redirect:adminShowAllAppointment";
+	}
+	
+	@RequestMapping(value = "/adminCancelAppointment")
+	public String adminCancelAppointment(@RequestParam("id") String id_appointment) {
+		System.out.print("hello");
+		System.out.print(id_appointment);
+		appointmentService.cancelAppointment(id_appointment);
+		return "redirect:adminShowAllAppointment";
 	}
 	
 	@RequestMapping(value = "upload")

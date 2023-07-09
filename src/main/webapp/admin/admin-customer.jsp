@@ -148,6 +148,7 @@
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
 			<a href = "<%=request.getContextPath()%>/showFormCustomerInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm khách hàng</button></a>	
+			<p style = "color:#00FF00">${message}</p>
 			<table class="fl-table" style="overflow-y: auto;">
 				<thead>
 					<tr>

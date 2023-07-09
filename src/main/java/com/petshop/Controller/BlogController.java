@@ -1,5 +1,7 @@
 package com.petshop.Controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,9 +41,10 @@ public class BlogController {
 		return "customer/blog-detail";
 	}
 	@RequestMapping (value = "/adminShowAllBlog")
-	public String showAllBlog(Model model) {
+	public String showAllBlog(@RequestParam(value = "message", required = false) String message, Model model) {
 		List<Blog> blogs = blogService.showAllBlog();
 		model.addAttribute("blogs", blogs);
+		model.addAttribute("message", message);
 		return "admin/admin-blog";
 	}
     @RequestMapping(value = "/showFormBlogInfo")
@@ -60,58 +63,88 @@ public class BlogController {
     }
     @RequestMapping(value = "adminEditBlog")
     public String editBlog(@RequestParam(value = "id_blog", required = false) Integer id_blog, @RequestParam("title") String title, @RequestParam(value = "image1", required = false) String image1, 
-    		@RequestParam("content1") String content1, @RequestParam(value = "image2", required = false) String image2, @RequestParam("content2") String content2, 
-    		@RequestParam(value = "image3", required = false) String image3,@RequestParam("content3") String content3, @RequestParam("id_animal_type") int id_animal_type) {
+    		@RequestParam("content1") String content1, @RequestParam(value = "image2", required = false) String image2, @RequestParam("content2") String content2, Model model,
+    		@RequestParam(value = "image3", required = false) String image3,@RequestParam("content3") String content3, @RequestParam("id_animal_type") int id_animal_type) throws UnsupportedEncodingException {
     	if(id_blog!=null&&image1!=""&&image2!=""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog1(blogID, title, image1, content1, image2, content2, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1!=""&&image2==""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog2(blogID, title, image1, content1, content2, image3, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1==""&&image2!=""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog3(blogID, title, content1, image2, content2, image3, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1==""&&image2==""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog4(blogID, title, content1, content2, image3, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1!=""&&image2==""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog5(blogID, title, image1, content1, content2, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1==""&&image2!=""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog6(blogID, title, content1, image2, content2, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1==""&&image2==""&&image3=="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog7(blogID, title, content1, content2, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else if(id_blog!=null&&image1!=""&&image2!=""&&image3!="") {
     		int blogID = id_blog.intValue();
     		blogService.editBlog(blogID, title, image1, content1, image2, content2, image3, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+    		String message = "Sửa bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     	else {
     		LocalDateTime currentDateTime = LocalDateTime.now();
             Timestamp timestamp = Timestamp.valueOf(currentDateTime);
         	blogService.addBlog(title, timestamp, image1, content1, image2, content2, image3, content3, id_animal_type);
-        	return "redirect:adminShowAllBlog";
+        	String message = "Thêm bài viết thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     	}
     }
     @RequestMapping(value = "/adminDeleteBlog")
-    public String deleteBlog(@RequestParam("id_blog") int id_blog) {
+    public String deleteBlog(@RequestParam("id_blog") int id_blog, Model model) throws UnsupportedEncodingException {
     	blogService.deleteBlog(id_blog);
-    	return "redirect:adminShowAllBlog";
+    	String message = "Xóa bài viết thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+    	return "redirect:adminShowAllBlog?message=" + encodedMessage;
     }
 }

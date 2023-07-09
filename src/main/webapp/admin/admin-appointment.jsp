@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-main-test.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/admin-table.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/appointment.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"/>">
     <title>Pettiny Admin</title>
 </head>
 
@@ -145,54 +148,160 @@
 
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
 
-    <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
+   <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
-			<a href = "#"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm lịch hẹn</button></a>	
-			<table class="fl-table" style="overflow-y: auto;">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Mã cuộc hẹn</th>
-						<th>Dịch vụ sử dụng</th>
-						<th>Tên khách hàng</th>
-						<th>Số điện thoại</th>
-						<th>Email</th>
-						<th>Thời gian</th>
-						<th>Ghi chú</th>
-						<th>Thông báo</th>
-						<th>Tình trạng</th>
-						<th>Tài khoản (nếu có)</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${appointments}" var="item">
-						<tr>
-							<td><c:out value="${item.id_appointment}" /> </td>
-							<td><c:out value="${item.token}" /> </td>
-							<td><c:out value="${item.getService().getName_service()}" /> </td>
-							<td><c:out value="${item.name}" /> </td>
-							<td><c:out value="${item.phone}" /></td>
-							<td><c:out value="${item.email}" /></td>
-							<td><c:out value="${item.appointment_date}" /></td>
-							<td><c:out value="${item.note}" /></td>
-							<td><c:out value="${item.information}" /></td>
-							<td><c:out value="${item.appointment_status}" /></td>
-							<td><c:out value="${item.username}" /></td>
-							<td>
-							<a class="bx bxs-edit bx-xs"
-								style="text-decoration: none; color: green"
-								href="#">
-							</a> &nbsp &nbsp <a class="bx bxs-trash bx-xs"
-								style="text-decoration: none; color: red" href="#"
-								onclick=""> </a></td>
-						</tr>
-					</c:forEach>
-				<tbody>
-			</table>
+			 <div class="layer-stretch">
+        <div style = "width: 95%;" class="layer-wrapper">
+            <div class="theme-material-card">
+                <div id="calendar" class="font-13"></div>
+            </div>
+        </div>
+    </div>
+	<form>
+	<div id="event-popup" class="modal fade" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div class="modal-header text-center">
+	                <h4 class="modal-title font-20"></h4>
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body">
+	                    <p class="paragraph-medium paragraph-black event-ttl">
+	                        <span class="theme-dropcap primary-color"></span>
+	                    </p>
+	                    <p class="paragraph-medium paragraph-black event-phone">
+	                    </p>
+	                    <p class="paragraph-medium paragraph-black event-email">
+	                    </p>
+	                    <p class="paragraph-medium paragraph-black event-note">
+	                    </p>
+	                    <p class="paragraph-medium paragraph-black event-status">
+	                    </p>
+	                    <input style = "display: none;" class="paragraph-medium paragraph-black event-id" type="text" name = "id"></input>
+	                    <p class="font-16 color-orange event-date text-right ">
+						    <fmt:formatDate value="" pattern="dd/MM/yyyy HH:mm" />
+						</p>
+	
+	            </div>
+	            <div class="modal-footer">
+	               	<button id = "edit-button" class=" edit-button mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Đã xong</button>
+	               	<button id = "cancel-button" class="cancel-button mdl-button mdl-js-button mdl-js-ripple-effect button button-primary" style = "background-color:#FF3333 !important"> Hủy bỏ</button>
+	                <button type="button" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect button button-danger m-1" data-dismiss="modal">Đóng</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	</form>
 		</div>        </main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
+	<script src = '<c:url value="/resources/js/jquery-2.1.4.min.js" />' ></script>
+    <script src='<c:url value="/resources/js/popper.min.js" />'></script>
+	<script src = '<c:url value="/resources/js/bootstrap.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js" />' ></script>
+	<script src = '<c:url value="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/vi.min.js" />' ></script>
+    <script src='<c:url value="/resources/js/jquery.magnific-popup.min.js" />'></script>
+	 <script>
+ 
+    var todayDate = moment().startOf('day'),
+        YM = todayDate.format('YYYY-MM'),
+        YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD'),
+        TODAY = todayDate.format('YYYY-MM-DD'),
+        TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD'),
+        colorRed = '#FF3333',
+        colorBlue = '#a8b3ff',
+        colorPurple = '#a4547d',
+        colorLight = '#FFCC99',
+        colorGreen = '#00DD00';
+    
+	 $(document).ready(function() {
+		 
+		// Xử lý sự kiện click trên nút "Sửa"
+		  $('#event-popup').on('click', '.edit-button', function() {
+		    var eventId = $('#event-popup .event-id').val(); // Lấy ID từ input ẩn
+		    // Gửi yêu cầu POST đến /adminSetDone với dữ liệu ID
+		    $.post('<%=request.getContextPath()%>/adminSetDoneAppointment', {id: eventId})
+		      .done(function(response) {
+		        // Xử lý kết quả từ controller (response)
+		        // ...
+		      })
+		      .fail(function(error) {
+		        // Xử lý lỗi nếu có
+		        // ...
+		      });
+		  });
+		
+		// Xử lý sự kiện click trên nút "Hủy"
+		  $('#event-popup').on('click', '.cancel-button', function() {
+		    var eventId = $('#event-popup .event-id').val(); // Lấy ID từ input ẩn
+		    // Gửi yêu cầu POST đến /adminSetDone với dữ liệu ID
+		    $.post('<%=request.getContextPath()%>/adminCancelAppointment', {id: eventId})
+		      .done(function(response) {
+		        // Xử lý kết quả từ controller (response)
+		        // ...
+		      })
+		      .fail(function(error) {
+		        // Xử lý lỗi nếu có
+		        // ...
+		      });
+		  });
+		
+		
+    // Đoạn mã JSP để tạo danh sách sự kiện từ danh sách appointment
+  var events = [
+    <c:forEach items="${appointments}" var="item">
+        {
+            title: '${item.name}',
+            start: '${item.appointment_date}', 
+            note: 'Mô tả: ${item.note}',
+            phone: 'Số điện thoại: ${item.phone}',
+            email: 'E-mail: ${item.email}',
+            service: 'Dịch vụ: ${item.service.name_service}',
+            status: 'Trạng thái: ${item.appointment_status}',
+            id: '${item.id_appointment}',
+            backgroundColor:
+            	'${item.appointment_status}' == "Bị hủy" ? colorRed :
+                moment('${item.appointment_date}').isSameOrBefore(YESTERDAY, 'day') && '${item.appointment_status}' == "Đã xong" ? colorPurple : 
+                	moment('${item.appointment_date}').isSame(TODAY, 'day') && '${item.appointment_status}' == "Chưa tới" ? colorLight :
+                moment('${item.appointment_date}').isSame(TODAY, 'day') && '${item.appointment_status}' == "Đã xong" ? colorGreen :
+                colorBlue,
+        },
+        
+    </c:forEach>
+        
+];
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        editable: true,
+        eventLimit: true,
+        navLinks: true,
+        events: events,
+        eventClick: function(event, jsEvent, view) {
+            if (event.url) {
+                window.open(event.url);
+                return false;
+            }
+            $('#event-popup .modal-title').text(event.service);
+            $('#event-popup .event-ttl').text(event.title);
+            $('#event-popup .event-note').text(event.note);
+            $('#event-popup .event-email').text(event.email);
+            $('#event-popup .event-phone').text(event.phone);
+            $('#event-popup .event-status').text(event.status);
+            $('#event-popup .event-date').text(event.start);
+            $('#event-popup .event-id').val(event.id);
+            $('#event-popup .edit-button').attr('data-id', event.id);
+            $('#event-popup .cancel-button').attr('data-id', event.id);
+            $('#event-popup').modal('show');
+        }
+        
+    });
+	 });    
+</script>
 </body>
 </html>

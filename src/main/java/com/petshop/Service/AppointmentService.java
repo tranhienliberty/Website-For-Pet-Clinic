@@ -39,6 +39,14 @@ public class AppointmentService {
 	public Appointment showAppointmentByID(int id_appointment) {
 		return appointmentRepository.showAppointmentByID(id_appointment);
 	}
+
+	public void setDoneAppointment(String id_appointment) {
+		appointmentRepository.setDoneAppointment(id_appointment);
+	}
+
+	public void cancelAppointment(String id_appointment) {
+		appointmentRepository.cancelAppointment(id_appointment);
+	}
 	
 	
 }

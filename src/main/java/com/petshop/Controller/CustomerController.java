@@ -1,5 +1,7 @@
 package com.petshop.Controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +43,10 @@ public class CustomerController {
 		return "redirect:showCustomerProfile?username=" + username;
 	}
 	@RequestMapping(value = "/adminShowAllCustomer")
-	public String showAllCustomer(Model model) {
+	public String showAllCustomer(@RequestParam(value = "message", required = false) String message, Model model) {
 		List<Customer> customers = customerService.showAllCustomer();
 		model.addAttribute("customers", customers);
+		model.addAttribute("message", message);
 		return "admin/admin-customer";
 	}
     @RequestMapping(value = "/showFormCustomerInfo")
@@ -63,30 +66,45 @@ public class CustomerController {
 	@RequestMapping(value = "/adminEditCustomer")
 	public String editProduct(@RequestParam(value = "id_customer", required = false) Integer id_customer,@RequestParam("name_customer") String name_customer, 
 			@RequestParam("date_of_birth") String date_of_birth, @RequestParam("phone") String phone, @RequestParam("email") String email, 
-			@RequestParam("address") String address, @RequestParam(value = "username", required = false) String username, Model model) {
+			@RequestParam("address") String address, @RequestParam(value = "username", required = false) String username, Model model) throws UnsupportedEncodingException {
     	if(username!=null&&id_customer!=null) {
     		int customerID = id_customer.intValue();
     		customerService.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address, username);
-        	return "redirect:adminShowAllCustomer";
+    		String message = "Sửa thông tin khách hàng thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+    		return "redirect:adminShowAllCustomer?message=" + encodedMessage;
     	}
     	else if (username==null&&id_customer!=null){
     		int customerID = id_customer.intValue();
     		customerService.adminEditCustomer(customerID, name_customer, date_of_birth, phone, email, address);
-        	return "redirect:adminShowAllCustomer";
+    		String message = "Sửa thông tin khách hàng thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+    		return "redirect:adminShowAllCustomer?message=" + encodedMessage;
     	}
     	else if (username!=null&&id_customer==null){
     		customerService.addCustomer(name_customer, date_of_birth, phone, email, address, username);
-        	return "redirect:adminShowAllCustomer";
+    		String message = "Sửa thông tin khách hàng thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+    		return "redirect:adminShowAllCustomer?message=" + encodedMessage;
     	}
     	else {
     		customerService.addCustomer(name_customer, date_of_birth, phone, email, address);
-        	return "redirect:adminShowAllCustomer";
+    		String message = "Thêm khách hàng thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+    		return "redirect:adminShowAllCustomer?message=" + encodedMessage;
     	}
     }
 	
 	@RequestMapping(value = "/adminDeleteCustomer")
-	public String deleteCustomer(@RequestParam("id_customer") int id_customer) {
+	public String deleteCustomer(@RequestParam("id_customer") int id_customer, Model model) throws UnsupportedEncodingException {
 		customerService.deleteCustomer(id_customer);
-		return "redirect:adminShowAllCustomer";
+		String message = "Xóa khách hàng thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+		return "redirect:adminShowAllCustomer?message=" + encodedMessage;
 	}
 }

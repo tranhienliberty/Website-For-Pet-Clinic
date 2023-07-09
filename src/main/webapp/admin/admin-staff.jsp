@@ -148,18 +148,21 @@
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
 		<div class="table-wrapper">
 			<a href = "<%=request.getContextPath()%>/showFormStaffInfo"><button style="text-align: left; margin: 4px; background-color: #FF99CC; color: white; padding: 3px 5px; border: 1px solid #CC99CC; border-radius: 5px;">Thêm nhân viên</button></a>	
+			<p style = "color:#00FF00">${message}</p>
 			<table class="fl-table" style="overflow-y: auto;">
 				<thead>
 					<tr>
 						<th>Tên nhân viên</th>
+						<th>Giới tính</th>
+						<th>Quê quán</th>
 						<th>CMND</th>
 						<th>Ngày sinh</th>
 						<th>Số điện thoại</th>
 						<th>Email</th>
 						<th>Địa chỉ</th>
 						<th>Bằng cấp</th>
-						<th>Kinh nghiệm làm việc</th>
 						<th>Vị trí làm việc</th>
+						<th>Xem hợp đồng</th>
 						<th>Tên tài khoản</th>
 						<th>Thao tác</th>
 					</tr>
@@ -168,14 +171,16 @@
 					<c:forEach items="${staffs}" var="item">
 						<tr>
 							<td><c:out value="${item.name_staff}" /> </td>
+							<td><c:out value="${item.gender}" /> </td>
+							<td><c:out value="${item.country}" /> </td>
 							<td><c:out value="${item.identity_card}" /></td>
 							<td><c:out value="${item.date_of_birth}" /></td>
 							<td><c:out value="${item.phone}" /></td>
 							<td><c:out value="${item.email}" /></td>
 							<td><c:out value="${item.address}" /></td>
 							<td><c:out value="${item.certificate}" /></td>
-							<td><c:out value="${item.experience}" /></td>
 							<td><c:out value="${item.getPosition().getName_position()}" /></td>
+							<td><a style = "color:blue" href = "<%=request.getContextPath()%>/adminShowContract?id_contract=${item.id_contract}">Xem hợp đồng</a> </td>
 							<td><c:out value="${item.username}" /></td>
 							<td>
 							<a class="bx bxs-edit bx-xs"

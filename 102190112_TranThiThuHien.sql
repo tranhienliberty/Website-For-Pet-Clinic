@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 02, 2023 lúc 07:21 AM
+-- Thời gian đã tạo: Th7 09, 2023 lúc 04:55 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.3.30
 
@@ -38,9 +38,14 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`username`, `password`, `role`) VALUES
-('admin1', '123456', 'admin'),
-('user1', '123456', 'user'),
-('user2', '123456', 'user');
+('admin1', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'admin'),
+('Không có', '', 'user'),
+('test', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'user'),
+('tranhien', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'user'),
+('user1', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918', 'user'),
+('user2', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'user'),
+('user3', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'user'),
+('user4', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'user');
 
 -- --------------------------------------------------------
 
@@ -76,7 +81,7 @@ CREATE TABLE `appointment` (
   `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `token` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `information` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `appointment_status` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `appointment_status` text COLLATE utf8mb4_unicode_ci DEFAULT 'Chưa tới',
   `id_service` int(11) DEFAULT NULL,
   `id_animal_type` int(11) DEFAULT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -89,19 +94,15 @@ CREATE TABLE `appointment` (
 
 INSERT INTO `appointment` (`id_appointment`, `name`, `phone`, `appointment_date`, `email`, `note`, `token`, `information`, `appointment_status`, `id_service`, `id_animal_type`, `username`, `is_deleted`) VALUES
 (1, 'Trần Thị Thu Hiền', '0935466618', '2023-07-01 21:35:44', 'yonnatran2001@gmail.com', 'Tôi muốn tắm cho chó', 'NXBp3lMRji', 'Không có thông báo', 'Đã xong', 8, 1, 'user1', 0),
-(2, 'Trần Thị Thu Hà', '0235978465', '2023-07-01 21:35:06', 'hatran@gmail.com', 'Tôi muốn triệt sản mèo', 'NBwwkUNjGk', 'Không có thông báo', 'Bị hủy', 10, 2, 'user1', 0),
-(3, 'Nguyễn Thu Thủy', '0958746123', '2023-07-01 21:36:35', 'thuthuy@gmail.com', 'Tôi muốn triệt sản chó', 'fpG8jhKNlv', 'Không có thông báo', 'Đã xong', 3, 2, NULL, 0),
-(4, 'Đậu Quỳnh Mai', '0974581256', '2023-07-01 21:36:42', 'tranhien@example.com', 'Khám định kỳ', 'XNxSl7erZY', 'Không có thông báo', 'Chưa tới', 4, 1, NULL, 0),
-(6, 'Trần Thanh Tâm', '0974856123', '2023-07-01 21:36:53', 'a1@gmail.com', 'Khám cho chó', 'boPud0D8bB', 'Không có thông báo', 'Chưa tới', 2, 2, 'user1', 0),
-(15, 'Trần Thị Thu Hiền', '0935466618', '2023-07-16 03:55:00', 'yonnatran2001@gmail.com', 'Tiêm chó', 'Fpr2on5LFd', 'Không có thông báo', NULL, 3, 1, NULL, 0),
-(16, 'MAFIA', '0123456789', '2023-07-02 05:06:00', 'aaaaaaaa@gmail.com', 'Chó đau răng', 'HYSdSnU7hY', 'Không có thông báo', NULL, 5, 1, NULL, 0),
-(17, 'MAFIA', '0123456789', '2023-07-02 05:06:00', 'aaaaaaaa@gmail.com', 'Chó đau răng', 'U4N9aqG3Op', 'Không có thông báo', NULL, 5, 1, NULL, 0),
-(18, 'Thu Hằng', '0987654321', '2023-07-15 04:26:00', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', '4ac0TcSwI4', 'Không có thông báo', NULL, 6, 1, NULL, 0),
-(19, 'Thu Hằng', '0987654321', '2023-07-15 04:26:00', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', '5CUniFsCUy', 'Không có thông báo', NULL, 6, 1, NULL, 0),
-(20, 'Thu Hằng', '0987654321', '2023-07-15 04:26:00', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', 'RDmAJMZGyO', 'Không có thông báo', NULL, 6, 1, NULL, 0),
-(21, 'Thu Hằng', '0987654321', '2023-07-15 04:26:00', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', 'SwXhzSbe21', 'Không có thông báo', NULL, 6, 1, NULL, 0),
-(22, 'Thu Hằng', '0987654321', '2023-07-15 04:26:00', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', '6U77qFPrx4', 'Không có thông báo', NULL, 6, 1, NULL, 0),
-(23, 'Trần Hiền ', '0123456789', '2023-07-12 04:33:00', 'tranhien@example.com', 'khám định kỳ', '2I0NwxfusB', 'Không có thông báo', NULL, 2, 1, 'user1', 0);
+(2, 'Trần Thị Thu Hà', '0235978465', '2023-07-03 02:08:02', 'hatran@gmail.com', 'Tôi muốn triệt sản mèo', 'NBwwkUNjGk', 'Không có thông báo', 'Đã xong', 10, 2, 'user1', 0),
+(3, 'Nguyễn Thu Thủy', '0958746123', '2023-07-02 02:44:36', 'thuthuy@gmail.com', 'Tôi muốn triệt sản chó', 'fpG8jhKNlv', 'Không có thông báo', 'Đã xong', 3, 2, '', 0),
+(4, 'Đậu Quỳnh Mai', '0974581256', '2023-07-09 02:46:14', 'tranhien@example.com', 'Khám định kỳ', 'XNxSl7erZY', 'Không có thông báo', 'Bị hủy', 4, 1, '', 0),
+(6, 'Trần Thanh Tâm', '0974856123', '2023-07-09 02:43:51', 'a1@gmail.com', 'Khám cho chó', 'boPud0D8bB', 'Không có thông báo', 'Chưa tới', 2, 2, 'user1', 0),
+(15, 'Trần Thị Thu Hiền', '0935466618', '2023-07-09 00:08:02', 'yonnatran2001@gmail.com', 'Tiêm chó', 'Fpr2on5LFd', 'Không có thông báo', 'Đã xong', 3, 1, '', 0),
+(16, 'MAFIA', '0123456789', '2023-07-09 02:42:23', 'aaaaaaaa@gmail.com', 'Chó đau răng', 'HYSdSnU7hY', 'Không có thông báo', 'Đã xong', 5, 1, '', 0),
+(18, 'Thu Hằng', '0987654321', '2023-07-09 02:37:25', 'aaaaaaaa@gmail.com', 'Muốn tỉa lông cho chó', '4ac0TcSwI4', 'Không có thông báo', 'Đã xong', 6, 1, '', 0),
+(22, 'Như Quỳnh', '0987654321', '2023-07-09 02:43:12', 'aaaaaaaa@gmail.com', 'Tỉa lông mèo', '6U77qFPrx4', 'Không có thông báo', 'Đã xong', 6, 1, '', 0),
+(23, 'Trần Hiền ', '0123456789', '2023-07-19 03:08:02', 'tranhien@example.com', 'khám định kỳ', '2I0NwxfusB', 'Không có thông báo', 'Chưa tới', 2, 1, 'user1', 0);
 
 -- --------------------------------------------------------
 
@@ -125,19 +126,22 @@ CREATE TABLE `bill` (
 
 INSERT INTO `bill` (`id_bill`, `total_amount`, `payment_status`, `id_cart`, `time`, `payment_method`, `delivered`) VALUES
 (1, 200000, 'Đã thanh toán!', 1, '2023-06-25 20:18:01', 'Thanh toán bằng Paypal', 'Đã giao hàng'),
-(2, 730000, 'Chưa thanh toán!', 1, '2023-06-25 20:25:09', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng'),
 (3, 730000, 'Đã thanh toán!', 1, '2023-06-25 20:18:09', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
 (4, 730000, 'Đã thanh toán!', 1, '2023-06-25 20:18:16', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
-(5, 300000, 'Chưa thanh toán!', 1, '2023-06-25 20:25:35', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng'),
-(6, 300000, 'Chưa thanh toán!', 1, '2023-06-25 20:25:37', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng'),
-(7, 250000, 'Đã thanh toán!', 1, '2023-06-25 20:18:22', 'Thanh toán bằng Paypal', 'Đã giao hàng'),
-(8, 600000, 'Đã thanh toán!', 1, '2023-06-25 20:18:27', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
-(9, 1350000, 'Chưa thanh toán!', 1, '2023-06-25 20:25:41', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng'),
+(5, 300000, 'Đã thanh toán!', 1, '2023-07-06 04:25:36', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
+(6, 300000, 'Đã thanh toán!', 1, '2023-07-06 15:22:03', 'Thanh toán bằng tiền mặt', 'Đã hủy'),
+(7, 250000, 'Đã thanh toán!', 1, '2023-07-06 15:30:22', 'Thanh toán bằng Paypal', 'Đã hủy'),
+(8, 600000, 'Đã thanh toán!', 1, '2023-07-06 15:31:22', 'Thanh toán bằng tiền mặt', 'Đã hủy'),
+(9, 1350000, 'Đã thanh toán!', 1, '2023-07-06 15:40:06', 'Thanh toán bằng tiền mặt', 'Đã hủy'),
 (10, 25000000, 'Đã thanh toán!', 1, '2023-06-25 20:18:33', 'Thanh toán bằng Paypal', 'Đã giao hàng'),
-(11, 200000, 'Đã thanh toán!', 1, '2023-06-25 20:29:07', 'Thanh toán bằng Paypal', 'Chưa giao hàng'),
+(11, 200000, 'Đã thanh toán!', 1, '2023-07-06 14:28:34', 'Thanh toán bằng Paypal', 'Đã giao hàng'),
 (12, 100000, 'Đã thanh toán!', 1, '2023-06-25 20:18:39', 'Thanh toán bằng Paypal', 'Đã giao hàng'),
-(13, 650000, 'Đã thanh toán!', 1, '2023-07-01 20:04:37', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng'),
-(14, 250000, 'Đã thanh toán!', 1, '2023-07-01 20:08:12', 'Paypal', 'Chưa giao hàng');
+(13, 650000, 'Đã thanh toán!', 1, '2023-07-06 14:29:37', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
+(14, 250000, 'Đã thanh toán!', 1, '2023-07-06 04:28:51', 'Thanh toán bằng Paypal', 'Chưa giao hàng'),
+(15, 600000, 'Đã thanh toán!', 1, '2023-07-06 15:44:27', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
+(16, 400000, 'Đã thanh toán!', 1, '2023-07-06 04:44:55', 'Thanh toán bằng tiền mặt', 'Đã giao hàng'),
+(17, 800000, 'Đã thanh toán!', 1, '2023-07-06 04:40:33', 'Thanh toán bằng paypal', 'Đã giao hàng'),
+(18, 100000, 'Chưa thanh toán!', 1, '2023-07-06 16:30:37', 'Thanh toán bằng tiền mặt', 'Chưa giao hàng');
 
 -- --------------------------------------------------------
 
@@ -179,7 +183,12 @@ INSERT INTO `bill_detail` (`id_bill_detail`, `id_bill`, `id_product`, `quantity`
 (19, 12, 2, 1, 100000),
 (20, 13, 1, 2, 400000),
 (21, 13, 3, 1, 250000),
-(22, 14, 3, 1, 250000);
+(22, 14, 3, 1, 250000),
+(23, 15, 1, 1, 200000),
+(24, 15, 16, 1, 400000),
+(25, 16, 8, 1, 400000),
+(26, 17, 20, 2, 800000),
+(27, 18, 2, 1, 100000);
 
 -- --------------------------------------------------------
 
@@ -239,7 +248,7 @@ INSERT INTO `blog` (`id_blog`, `created_date`, `title`, `image1`, `content1`, `i
 
 CREATE TABLE `cart` (
   `id_cart` int(11) NOT NULL,
-  `username` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -248,8 +257,11 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id_cart`, `username`) VALUES
 (3, 'test'),
+(15, 'tranhien'),
 (1, 'user1'),
-(2, 'user2');
+(2, 'user2'),
+(17, 'user3'),
+(16, 'user4');
 
 -- --------------------------------------------------------
 
@@ -279,39 +291,60 @@ INSERT INTO `cart_items` (`id_cart_item`, `id_cart`, `id_product`, `count`) VALU
 
 CREATE TABLE `contract` (
   `id_contract` int(11) NOT NULL,
-  `date_sign` date DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `nationality` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identity_card` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identity_date` date DEFAULT NULL,
+  `identity_place` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `graduate` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Tiền mặt',
+  `date_sign` timestamp NULL DEFAULT current_timestamp(),
   `date_begin` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
-  `job_descript` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `salary` float DEFAULT NULL,
-  `isdeleted` tinyint(4) DEFAULT 0
+  `bank_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_position` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `contract`
 --
 
-INSERT INTO `contract` (`id_contract`, `date_sign`, `date_begin`, `date_end`, `job_descript`, `salary`, `isdeleted`) VALUES
-(1, '2023-01-01', '2023-02-01', '2024-01-01', 'Job Description 1', 5000000, 0),
-(2, '2023-02-01', '2023-03-01', '2024-02-01', 'Job Description 2', 7000000, 0),
-(3, '2023-03-01', '2023-04-01', '2024-03-01', 'Job Description 3', 9000000, 0),
-(4, '2023-04-01', '2023-05-01', '2024-04-01', 'Job Description 4', 6000000, 0),
-(5, '2023-05-01', '2023-06-01', '2024-05-01', 'Job Description 5', 10000000, 0),
-(6, '2023-06-01', '2023-07-01', '2024-06-01', 'Job Description 6', 4000000, 0),
-(7, '2023-07-01', '2023-08-01', '2024-07-01', 'Job Description 7', 8000000, 0),
-(8, '2023-08-01', '2023-09-01', '2024-08-01', 'Job Description 8', 20000000, 0),
-(9, '2023-09-01', '2023-10-01', '2024-09-01', 'Job Description 9', 25000000, 0),
-(10, '2023-10-01', '2023-11-01', '2024-10-01', 'Job Description 10', 5000000, 0),
-(11, '2023-11-01', '2023-12-01', '2024-11-01', 'Job Description 11', 7000000, 0),
-(12, '2023-12-01', '2024-01-01', '2025-01-01', 'Job Description 12', 9000000, 0),
-(13, '2024-01-01', '2024-02-01', '2025-02-01', 'Job Description 13', 6000000, 0),
-(14, '2024-02-01', '2024-03-01', '2025-03-01', 'Job Description 14', 10000000, 0),
-(15, '2024-03-01', '2024-04-01', '2025-04-01', 'Job Description 15', 4000000, 0),
-(16, '2024-04-01', '2024-05-01', '2025-05-01', 'Job Description 16', 8000000, 0),
-(17, '2024-05-01', '2024-06-01', '2025-06-01', 'Job Description 17', 20000000, 0),
-(18, '2024-06-01', '2024-07-01', '2025-07-01', 'Job Description 18', 25000000, 0),
-(19, '2024-07-01', '2024-08-01', '2025-08-01', 'Job Description 19', 5000000, 0),
-(20, '2024-08-01', '2024-09-01', '2025-09-01', 'Job Description 20', 7000000, 0);
+INSERT INTO `contract` (`id_contract`, `name`, `date_of_birth`, `nationality`, `gender`, `country`, `address`, `identity_card`, `identity_date`, `identity_place`, `phone`, `email`, `graduate`, `payment`, `date_sign`, `date_begin`, `date_end`, `salary`, `bank_number`, `bank_name`, `id_position`) VALUES
+(1, 'Trần Bảo Châu', '1989-07-07', 'Việt Nam', 'Nam', 'Vũng Tàu', '50 Lý Thái Tổ', '194656907', '2022-04-21', 'CA Vũng Tàu', '0935466619', 'a7@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2022-12-31 17:00:00', '2023-02-01', '2024-01-01', 17000000, NULL, NULL, 1),
+(2, 'Hà Anh Tuấn', '1991-05-05', 'Việt Nam', 'Nam', 'Huế', '55 Hà Huy Tập', '194656905', '2021-09-22', 'CA Huế', '0123454342', 'a5@gmail.com', 'Tốt nghiệp đại học Kinh tế Quốc Dân HN', 'Tiền mặt', '2023-01-31 17:00:00', '2023-03-01', '2024-02-01', 5000000, NULL, NULL, 8),
+(3, 'Nguyễn Văn Phúc', '1993-12-12', 'Việt Nam', 'Nam', 'Quảng Nam', '10 Ngô Văn Sở', '194656912', '2021-07-02', 'CA Quảng Nam', '0486125479', 'a12@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2023-02-28 17:00:00', '2023-04-01', '2024-03-01', 9000000, NULL, NULL, 7),
+(4, 'Phạm Thanh Thảo', '1989-01-13', 'Việt Nam', 'Nữ', 'Đà Nẵng', '15 Ngô Thì Nhậm', '194656913', '2021-10-08', 'CA Đà Nẵng', '0954875123', 'a13@gmail.com', 'Không có', 'Tiền mặt', '2023-03-31 17:00:00', '2023-05-01', '2024-04-01', 6000000, NULL, NULL, 5),
+(5, NULL, NULL, 'Việt Nam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tiền mặt', '2023-04-30 17:00:00', '2023-06-01', '2024-05-01', 10000000, NULL, NULL, NULL),
+(6, 'Ngô Ngọc ', '1993-06-06', 'Việt Nam', 'Nam', 'Hà Nội', '77 Dũng Sĩ Thanh Khê', '194656906', '2022-08-22', 'CA Hà Nội', '0935466618', 'a6@gmail.com', 'Không có', 'Tiền mặt', '2023-05-31 17:00:00', '2023-07-01', '2024-06-01', 4000000, NULL, NULL, 9),
+(7, 'Trần Kiên Cường', '1990-09-09', 'Việt Nam', 'Nam', 'Đà Nẵng', '33 Yên Bái', '194656909', '2021-06-22', 'CA Đà Nẵng', '0935467618', 'a9@gmail.com', 'Không có', 'Tiền mặt', '2023-06-30 17:00:00', '2023-07-01', '2024-07-01', 3000000, NULL, NULL, 9),
+(8, NULL, NULL, 'Việt Nam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tiền mặt', '2022-07-31 17:00:00', '2022-09-01', '2024-08-01', 20000000, NULL, NULL, NULL),
+(9, 'Nguyễn Thanh Tú', '1991-02-14', 'Việt Nam', 'Nữ', 'Quảng Bình', '56 Trần Thánh Tông', '194656914', '2020-12-20', 'CA Quảng Bình', '0969871357', 'a14@gmail.com', 'Tốt nghiệp đại học Duy Tân', 'Tiền mặt', '2022-08-31 17:00:00', '2022-10-01', '2024-09-01', 5000000, NULL, NULL, 5),
+(10, NULL, NULL, 'Việt Nam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tiền mặt', '2022-09-30 17:00:00', '2022-11-01', '2024-10-01', 5000000, NULL, NULL, NULL),
+(11, NULL, NULL, 'Việt Nam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tiền mặt', '2022-10-31 17:00:00', '2022-12-01', '2024-11-01', 7000000, NULL, NULL, NULL),
+(12, 'Nguyễn Hữu Thọ', '1992-02-02', 'Việt Nam', 'Nam', 'Quảng Bình', '08 Hà Văn Tính', '194656902', '2021-07-21', 'CA tỉnh Quảng Bình', '0987654321', 'a2@gmail.com', 'Không có', 'Tiền mặt', '2022-11-30 17:00:00', '2022-01-01', '2025-01-01', 3000000, NULL, NULL, 9),
+(13, 'Phạm Thanh Sang', '1988-11-11', 'Việt Nam', 'Nam', 'Quảng Nam', '70 Hàm Nghi', '194656911', '2021-07-12', 'CA Quảng Nam', '0915485124', 'a11@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2021-12-31 17:00:00', '2022-02-01', '2025-02-01', 6000000, NULL, NULL, 2),
+(14, 'Nguyễn Thị Chiều', '1992-10-10', 'Việt Nam', 'Nữ', 'Đà Nẵng', '66 Châu Thị Vĩnh Tế', '194656910', '2021-06-22', 'CA Đà Nẵng', '0944466618', 'a10@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2022-01-31 17:00:00', '2022-03-01', '2025-03-01', 10000000, NULL, NULL, 7),
+(15, 'Trương Thị Nhãn', '1988-03-03', 'Việt Nam', 'Nữ', 'Đà Nẵng', '08 Thái Thị Bôi', '194656903', '2021-09-20', 'CA Đà Nẵng', '0935466645', 'a3@gmail.com', 'Không có', 'Tiền mặt', '2023-03-31 17:00:00', '2023-04-01', '2025-04-01', 3000000, NULL, NULL, 9),
+(16, 'Phạm Ngọc Toàn', '1994-03-15', 'Việt Nam', 'Nam', 'Quảng Nam', '12 Nguyễn Tất Thành', '194656916', '2021-08-12', 'CA Quảng Nam', '0197457485', 'a15@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2023-03-31 17:00:00', '2023-05-01', '2025-05-01', 15000000, NULL, NULL, 1),
+(17, 'Trần Khánh Ly', '1990-01-01', 'Việt Nam', 'Nữ', 'Quảng Trị', '66 Võ Nguyên Gíap', '	194656901', '2021-07-21', 'CA tỉnh Quảng Trị', '0935466618', 'a1@gmail.com', 'Tốt nghiệp đại học kinh tế Đà Nẵng', 'Tiền mặt', '2023-04-30 17:00:00', '2023-06-01', '2025-06-01', 7000000, '', '', 8),
+(18, 'Trần Ngọc Bảo Nam', '1994-08-08', 'Việt Nam', 'Nam', 'Quảng Nam', '106 Lý Thái Tông', '194656908', '2021-07-21', 'CA Quảng Nam', '0935566618', 'a8@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2023-05-31 17:00:00', '2023-07-01', '2025-07-01', 20000000, NULL, NULL, 1),
+(19, NULL, NULL, 'Việt Nam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tiền mặt', '2022-06-30 17:00:00', '2022-08-01', '2025-08-01', 5000000, NULL, NULL, NULL),
+(20, 'Bùi Anh Tuấn', '1995-04-04', 'Việt Nam', 'Nam', 'Quảng Nam', '16 Võ Nguyên Giáp', '	\n194656905', '2021-08-20', 'CA tỉnh Quảng Nam', '0123454342', 'a4@gmail.com', 'Tốt nghiệp đại học Y Huế', 'Tiền mặt', '2023-07-31 17:00:00', '2023-09-01', '2025-09-01', 15000000, NULL, NULL, 1),
+(26, 'Trần Thủy Tiên', '2000-02-21', 'Việt Nam', 'Nữ', 'Đà Nẵng', '', '102190112', '2021-02-09', 'CA Đà Nẵng', '0954823512', '', '', '', '2023-07-08 23:28:28', '2023-07-09', '2025-07-09', 5000000, '', '', 3),
+(27, 'Trần Thủy Tiên', '1998-12-12', 'Việt Nam', 'Nữ', 'Đà Nẵng', '', '102190112', '2021-07-09', 'CA Đà Nẵng', '0954823512', 'thuytien@gmail.com', '', '', '2023-07-08 23:30:34', '2023-07-09', '2025-07-09', 5000000, '', '', 3),
+(28, 'Trần Thủy Tiên', '1998-12-22', 'Việt Nam', 'Nữ', 'Đà Nẵng', '', '102190112', '2021-05-12', 'CA Đà Nẵng', '0954823512', 'libertytran123@gmail.com', '', '', '2023-07-08 23:37:55', '2023-07-09', '2025-07-09', 5000000, '', '', 3),
+(29, 'test', '1998-04-12', 'rqư', 'ăq', 'sá', '', '1111111', '2021-07-09', 'CA Đà Nẵng', '0954823512', '', '', '', '2023-07-08 23:41:33', '2023-07-22', '2025-07-09', 5000000, '', '', 3),
+(30, 'test', '1998-04-12', 'rqư', 'ăq', 'sá', '', '1111111', '2021-07-09', 'CA Đà Nẵng', '0954823512', '', '', '', '2023-07-08 23:43:35', '2023-07-22', '2025-07-09', 5000000, '', '', 3),
+(31, 'test', '2001-07-11', 'dfhd', 'hdh', 'dfh', '', '5525242452523', '2021-05-31', 'CA Đà Nẵng', '0954823512', '', '', '', '2023-07-08 23:51:27', '2023-07-09', '2025-07-09', 5000000, '', '', 3),
+(32, 'Trần Thủy Tiên', '2023-06-29', 'Việt Nam', 'Nữ', 'Đà Nẵng', '80 Ngô Văn Sở', '102190112', '2021-07-27', 'CA Đà Nẵng', '0954823512', 'thuytien@gmail.com', 'Tốt nghiệp đại học Kinh tế ĐN', '', '2023-07-08 23:57:18', '2023-07-09', '2023-07-09', 6000000, '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -326,7 +359,7 @@ CREATE TABLE `customer` (
   `phone` int(50) DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Không có',
   `isDeleted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -336,35 +369,11 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id_customer`, `name_customer`, `date_of_birth`, `phone`, `email`, `address`, `username`, `isDeleted`) VALUES
 (1, 'Trần Hiền ', '1990-01-01', 123456789, 'tranhien@example.com', '74 Ngô Thì Nhậm', 'user1', 0),
-(2, 'Trần Thị B', '1995-05-10', 987654321, 'jane@example.com', '456 Đường Hai', NULL, 0),
-(3, 'Lê Thanh C', '1988-09-15', 555555555, 'michael@example.com', '789 Đường Ba', NULL, 0),
-(4, 'Phạm Thị D', '1992-07-20', 111111111, 'emily@example.com', '321 Đường Bốn', NULL, 0),
-(5, 'Hoàng Văn E', '1985-03-05', 999999999, 'daniel@example.com', '789 Đường Năm', NULL, 0),
-(6, 'Nguyễn Thị F', '1998-12-12', 777777777, 'sarah@example.com', '654 Đường Sáu', NULL, 0),
-(7, 'Đặng Văn G', '1993-09-30', 444444444, 'matthew@example.com', '987 Đường Bảy', NULL, 0),
-(8, 'Trần Thị H', '1997-06-25', 222222222, 'olivia@example.com', '567 Đường Tám', NULL, 0),
-(9, 'Lý Văn I', '1991-04-15', 888888888, 'william@example.com', '432 Đường Chín', NULL, 0),
-(10, 'Phan Thị K', '1994-11-05', 333333333, 'sophia@example.com', '876 Đường Mười', NULL, 0),
-(11, 'Nguyễn Văn L', '1989-08-18', 666666666, 'christopher@example.com', '765 Đường Mười Một', NULL, 0),
-(12, 'Trần Thị M', '1996-02-28', 555555555, 'ava@example.com', '543 Đường Mười Hai', NULL, 0),
-(13, 'Lê Văn N', '1999-10-10', 111111111, 'jacob@example.com', '987 Đường Mười Ba', NULL, 0),
-(14, 'Phạm Thị P', '1993-07-15', 888888888, 'mia@example.com', '876 Đường Mười Bốn', NULL, 0),
-(15, 'Hoàng Văn Q', '1997-04-20', 444444444, 'ethan@example.com', '321 Đường Mười Lăm', NULL, 0),
-(16, 'Nguyễn Thị R', '1991-12-25', 999999999, 'isabella@example.com', '567 Đường Mười Sáu', NULL, 0),
-(17, 'Trần Văn S', '1986-09-08', 777777777, 'james@example.com', '432 Đường Mười Bảy', NULL, 0),
-(18, 'Lý Thị T', '1995-06-12', 333333333, 'charlotte@example.com', '654 Đường Mười Tám', NULL, 0),
-(19, 'Phan Văn U', '1998-03-30', 666666666, 'alexander@example.com', '987 Đường Mười Chín', NULL, 0),
-(20, 'Nguyễn Thị V', '1992-10-25', 555555555, 'amelia@example.com', '321 Đường Hai Mươi', NULL, 0),
-(21, 'Trần Văn X', '1996-08-15', 222222222, 'benjamin@example.com', '654 Đường Hai Mươi Một', NULL, 0),
-(22, 'Lê Thị Y', '1990-05-05', 888888888, 'elizabeth@example.com', '876 Đường Hai Mươi Hai', NULL, 0),
-(23, 'Phạm Văn Z', '1994-02-18', 444444444, 'daniel@example.com', '543 Đường Hai Mươi Ba', NULL, 0),
-(24, 'Hoàng Thị K', '1989-11-30', 555555555, 'grace@example.com', '765 Đường Hai Mươi Bốn', NULL, 0),
-(25, 'Nguyễn Văn H', '1993-08-28', 333333333, 'hannah@example.com', '987 Đường Hai Mươi Lăm', NULL, 0),
-(26, 'Trần Thị L', '1997-05-15', 666666666, 'liam@example.com', '321 Đường Hai Mươi Sáu', NULL, 0),
-(27, 'Lý Văn M', '1991-02-10', 222222222, 'mila@example.com', '654 Đường Hai Mươi Bảy', NULL, 0),
-(28, 'Phan Thị N', '1995-09-25', 999999999, 'noah@example.com', '876 Đường Hai Mươi Tám', NULL, 0),
-(29, 'Hoàng Văn P', '1986-06-18', 777777777, 'penelope@example.com', '432 Đường Hai Mươi Chín', NULL, 0),
-(30, 'Nguyễn Thị Q', '1999-03-30', 444444444, 'quinn@example.com', '567 Đường Ba Mươi', NULL, 0);
+(13, 'Lê Văn N', '1999-10-10', 111111111, 'jacob@example.com', '987 Đường Mười Ba', 'tranhien', 0),
+(15, 'Hoàng Văn Q', '1997-04-20', 444444444, 'ethan@example.com', '321 Đường Mười Lăm', 'user2', 0),
+(16, 'Nguyễn Thị R', '1991-12-25', 999999999, 'isabella@example.com', '567 Đường Mười Sáu', 'test', 0),
+(17, 'Trần Văn S', '1986-09-08', 777777777, 'james@example.com', '432 Đường Mười Bảy', 'user3', 0),
+(18, 'Lý Thị T', '1995-06-12', 333333333, 'charlotte@example.com', '654 Đường Mười Tám', 'user4', 0);
 
 -- --------------------------------------------------------
 
@@ -418,14 +427,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `name_product`, `benefit`, `note`, `producer`, `price`, `image`, `isDeleted`, `id_animal_type`, `id_product_type`, `quantity`) VALUES
-(1, 'Thức ăn cho chó Smartheart 500g', 'Thực ăn khô Smartheart có thể sử dụng trực tiếp mà không cần qua chế biến, bảo quản dễ dàng.\nSản phẩm được qua kiểm nghiệm kĩ càng.\nCác dòng sản phẩm Smartheart còn có thành phần đạm và vitamin cao tốt cho sức khỏe tim mạch, tạo nguồn dinh dưỡng dồi dào phát triển linh hoạt hơn.', 'Có thể dùng trực tiếp. Gía thành rẻ, hợp lý.', 'Smartheart', 200000, 'https://www.perfectcompanion.com.vn/vnt_upload/product/12_2019/smartheart-mother-_-baby-dog-new.png', 0, 1, 1, 10),
-(2, 'Thức ăn cho chó Smartheart 200g', 'Benefit 2', 'Note 2', 'Smartheart', 100000, 'https://chiaki.vn/upload/news/content/2020/10/thuc-an-hat-cho-cho-smartheart-puppy-beef-milk-flavo-1r-png-1602905611-17102020103331.png', 0, 1, 1, 3),
+(1, 'Thức ăn cho chó Smartheart 500g', 'Thực ăn khô Smartheart có thể sử dụng trực tiếp mà không cần qua chế biến, bảo quản dễ dàng.\nSản phẩm được qua kiểm nghiệm kĩ càng.\nCác dòng sản phẩm Smartheart còn có thành phần đạm và vitamin cao tốt cho sức khỏe tim mạch, tạo nguồn dinh dưỡng dồi dào phát triển linh hoạt hơn.', 'Có thể dùng trực tiếp. Gía thành rẻ, hợp lý.', 'Smartheart', 200000, 'https://www.perfectcompanion.com.vn/vnt_upload/product/12_2019/smartheart-mother-_-baby-dog-new.png', 0, 1, 1, 18),
+(2, 'Thức ăn cho chó Smartheart 200g', 'Benefit 2', 'Note 2', 'Smartheart', 100000, 'https://chiaki.vn/upload/news/content/2020/10/thuc-an-hat-cho-cho-smartheart-puppy-beef-milk-flavo-1r-png-1602905611-17102020103331.png', 0, 1, 1, 2),
 (3, 'Thức ăn cho chó Smartheart 1kg', 'Benefit 3', 'Note 3', 'Smartheart', 250000, 'https://fagopet.vn/uploads/images/62571ca89487f653775a40cc/thuc-an-cho-cho-smartheart-adult-roast-beef-flavor-3kg.webp', 0, 1, 1, 6),
 (4, 'Thức ăn cho chó Smartheart 700g', 'Benefit 4', 'Note 4', 'Smartheart', 210000, 'https://kinpetshop.com/wp-content/uploads/thuc-an-hat-smartheart-danh-cho-cho-con-vi-bo-va-sua-.jpg', 0, 1, 1, 10),
 (5, 'Thức ăn cho chó Smartheart 2kg', 'Benefit 5', 'Note 5', 'Smartheart', 350000, 'https://bizweb.dktcdn.net/100/229/172/products/thuc-an-cho-cho-con-smartheart-power-pack-min.jpg?v=1533267095000', 0, 1, 1, 6),
 (6, 'Thức ăn cho chó Smartheart 5kg', 'Benefit 6', 'Note 6', 'Smartheart', 400000, 'https://cdn.tgdd.vn/Products/Images/9818/273065/bhx/thuc-an-cho-cho-lon-smartheart-vi-thit-bo-nuong-tui-3kg-202203200123235113.jpg', 0, 1, 1, 20),
-(7, 'Thức ăn cho chó Royal Canin 500g', 'Benefit 7', 'Note 7', 'Royal Canin', 250000, 'https://bizweb.dktcdn.net/100/298/319/products/thu-y-viet-duc-royal-canin-medium-adult.jpg?v=1580898245660', 0, 1, 1, 19),
-(8, 'Thức ăn cho chó Royal Canin 1kg', 'Benefit 8', 'Note 8', 'Royal Canin', 400000, 'https://cdn.shopify.com/s/files/1/0093/8059/3743/products/royal-canin-golden-retriever-adult-dry-dog-food-895770.jpg?v=1659055941', 0, 1, 1, 16),
+(7, 'Thức ăn cho chó Royal Canin 500g', 'Benefit 7', 'Note 7', 'Royal Canin', 250000, 'https://bizweb.dktcdn.net/100/298/319/products/thu-y-viet-duc-royal-canin-medium-adult.jpg?v=1580898245660', 0, 1, 1, 22),
+(8, 'Thức ăn cho chó Royal Canin 1kg', 'Benefit 8', 'Note 8', 'Royal Canin', 400000, 'https://cdn.shopify.com/s/files/1/0093/8059/3743/products/royal-canin-golden-retriever-adult-dry-dog-food-895770.jpg?v=1659055941', 0, 1, 1, 15),
 (9, 'Thức ăn cho chó Royal Canin 2kg', 'Benefit 9', 'Note 9', 'Royal Canin', 600000, 'https://mew.vn/wp-content/uploads/2021/03/royal-canin-x-small-puppy-dry-dog-food-1.jpg', 0, 1, 1, 2),
 (10, 'Thức ăn cho chó Royal Canin 5kg', 'Benefit 10', 'Note 10', 'Royal Canin', 700000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHrD0sJuPut5vzhUxSvrZhpml18LB4ATQH7g&usqp=CAU', 0, 1, 1, 20),
 (11, 'Thức ăn cho chó Royal Canin 200g', 'Benefit 11', 'Note 11', 'Royal Canin', 90000, 'https://mew.vn/wp-content/uploads/2021/03/royal-canin-x-small-puppy-dry-dog-food-1.jpg', 0, 1, 1, 15),
@@ -437,7 +446,7 @@ INSERT INTO `product` (`id_product`, `name_product`, `benefit`, `note`, `produce
 (17, 'Thức ăn hạt mềm Zenith cho chó 500g', 'Benefit 17', 'Note 17', 'Producer 17', 150000, 'https://cf.shopee.ph/file/237f2bc11b99c91305b07eea41d83b8f', 0, 1, 1, 18),
 (18, 'Thức ăn hạt mềm Zenith cho chó 1kg ', 'Benefit 18', 'Note 18', 'Producer 18', 230000, 'https://ivetcenter.com/uploaded/san-pham/thuc-an-hat-mem-cho-con-zenith-puppy.jpg', 0, 1, 1, 4),
 (19, 'Thức ăn hạt mềm Zenith cho chó 2kg', 'Benefit 19', 'Note 19', 'Producer 19', 300000, 'https://bizweb.dktcdn.net/thumb/grande/100/383/944/products/hinh-website-nen-trang.png?v=1626424496443', 0, 1, 1, 6),
-(20, 'Thức ăn hạt mềm Zenith cho chó 5kg', 'Benefit 20', 'Note 20', 'Producer 20', 400000, 'https://papapetshop.com/wp-content/uploads/Small-Breed-Lamb-Potato-01.png', 0, 1, 1, 16),
+(20, 'Thức ăn hạt mềm Zenith cho chó 5kg', 'Benefit 20', 'Note 20', 'Producer 20', 400000, 'https://papapetshop.com/wp-content/uploads/Small-Breed-Lamb-Potato-01.png', 0, 1, 1, 14),
 (22, 'Snack cho chó Vitamin', 'Benefit 22', 'Note 22', 'Producer 22', 20000, 'https://toplist.vn/images/800px/banh-thuong-pedigree-479210.jpg', 0, 1, 1, 8),
 (23, 'Snack cho chó vị cá ngừ Vitamin', 'Benefit 23', 'Note 23', 'Producer 23', 20000, 'https://bizweb.dktcdn.net/100/229/172/products/doggyman-snack-911590083364-1000px-min-min.jpg?v=1533462353327', 0, 1, 1, 8),
 (24, 'Snack cho chó loại mềm Vitamin', 'Benefit 24', 'Note 24', 'Producer 24', 25000, 'https://bucket.nhanh.vn/19b837-49111/ps/20201210_1P8IjNarLotvh177EjgmBqoS.jpg', 0, 1, 1, 15),
@@ -453,7 +462,7 @@ INSERT INTO `product` (`id_product`, `name_product`, `benefit`, `note`, `produce
 (40, 'Thức ăn Me-O gói lớn cho mèo', 'Benefit 40', 'Note 40', 'Producer 40', 6000000, 'https://vietgiftmarket.com/wp-content/uploads/2021/10/thuc-an-cho-cho-meo-ma-taccm67.jpg', 0, 2, 2, 12),
 (46, 'Thức ăn whiskas gói lớn cho mèo', 'Benefit 46', 'Note 46', 'Producer 46', 5000000, 'https://drive.google.com/uc?id=1qowzRPPR028gv0Zu5eVwZoU85_BbrU1E', 0, 2, 6, 19),
 (49, 'Sữa cho mèo KMR', 'Benefit 49', 'Note 49', 'Producer 49', 6000000, 'https://cdn.tgdd.vn/Files/2021/04/23/1345730/meo-uong-sua-lieu-co-tot-khong-top-7-loai-sua-bot-cho-meo-con-tot-nhat-hien-nay-202206061448102335.jpg', 0, 1, 9, 3),
-(51, 'Thức ăn cho mèo Whiskas gói 200g', 'Dùng cho mèo ăn.\r\nDễ ăn, dễ bảo quản', 'Không có', 'Whiskas', 50000, 'https://cdn-img-v2.webbnc.net/uploadv2/web/12/12107/product/2019/09/13/02/59/1568343569_pate-whiskas-cho-meo-con.jpg', 0, 2, 10, 2),
+(51, 'Thức ăn cho mèo Whiskas gói 200g', 'Dùng cho mèo ăn.\r\nDễ ăn, dễ bảo quản', 'Không có', 'Whiskas', 50000, 'https://cdn-img-v2.webbnc.net/uploadv2/web/12/12107/product/2019/09/13/02/59/1568343569_pate-whiskas-cho-meo-con.jpg', 0, 2, 10, 5),
 (52, 'Thức ăn cho mèo Whiskas gói 500g', 'Dùng cho mèo ăn. Dễ ăn, dễ bảo quản', 'Không có', 'Whiskas', 70000, 'https://bizweb.dktcdn.net/100/118/405/products/f02433e11729ecf617ff9e8016ee5f92.jpg?v=1571837043690', 0, 2, 10, 7),
 (53, 'Thức ăn cho mèo Whiskas gói 1kg', 'Dùng cho mèo ăn.Dễ ăn, dễ bảo quản', 'Không có', 'Whiskas', 90000, 'https://product.hstatic.net/200000264739/product/hat_whiskas1_f9d9751ff0654fb59fc0914f212be940_master.jpg', 0, 2, 10, 9),
 (54, 'Thức ăn cho mèo Whiskas gói 2kg', 'Dùng cho mèo ăn.Dễ ăn, dễ bảo quản', 'Không có', 'Whiskas', 150000, 'https://meocun.com/wp-content/uploads/thuc-an-hat-whiskas-junior-cho-meo-con.jpg', 0, 2, 10, 1),
@@ -550,48 +559,43 @@ INSERT INTO `service` (`id_service`, `name_service`, `is_deleted`) VALUES
 CREATE TABLE `staff` (
   `id_staff` int(11) NOT NULL,
   `name_staff` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `identity_card` bigint(20) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `certificate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `experience` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bank_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bank_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_deleted` tinyint(4) DEFAULT 0,
   `id_position` int(11) DEFAULT NULL,
   `id_contract` int(11) DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Không có'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `staff`
 --
 
-INSERT INTO `staff` (`id_staff`, `name_staff`, `identity_card`, `date_of_birth`, `phone`, `email`, `address`, `certificate`, `experience`, `bank_number`, `bank_name`, `is_deleted`, `id_position`, `id_contract`, `username`) VALUES
-(1, 'Trần Khánh Ly', 0, '1990-01-01', '0935466618', 'a1@gmail.com', '66 Võ Nguyên Gíap', 'Tốt nghiệp đại học kinh tế Đà Nẵng', '3 năm', '12345678', 'BIDV', 0, 8, 17, 'staff1'),
-(2, 'Nguyễn Hữu Thọ', 0, '1992-02-02', '0987654321', 'a2@gmail.com', '08 Hà Văn Tính', 'Không có', '4 năm', NULL, NULL, 0, 9, 12, NULL),
-(3, 'Trương Thị Nhãn', 0, '1988-03-03', '0935466645', 'a3@gmail.com', '08 Thái Thị Bôi', 'Không có ', '3 năm', NULL, NULL, 0, 9, 15, NULL),
-(4, 'Bùi Anh Tuấn', 0, '1995-04-04', '0935466777', 'a4@gmail.com', '16 Võ Nguyên Giáp', 'Tốt nghiệp đại học Y Huế', '5 năm', NULL, NULL, 0, 1, 20, NULL),
-(5, 'Hà Anh Tuấn', 0, '1991-05-05', '0123454342', 'a5@gmail.com', '55 Hà Huy Tập', 'Tốt nghiệp đại học Kinh tế Quốc Dân HN', '7 năm', NULL, NULL, 0, 8, 2, NULL),
-(6, 'Ngô Ngọc ', 0, '1993-06-06', '0935466618', 'a6@gmail.com', '77 Dũng Sĩ Thanh Khê', 'Không có', '6 năm', NULL, NULL, 0, 9, 6, NULL),
-(7, 'Trần Bảo Châu', 0, '1989-07-07', '0935466619', 'a7@gmail.com', '50 Lý Thái Tổ', 'Tốt nghiệp đại học Y Huế', '8 năm', NULL, NULL, 0, 2, 1, NULL),
-(8, 'Trần Ngọc Bảo Nam', 0, '1994-08-08', '0935566618', 'a8@gmail.com', '106 Lý Thái Tông', 'Tốt nghiệp đại học Y Huế', '4 năm', NULL, NULL, 0, 2, 18, NULL),
-(9, 'Trần Kiên Cường', 0, '1990-09-09', '0935467618', 'a9@gmail.com', '33 Yên Bái', 'Không có', '5 năm', NULL, NULL, 0, 9, 7, NULL),
-(10, 'Nguyễn Thị Chiều', 0, '1992-10-10', '0944466618', 'a10@gmail.com', '66 Châu Thị Vĩnh Tế', 'Tốt nghiệp đại học Y Huế', '1 năm', NULL, NULL, 0, 7, 14, NULL),
-(11, 'Phạm Thanh Sang', 0, '1988-11-11', '0915485124', 'a11@gmail.com', '70 Hàm Nghi', 'Tốt nghiệp đại học Y Huế', '2 năm', NULL, NULL, 0, 2, 13, NULL),
-(12, 'Nguyễn Văn Phúc', 0, '1993-12-12', '0486125479', 'a12@gmail.com', '10 Ngô Văn Sở', 'Tốt nghiệp đại học Y Huế', '6 năm', NULL, NULL, 0, 7, 13, NULL),
-(13, 'Phạm Thanh Thảo', 0, '1989-01-13', '0954875123', 'a13@gmail.com', '15 Ngô Thì Nhậm', 'Không có', '1 năm', NULL, NULL, 0, 9, 4, NULL),
-(14, 'Nguyễn Thanh Tú', 0, '1991-02-14', '0969871357', 'a14@gmail.com', '56 Trần Thánh Tông', 'Tốt nghiệp đại học Duy Tân', '4 năm', NULL, NULL, 0, 5, 9, NULL),
-(15, 'Phạm Ngọc Toàn', 0, '1994-03-15', '0197457485', 'a15@gmail.com', '12 Nguyễn Tất Thành', 'Tốt nghiệp đại học Y Huế', '5 năm', NULL, NULL, 0, 5, 1, NULL),
-(16, 'Emma Moore', 0, '1990-04-16', '123456789', NULL, NULL, NULL, NULL, NULL, NULL, 0, 5, 14, NULL),
-(17, 'James Smith', 0, '1992-05-17', '777777777', NULL, NULL, NULL, NULL, NULL, NULL, 0, 6, 6, NULL),
-(18, 'Mia Johnson', 0, '1988-06-18', '888888888', NULL, NULL, NULL, NULL, NULL, NULL, 0, 4, 5, NULL),
-(19, 'Ethan Davis', 0, '1995-07-19', '999999999', NULL, NULL, NULL, NULL, NULL, NULL, 0, 9, 16, NULL),
-(20, 'Olivia Taylor', 0, '1991-08-20', '111111111', NULL, NULL, NULL, NULL, NULL, NULL, 0, 3, 17, NULL),
-(21, 'Noah Wilson', 0, '1993-09-21', '666666666', NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, 15, NULL),
-(24, 'Trần Thị Thu Hiền', 1111111, '2001-07-11', '935466618', 'tranthithuhiena1ddt@gmail.com', '11', 'aaaaaaaaaaa', 'aaaaaaa', '124135435sdsgs', 'aaaaaaaa', 1, 2, NULL, NULL);
+INSERT INTO `staff` (`id_staff`, `name_staff`, `country`, `gender`, `identity_card`, `date_of_birth`, `phone`, `email`, `address`, `certificate`, `bank_number`, `bank_name`, `is_deleted`, `id_position`, `id_contract`, `username`) VALUES
+(1, 'Trần Khánh Ly', 'Quảng Trị', 'Nữ', 194656901, '1990-01-01', '0935466618', 'a1@gmail.com', '66 Võ Nguyên Gíap', 'Tốt nghiệp đại học kinh tế Đà Nẵng', '', '', 0, 8, 17, 'admin1'),
+(2, 'Nguyễn Hữu Thọ', 'Quảng Bình', 'Nam', 194656902, '1992-02-02', '0987654321', 'a2@gmail.com', '08 Hà Văn Tính', 'Không có', NULL, NULL, 0, 9, 12, 'Không có'),
+(3, 'Trương Thị Nhãn', 'Đà Nẵng', 'Nữ', 194656903, '1988-03-03', '0935466645', 'a3@gmail.com', '08 Thái Thị Bôi', 'Không có ', NULL, NULL, 0, 9, 15, 'Không có'),
+(4, 'Bùi Anh Tuấn', 'Quảng Nam', 'Nam', 194656904, '1995-04-04', '0935466777', 'a4@gmail.com', '16 Võ Nguyên Giáp', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 1, 20, 'Không có'),
+(5, 'Hà Anh Tuấn', 'Huế', 'Nam', 194656905, '1991-05-05', '0123454342', 'a5@gmail.com', '55 Hà Huy Tập', 'Tốt nghiệp đại học Kinh tế Quốc Dân HN', NULL, NULL, 0, 8, 2, 'Không có'),
+(6, 'Ngô Ngọc ', 'Hà Nội', 'Nam', 194656906, '1993-06-06', '0935466618', 'a6@gmail.com', '77 Dũng Sĩ Thanh Khê', 'Không có', NULL, NULL, 0, 9, 6, 'Không có'),
+(7, 'Trần Bảo Châu', 'Vũng Tàu', 'Nam', 194656907, '1989-07-07', '0935466619', 'a7@gmail.com', '50 Lý Thái Tổ', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 1, 1, 'Không có'),
+(8, 'Trần Ngọc Bảo Nam', 'Quảng Nam', 'Nam', 194656908, '1994-08-08', '0935566618', 'a8@gmail.com', '106 Lý Thái Tông', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 1, 18, 'Không có'),
+(9, 'Trần Kiên Cường', 'Đà Nẵng', 'Nam', 194656909, '1990-09-09', '0935467618', 'a9@gmail.com', '33 Yên Bái', 'Không có', NULL, NULL, 0, 9, 7, 'Không có'),
+(10, 'Nguyễn Thị Chiều', 'Đà Nẵng', 'Nữ', 194656910, '1992-10-10', '0944466618', 'a10@gmail.com', '66 Châu Thị Vĩnh Tế', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 7, 14, 'Không có'),
+(11, 'Phạm Thanh Sang', 'Quảng Nam', 'Nam', 194656911, '1988-11-11', '0915485124', 'a11@gmail.com', '70 Hàm Nghi', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 2, 13, 'Không có'),
+(12, 'Nguyễn Văn Phúc', 'Quảng Nam', 'Nam', 194656912, '1993-12-12', '0486125479', 'a12@gmail.com', '10 Ngô Văn Sở', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 7, 3, 'Không có'),
+(13, 'Phạm Thanh Thảo', 'Đà Nẵng', 'Nữ', 194656913, '1989-01-13', '0954875123', 'a13@gmail.com', '15 Ngô Thì Nhậm', 'Không có', NULL, NULL, 0, 5, 4, 'Không có'),
+(14, 'Nguyễn Thanh Tú', 'Quảng Bình', 'Nữ', 194656914, '1991-02-14', '0969871357', 'a14@gmail.com', '56 Trần Thánh Tông', 'Tốt nghiệp đại học Duy Tân', NULL, NULL, 0, 5, 9, 'Không có'),
+(15, 'Phạm Ngọc Toàn', 'Quảng Nam', 'Nam', 194656915, '1994-03-15', '0197457485', 'a15@gmail.com', '12 Nguyễn Tất Thành', 'Tốt nghiệp đại học Y Huế', NULL, NULL, 0, 5, 16, 'Không có'),
+(37, 'Trần Thủy Tiên', 'Đà Nẵng', 'Nữ', 102190112, '2023-06-29', '0954823512', 'thuytien@gmail.com', '80 Ngô Văn Sở', 'Tốt nghiệp đại học Kinh tế ĐN', '', '', 0, 3, 32, 'Không có');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -659,7 +663,8 @@ ALTER TABLE `cart_items`
 -- Chỉ mục cho bảng `contract`
 --
 ALTER TABLE `contract`
-  ADD PRIMARY KEY (`id_contract`);
+  ADD PRIMARY KEY (`id_contract`),
+  ADD KEY `fk_contract_position` (`id_position`);
 
 --
 -- Chỉ mục cho bảng `customer`
@@ -723,13 +728,13 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id_bill_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_bill_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `blog`
@@ -741,25 +746,25 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id_cart_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_cart_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `id_contract` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_contract` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT cho bảng `position`
@@ -789,7 +794,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT cho bảng `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id_staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_staff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -834,6 +839,12 @@ ALTER TABLE `cart`
 ALTER TABLE `cart_items`
   ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`id_cart`) REFERENCES `cart` (`id_cart`),
   ADD CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);
+
+--
+-- Các ràng buộc cho bảng `contract`
+--
+ALTER TABLE `contract`
+  ADD CONSTRAINT `fk_contract_position` FOREIGN KEY (`id_position`) REFERENCES `position` (`id_position`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `customer`

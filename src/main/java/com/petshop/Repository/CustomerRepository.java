@@ -31,7 +31,7 @@ public class CustomerRepository {
         }
     }
 	public List<Customer> showAllCustomer(){
-		String sql = "select * from customer";
+		String sql = "select * from customer where isDeleted = 0";
 		return jdbcTemplate.query(sql, new customerRowMapper());
 	}
 	public void addCustomer(String name_customer, String date_of_birth, String phone, String email, String address, String username) {
@@ -48,7 +48,7 @@ public class CustomerRepository {
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void deleteCustomer(int id_customer) {
-		String sql = "DELETE FROM customer WHERE id_customer = ?";
+		String sql = "UPDATE customer SET isDeleted = 1 WHERE id_customer = ?";
 		Object[] params = new Object[] {id_customer};
 		int rs =jdbcTemplate.update(sql, params);
 		

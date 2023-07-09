@@ -59,12 +59,15 @@ public class AccountRepository {
 		return jdbcTemplate.query(sql, new accountRowmapper());
 	}
 	public List<Account> getAccountFree() {
-		String sql = "SELECT *\r\n"
-				+ "FROM account\r\n"
-				+ "WHERE username NOT IN (\r\n"
-				+ "    SELECT username\r\n"
-				+ "    FROM customer)";
-		return jdbcTemplate.query(sql, new accountRowmapper());
+	    String sql = "SELECT * " +
+	            "FROM account " +
+	            "WHERE username NOT IN ( " +
+	            "    SELECT username " +
+	            "    FROM customer " +
+	            "    UNION " +
+	            "    SELECT username " +
+	            "    FROM staff)";
+	    return jdbcTemplate.query(sql, new accountRowmapper());
 	}
 	public void changePassword(String username, String encodePass) {
 		String sql = "UPDATE account SET password = ? WHERE username = ?";

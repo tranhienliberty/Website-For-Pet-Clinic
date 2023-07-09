@@ -24,13 +24,14 @@ public class StaffRepository {
         	Staff staff = new Staff();
         	staff.setId_staff(rs.getInt("id_staff"));
         	staff.setName_staff(rs.getString("name_staff"));
+        	staff.setGender(rs.getString("gender"));
+        	staff.setCountry(rs.getString("country"));
         	staff.setIdentity_card(rs.getLong("identity_card"));
         	staff.setDate_of_birth(rs.getDate("date_of_birth"));
         	staff.setPhone(rs.getString("phone"));
         	staff.setEmail(rs.getString("email"));
         	staff.setAddress(rs.getString("address"));
         	staff.setCertificate(rs.getString("certificate"));
-        	staff.setExperience(rs.getString("experience"));
         	staff.setBank_number(rs.getString("bank_number"));
         	staff.setBank_name(rs.getString("bank_name"));
         	staff.setId_position(rs.getInt("id_position"));
@@ -44,13 +45,14 @@ public class StaffRepository {
         	Staff staff = new Staff();
         	staff.setId_staff(rs.getInt("id_staff"));
         	staff.setName_staff(rs.getString("name_staff"));
+        	staff.setGender(rs.getString("gender"));
+        	staff.setCountry(rs.getString("country"));
         	staff.setIdentity_card(rs.getLong("identity_card"));
         	staff.setDate_of_birth(rs.getDate("date_of_birth"));
         	staff.setPhone(rs.getString("phone"));
         	staff.setEmail(rs.getString("email"));
         	staff.setAddress(rs.getString("address"));
         	staff.setCertificate(rs.getString("certificate"));
-        	staff.setExperience(rs.getString("experience"));
         	staff.setBank_number(rs.getString("bank_number"));
         	staff.setBank_name(rs.getString("bank_name"));
         	staff.setId_position(rs.getInt("id_position"));
@@ -60,34 +62,6 @@ public class StaffRepository {
         	position.setId_position(rs.getInt("id_position"));
         	position.setName_position(rs.getString("name_position"));
         	staff.setPosition(position);
-            return staff;
-        }
-    }
-	private class staffExtraRowMapper implements RowMapper<Staff> {
-        public Staff mapRow(ResultSet rs, int rowNum) throws SQLException {
-        	Staff staff = new Staff();
-        	staff.setId_staff(rs.getInt("id_staff"));
-        	staff.setName_staff(rs.getString("name_staff"));
-        	staff.setIdentity_card(rs.getLong("identity_card"));
-        	staff.setDate_of_birth(rs.getDate("date_of_birth"));
-        	staff.setPhone(rs.getString("phone"));
-        	staff.setEmail(rs.getString("email"));
-        	staff.setAddress(rs.getString("address"));
-        	staff.setCertificate(rs.getString("certificate"));
-        	staff.setExperience(rs.getString("experience"));
-        	staff.setBank_number(rs.getString("bank_number"));
-        	staff.setBank_name(rs.getString("bank_name"));
-        	staff.setId_position(rs.getInt("id_position"));
-        	staff.setId_contract(rs.getInt("id_contract"));
-        	Contract contract = new Contract();
-        	contract.setId_contract(rs.getInt("id_contract"));
-        	contract.setDate_sign(rs.getDate("date_sign"));
-        	contract.setDate_begin(rs.getDate("date_begin"));
-        	contract.setDate_end(rs.getDate("date_end"));
-        	contract.setJob_descript(rs.getString("job_descript"));
-        	contract.setSalary(rs.getFloat("salary"));
-        	staff.setContract(contract);
-        	staff.setUsername(rs.getString("username"));
             return staff;
         }
     }
@@ -103,20 +77,20 @@ public class StaffRepository {
 		return jdbcTemplate.queryForObject(sql, new staffRowMapper(), id_staff);
 	}
 	public void addStaff(String name_staff, String identity_card, String date_of_birth, String phone, String email,
-			String address, String certificate, String experience, String bank_name, String bank_number,
-			int id_position, String username) {
-		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, username)"
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, username};
+			String address, String certificate, String country, String gender, String bank_name, String bank_number,
+			int id_contract, int id_position, String username) {
+		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name, id_contract, id_position, username)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name, id_contract, id_position, username};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void editStaff(int id_staff, String name_staff, String identity_card, String date_of_birth, String phone,
-			String email, String address, String certificate, String experience, String bank_name, String bank_number,
+			String email, String address, String certificate, String country, String gender, String bank_name, String bank_number,
 			int id_position, String username) {
 		String sql = "UPDATE staff SET name_staff = ?, identity_card = ?, date_of_birth = ?, phone = ?, email = ?, address = ?, "
-				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ?, username = ? "
+				+ "certificate = ?, country = ?, gender = ?, bank_number = ?, bank_name = ?, id_position = ?, username = ? "
 				+ "WHERE id_staff = ?;";
-		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, username,id_staff};
+		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name, id_position, username,id_staff};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void deleteStaff(String id_staff) {
@@ -129,20 +103,20 @@ public class StaffRepository {
 		return jdbcTemplate.queryForObject(sql, Integer.class, id_staff);
 	}
 	public void editStaff(int staffID, String name_staff, String identity_card, String date_of_birth, String phone,
-			String email, String address, String certificate, String experience, String bank_name, String bank_number,
+			String email, String address, String certificate, String country, String gender, String bank_name, String bank_number,
 			int id_position) {
 		String sql = "UPDATE staff SET name_staff = ?, identity_card = ?, date_of_birth = ?, phone = ?, email = ?, address = ?, "
-				+ "certificate = ?, experience = ?, bank_number = ?, bank_name = ?, id_position = ? "
+				+ "certificate = ?, country = ?, gender = ?, bank_number = ?, bank_name = ?, id_position = ? "
 				+ "WHERE id_staff = ?;";
-		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position, staffID};
+		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name, id_position, staffID};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void addStaff(String name_staff, String identity_card, String date_of_birth, String phone, String email,
-			String address, String certificate, String experience, String bank_name, String bank_number,
-			int id_position) {
-		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position)\r\n"
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, experience, bank_number, bank_name, id_position};
+			String address, String certificate, String country, String gender, String bank_name, String bank_number,
+			int id_contract,int id_position) {
+		String sql = "INSERT INTO staff(name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name,id_contract,id_position)\r\n"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = new Object[] {name_staff, identity_card, date_of_birth, phone, email, address, certificate, country, gender, bank_number, bank_name, id_contract, id_position};
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	

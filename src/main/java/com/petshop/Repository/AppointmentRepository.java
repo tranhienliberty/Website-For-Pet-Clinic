@@ -91,5 +91,17 @@ public class AppointmentRepository {
 				+ "JOIN animal_type AS t ON a.id_animal_type = t.id_animal_type WHERE id_appointment = ?;";
 		return jdbcTemplate.queryForObject(sql, new appointmentRowMapper(), id_appointment);
 	}
+
+	public void setDoneAppointment(String id_appointment) {
+		String sql = "UPDATE appointment SET appointment_status = 'Đã xong' WHERE id_appointment = ?";
+		Object[] params = new Object[] {id_appointment};
+		int rs =jdbcTemplate.update(sql, params);
+	}
+
+	public void cancelAppointment(String id_appointment) {
+		String sql = "UPDATE appointment SET appointment_status = 'Bị hủy' WHERE id_appointment = ?";
+		Object[] params = new Object[] {id_appointment};
+		int rs =jdbcTemplate.update(sql, params);
+	}
 	
 }

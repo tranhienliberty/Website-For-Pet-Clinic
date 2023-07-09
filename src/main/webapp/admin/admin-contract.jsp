@@ -155,9 +155,9 @@
             <div class="theme-material-card text-center">
             <p style = "text-align: center; margin-top: 30px;"class="font-16"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
             <p style = "text-align: center;"class="font-16"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
-            <p style = "text-align: right;"class="font-16">Đà Nẵng, ngày ${contract.cDay } tháng ${contract.cMonth } năm ${contract.cYear }</p>
+            <p style = "text-align: right;"class="font-16">Đà Nẵng, ngày 12 tháng 7 năm 2023</p>
             <p style = "text-align: center; font-size: 20px; margin-top: 50px"><strong>HỢP ĐỒNG LAO ĐỘNG</strong></p>
-            <p style = "text-align: center;"class="font-16">Số: ${contract.idContract }</p>
+            <p style = "text-align: center;"class="font-16">Số: ${contract.id_contract}</p>
             <div class = "col-md-12">
 	            <ul>
 		           	<li><p class="font-16 text-justify">Chúng tôi, một bên là: đại diện phòng khám thú y Pettiny </p></li>
@@ -166,43 +166,45 @@
             </div>
             <div class = "col-md-12">
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong>BÊN A (NGƯỜI SỬ DỤNG LAO ĐỘNG):</strong>&nbsp &nbsp Bà: Trần Thị Thu Hiền</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Đại diện: Phòng khám thú cưng PetTiny &nbsp Chức vụ: Chủ sở hữu</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Đại diện: Phòng khám thú cưng Pettiny &nbsp  Chức vụ: Chủ sở hữu</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">Quốc tịch: Việt Nam</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Địa chỉ: đường Ngô Thì Nhậm, phường Hòa Khánh Nam, quận Liên Chiểu, thành phố Đà Nẵng</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Số điện thoại: 0123456789</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Địa chỉ: 54 Nguyễn Lương Bằng, phường Hòa Khánh Bắc, quận Liên Chiểu, thành phố Đà Nẵng</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Số điện thoại: 0935466618</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">Mã số Thuế: 0987654321</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">Số tài khoản: 1234567891234</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Tại ngân hàng: MB Bank</p>
-	            <p style = "font-size: 18px;" class="font-16 text-justify"><strong>BÊN B (NGƯỜI LAO ĐỘNG)</strong></p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Ngày tháng năm sinh: ${contract.birthDay }&nbsp Quốc tịch: ${contract.nationality } &nbsp Giới tính: ${contract.graduate.graduate }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Quê quán: ${contract.address1 }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Địa chỉ thường trú: ${contract.address2 }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Số CMTND: ${contract.identityNumber } &nbsp Ngày cấp: ${contract.identityDay } &nbsp Nơi cấp: ${contract.identityPlace }</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Ngân hàng: MB Bank</p>
+	            <p style = "font-size: 18px;" class="font-16 text-justify"><strong>BÊN B (NGƯỜI LAO ĐỘNG):</strong> &nbsp &nbsp Ông/Bà: ${contract.name}</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Ngày tháng năm sinh: <fmt:formatDate type = "date" dateStyle = "long" value = "${contract.date_of_birth }" /> &nbsp &nbsp Quốc tịch: ${contract.nationality }&nbsp  &nbsp Giới tính: ${contract.gender}</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Quê quán: ${contract.country }</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Địa chỉ thường trú: ${contract.address }</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Số CMTND: ${contract.identity_card } &nbsp &nbsp &nbsp  Ngày cấp: <fmt:formatDate type = "date" dateStyle = "long" value = "${contract.identity_date }" />&nbsp &nbsp  &nbsp Nơi cấp: ${contract.identity_place }</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">Số điện thoại: ${contract.phone }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">Trình độ: ${contract.bankNumber } &nbsp Chuyên ngành: ${contract.bank }</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Email: ${contract.email }</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Trình độ: ${contract.graduate } 
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Số tài khoản: ${contract.bank_number } 
+	            <p style = "font-size: 16px;" class="font-16 text-justify">Ngân hàng: ${contract.bank_name } 
 	            <p style = "font-size: 16px;" class="font-16 text-justify">Sau khi thỏa thuận, hai bên thống nhất ký Hợp đồng lao động (HĐLĐ) với các điều khoản sau đây:</p>
 	            <p style = "font-size: 18px;" class="font-16 text-justify"><strong>Điều 1: Điều khoản chung</strong></p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">1. Loại HĐLĐ: Hợp đồng thuê nhân viên</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">2. Thời điểm bắt đầu: Ngày ${contract.cDay } tháng ${contract.cMonth } năm ${contract.cYear }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">3. Thời điểm kết thúc: Ngày ${contract.eDay } tháng ${contract.eMonth } năm ${contract.eYear }</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">4. Địa điểm làm việc: Phòng khám thú y PetTiny đường Ngô Thì Nhậm, phường Hòa Khánh Nam, quận Liên Chiểu, thành phố Đà Nẵng.</p>
-	            <p style = "font-size: 16px;" class="font-16 text-justify">5. Chức danh chuyên môn (vị trí công tác): </p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">1. Loại HĐLĐ: Hợp đồng thuê nhân viên. Ngày ký: <fmt:formatDate type = "date" dateStyle = "long" value = "${contract.date_sign }" /></p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">2. Thời điểm bắt đầu: <fmt:formatDate type = "date" dateStyle = "long" value = "${contract.date_begin }" /></p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">3. Thời điểm kết thúc: <fmt:formatDate type = "date" dateStyle = "long" value = "${contract.date_end }" /></p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">4. Địa điểm làm việc: Phòng khám thú y Pettiny, 54 Nguyễn Lương Bằng, phường Hòa Khánh Bắc, quận Liên Chiểu, thành phố Đà Nẵng.</p>
+	            <p style = "font-size: 16px;" class="font-16 text-justify">5. Chức danh chuyên môn (vị trí công tác): ${contract.getPosition().getName_position()}</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">6. Nhiệm vụ công việc như sau: </p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">- Thực hiện công việc theo đúng chức danh chuyên môn của mình dưới sự quản lý, điều hành của người có thẩm quyền.</p>
 	            <p style = "font-size: 16px;" class="font-16 text-justify">- Phối hợp cùng với các bộ phận khác trong phòng khám để phát huy tối đa hiệu quả công việc. </p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong>Điều 2: Chế độ làm việc</strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">1. Thời gian làm việc: Từ 8h đến 11h, 13h đến 18h hàng ngày.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">2. Đi làm đúng giờ, nếu có việc đột xuất phát sinh hoặc có nhu cầu vui lòng báo trước với người phụ trách. </p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">3. Thiết bị và công cụ làm việc sẽ được Công ty cấp phát tùy theo nhu cầu của công việc.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">3. Thiết bị và công cụ làm việc sẽ được cấp phát tùy theo nhu cầu của công việc.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">4. Điều kiện an toàn và vệ sinh lao động tại nơi làm việc theo quy định của pháp luật hiện hành.</p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong>Điều 3: Quyền và nghĩa vụ của người lao động</strong></p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong><em>1. Quyền của người lao động</em></strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">a) Tiền lương và phụ cấp: </p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">- Mức lương/Thù lao chính: ${contract.salary } VND</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">- Phụ cấp trách nhiệm (nếu có): </p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">- Phụ cấp hiệu suất công việc (nếu có): Theo đánh giá của quản lý. </p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">- Phụ cấp hiệu suất công việc và phụ cấp trách nhiệm (nếu có): Theo đánh giá của quản lý. </p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">- Lương hiệu quả (nếu có): Theo quy định của phòng khám.</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">– Hình thức trả lương: ${contract.payment.payment }</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">– Hình thức trả lương: ${contract.payment }</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">– Thời gian trả lương: Ngày 15 mỗi tháng.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">b) Các quyền lợi khác: </p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">- Khen thưởng: Người lao động được khuyến khích bằng vật chất và tinh thần khi có thành tích trong công tác.</p>
@@ -217,17 +219,17 @@
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong><em>2. Nghĩa vụ của người lao động</em></strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">a) Thực hiện công việc với hiệu quả cao nhất theo sự phân công, điều hành của người có thẩm quyền. </p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">b) Hoàn thành công việc được giao và sẵn sàng chấp nhận mọi sự điều động khi có yêu cầu. </p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">c) Nắm rõ và chấp hành nghiêm túc kỷ luật lao động, an toàn lao động, vệ sinh lao động, phòng cháy chữa cháy, văn hóa công ty, nội quy lao động và các chủ trương, chính sách của Công ty. </p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">d) Bồi thường vi phạm và vật chất theo quy chế, nội quy của Công ty và pháp luật Nhà nước quy định.</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">e) Tham dự đầy đủ, nhiệt tình các buổi huấn luyện, đào tạo, hội thảo do Bộ phận hoặc Công ty tổ chức.</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">f) Thực hiện đúng cam kết trong hợp đồng lao động và các thỏa thuận bằng văn bản khác với Công ty.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">c) Nắm rõ và chấp hành nghiêm túc kỷ luật lao động, an toàn lao động, vệ sinh lao động, phòng cháy chữa cháy, văn hóa phòng khám, nội quy lao động và các chủ trương, chính sách của phòng khám. </p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">d) Bồi thường vi phạm và vật chất theo quy chế, nội quy của phòng khám và pháp luật Nhà nước quy định.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">e) Tham dự đầy đủ, nhiệt tình các buổi huấn luyện, đào tạo, hội thảo do phòng khám tổ chức.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">f) Thực hiện đúng cam kết trong hợp đồng lao động và các thỏa thuận bằng văn bản khác với phòng khám.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">g) Tuyệt đối thực hiện cam kết bảo mật thông tin.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">h) Đóng các loại bảo hiểm, thuế, phí đầy đủ theo quy định của pháp luật.</p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong>Điều 4: Quyền và nghĩa vụ của người sử dụng lao động</strong></p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong><em>1. Quyền của người sử dụng lao động</em></strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">a) Điều hành người lao động hoàn thành công việc theo Hợp đồng (bố trí, điều chuyển công việc cho người lao động theo đúng chức năng chuyên môn).</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">b) Có quyền tạm thời chuyển người lao động sang làm công việc khác, ngừng việc và áp dụng các biện pháp kỷ luật theo quy định của pháp luật hiện hành và theo nội quy Công ty trong thời gian Hợp đồng còn giá trị.</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">c) Tạm hoãn, chấm dứt Hợp đồng, kỷ luật người lao động theo đúng quy định của pháp luật và nội quy Công ty.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">b) Có quyền tạm thời chuyển người lao động sang làm công việc khác, ngừng việc và áp dụng các biện pháp kỷ luật theo quy định của pháp luật hiện hành và theo nội quy phòng khám trong thời gian Hợp đồng còn giá trị.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">c) Tạm hoãn, chấm dứt Hợp đồng, kỷ luật người lao động theo đúng quy định của pháp luật và nội quy phòng khám.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">d) Có quyền đòi bồi thường, khiếu nại với cơ quan liên đới để bảo vệ quyền lợi của mình nếu người lao động vi phạm pháp luật hay các điều khoản của hợp đồng này.</p>
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong><em>2. Nghĩa vụ của người sử dụng lao động</em></strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">- Thực hiện đầy đủ những điều kiện cần thiết đã cam kết trong Hợp đồng lao động để người lao động đạt hiệu quả công việc cao. Bảo đảm việc làm cho người lao động theo Hợp đồng đã ký.</p>
@@ -238,7 +240,7 @@
             	<p style = "font-size: 18px;" class="font-16 text-justify"><strong>Điều 6: Điều khoản thi hành</strong></p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">Những vấn đề về lao động không ghi trong Hợp đồng này thì áp dụng theo quy định của thỏa ước tập thể, nội quy lao động và pháp luật lao động.</p>
             	<p style = "font-size: 16px;" class="font-16 text-justify">Khi hai bên ký kết Phụ lục Hợp đồng lao động thì nội dung của Phụ lục Hợp đồng lao động cũng có giá trị như các nội dung của bản hợp đồng này.</p>
-            	<p style = "font-size: 16px;" class="font-16 text-justify">Hợp đồng này được lập thành …… bản có giá trị pháp lý như nhau, mỗi bên giữ ..….. bản./.</p>
+            	<p style = "font-size: 16px;" class="font-16 text-justify">Hợp đồng này được lập thành 2 bản có giá trị pháp lý như nhau, mỗi bên giữ 1 bản./.</p>
             </div>
             <div style = "margin-left: 10px; margin-right: 10px; "class ="row">
             <div style = "border: 2px solid; margin-bottom: 5px;" class = "col-md-6 text-center">
@@ -250,10 +252,10 @@
             	<p style = "font-size: 16px;">(ký và ghi rõ họ tên)</p>
             </div> 
             <div class = "col-md-6">
-                 <p style = "font-size: 16px; margin-top: 70px;"><strong>${contract.name }</strong></p>
+                 <p style = "font-size: 16px; margin-top: 70px;"><strong>Trần Thị Thu Hiền</strong></p>
             </div>
             <div class = "col-md-6">
-                 <p style = "font-size: 16px; margin-top: 70px;"><strong>Nguyễn Nhật Trường</strong></p>
+                 <p style = "font-size: 16px; margin-top: 70px;"><strong>${contract.name }</strong></p>
             </div>
             </div>        
             </div>  

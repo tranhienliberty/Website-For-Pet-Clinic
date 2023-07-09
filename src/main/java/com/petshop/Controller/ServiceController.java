@@ -1,5 +1,7 @@
 package com.petshop.Controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,10 @@ public class ServiceController {
 	private ServiceService serviceService;
 	
 	@RequestMapping(value = "/adminShowAllService")
-	public String showAllService(Model model) {
+	public String showAllService(@RequestParam(value = "message", required = false) String message, Model model) {
 		List<Service> services = serviceService.showAllService();
 		model.addAttribute("services", services);
+		model.addAttribute("message", message);
 		return "admin/admin-service";
 	}
 	@RequestMapping(value = "/showFormServiceInfo")
@@ -36,20 +39,29 @@ public class ServiceController {
     	return "admin/admin-service-edit";
 	}
 	@RequestMapping(value = "/adminEditService")
-	public String adminEditService(@RequestParam(value = "id_service", required = false) Integer id_service, @RequestParam("name_service") String name_service,Model model) {
+	public String adminEditService(@RequestParam(value = "id_service", required = false) Integer id_service, @RequestParam("name_service") String name_service,Model model) throws UnsupportedEncodingException {
 		if(id_service!=null) {
     		int serviceID = id_service.intValue();
     		serviceService.editService(serviceID, name_service);
-        	return "redirect:adminShowAllService";
+    		String message = "Sửa dịch vụ thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllService?message=" + encodedMessage;
     	}
     	else {
         	serviceService.addService(name_service);
-        	return "redirect:adminShowAllService";
+        	String message = "Thêm dịch vụ thành công!";
+        	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+    		model.addAttribute("message", encodedMessage);
+        	return "redirect:adminShowAllService?message=" + encodedMessage;
     	}
 	}
     @RequestMapping(value = "/adminDeleteService")
-    public String deleteService(@RequestParam("id_service") int id_service) {
+    public String deleteService(@RequestParam("id_service") int id_service, Model model) throws UnsupportedEncodingException {
     	serviceService.deleteService(id_service);
-    	return "redirect:adminShowAllService";
+    	String message = "Xóa dịch vụ thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+    	return "redirect:adminShowAllService?message=" + encodedMessage;
     }
 }

@@ -146,42 +146,67 @@
     <div id="offcanvas-overlay" class="block lg:hidden offcanvas-overlay"></div>
     <div class="flex flex-wrap justify-end items-center w-full bg-gray-200">
         <main id="main-content" class="flex flex-wrap justify-end items-center w-full lg:w-4/5 mt-16 p-5 bg-gray-200">
-			<form action="<%=request.getContextPath()%>/adminEditStaff" method = "post">
+			<form action="<%=request.getContextPath()%>/adminEditStaff" id = "staff-form" method = "post" onsubmit="return validates()">
 			          <h2>Thông tin nhân viên</h2>
 			  <input type="hidden" id="id_staff" name="id_staff" value="${staff.id_staff}">
 			
-			  <label for="name_staff">Tên nhân viên:</label>
-			  <input type="text" id="name_staff" name="name_staff" value = "${staff.name_staff}" required>
+			  <label for="name_staff">Tên nhân viên:<span style = "color:red">*</span></label>
+			  <input type="text" id="name_staff" name="name_staff" value = "${contract.name}" required>
 			  
-			  <label for="identity_card">CMND/CCCD:</label>
-			  <input type="text" id="identity_card" name="identity_card" value = "${staff.identity_card}">
+			  <label for="gender">Giới tính:<span style = "color:red">*</span></label>
+			  <input type="text" id="gender" name="gender" value = "${contract.gender}" required>
+			  
+			  <label for="nationality">Quốc tịch:<span style = "color:red">*</span></label>
+			  <input type="text" id="nationality" name="nationality" value = "${contract.nationality}" required>
+			  
+			  <label for="country">Quê quán:<span style = "color:red">*</span></label>
+			  <input type="text" id="country" name="country" value = "${contract.country}" required>
+			  
+			  <label for="identity_card">CMND/CCCD:<span style = "color:red">*</span></label>
+			  <input type="text" id="identity_card" name="identity_card" value = "${contract.identity_card}" required>
+			  
+			  <label for="identity_date">Ngày cấp:<span style = "color:red">*</span></label>
+			  <input type="date" id="identity_date" name = "identity_date" value="${contract.identity_date}" required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+			  
+			  <label for="identity_place">Nơi cấp:<span style = "color:red">*</span></label>
+			  <input type="text" id="identity_place" name="identity_place" value = "${contract.identity_place}" required>
+			  
+			  <label for="date_of_birth">Ngày sinh:<span style = "color:red">*</span></label>
+			  <input type="date" id="date_of_birth" name = "date_of_birth" value="${contract.date_of_birth}" required style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
 			
-			  <label for="date_of_birth">Ngày sinh:</label>
-			  <input type="date" id="date_of_birth" name = "date_of_birth" value="${staff.date_of_birth}">
-			
-			  <label for="phone">Số điện thoại:</label>
+			  <label for="phone">Số điện thoại:<span style = "color:red">*</span></label>
 			  <input type="text" id="phone" name="phone" value = "${staff.phone}" required>
 			
 			  <label for="email">Email:</label>
-			  <input type="email" id="email" name="email" value = "${staff.email}" required>
+			  <input type="email" id="email" name="email" value = "${staff.email}" style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
 			
 			  <label for="address">Địa chỉ:</label>
 			  <input type="text" id="address" name="address" value = "${staff.address}">
 			  
-			  <label for="certificate">Bằng cấp:</label>
-			  <input type="text" id="certificate" name="certificate" value = "${staff.certificate}">
+			  <label for="certificate">Bằng cấp:<span style = "color:red">*</span></label>
+			  <input type="text" id="certificate" name="certificate" value = "${staff.certificate}" required>
 			  
-			  <label for="experience">Kinh nghiệm làm việc:</label>
-			  <input type="text" id="experience" name="experience" value = "${staff.experience}">
+			  <label for="date_begin">Ngày bắt đầu hợp đồng:<span style = "color:red">*</span></label>
+			  <input type="date" id="date_begin" name = "date_begin" value="${contract.date_begin}" style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
 			  
-			  <label for="id_position">Vị trí làm việc:</label>
+			  <label for="date_end">Ngày kết thúc hợp đồng:<span style = "color:red">*</span></label>
+			  <input type="date" id="date_end" name = "date_end" value="${contract.date_end}" style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+			  
+			  <label for="id_position">Vị trí làm việc:<span style = "color:red">*</span></label>
 			  <select id="id_position" name="id_position" required>
 			  	<option disabled selected>--Chọn vị trí--</option>
 			    <c:forEach items="${positions}" var="item">
-                    <option value="<c:out value="${item.id_position}"/>">${item.name_position}</option>
+                    <option value="<c:out value="${item.id_position}"/>" ${item.id_position eq staff.id_position ? 'selected' : ''}>${item.name_position}</option>
                 </c:forEach>
 			  </select>
+			  <small id="position-error" class="text-danger" style = "color:#FF0000; font-size:14px;"></small>
 			  
+			  <label for="salary">Mức lương:<span style = "color:red">*</span></label>
+			  <input type="number" id="salary" name="salary" value = "${contract.salary}" required> 
+			  
+			  <label for="payment">Phương thức chi trả (mặc định là tiền mặt):</span></label>
+			  <input type="text" id="payment" name="payment" value = "${contract.payment}">
+			  			  
 			  <label for="bank_number">Số tài khoản:</label>
 			  <input type="text" id="bank_number" name="bank_number" value = "${staff.bank_number}">
 			  
@@ -189,23 +214,32 @@
 			  <input type="text" id="bank_name" name="bank_name" value = "${staff.bank_name}">
 			  
 			  <label for="username">Tên tài khoản:</label>
-			   <select id="username" name="username" required>
+			   <select id="username" name="username">
 			   	  <option disabled selected>--Chọn tài khoản--</option>
-			   	  <c:choose>
-				      <c:when test="${not empty staff.username}">
-				        <option value="${staff.username}">${staff.username}</option>
-				      </c:when>
-				  </c:choose>
+			   	  <option value="<c:out value="${staff.username}"/>" selected>${staff.username}</option>
 				  <c:forEach items="${accounts}" var="item">
-				    <option value="<c:out value="${item.username}"/>"
-				    >${item.username}</option>
+				    <option value="<c:out value="${item.username}"/>">${item.username}</option>
 				  </c:forEach>
 				</select>
-
+			  
+			  
 			  <button type="submit">Lưu</button>
 			        </form>
 	</main>
     </div>
     <script src="<c:url value="/resources/js/admin-main-test.js"/>"></script>
+    <script>
+	  function validates() {
+	    var position = document.getElementById('id_position').value;
+	
+	    if (position=="") {
+	      document.getElementById('position-error').textContent = 'Trường này không được để trống.';
+	      return false; // Ngăn form submit
+	    } else {
+	      document.getElementById('position-error').textContent = '';
+	      return true; // Cho phép form submit
+	    }
+	  }
+	</script>
 </body>
 </html>
