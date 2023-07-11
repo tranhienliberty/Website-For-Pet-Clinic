@@ -11,7 +11,7 @@ public class Product {
 	protected double price;
 	protected String image;
 	protected int quantity;
-	protected boolean isDeleted;
+	protected boolean is_deleted;
 	protected int id_animal_type;
 	protected int id_product_type;
 	protected ProductType productType;
@@ -68,10 +68,10 @@ public class Product {
 		this.quantity = quantity;
 	}
 	public boolean isDeleted() {
-		return isDeleted;
+		return is_deleted;
 	}
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(boolean is_deleted) {
+		this.is_deleted = is_deleted;
 	}
 	public int getId_animal_type() {
 		return id_animal_type;

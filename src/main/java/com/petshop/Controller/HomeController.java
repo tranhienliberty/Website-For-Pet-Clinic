@@ -8,19 +8,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.petshop.Entity.Blog;
 import com.petshop.Entity.Product;
+import com.petshop.Service.BlogService;
 import com.petshop.Service.ProductService;
 
 @Controller
 public class HomeController {
 	@Autowired
 	private ProductService productService;
-	
+	@Autowired 
+	private BlogService blogService;
     @RequestMapping("/")
     public String home( Model model) {
         // Xử lý logic và trả về tên của view để hiển thị
     	List<Product> productDogLimit = productService.showLimitProduct(1);
     	List<Product> productCatLimit = productService.showLimitProduct(2);
+    	List<Blog> randomBlogs = blogService.showRandomBlogs();
+		model.addAttribute("randomBlogs", randomBlogs);
     	model.addAttribute("productDogLimit", productDogLimit);
     	model.addAttribute("productCatLimit", productCatLimit);
         return "customer/index";

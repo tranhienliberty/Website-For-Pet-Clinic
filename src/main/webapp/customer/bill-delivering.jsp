@@ -277,8 +277,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		    <li class="table-header" style="height: 70px;">
 		      <div class="col-md-1 text-center" style = "margin-right:-35px">ID</div>
 		      <div class="col-md-2 text-center" style = "margin-right:-30px">Tổng tiền</div>
-		      <div class="col-md-3 text-tencer" style = "margin-right:-35px">Thời gian</div>
-		      <div class="col-md-3 text-tencer" style = "margin-right:-30px">Phương thức thanh toán</div>
+		      <div class="col-md-3 text-center" style = "margin-right:-35px">Thời gian</div>
+		      <div class="col-md-3 text-center" style = "margin-right:-30px">Phương thức thanh toán</div>
 		      <div class="col-md-3 text-center">Trạng thái</div>
 		    </li>
 		    <c:forEach items="${bills}" var="item">
@@ -289,8 +289,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		      <a href = "<%=request.getContextPath()%>/cancelBill?id_bill=${item.id_bill}"><i class="fas fa-times"></i></a>
 		      </div>
 		      <div class="col-md-3 text-center" data-label="Tổng tiền"><fmt:formatNumber value="${item.total_amount}" pattern="#,###" /></div>
-		      <div class="col-md-3 text-tencer" data-label="Thời gian">${item.time}</div>
-		      <div class="col-md-3 text-tencer" data-label="Phương thức thanh toán">${item.payment_method}</div>
+		      <div class="col-md-3 text-center" data-label="Thời gian">${item.time}</div>
+		      <div class="col-md-3 text-center" data-label="Phương thức thanh toán">${item.payment_method}</div>
 		      <div class="col-md-2 text-center" data-label="Trạng thái">${item.payment_status}&nbsp<a href = "<%=request.getContextPath()%>/showBillDetail?id_bill=${item.id_bill}"><i class="fas fa-eye"></i></a></div>
 		    </li>
 		    </c:forEach>

@@ -367,12 +367,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 
 				<div class="product-details">
-  					<h2>Nhà sản xuất:</h2>
+  					<h2>Thương hiệu:</h2>
   					<p>${productByID.producer}</p>
 				</div>
 
 				<div class="product-details">
-  					<h2>Chú ý:</h2>
+  					<h2>Mô tả:</h2>
   					<p>${productByID.note}</p>
 				</div>
 			</div>

@@ -18,6 +18,14 @@ public class BlogService {
 		return blogRepository.showBlogList(id_animal_type);
 	}
 
+	public List<Blog> showRandomBlogs() {
+		return blogRepository.showRandomBlogs();
+	}
+
+	public List<Blog> showLastestBlogs() {
+		return blogRepository.showLastestBlogs();
+	}
+
 	public Blog showBlogByID(int id_blog) {
 		return blogRepository.showBlogByID(id_blog);
 	}
@@ -74,5 +82,5 @@ public class BlogService {
 			int id_animal_type) {
 		blogRepository.editBlog7(blogID, title, content1, content2, content3, id_animal_type);
 	}
-	
+
 }

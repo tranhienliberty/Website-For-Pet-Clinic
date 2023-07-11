@@ -326,10 +326,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="clearfix"></div>
 		<footer class="entry-meta clearfix">
 					<span class="cat-links">
-			Danh mục: <a href="#" rel="category tag">Chó cảnh</a>		</span>
+			Danh mục: <a href="#" rel="category tag">${blogList.get(0).getAnimalType().getName_animal_type()} cảnh</a>		</span>
 
 			
-		<span class="comments-link pull-right"><a href="#">Gửi phản hồi</a></span>
 	</footer><!-- .entry-meta -->
 	</div>
 </article>
@@ -339,98 +338,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 	</div>
 	<!-- Latest Blog -->
+	
 	<div class="post-sidebar large-3 col">
 		<div class="is-sticky-column"><div class="is-sticky-column__inner">		<div id="secondary" class="widget-area " role="complementary">
-				<aside id="flatsome_recent_posts-2" class="widget flatsome_recent_posts">		<span class="widget-title "><span>Tin tức mới nhất</span></span><div class="is-divider small"></div>		<ul>		
-		
+				<aside id="flatsome_recent_posts-2" class="widget flatsome_recent_posts">		<span class="widget-title "><span>Tin tức mới nhất</span></span><div class="is-divider small"></div>		
+		<ul>		
+		<c:forEach items="${lastestBlogs}" var="item">
 		<li class="recent-blog-posts-li">
 			<div class="flex-row recent-blog-posts align-top pt-half pb-half">
 				<div class="flex-col mr-half">
 					<div class="badge post-date  badge-square">
 							<div class="badge-inner bg-fill">
-                                								<span class="post-date-day">29</span><br>
-								<span class="post-date-month is-xsmall">Th4</span>
+                                	<span class="post-date-day" style = "font-size:10px;border-radius: 5px;">${item.created_date}</span>
                                 							</div>
 					</div>
 				</div>
 				<div class="flex-col flex-grow">
-					  <a href="https://dogilypetshop.vn/meo/mau-mat-meo-anh-long-ngan/" title="Màu mắt mèo Anh lông ngắn, mèo Aln mắt màu gì đẹp nhất? {Góc hỏi đáp}">Màu mắt mèo Anh lông ngắn, mèo Aln mắt màu gì đẹp nhất? {Góc hỏi đáp}</a>
-				   	  <span class="post_comments op-7 block is-xsmall"><a href="https://dogilypetshop.vn/meo/mau-mat-meo-anh-long-ngan/#respond"></a></span>
+					  <a href="<%=request.getContextPath()%>/showBlogDetail?id_blog=${item.id_blog}&id_animal_type=${id_animal_type}" title="Màu mắt mèo Anh lông ngắn, mèo Aln mắt màu gì đẹp nhất? {Góc hỏi đáp}">${item.title}</a>
 				</div>
 			</div>
 		</li>
-		
-		
-		<li class="recent-blog-posts-li">
-			<div class="flex-row recent-blog-posts align-top pt-half pb-half">
-				<div class="flex-col mr-half">
-					<div class="badge post-date  badge-square">
-							<div class="badge-inner bg-fill">
-                                								<span class="post-date-day">27</span><br>
-								<span class="post-date-month is-xsmall">Th4</span>
-                                							</div>
-					</div>
-				</div>
-				<div class="flex-col flex-grow">
-					  <a href="https://dogilypetshop.vn/cho/pembroke-corgi-gia-bao-nhieu-tien/" title="Chó Pembroke Corgi giá bao nhiêu tiền? {Dogily Q&amp;A}">Chó Pembroke Corgi giá bao nhiêu tiền? {Dogily Q&amp;A}</a>
-				   	  <span class="post_comments op-7 block is-xsmall"><a href="https://dogilypetshop.vn/cho/pembroke-corgi-gia-bao-nhieu-tien/#respond"></a></span>
-				</div>
-			</div>
-		</li>
-		
-		
-		<li class="recent-blog-posts-li">
-			<div class="flex-row recent-blog-posts align-top pt-half pb-half">
-				<div class="flex-col mr-half">
-					<div class="badge post-date  badge-square">
-							<div class="badge-inner bg-fill">
-                                								<span class="post-date-day">27</span><br>
-								<span class="post-date-month is-xsmall">Th4</span>
-                                							</div>
-					</div>
-				</div>
-				<div class="flex-col flex-grow">
-					  <a href="https://dogilypetshop.vn/cho/cach-nuoi-cho-shiba/" title="Kinh Nghiệm, Cách Nuôi Chó Shiba Phát Triển Theo Từng Giai Đoạn">Kinh Nghiệm, Cách Nuôi Chó Shiba Phát Triển Theo Từng Giai Đoạn</a>
-				   	  <span class="post_comments op-7 block is-xsmall"><a href="https://dogilypetshop.vn/cho/cach-nuoi-cho-shiba/#respond"></a></span>
-				</div>
-			</div>
-		</li>
-		
-		
-		<li class="recent-blog-posts-li">
-			<div class="flex-row recent-blog-posts align-top pt-half pb-half">
-				<div class="flex-col mr-half">
-					<div class="badge post-date  badge-square">
-							<div class="badge-inner bg-fill">
-                                								<span class="post-date-day">26</span><br>
-								<span class="post-date-month is-xsmall">Th4</span>
-                                							</div>
-					</div>
-				</div>
-				<div class="flex-col flex-grow">
-					  <a href="https://dogilypetshop.vn/meo/huan-luyen-meo-anh-long-ngan/" title="Huấn luyện mèo Anh lông ngắn Aln khôn như chó được không?">Huấn luyện mèo Anh lông ngắn Aln khôn như chó được không?</a>
-				   	  <span class="post_comments op-7 block is-xsmall"><a href="https://dogilypetshop.vn/meo/huan-luyen-meo-anh-long-ngan/#respond"></a></span>
-				</div>
-			</div>
-		</li>
-		
-		
-		<li class="recent-blog-posts-li">
-			<div class="flex-row recent-blog-posts align-top pt-half pb-half">
-				<div class="flex-col mr-half">
-					<div class="badge post-date  badge-square">
-							<div class="badge-inner bg-fill">
-                                								<span class="post-date-day">26</span><br>
-								<span class="post-date-month is-xsmall">Th4</span>
-                                							</div>
-					</div>
-				</div>
-				<div class="flex-col flex-grow">
-					  <a href="https://dogilypetshop.vn/cho/black-golden-retriever/" title="Chó Black Golden Retriever thường mắc bệnh gì, có nên nuôi không?">Chó Black Golden Retriever thường mắc bệnh gì, có nên nuôi không?</a>
-				   	  <span class="post_comments op-7 block is-xsmall"><a href="https://dogilypetshop.vn/cho/black-golden-retriever/#respond"></a></span>
-				</div>
-			</div>
-		</li>
+		</c:forEach>
 				</ul>		</aside></div>
 		</div></div>	</div>
 </div>

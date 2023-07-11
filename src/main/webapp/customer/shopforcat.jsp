@@ -405,7 +405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </c:forEach>
 
-<c:forEach items="${dogProductList}" var="item">			
+<c:forEach items="${productListSearch}" var="item">			
 <div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
 	<div class="col-inner">
 	
@@ -456,6 +456,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="box-text box-text-products text-center grid-style-2">
 			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
 	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" />&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+</div>		</div>
+        <div class="custom-quick-view">
+                   <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
+	</div>
+		</div>
+</div>
+</c:forEach>
+<c:forEach items="${categoryProduct}" var="item">			
+<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
+	<div class="col-inner">
+	
+<div class="badge-container absolute left top z-1">
+</div>
+	<div class="product-small box ">
+		<div class="box-image">
+			<div class="image-fade_in_back">
+				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
+					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
+			</div>
+			<div class="image-tools is-small top right show-on-hover">
+							</div>
+			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
+							</div>
+			
+					</div>
+
+		<div class="box-text box-text-products text-center grid-style-2">
+			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
 </div>		</div>
         <div class="custom-quick-view">
                    <a class="quick-view quick-view-added" data-prod="51033" href="<%=request.getContextPath() %>/showProductDetail${item.id_product}"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>

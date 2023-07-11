@@ -86,7 +86,7 @@ public class BillController {
 	public String cancelBill(@RequestParam("id_bill") int id_bill, Model model) throws UnsupportedEncodingException {
 		List<BillDetail> billDetails = billDetailService.showBillInfo(id_bill);
 		for (BillDetail billDetail : billDetails) {
-			productService.updateQuantityProduct(billDetail.getId_product(), -(billDetail.getQuantity()));
+			productService.updateQuantityProductAgain(billDetail.getId_product(), billDetail.getQuantity());
 		}
 		billService.deleteBill(id_bill);
 		String delivered = "Đã giao hàng";

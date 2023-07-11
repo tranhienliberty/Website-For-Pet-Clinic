@@ -26,7 +26,7 @@ public class ProductRepository {
 			product.setPrice(rs.getDouble("price"));
 			product.setImage(rs.getString("image"));
 			product.setQuantity(rs.getInt("quantity"));
-			product.setDeleted(rs.getBoolean("isDeleted"));
+			product.setDeleted(rs.getBoolean("is_deleted"));
 			product.setId_animal_type(rs.getInt("id_animal_type"));
 			product.setId_product_type(rs.getInt("id_product_type"));
 			ProductType pt = new ProductType();
@@ -47,7 +47,7 @@ public class ProductRepository {
 			product.setPrice(rs.getDouble("price"));
 			product.setImage(rs.getString("image"));
 			product.setQuantity(rs.getInt("quantity"));
-			product.setDeleted(rs.getBoolean("isDeleted"));
+			product.setDeleted(rs.getBoolean("is_deleted"));
 			product.setId_animal_type(rs.getInt("id_animal_type"));
 			product.setId_product_type(rs.getInt("id_product_type"));
 			return product;
@@ -58,7 +58,7 @@ public class ProductRepository {
 		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-				+ "WHERE p.id_animal_type = 1 AND isDeleted = 0;\r\n"
+				+ "WHERE p.id_animal_type = 1 AND is_deleted = 0;\r\n"
 				+ "";
 		return jdbcTemplate.query(sql, new productExtraRowMapper());
 	}
@@ -66,7 +66,7 @@ public class ProductRepository {
 		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-				+ "WHERE p.id_animal_type = ? AND isDeleted = 0 ORDER BY RAND() LIMIT 8;\r\n"
+				+ "WHERE p.id_animal_type = ? AND is_deleted = 0 ORDER BY RAND() LIMIT 8;\r\n"
 				+ "";
 		return jdbcTemplate.query(sql, new productExtraRowMapper(), id_animal_type);
 	}
@@ -74,7 +74,7 @@ public class ProductRepository {
 			String sql = "SELECT p.*, pt.name_product_type\r\n"
 					+ "FROM product p\r\n"
 					+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-					+ "WHERE p.id_animal_type = ? AND pt.id_product_type = ? AND isDeleted = 0;";
+					+ "WHERE p.id_animal_type = ? AND pt.id_product_type = ? AND is_deleted = 0;";
 			return jdbcTemplate.query(sql, new productExtraRowMapper(), id_animal_type, id_product_type);
 		}
 
@@ -83,7 +83,7 @@ public class ProductRepository {
 		String sql = "SELECT p.*, pt.name_product_type\r\n"
 				+ "FROM product p\r\n"
 				+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-				+ "WHERE p.id_animal_type = 2 AND isDeleted = 0;\r\n"
+				+ "WHERE p.id_animal_type = 2 AND is_deleted = 0;\r\n"
 				+ "";
 		return jdbcTemplate.query(sql, new productExtraRowMapper());
 	}
@@ -92,7 +92,7 @@ public class ProductRepository {
 	    String sql = "SELECT p.*, pt.name_product_type\r\n"
 	    		+ "FROM product p\r\n"
 	    		+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-	    		+ "WHERE p.name_product LIKE ? AND p.id_animal_type = ? AND isDeleted = 0;\r\n"
+	    		+ "WHERE p.name_product LIKE ? AND p.id_animal_type = ? AND is_deleted = 0;\r\n"
 	    		+ "";
 	    String searchKeyword = "%" + keyword + "%";
 	    
@@ -108,14 +108,14 @@ public class ProductRepository {
 	}
 	public List<Product> getRelatedProduct (long id,long id_product_type){
 		String sql = "SELECT p.*, pt.name_product_type FROM product p JOIN product_type pt ON p.id_product_type = pt.id_product_type "
-					+ "WHERE p.id_product_type = ?  AND isDeleted = 0 AND id_product <> ?";
+					+ "WHERE p.id_product_type = ?  AND is_deleted = 0 AND id_product <> ?";
 		return jdbcTemplate.query(sql, new productExtraRowMapper(), id_product_type, id);
 	}
 	public List<Product> filterProduct(long minPrice, long maxPrice, int id_animal_type){
 		String sql = "SELECT p.*, pt.name_product_type "
 	            + "FROM product p "
 	            + "JOIN product_type pt ON p.id_product_type = pt.id_product_type "
-	            + "WHERE p.price >= ? AND p.price <= ? AND p.id_animal_type = ? AND isDeleted = 0;";
+	            + "WHERE p.price >= ? AND p.price <= ? AND p.id_animal_type = ? AND is_deleted = 0;";
 
 		return jdbcTemplate.query(sql, new productExtraRowMapper(), minPrice, maxPrice, id_animal_type);
 	}
@@ -123,7 +123,7 @@ public class ProductRepository {
 		    String sql = "SELECT p.*, pt.name_product_type\r\n"
 		    		+ "FROM product p\r\n"
 		    		+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-		    		+ "WHERE p.name_product LIKE ? AND p.id_animal_type = ? AND isDeleted = 0;\r\n"
+		    		+ "WHERE p.name_product LIKE ? AND p.id_animal_type = ? AND is_deleted = 0;\r\n"
 		    		+ "";
 		    String searchKeyword = "%" + name_product + "%";
 		    
@@ -134,11 +134,16 @@ public class ProductRepository {
 		Object[] params = new Object[] {count, id_product};
 		int rs = jdbcTemplate.update(sql, params);
 	}
+	public void updateQuantityProductAgain(int id_product, int quantity) {
+		String sql = "UPDATE product SET quantity = quantity + ? WHERE id_product = ?";
+		Object[] params = new Object[] {quantity, id_product};
+		int rs = jdbcTemplate.update(sql, params);
+	}
 	//admin
 	public List<Product> showAllProduct() {
 		String sql = "SELECT p.*, pt.name_product_type "
 	            + "FROM product p "
-	            + "JOIN product_type pt ON p.id_product_type = pt.id_product_type WHERE isDeleted = 0;";
+	            + "JOIN product_type pt ON p.id_product_type = pt.id_product_type WHERE is_deleted = 0;";
 		return jdbcTemplate.query(sql, new productExtraRowMapper());
 	}
 	public void addProduct(String name_product, String benefit, String note, String producer, float price,
@@ -156,7 +161,7 @@ public class ProductRepository {
 		int rs =jdbcTemplate.update(sql, params);
 	}
 	public void deleteProduct(int id_product) {
-		String sql = "UPDATE product isDeleted = 1 WHERE id_product = ?";
+		String sql = "UPDATE product is_deleted = 1 WHERE id_product = ?";
 		Object[] params = new Object[] {id_product};
 		int rs =jdbcTemplate.update(sql, params);
 	}
@@ -164,7 +169,7 @@ public class ProductRepository {
 		String sql = "SELECT p.*, pt.name_product_type\r\n"
 	    		+ "FROM product p\r\n"
 	    		+ "JOIN product_type pt ON p.id_product_type = pt.id_product_type\r\n"
-	    		+ "WHERE p.id_product_type = ? AND isDeleted = 0;\r\n"
+	    		+ "WHERE p.id_product_type = ? AND is_deleted = 0;\r\n"
 	    		+ "";
 	    
 	    return jdbcTemplate.query(sql, new productExtraRowMapper(), id_product_type);
@@ -173,5 +178,6 @@ public class ProductRepository {
 		String sql = "SELECT COUNT(*) FROM product where id_product = ?";
 		return jdbcTemplate.queryForObject(sql, Integer.class, id_product);
 	}
+
 
 }

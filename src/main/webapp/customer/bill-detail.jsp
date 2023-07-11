@@ -276,23 +276,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		  <ul class="responsive-table">
 		    <li class="table-header" style="height: 70px;">
 		      <div class="col-md-1 text-center">ID</div>
-		      <div class="col-md-1 text-center">ID Bill</div>
-		      <div class="col-md-2 text-center">Tên sản phẩm</div>
-		      <div class="col-md-2 text-tencer">Loại sản phẩm</div>
-		      <div class="col-md-2 text-tencer">Đơn giá</div>
-		      <div class="col-md-2 text-tencer">Số lượng</div>
-		      <div class="col-md-2 text-tencer">Tổng giá</div>
+		      <div class="col-md-3 text-center">Tên sản phẩm</div>
+		      <div class="col-md-2 text-center">Loại sản phẩm</div>
+		      <div class="col-md-2 text-center">Đơn giá</div>
+		      <div class="col-md-2 text-center">Số lượng</div>
+		      <div class="col-md-2 text-center">Tổng giá</div>
 		    </li>
 		    <c:forEach items="${billDetails}" var="item">
-		    <li class="table-row" style="height: 70px;">
+		    <li class="table-row" style="height: 120px;">
 		      <c:set var = "stt" value = "${stt+1}"/>
-		      <div class="col-md-1 text-center" data-label="ID">${stt}</div>
-		      <div class="col-md-1 text-center" data-label="ID Bill">${item.id_bill}</div>
-		      <div class="col-md-2 text-tencer" data-label="Tên sản phẩm">${item.getProduct().getName_product()}</div>
-		      <div class="col-md-2 text-tencer" data-label="Loại sản phẩm">${item.getProduct().getProductType().getName_product_type()}</div>
-		      <div class="col-md-2 text-center" data-label="Đơn giá">${item.getProduct().getPrice()}</div>
-		      <div class="col-md-2 text-tencer" data-label="Số lượng">${item.quantity}</div>
-		      <div class="col-md-2 text-tencer" data-label="Tổng giá"><fmt:formatNumber value="${item.total_price}" pattern="#,###" /></div>
+		      <div class="col-md-1 text-center" data-label="ID Bill">${stt}</div>
+		      <div class="col-md-3 text-center" data-label="Tên sản phẩm">${item.getProduct().getName_product()}</div>
+		      <div class="col-md-2 text-center" data-label="Loại sản phẩm">${item.getProduct().getProductType().getName_product_type()}</div>
+		      <div class="col-md-2 text-center" data-label="Đơn giá"><fmt:formatNumber value="${item.getProduct().getPrice()}" pattern="#,###" /></div>
+		      <div class="col-md-2 text-center" data-label="Số lượng">${item.quantity}</div>
+		      <div class="col-md-2 text-center" data-label="Tổng giá"><fmt:formatNumber value="${item.total_price}" pattern="#,###" /></div>
 		    </li>
 		    </c:forEach>
 		  </ul>

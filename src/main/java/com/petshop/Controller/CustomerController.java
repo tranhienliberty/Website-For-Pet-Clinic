@@ -38,9 +38,12 @@ public class CustomerController {
 	@RequestMapping(value = "/EditCustomer")
 	public String editCustomer(@RequestParam("username") String username, @RequestParam("name_customer") String name_customer, 
 			@RequestParam("date_of_birth") String date_of_birth, @RequestParam("phone") String phone, @RequestParam("email") String email, 
-			@RequestParam("address") String address, Model model) {
+			@RequestParam("address") String address, Model model) throws UnsupportedEncodingException {
 		customerService.editCustomer(username, name_customer, date_of_birth, phone, email, address);
-		return "redirect:showCustomerProfile?username=" + username;
+		String message = "Sửa thông tin cá nhân thành công!";
+    	String encodedMessage = URLEncoder.encode(message, "UTF-8");
+		model.addAttribute("message", encodedMessage);
+		return "redirect:showCustomerProfile?username=" + username + "&message=" + encodedMessage;
 	}
 	@RequestMapping(value = "/adminShowAllCustomer")
 	public String showAllCustomer(@RequestParam(value = "message", required = false) String message, Model model) {

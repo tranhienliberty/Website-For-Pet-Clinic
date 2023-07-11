@@ -17,7 +17,7 @@
 <link rel="canonical" href="index.jsp">
 
 <!-- /Rank Math WordPress SEO plugin -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//s.w.org">
 <link rel="stylesheet" id="wc-blocks-vendors-style-css" href="<c:url value="/resources/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-vendors-style.css"/>" type="text/css" media="all">
@@ -291,7 +291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		      <div class="col col-md-3 text-center" data-label="Thời gian">${item.time}</div>
 		      <div class="col col-md-3 text-center" data-label="Phương thức thanh toán">${item.payment_method}</div>
 		      <div class="col col-md-2 text-center" data-label="Trạng thái">${item.payment_status}</div>
-		      <div class="col col-md-2 text-center" data-label="Trạng thái">${item.delivered}</div>
+		      <div class="col col-md-2 text-center" data-label="Trạng thái">${item.delivered}&nbsp<a href = "<%=request.getContextPath()%>/showBillDetail?id_bill=${item.id_bill}"><i class="fas fa-eye"></i></a></div>
 		    </li>
 		    </c:forEach>
 		  </ul>

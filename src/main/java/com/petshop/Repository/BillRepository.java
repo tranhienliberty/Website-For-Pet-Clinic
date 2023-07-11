@@ -74,7 +74,7 @@ public class BillRepository {
 		return id;
 	}
 	public List<Bill> ListBill(int id_cart, String delivered) {
-		String sql = "SELECT * FROM bill WHERE id_cart = ? AND delivered = ?";
+		String sql = "SELECT * FROM bill WHERE id_cart = ? AND delivered = ? ORDER BY time DESC";
 		return jdbcTemplate.query(sql, new billRowmapper(), id_cart, delivered);
 	}
 	public List<Bill> showAllBill() {

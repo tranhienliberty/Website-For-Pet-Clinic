@@ -25,6 +25,7 @@
 <link rel="stylesheet" id="contact-form-7-css" href="<c:url value="/resources/plugins/contact-form-7/includes/css/styles.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="toc-screen-css" href="<c:url value="/resources/plugins/table-of-contents-plus/screen.min.css"/>" type="text/css" media="all">
 <link rel="stylesheet" id="woof-css" href="<c:url value="/resources/plugins/woocommerce-products-filter/css/front.css"/>" type="text/css" media="all">
+<link rel="stylesheet" href="<c:url value="/resources/css/about-us-style.css"/>">
 <style id="woof-inline-css" type="text/css">
 
 .woof_products_top_panel li span, .woof_products_top_panel2 li span{background: url(https://dogilypetshop.vn/wp-content/plugins/woocommerce-products-filter/img/delete.png);background-size: 14px 14px;background-repeat: no-repeat;background-position: right;}
@@ -270,456 +271,115 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</header>
 	
 	<main id="main" class="">
-
-
-<div id="content" role="main" class="content-area">
-
-
-  </div>
-
-
-	<section class="section" id="section_403587937">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-		<div class="section-content relative">
-			
-<div class="row" id="row-589368379">
-
-	<div id="col-1866566418" class="col medium-6 small-12 large-6">
-		<div class="col-inner">
-			
-			
-	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_796104717">
-		<a class="L-Affiliate-Tagged" href="#">						<div class="img-inner dark">
-			<img width="820" height="294" src="<c:url value="/resources/images/Chocanh.jpg" />" alt="Chó cảnh" >						
-					</div>
-						</a>		
-<style>
-#image_796104717 {
-  width: 100%;
-}
-</style>
-	</div>
-	
-		</div>
-			</div>
-
-	
-
-	<div id="col-137468122" class="col medium-6 small-12 large-6">
-		<div class="col-inner">
-			
-			
-	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1454401756">
-		<a class="L-Affiliate-Tagged" href="">						
-		<div class="img-inner dark">
-			<img width="100" height="100" src="<c:url value="/resources/images/Meocanh.jpg" />" data-src="<c:url value="/resources/images/Meocanh.jpg" />" alt="mèo cảnh"">						
-					</div>
-						</a>		
-<style>
-#image_1454401756 {
-  width: 100%;
-}
-</style>
-	</div>
-	
-		</div>
-			</div>
-
-	
-</div>
-		</div>
-
-		
-<style>
-#section_403587937 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-	
-	<section class="section" id="section_786083388">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-		
-
-		
-<style>
-#section_786083388 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-	
-	<section class="section" id="section_241240338">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-		<div class="section-content relative">
-			
-<div class="row" id="row-234160474">
-
-	<div id="col-1036155911" class="col home-product-cat medium-9 small-12 large-9">
-		<div class="col-inner text-center">
-			
-			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO CHÓ</span><b></b><a href="<%=request.getContextPath()%>/showDogProduct" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
-
-  
-    <div class="row  equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small">
-    
-<c:forEach items="${productDogLimit}" var="item">			
-<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
-					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active" style="max-width: 200px; height: auto;">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
+			<section class="section about-hero">
+				<div class="grid about-hero__grid">
+					<div
+						class="grid__item grid__item--tablet-up-half about-hero__content">
+						<div class="section-heading gutter-bottom--reset">
+							<p
+								class="section-heading__kicker heading--5 text-left--tablet-up text-center--mobile color-black">About
+								us</p>
+							<h1
+								class="section-heading__heading heading--1 text-left--tablet-up text-center--mobile about-hero__heading">Shopify
+								powers millions of businesses worldwide</h1>
+							<p
+								class="section-heading__subhead heading--2 heading--3 text-left--tablet-up text-center--mobile">The
+								all-in-one commerce platform to start, run, and
+								grow&nbsp;a&nbsp;business.</p>
+							<div
+								class="text-left--tablet-up text-center--mobile gutter-bottom--mobile">
+								<form class="marketing-button-wrapper"
+									action="<%=request.getContextPath()%>/"
+									accept-charset="UTF-8" method="post">
+									<button
+										class="marketing-button js-open-signup start-free-trial__button">Bắt
+									 	Đầu</button>
+								</form>
 							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
+						</div>
 					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-</c:forEach>
-	            	        </div>
-		</div>
-			</div>
-
-	
-
-	<div id="col-850626213" class="col medium-3 small-12 large-3">
-		<div class="col-inner">
-			
-			
-<ul class="sidebar-wrapper ul-reset"><div id="nav_menu-5" class="widget widget_nav_menu"><h3 class="list-categories-title">Shop cho chó</h3><div class="menu-shop-cho-cho-container"><ul id="menu-shop-cho-cho" class="menu"><li id="menu-item-44892" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44892"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho chó</a></li>
-</ul></div></div></ul>
-	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_131642077">
-								<div class="img-inner dark">
-			<img width="268" height="392" src="/datn/resources/images/dog-food.jpg" alt="Đồ cho chó">						
-					</div>
-								
-<style>
-#image_131642077 {
-  width: 100%;
-}
-</style>
-	</div>
-	
-		</div>
-			</div>
-
-	
-</div>
-		</div>
-
-		
-<style>
-#section_241240338 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-	
-	
-	<section class="section" id="section_2061985155">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-
-		<div class="section-content relative">
-			
-<div class="row" id="row-1127564291">
-
-	<div id="col-174565568" class="col home-product-cat medium-9 small-12 large-9">
-		<div class="col-inner text-center">
-			
-			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">SHOP CHO MÈO</span><b></b><a href="<%=request.getContextPath()%>/showCatProduct" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
-
-  
-    <div class="row  equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small">
-		<c:forEach items="${productCatLimit}" var="item">			
-<div class="product-small col has-hover product type-product post-51033 status-publish first instock product_cat-shop-cho-cho product_cat-thuoc-tri-ve-ran-cho-cho product_cat-y-te-va-thuoc-cho-cho has-post-thumbnail shipping-taxable purchasable product-type-simple">
-	<div class="col-inner">
-	
-<div class="badge-container absolute left top z-1">
-</div>
-	<div class="product-small box ">
-		<div class="box-image">
-			<div class="image-fade_in_back">
-				<a href="<%=request.getContextPath() %>/showProductDetail${item.id_product}">
-					<img width="400" height="400" src="<c:url value ="${item.image}"/>" data-src="<c:url value ="${item.image}"/>" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active">				</a>
-			</div>
-			<div class="image-tools is-small top right show-on-hover">
-							</div>
-			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-							</div>
-			
-					</div>
-
-		<div class="box-text box-text-products text-center grid-style-2">
-			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 46px;"><a href="#" title="${item.name_product}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">${item.name_product}</a></p></div><div class="price-wrapper" style="height: 14.4px;">
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><fmt:formatNumber value="${item.price}" pattern="#,###" /> &nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
-</div>		</div>
-        <div class="custom-quick-view">
-                   <a class="quick-view quick-view-added" data-prod="51033" href="/showProductInfo"><img src="https://dogilypetshop.vn/wp-content/uploads/2020/09/icon-cart-plus.png" width="16px" height="16px"> Chọn mua</a>        </div>
-	</div>
-		</div>
-</div>
-</c:forEach>
-	            	        </div>
-		</div>
-			</div>
-
-	
-
-	<div id="col-956799718" class="col medium-3 small-12 large-3">
-		<div class="col-inner">
-			
-			
-<ul class="sidebar-wrapper ul-reset"><div id="nav_menu-6" class="widget widget_nav_menu"><h3 class="list-categories-title">Shop cho mèo</h3><div class="menu-shop-cho-meo-container"><ul id="menu-shop-cho-meo" class="menu"><li id="menu-item-44905" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44905"><a href="#" class="L-Affiliate-Tagged">Cát vệ sinh cho mèo</a></li>
-<li id="menu-item-44908" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44908"><a href="#" class="L-Affiliate-Tagged">Nhà cho mèo</a></li>
-<li id="menu-item-44911" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44911"><a href="#" class="L-Affiliate-Tagged">Thức ăn cho mèo</a></li>
-</ul></div></div></ul>
-	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1133162542">
-								<div class="img-inner dark">
-			<img width="268" height="392" src="<c:url value="/resources/images/cat-food.jpg" />" alt="Đồ cho mèo">	
-					</div>
-								
-<style>
-#image_1133162542 {
-  width: 100%;
-}
-</style>
-	</div>
-	
-		</div>
-			</div>
-
-	
-</div>
-		</div>
-
-		
-<style>
-#section_1829298978 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-
-
-	<section class="section" id="section_1634904517">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-		<div class="section-content relative">
-			
-<div class="row" id="row-11506847">
-
-	<div id="col-1087971835" class="col small-12 large-12">
-		<div class="col-inner">
-			
-			
-<div class="container section-title-container"><h3 class="section-title section-title-normal"><b></b><span class="section-title-main">Tin tức - Blog</span><b></b><a href="#" target="" class="L-Affiliate-Tagged">Xem tất cả »<i class="icon-angle-right"></i></a></h3></div>
-
-  
-    <div class="row home-row__post large-columns-4 medium-columns-1 small-columns-1 row-small has-shadow row-box-shadow-1">
-  		<c:forEach items="${randomBlogs}" var="item">
-  		<div class="col post-item">
-			<div class="col-inner">
-			<a href="<%=request.getContextPath()%>/showBlogDetail?id_blog=${item.id_blog}&id_animal_type=${item.id_animal_type}" class="plain L-Affiliate-Tagged">
-				<div class="box box-default box-text-bottom box-blog-post has-hover">
-          					<div class="box-text text-left" style="background-color:rgb(255, 255, 255);">
-					<div class="box-text-inner blog-post-inner">
-										<h5 class="post-title is-large ">${item.title}</h5>
-										<div class="is-divider"></div>
-										<p class="from_the_blog_excerpt" style = "display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden; text-overflow: ellipsis;max-width: 150px;max-height: 40px;">${item.content1 }...	</p>
-					                    
-											<button href="<%=request.getContextPath()%>/showBlogDetail?id_blog=${item.id_blog}&id_animal_type=${item.id_animal_type}" class="button  is-link is-small mb-0">
-							Xem tiếp »						</button>
-					
-					
-					</div>
+					<div
+						class="grid__item grid__item--tablet-up-half about-hero__image-container">
+						<span class="image lazyload-image about-hero__image-spill"
+							style="max-width: 837px; max-height: 564px;"><span
+							class="lazyload-image__placeholder"
+							style="padding-bottom: 67.3835%"><img alt="" src = "https://thuyprocare.com/upload/images/TIN%20T%E1%BB%A8C/Phong-kham-thu-y-uy-tin-tai-tphcm.jpg"
+								data-sizes="100vw"
+								class="lazyload" />
+							</span></span>
 					</div>
 				</div>
-				</a>
-			</div>
-		</div>
-		</c:forEach>
-</div>
-		</div>
-			</div>
-
-	
-</div>
-		</div>
-
-		
-<style>
-#section_1634904517 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-	
-	<div id="gap-522677759" class="gap-element clearfix" style="display:block; height:auto;">
-		
-<style>
-#gap-522677759 {
-  padding-top: 50px;
-}
-</style>
-	</div>
-	
-	<section class="section" id="section_2037287240">
-		<div class="bg section-bg fill bg-fill bg-loaded bg-loaded">
-
-			
-			
-			
-
-		</div>
-
-		<div class="section-content relative">
-			
-<div class="row home-bacsi" id="row-249871535">
-
-	<div id="col-681531293" class="col medium-4 small-12 large-4">
-		<div class="col-inner">
-			
-			
-	<div class="box has-hover feature-btn  has-hover box-text-bottom">
-
-		<div class="box-image" style="border-radius:100%;width:60%;">
-						<div class="">
-				<img width="350" height="350" src="https://thuythithi.com/wp-content/uploads/2020/03/nhung-luu-y-khi-chon-bac-si-thu-y-gioi-cho-thu-cung-cua-ban.jpg" data-src="https://thuythithi.com/wp-content/uploads/2020/03/nhung-luu-y-khi-chon-bac-si-thu-y-gioi-cho-thu-cung-cua-ban.jpg" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+			</section>
+			<section class="section">
+				<div class="grid grid--vertically-centered about-online-store">
+					<div
+						class="grid__item grid__item--tablet-up-half about-online-store__content">
+						<div
+							class="section-heading about-online-store__content gutter-bottom--reset">
+							<p
+								class="section-heading__kicker heading--5 color-green-80 text-left--tablet-up text-center--mobile gutter-bottom--half">Shopify
+								story</p>
+							<h2
+								class="section-heading__heading text-left--tablet-up text-center--mobile gutter-bottom--half about-heading">The
+								first Shopify store was&nbsp;our&nbsp;own</h2>
+							<p
+								class="section-heading__subhead text-major text-left--tablet-up text-center--mobile color-gray-80 gutter-bottom--reset">Over
+								a decade ago, we started a store to sell snowboards online. None
+								of the ecommerce solutions at the time gave us the control we
+								needed to be successful—so we built our own. Today, businesses
+								of all sizes use Shopify, whether they’re selling online, in
+								retail stores, or on-the-go.</p>
+						</div>
 					</div>
-
-		<div class="box-text text-center">
-			<div class="box-text-inner">
-				
-<h4>Bác sĩ 1</h4>
-<p>Chỗ ở không sạch sẽ là mối nguy hiểm ẩn chứa các vi trùng, vi khuẩn gây bệnh ảnh hưởng đến sức khỏe của thú cưng.Hãy vệ sinh tốt chỗ ở cho thú cưng hàng ngày cũng như tắm rửa cho chúng thường xuyên là việc cơ bản để chúng có một cuộc sống chất lượng bạn nhé.</p>
-			</div>
-		</div>
-	</div>
-	
-		</div>
-			</div>
-
-	
-
-	<div id="col-740980631" class="col medium-4 small-12 large-4">
-		<div class="col-inner">
-			
-			
-	<div class="box has-hover feature-btn  has-hover box-text-bottom">
-
-		<div class="box-image" style="border-radius:100%;width:60%;">
-						<div class="">
-<img width="350" height="350" src="https://jobsgo.vn/blog/wp-content/uploads/2020/02/tieu-chuan-tot-nghiep-cao-dang-thu-y.jpg" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+					<div
+						class="grid__item grid__item--tablet-up-half about-online-store__image-container">
+						<picture class="picture about-online-store__image">
+						<source
+							data-srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@desktop-d45981b88381b90b17d60887fa0ad6429568d50b08b1d7fb6c5e86eabf7ee84a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@desktop-2x-58cb709c01464fee88750e78a3ea221c1f9e05c07611a2be28dd43bcfa80ab39.png 2x"
+							media="(min-width: 1080px)" />
+						<source
+							data-srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@tablet-56912c4c5d8d976f3b9a06f38575331f3f5329598d3260e5c0c1d0139156710a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@tablet-2x-63a1c8f56302266d857dc8f6985d48281d3ac97ba30f65852272c5c5b31fb17c.png 2x"
+							media="(min-width: 750px)" />
+						<img
+							data-srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@mobile-56912c4c5d8d976f3b9a06f38575331f3f5329598d3260e5c0c1d0139156710a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@mobile-2x-63a1c8f56302266d857dc8f6985d48281d3ac97ba30f65852272c5c5b31fb17c.png 2x"
+							alt="" class="lazyload" /></picture>
+						<noscript>
+							<picture class="picture about-online-store__image">
+							<source
+								srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@desktop-d45981b88381b90b17d60887fa0ad6429568d50b08b1d7fb6c5e86eabf7ee84a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@desktop-2x-58cb709c01464fee88750e78a3ea221c1f9e05c07611a2be28dd43bcfa80ab39.png 2x"
+								media="(min-width: 1080px)" />
+							<source
+								srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@tablet-56912c4c5d8d976f3b9a06f38575331f3f5329598d3260e5c0c1d0139156710a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@tablet-2x-63a1c8f56302266d857dc8f6985d48281d3ac97ba30f65852272c5c5b31fb17c.png 2x"
+								media="(min-width: 750px)" />
+							<img
+								srcset="https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@mobile-56912c4c5d8d976f3b9a06f38575331f3f5329598d3260e5c0c1d0139156710a.png 1x, https://cdn.shopify.com/shopifycloud/brochure/assets/merchants/snowdevil/snowdevil-about-online-store-sustainability@mobile-2x-63a1c8f56302266d857dc8f6985d48281d3ac97ba30f65852272c5c5b31fb17c.png 2x"
+								alt="" /></picture>
+						</noscript>
 					</div>
-
-		<div class="box-text text-center">
-			<div class="box-text-inner">
-				
-<h4>Bác sĩ 2</h4>
-<p>Một chế độ dinh dưỡng cho thú cưng chất lượng và ngăn ngừa béo phì hay còi cọc. Việc béo phì có thể ảnh hưởng xấu đến sức khỏe chúng. Hãy đáp ứng nhucầu về dinh dưỡng của thú cưng cưng nhà bạn dựa trên kích thước, độ tuổi, mức độ hoạt động và giống loài.</p>
-			</div>
-		</div>
-	</div>
-	
-		</div>
-			</div>
-
-	
-
-	<div id="col-133289757" class="col medium-4 small-12 large-4">
-		<div class="col-inner">
-			
-			
-	<div class="box has-hover feature-btn  has-hover box-text-bottom">
-
-		<div class="box-image" style="border-radius:100%;width:60%;">
-						<div class="">
-				<img width="350" height="350" src="https://img.cand.com.vn/resize/800x800/NewFiles/Images/2023/06/01/313437324_530297825770289_851393-1685621442627.jpg" data-src="https://staticc.sportskeeda.com/editor/2023/05/a16c7-16834371619594-1920.jpg?w=840" class="attachment-original size-original lazy-load-active" alt="" loading="lazy" sizes="(max-width: 350px) 100vw, 350px">											</div>
+				</div>
+			</section>
+			<section class="section section--padding-bottom-only about-mission">
+				<div class="grid grid--vertically-centered">
+					<div
+						class="grid__item grid__item--tablet-up-two-thirds grid__item--tablet-up-push-1">
+						<div class="section-heading about-mission__content">
+							<p
+								class="section-heading__kicker heading--5 color-black gutter-bottom--half">Our
+								mission</p>
+							<h2
+								class="section-heading__heading gutter-bottom--half about-heading">Making
+								commerce better for everyone</h2>
+							<p
+								class="section-heading__subhead text-major color-gray-80 gutter-bottom--reset">We
+								help people achieve independence by making it easier to start,
+								run, and grow a business. We believe the future of commerce has
+								more voices, not fewer, so we’re reducing the barriers to
+								business ownership to make commerce better for everyone.</p>
+						</div>
 					</div>
-
-		<div class="box-text text-center">
-			<div class="box-text-inner">
-				
-<h4>Bác sĩ 3</h4>
-<p>Nếu yêu thú cưng, bạn nhớ dắt chúng đi dạo xung quanh hoặc đi công viên hay tham gia các hoạt động chạy nhảy, vui đùa thường xuyên nhé. Chúng sẽ khỏe mạnh hơn và ngăn ngừa loãng xương.</p>
-			</div>
-		</div>
-	</div>
-	
-		</div>
-			</div>
-
-	
-</div>
-		</div>
-
-		
-<style>
-#section_2037287240 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-</style>
-	</section>
-	
-</main>		
+				</div>
+			</section>
+		</main>		
 				
 </div>
 

@@ -80,12 +80,11 @@ public class ProductController implements ApplicationContextAware {
     	if(id_animal_type == 1) return "customer/shopfordog";
     	else return "customer/shopforcat";
     }
-    @RequestMapping(value = "searchProduct")
+    @RequestMapping(value = "/searchProduct")
 	public String searchProduct(@RequestParam("keyword") String keyword, @RequestParam("id_animal_type") int id_animal_type, Model model) {
 		List<Product> products = productService.searchProduct(keyword, id_animal_type);
 		model.addAttribute("id_animal_type", id_animal_type);
-		model.addAttribute("dogProductList", products);
-		System.out.print(products.get(0).getName_product());
+		model.addAttribute("productListSearch", products);
 		if(id_animal_type == 1) return "customer/shopfordog";
     	else return "customer/shopforcat";
 	}

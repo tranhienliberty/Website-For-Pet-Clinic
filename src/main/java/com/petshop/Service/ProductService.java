@@ -67,5 +67,8 @@ public class ProductService {
 		}
 		else return true;
 	}
+	public void updateQuantityProductAgain(int id_product, int quantity) {
+		productRepository.updateQuantityProductAgain(id_product, quantity);
+	}
 
 }

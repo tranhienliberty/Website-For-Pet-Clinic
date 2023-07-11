@@ -350,6 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
 	<div class="blog-container">
     <div class="news-item text-center">
+    <h1 class="entry-title text-center">Bạn đang xem bài viết: ${blogDetail.title}&nbsp;</h1>
       <img class="image" src="${blogDetail.image1}" alt="Image 1">
       <div class="content">
         <p>${blogDetail.content1}</p>

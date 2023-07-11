@@ -29,8 +29,11 @@ public class BlogController {
 	@RequestMapping(value = "/showBlogList")
 	public String showBlogList(@RequestParam("id_animal_type") int id_animal_type, Model model) {
 		List<Blog> blogs = blogService.showBlogList(id_animal_type);
+		List<Blog> lastestBlogs = blogService.showLastestBlogs();
+		model.addAttribute("lastestBlogs", lastestBlogs);
 		model.addAttribute("id_animal_type", id_animal_type);
 		model.addAttribute("blogList", blogs);
+		
 		return "customer/blog";
 	}
 	@RequestMapping(value = "/showBlogDetail")
